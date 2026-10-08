@@ -6,9 +6,9 @@ Sequência:
 1. O botão (o ponto da logo) vem do fundo, com rastros de velocidade, e atravessa a tela (0–0,7 s)
 2. Ele volta encolhendo como uma íris até o lugar dele e "clica", com ondas de choque (0,7–1,3 s)
 3. O clique "liga" a casa: o telhado acende a partir do topo, com faíscas (1,2–1,9 s)
-4. O "C" e o "T" são formados por trilhas de circuito: a energia vem da borda esquerda (C) e da direita (T), contorna a letra pelos dois lados e ela se preenche (1,3–2,6 s)
+4. O "C" e o "T" são formados por trilhas de circuito: a energia vem da borda esquerda (C) e da direita (T), contorna a letra pelos dois lados enquanto trilhas internas desenham o miolo; depois a tinta enche a letra de baixo para cima e as trilhas somem (1,3–2,8 s)
 5. As ondas de Wi-Fi se expandem com eco (1,9–3 s)
-6. "CASA E-TEC" também nasce de trilhas: "CASA" pela esquerda e "E-TEC" pela direita, cada letra com sua trilha, ilha de solda na curva de 45° e energia correndo até formá-la (2,1–3,5 s)
+6. "CASA E-TEC" também nasce de trilhas: "CASA" pela esquerda e "E-TEC" pela direita, cada letra com sua trilha, ilha de solda na curva de 45° e energia correndo até formá-la, também com trilhas internas que somem depois da tinta (2,1–3,6 s)
 7. Brilho atravessa a logo, o Wi-Fi pulsa e a câmera flutua em 3D (3,5–5 s)
 
 **Fundo transparente no começo:** até 0,66 s o fundo é transparente: o botão

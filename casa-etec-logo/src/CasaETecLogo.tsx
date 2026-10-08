@@ -455,6 +455,7 @@ const Scene: React.FC = () => {
 						<CircuitLetter
 							key={l.index}
 							bend={l.bend}
+							inner={{paths: l.inner, color: l.index < 4 ? '#a9d8ff' : '#c3cbdc', width: 1.7, pad: 2.6}}
 							feed={l.feed}
 							contours={l.contours}
 							fill={l.index < 4 ? 'url(#casaGrad)' : 'url(#etecGrad)'}
