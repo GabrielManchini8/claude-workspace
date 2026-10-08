@@ -8,7 +8,16 @@ const ENERGY = '#c9f3ff';
 const TRACE = '#3a8cf0';
 const TRAIL = 110;
 
+export type InnerTraces = {
+	/** Trilhas gravadas dentro da letra (polilinhas com ilhas de solda nas pontas). */
+	paths: string[];
+	color: string;
+};
+
+const endsOf = (d: string, len: number) => [getPointAtLength(d, 0), getPointAtLength(d, len)];
+
 type Props = {
+	inner?: InnerTraces;
 	/** Curva de 45° da trilha, onde fica uma ilha de solda. */
 	bend?: {x: number; y: number};
 	/** Trilha que vem da borda da tela até o ponto de entrada da letra. */
@@ -36,10 +45,12 @@ const isPast = (feed: string, head: number, bend: {x: number; y: number}) => {
  * a partir da borda, chega à letra, contorna-a pelos dois lados e a letra
  * se preenche. Depois a trilha de alimentação se apaga.
  */
-export const CircuitLetter: React.FC<Props> = ({bend, feed, contours, fill, edge, start, speed, outlineFrames}) => {
+export const CircuitLetter: React.FC<Props> = ({inner, bend, feed, contours, fill, edge, start, speed, outlineFrames}) => {
 	const frame = useCurrentFrame();
 	const feedLen = useMemo(() => getLength(feed), [feed]);
 	const lens = useMemo(() => contours.map((c) => getLength(c)), [contours]);
+
+	const innerLens = useMemo(() => (inner ? inner.paths.map((d) => getLength(d)) : []), [inner]);
 
 	const feedFrames = feedLen / speed;
 	const arrive = start + feedFrames;
@@ -95,6 +106,39 @@ export const CircuitLetter: React.FC<Props> = ({bend, feed, contours, fill, edge
 
 			{/* Letra preenchida */}
 			<path d={contours.join(' ')} fill={fill} opacity={fillO} stroke={edge} strokeWidth={2.5} strokeLinejoin="round" />
+
+			{/* Trilhas internas: a energia entra logo que o contorno fecha */}
+			{inner
+				? inner.paths.map((d, i) => {
+						const len = innerLens[i];
+						const t0 = closed - 4 + i * 1.5;
+						const prog = interpolate(frame, [t0, t0 + 14], [0, 1], {...clamp, easing: Easing.out(Easing.quad)});
+						if (prog <= 0) return null;
+						const [a, b] = endsOf(d, len);
+						const tip = prog < 1 ? getPointAtLength(d, prog * len) : null;
+						return (
+							<g key={i}>
+								<path
+									d={d}
+									fill="none"
+									stroke={inner.color}
+									strokeWidth={2.6}
+									strokeLinejoin="round"
+									strokeDasharray={`${prog * len} ${len * 2}`}
+								/>
+								{[a, prog >= 1 ? b : null].map((p, j) =>
+									p ? <circle key={j} cx={p.x} cy={p.y} r={4.2} fill="none" stroke={inner.color} strokeWidth={2.4} /> : null,
+								)}
+								{tip ? (
+									<g filter="url(#glow)">
+										<circle cx={tip.x} cy={tip.y} r={8} fill="#a8e2ff" opacity={0.7} />
+										<circle cx={tip.x} cy={tip.y} r={3.2} fill="#ffffff" />
+									</g>
+								) : null}
+							</g>
+						);
+					})
+				: null}
 
 			{/* Contorno sendo traçado pela energia, pelos dois lados */}
 			<g opacity={glowFade} filter="url(#glow)">

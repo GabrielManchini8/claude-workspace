@@ -11,7 +11,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {CircuitLetter} from './CircuitLetter';
+import {CircuitLetter, InnerTraces} from './CircuitLetter';
 import GLYPHS from './glyphs.json';
 
 
@@ -43,6 +43,56 @@ const C_SHAPE =
 	'M 165 560 A 140 160 0 0 0 305 720 L 432 720 L 432 630 L 330 630 A 100 82.5 0 0 1 330 465 L 432 465 L 432 400 L 305 400 A 140 160 0 0 0 165 560 Z';
 const T_SHAPE =
 	'M 916 436 L 890 474 L 776 474 L 776 718 L 694 718 L 694 474 L 605 474 L 605 408 L 866 408 Z';
+// Ponto numa "faixa" paralela dentro do C. t: 0 = borda externa, 1 = borda interna.
+// u: 0 = ponta de cima, 1 = ponta de baixo (passando pela curva da esquerda).
+const cLane = (t: number, u: number) => {
+	const cx = 305 + 25 * t;
+	const cy = 560 - 12.5 * t;
+	const rx = 140 - 40 * t;
+	const ry = 160 - 77.5 * t;
+	const a = 0.14;
+	const tipX = 418;
+	if (u < a) return {x: tipX + (cx - tipX) * (u / a), y: cy - ry};
+	if (u > 1 - a) return {x: cx + (tipX - cx) * ((u - (1 - a)) / a), y: cy + ry};
+	const th = -Math.PI / 2 - ((u - a) / (1 - 2 * a)) * Math.PI;
+	return {x: cx + rx * Math.cos(th), y: cy + ry * Math.sin(th)};
+};
+// Trilha que segue faixas do C; cada item é [t, uInicial, uFinal] e as trocas de faixa viram diagonais.
+const cTrace = (legs: [number, number, number][]) => {
+	const pts: {x: number; y: number}[] = [];
+	for (const [t, u0, u1] of legs) {
+		const n = Math.max(2, Math.ceil(Math.abs(u1 - u0) * 60));
+		for (let i = 0; i <= n; i++) pts.push(cLane(t, u0 + ((u1 - u0) * i) / n));
+	}
+	return 'M ' + pts.map((p) => `${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' L ');
+};
+
+const C_INNER: InnerTraces = {
+	color: '#9dd3ff',
+	paths: [
+		cTrace([[0.22, 0.02, 0.38], [0.5, 0.43, 0.6]]),
+		cTrace([[0.5, 0.06, 0.32]]),
+		cTrace([[0.78, 0.04, 0.5]]),
+		cTrace([[0.22, 0.45, 0.66], [0.5, 0.71, 0.98]]),
+		cTrace([[0.78, 0.58, 0.97]]),
+		cTrace([[0.22, 0.74, 0.97]]),
+		cTrace([[0.64, 0.36, 0.55]]),
+		cTrace([[0.36, 0.7, 0.8]]),
+		cTrace([[0.64, 0.66, 0.88]]),
+	],
+};
+const T_INNER: InnerTraces = {
+	color: '#b9c4d9',
+	paths: [
+		'M 620 424 H 866',
+		'M 640 441 H 690 L 712 463 V 700',
+		'M 880 446 H 792 L 758 480 V 702',
+		'M 622 458 H 668',
+		'M 735 492 V 655',
+		'M 800 461 H 862',
+	],
+};
+
 const C_FEED = 'M -300 640 H 85 L 165 560';
 const T_FEED = 'M 1324 520 H 1000 L 916 436';
 
@@ -384,8 +434,8 @@ const Scene: React.FC = () => {
 
 				{/* C e T formados por trilhas de circuito */}
 				<Layer depth={60}>
-					<CircuitLetter bend={{x: 85, y: 640}} feed={C_FEED} contours={[C_SHAPE]} fill="url(#cGrad)" edge="#0a2a78" start={40} speed={34} outlineFrames={18} />
-					<CircuitLetter bend={{x: 1000, y: 520}} feed={T_FEED} contours={[T_SHAPE]} fill="url(#tGrad)" edge="#1c2333" start={43} speed={34} outlineFrames={18} />
+					<CircuitLetter inner={C_INNER} bend={{x: 85, y: 640}} feed={C_FEED} contours={[C_SHAPE]} fill="url(#cGrad)" edge="#0a2a78" start={40} speed={34} outlineFrames={18} />
+					<CircuitLetter inner={T_INNER} bend={{x: 1000, y: 520}} feed={T_FEED} contours={[T_SHAPE]} fill="url(#tGrad)" edge="#1c2333" start={43} speed={34} outlineFrames={18} />
 					<Shine x={shineX} mask="maskC" />
 					<Shine x={shineX + 80} mask="maskT" />
 				</Layer>
