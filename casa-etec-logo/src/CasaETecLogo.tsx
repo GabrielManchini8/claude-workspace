@@ -1,7 +1,6 @@
-import {loadFont} from '@remotion/fonts';
 import {CameraMotionBlur} from '@remotion/motion-blur';
 import {noise2D} from '@remotion/noise';
-import {evolvePath, getLength, getPointAtLength} from '@remotion/paths';
+import {getLength, getPointAtLength} from '@remotion/paths';
 import React from 'react';
 import {
 	AbsoluteFill,
@@ -9,17 +8,12 @@ import {
 	interpolate,
 	random,
 	spring,
-	staticFile,
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {CircuitLetter} from './CircuitLetter';
+import GLYPHS from './glyphs.json';
 
-const fontFamily = 'Montserrat';
-loadFont({
-	family: fontFamily,
-	url: staticFile('montserrat-latin-900-normal.woff2'),
-	weight: '900',
-});
 
 // A logo é desenhada num espaço 1024x1024; o vídeo tem 1080x1080.
 const SIZE = 1080;
@@ -44,22 +38,13 @@ const ROOF = 'M 822 378 L 515 252 L 132 452 L 152 480';
 const ROOF_LENGTH = getLength(ROOF);
 const ROOF_APEX = Math.hypot(822 - 515, 378 - 252);
 
+// C começa no ponto mais à esquerda e T na ponta direita: é onde as trilhas chegam.
 const C_SHAPE =
-	'M 432 400 L 305 400 A 140 160 0 0 0 305 720 L 432 720 L 432 630 L 330 630 A 100 82.5 0 0 1 330 465 L 432 465 Z';
+	'M 165 560 A 140 160 0 0 0 305 720 L 432 720 L 432 630 L 330 630 A 100 82.5 0 0 1 330 465 L 432 465 L 432 400 L 305 400 A 140 160 0 0 0 165 560 Z';
 const T_SHAPE =
-	'M 605 408 L 866 408 L 916 436 L 890 474 L 776 474 L 776 718 L 694 718 L 694 474 L 605 474 Z';
-
-// Trilhas de circuito (referência à versão "circuito" da logo).
-const TRACES = [
-	{d: 'M 420 432 L 305 432 A 108 121.5 0 0 0 305 675 L 420 675', nodes: [[420, 432], [420, 675]]},
-	{d: 'M 360 520 L 290 520 L 262 548 L 262 600', nodes: [[360, 520], [262, 600]]},
-	{d: 'M 625 441 L 878 441', nodes: [[625, 441], [878, 441]]},
-	{d: 'M 735 474 L 735 700', nodes: [[735, 700]]},
-	{d: 'M 712 500 L 712 600 L 690 622', nodes: [[690, 622]]},
-	{d: 'M 758 500 L 758 640 L 780 662', nodes: [[780, 662]]},
-];
-
-const LETTERS = 'CASA E-TEC'.split('');
+	'M 916 436 L 890 474 L 776 474 L 776 718 L 694 718 L 694 474 L 605 474 L 605 408 L 866 408 Z';
+const C_FEED = 'M -300 640 H 85 L 165 560';
+const T_FEED = 'M 1324 520 H 1000 L 916 436';
 
 const BOKEH = new Array(14).fill(0).map((_, i) => ({
 	x: random(`bx${i}`) * 1024,
@@ -156,6 +141,14 @@ const Defs: React.FC = () => (
 				<stop offset="0.55" stopColor="#1a4fc4" />
 				<stop offset="1" stopColor="#0a2d86" />
 			</radialGradient>
+			<linearGradient id="casaGrad" gradientUnits="userSpaceOnUse" x1="0" y1="794" x2="0" y2="872">
+				<stop offset="0" stopColor="#1a55c8" />
+				<stop offset="1" stopColor="#0a2f86" />
+			</linearGradient>
+			<linearGradient id="etecGrad" gradientUnits="userSpaceOnUse" x1="0" y1="794" x2="0" y2="872">
+				<stop offset="0" stopColor="#454d5f" />
+				<stop offset="1" stopColor="#252b38" />
+			</linearGradient>
 			<linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="0">
 				<stop offset="0" stopColor="#fff" stopOpacity="0" />
 				<stop offset="0.5" stopColor="#fff" stopOpacity="0.7" />
@@ -237,15 +230,6 @@ const Scene: React.FC = () => {
 	const sparkA = getPointAtLength(ROOF, Math.max(0.01, roofStart)) ?? {x: 515, y: 252};
 	const sparkB = getPointAtLength(ROOF, Math.min(ROOF_LENGTH - 0.01, roofEnd)) ?? {x: 515, y: 252};
 
-	// ── 4. C e T emergem da profundidade girando (42–70) ────────────────────
-	const letterIn = (delay: number) => spring({frame: frame - delay, fps, config: {damping: 13, mass: 0.8}});
-	const cP = letterIn(41);
-	const tP = letterIn(46);
-	const outlineP = interpolate(frame, [41, 58], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
-	const fillOpacity = interpolate(frame, [52, 66], [0, 1], clamp);
-	const traceP = interpolate(frame, [45, 62], [0, 1], {...clamp, easing: Easing.out(Easing.quad)});
-	const traceOpacity = interpolate(frame, [62, 74], [1, 0], clamp);
-
 	// ── 5. Wi-Fi expande com eco (58–90) ────────────────────────────────────
 	const wave = (delay: number) => {
 		const s = spring({frame: frame - delay, fps, config: {damping: 10, mass: 0.6}});
@@ -262,19 +246,6 @@ const Scene: React.FC = () => {
 		{d: INNER_ARC, w: 40, a: wave(58), pulse: interpolate(frame, [114, 121, 136], [0, 0.55, 0], clamp)},
 		{d: OUTER_ARC, w: 44, a: wave(64), pulse: interpolate(frame, [120, 127, 142], [0, 0.55, 0], clamp)},
 	];
-
-	// ── 6. Texto: letras viram para cima e o espaçamento fecha (78–112) ────
-	const tracking = interpolate(frame, [76, 114], [30, 3], {...clamp, easing: expoOut});
-	const letter = (i: number) => {
-		const delay = 77 + i * 2 + random(`l${i}`) * 3;
-		const s = spring({frame: frame - delay, fps, config: {damping: 12, mass: 0.7}});
-		return {
-			y: (1 - s) * 70,
-			rot: (1 - s) * -85,
-			blur: Math.max(0, 1 - s) * 10,
-			opacity: interpolate(s, [0, 0.45], [0, 1], clamp),
-		};
-	};
 
 	// ── 7. Brilho final ─────────────────────────────────────────────────────
 	const shineX = interpolate(frame, [104, 134], [-400, 1300], {...clamp, easing: Easing.inOut(Easing.quad)});
@@ -411,73 +382,12 @@ const Scene: React.FC = () => {
 					))}
 				</Layer>
 
-				{/* C e T */}
-				{[
-					{d: C_SHAPE, p: cP, fill: 'url(#cGrad)', edge: '#0a2a78', glow: '#2f8cff', o: [300, 560], dir: -1, mask: 'maskC'},
-					{d: T_SHAPE, p: tP, fill: 'url(#tGrad)', edge: '#1c2333', glow: '#6b84b8', o: [760, 560], dir: 1, mask: 'maskT'},
-				].map((l) => {
-					const outline = evolvePath(outlineP, l.d);
-					return (
-						<Layer
-							key={l.d}
-							depth={60}
-							origin={l.o as [number, number]}
-							style={{
-								transform: `perspective(1000px) translateX(${(1 - l.p) * l.dir * 60}px) rotateY(${(1 - l.p) * l.dir * -55}deg) scale(${interpolate(l.p, [0, 1], [0.35, 1])})`,
-								opacity: interpolate(l.p, [0, 0.25], [0, 1], clamp),
-								filter: `blur(${Math.max(0, 1 - l.p) * 14}px)`,
-							}}
-						>
-							<path d={l.d} fill={l.fill} opacity={fillOpacity} stroke={l.edge} strokeWidth={3} strokeLinejoin="round" />
-							<path
-								d={l.d}
-								fill="none"
-								stroke={l.glow}
-								strokeWidth={5}
-								strokeLinejoin="round"
-								strokeDasharray={outline.strokeDasharray}
-								strokeDashoffset={outline.strokeDashoffset}
-								opacity={1 - fillOpacity * 0.9}
-								filter="url(#glow)"
-							/>
-							<Shine x={shineX + (l.dir > 0 ? 80 : 0)} mask={l.mask} />
-						</Layer>
-					);
-				})}
-
-				{/* Trilhas de circuito */}
-				<Layer depth={62} style={{opacity: traceOpacity}}>
-					<g filter="url(#glow)">
-						{TRACES.map((t) => {
-							const ev = evolvePath(traceP, t.d);
-							return (
-								<g key={t.d}>
-									<path
-										d={t.d}
-										fill="none"
-										stroke="#8fd0ff"
-										strokeWidth={4}
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeDasharray={ev.strokeDasharray}
-										strokeDashoffset={ev.strokeDashoffset}
-									/>
-									{t.nodes.map(([x, y]) => (
-										<circle
-											key={`${x}-${y}`}
-											cx={x}
-											cy={y}
-											r={7}
-											fill="#ffffff"
-											stroke="#8fd0ff"
-											strokeWidth={4}
-											opacity={interpolate(traceP, [0.8, 1], [0, 1], clamp)}
-										/>
-									))}
-								</g>
-							);
-						})}
-					</g>
+				{/* C e T formados por trilhas de circuito */}
+				<Layer depth={60}>
+					<CircuitLetter bend={{x: 85, y: 640}} feed={C_FEED} contours={[C_SHAPE]} fill="url(#cGrad)" edge="#0a2a78" start={40} speed={34} outlineFrames={18} />
+					<CircuitLetter bend={{x: 1000, y: 520}} feed={T_FEED} contours={[T_SHAPE]} fill="url(#tGrad)" edge="#1c2333" start={43} speed={34} outlineFrames={18} />
+					<Shine x={shineX} mask="maskC" />
+					<Shine x={shineX + 80} mask="maskT" />
 				</Layer>
 
 				{/* Ondas de choque do clique */}
@@ -489,49 +399,21 @@ const Scene: React.FC = () => {
 					)}
 				</Layer>
 
-				{/* Texto */}
-				<Layer depth={25} html>
-					<div
-						style={{
-							position: 'absolute',
-							left: 0,
-							right: 0,
-							top: (770 / 1024) * SIZE + 10,
-							display: 'flex',
-							justifyContent: 'center',
-						}}
-					>
-						{LETTERS.map((ch, i) => {
-							const a = letter(i);
-							return (
-								<span
-									key={i}
-									style={{
-										display: 'inline-block',
-										fontFamily,
-										fontWeight: 900,
-										fontSize: 118,
-										lineHeight: 1.1,
-										marginRight: i < LETTERS.length - 1 ? tracking : 0,
-										whiteSpace: 'pre',
-										transformOrigin: '50% 100%',
-										transform: `perspective(600px) translateY(${a.y}px) rotateX(${a.rot}deg)`,
-										filter: `blur(${a.blur}px)`,
-										opacity: a.opacity,
-										backgroundImage:
-											i < 4
-												? 'linear-gradient(180deg, #1a55c8, #0a2f86)'
-												: 'linear-gradient(180deg, #454d5f, #252b38)',
-										WebkitBackgroundClip: 'text',
-										backgroundClip: 'text',
-										color: 'transparent',
-									}}
-								>
-									{ch}
-								</span>
-							);
-						})}
-					</div>
+				{/* Texto formado por trilhas que vêm da esquerda e da direita */}
+				<Layer depth={25}>
+					{GLYPHS.letters.map((l) => (
+						<CircuitLetter
+							key={l.index}
+							bend={l.bend}
+							feed={l.feed}
+							contours={l.contours}
+							fill={l.index < 4 ? 'url(#casaGrad)' : 'url(#etecGrad)'}
+							edge={l.index < 4 ? '#0a2f86' : '#252b38'}
+							start={64 + l.order * 3 + random(`t${l.index}`) * 2}
+							speed={50}
+							outlineFrames={12}
+						/>
+					))}
 				</Layer>
 
 				{/* O botão (sempre por cima, é ele que "liga" a casa) */}
