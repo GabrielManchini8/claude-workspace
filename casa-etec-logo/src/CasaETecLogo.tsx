@@ -11,7 +11,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BranchStyle, CircuitLetter} from './CircuitLetter';
+import {CircuitLetter} from './CircuitLetter';
 import GLYPHS from './glyphs.json';
 
 
@@ -43,8 +43,6 @@ const C_SHAPE =
 	'M 165 560 A 140 160 0 0 0 305 720 L 432 720 L 432 630 L 330 630 A 100 82.5 0 0 1 330 465 L 432 465 L 432 400 L 305 400 A 140 160 0 0 0 165 560 Z';
 const T_SHAPE =
 	'M 916 436 L 890 474 L 776 474 L 776 718 L 694 718 L 694 474 L 605 474 L 605 408 L 866 408 Z';
-const CT_BRANCHES: BranchStyle = {count: 6, stem: [16, 30], fork: [16, 34], mode: 'noUp'};
-const TEXT_BRANCHES: BranchStyle = {count: 4, stem: [8, 14], fork: [8, 16], mode: 'vertical'};
 const C_FEED = 'M -300 640 H 85 L 165 560';
 const T_FEED = 'M 1324 520 H 1000 L 916 436';
 
@@ -386,8 +384,8 @@ const Scene: React.FC = () => {
 
 				{/* C e T formados por trilhas de circuito */}
 				<Layer depth={60}>
-					<CircuitLetter branches={CT_BRANCHES} bend={{x: 85, y: 640}} feed={C_FEED} contours={[C_SHAPE]} fill="url(#cGrad)" edge="#0a2a78" start={40} speed={34} outlineFrames={18} />
-					<CircuitLetter branches={CT_BRANCHES} bend={{x: 1000, y: 520}} feed={T_FEED} contours={[T_SHAPE]} fill="url(#tGrad)" edge="#1c2333" start={43} speed={34} outlineFrames={18} />
+					<CircuitLetter bend={{x: 85, y: 640}} feed={C_FEED} contours={[C_SHAPE]} fill="url(#cGrad)" edge="#0a2a78" start={40} speed={34} outlineFrames={18} />
+					<CircuitLetter bend={{x: 1000, y: 520}} feed={T_FEED} contours={[T_SHAPE]} fill="url(#tGrad)" edge="#1c2333" start={43} speed={34} outlineFrames={18} />
 					<Shine x={shineX} mask="maskC" />
 					<Shine x={shineX + 80} mask="maskT" />
 				</Layer>
@@ -407,7 +405,6 @@ const Scene: React.FC = () => {
 						<CircuitLetter
 							key={l.index}
 							bend={l.bend}
-							branches={TEXT_BRANCHES}
 							feed={l.feed}
 							contours={l.contours}
 							fill={l.index < 4 ? 'url(#casaGrad)' : 'url(#etecGrad)'}
