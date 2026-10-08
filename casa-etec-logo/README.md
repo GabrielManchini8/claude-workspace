@@ -11,10 +11,17 @@ Sequência:
 6. "CASA E-TEC" vira para cima letra por letra e o espaçamento se fecha (2,6–3,8 s)
 7. Brilho atravessa a logo, o Wi-Fi pulsa e a câmera flutua em 3D (3,5–5 s)
 
+**Fundo transparente no começo:** até 0,66 s o fundo é transparente: o botão
+sai do meio do seu vídeo, com os rastros de velocidade por cima da cena.
+Quando ele cobre a tela, o fundo branco entra por trás e a logo se monta.
+Para usar num editor, use o arquivo com canal alfa (ProRes 4444 `.mov`, ou WebM).
+
 Durante todo o vídeo: camadas com profundidade (paralaxe), motion blur de câmera,
 bokeh ao fundo, vinheta e granulação de filme.
 
-Prévias renderizadas: `render/casa-etec-logo.mp4` e `render/casa-etec-logo.gif`.
+Prévias renderizadas em `render/`: `casa-etec-logo-alpha.webm` (com transparência) e
+`preview-sobre-video.mp4` (exemplo sobre um fundo qualquer). O `.mov` ProRes fica
+fora do git por ser grande (~180 MB); gere com `npm run render:alpha`.
 
 ## Comandos
 
@@ -25,6 +32,8 @@ npm install
 npm run dev          # Remotion Studio para ajustar
 npm run render       # out/casa-etec-logo.mp4
 npm run render:gif   # out/casa-etec-logo.gif
+npm run render:alpha # out/casa-etec-logo-alpha.mov (ProRes 4444 com transparência)
+npm run render:webm  # out/casa-etec-logo-alpha.webm (VP9 com transparência)
 ```
 
 Fonte: Montserrat Black (SIL Open Font License), incluída em `public/`.

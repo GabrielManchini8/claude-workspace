@@ -77,6 +77,10 @@ const STREAKS = new Array(46).fill(0).map((_, i) => ({
 	width: 1.5 + random(`sw${i}`) * 3,
 }));
 
+// Até aqui o fundo é transparente (o botão sai do meio do seu vídeo).
+// Neste quadro o botão cobre a tela inteira e o fundo branco entra por trás dele.
+const BG_ON_FRAME = 20;
+
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const expoOut = Easing.bezier(0.16, 1, 0.3, 1);
 
@@ -285,6 +289,8 @@ const Scene: React.FC = () => {
 	const camY = noise2D('cy', frame / 50, 2) * 4;
 	const camScale = interpolate(frame, [30, 150], [0.9, 0.95], {...clamp, easing: Easing.out(Easing.quad)});
 
+	const bgOn = frame >= BG_ON_FRAME ? 1 : 0;
+
 	// Fundo: zoom durante a viagem do botão, depois deriva lenta
 	const bgScale = interpolate(frame, [0, 22, 150], [0.55, 1, 1.08], {
 		...clamp,
@@ -294,15 +300,22 @@ const Scene: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				background: 'radial-gradient(circle at 50% 42%, #ffffff 0%, #f1f5fc 55%, #dfe7f5 100%)',
 				perspective: PERSPECTIVE,
 				overflow: 'hidden',
 			}}
 		>
 			<Defs />
 
+			{/* Fundo branco: só aparece depois que o botão cobre a tela */}
+			<AbsoluteFill
+				style={{
+					background: 'radial-gradient(circle at 50% 42%, #ffffff 0%, #f1f5fc 55%, #dfe7f5 100%)',
+					opacity: bgOn,
+				}}
+			/>
+
 			{/* Bokeh distante */}
-			<div style={{position: 'absolute', inset: 0, transform: `scale(${bgScale})`}}>
+			<div style={{position: 'absolute', inset: 0, transform: `scale(${bgScale})`, opacity: bgOn}}>
 				{BOKEH.map((b, i) => (
 					<div
 						key={i}
@@ -337,7 +350,7 @@ const Scene: React.FC = () => {
 							y1={512 + sin * r1}
 							x2={512 + cos * r2}
 							y2={512 + sin * r2}
-							stroke="#3d8fff"
+							stroke="#6cb8ff"
 							strokeWidth={s.width}
 							strokeLinecap="round"
 							opacity={Math.sin(t * Math.PI) * 0.55}
@@ -540,8 +553,16 @@ const Scene: React.FC = () => {
 
 export const CasaETecLogo: React.FC = () => {
 	const frame = useCurrentFrame();
+	const bgOn = frame >= BG_ON_FRAME ? 1 : 0;
 	return (
 		<AbsoluteFill>
+			{/* Base opaca (o motion blur deixa o fundo levemente translúcido) */}
+			<AbsoluteFill
+				style={{
+					background: 'radial-gradient(circle at 50% 42%, #ffffff 0%, #f1f5fc 55%, #dfe7f5 100%)',
+					opacity: bgOn,
+				}}
+			/>
 			<CameraMotionBlur shutterAngle={200} samples={7}>
 				<Scene />
 			</CameraMotionBlur>
@@ -550,13 +571,14 @@ export const CasaETecLogo: React.FC = () => {
 			<AbsoluteFill
 				style={{
 					background: 'radial-gradient(circle at 50% 45%, rgba(0,0,0,0) 55%, rgba(10,30,70,0.16) 100%)',
+					opacity: bgOn,
 					pointerEvents: 'none',
 				}}
 			/>
 			<svg
 				width={SIZE}
 				height={SIZE}
-				style={{position: 'absolute', opacity: 0.07, mixBlendMode: 'multiply', pointerEvents: 'none'}}
+				style={{position: 'absolute', opacity: 0.07 * bgOn, mixBlendMode: 'multiply', pointerEvents: 'none'}}
 			>
 				<filter id={`grain-${frame % 4}`}>
 					<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves={2} seed={frame} stitchTiles="stitch" />

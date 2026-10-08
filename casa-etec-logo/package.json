@@ -2,12 +2,14 @@
   "name": "casa-etec-logo",
   "version": "1.0.0",
   "private": true,
-  "description": "Animação de 5s da logo Casa E-TEC feita com Remotion",
+  "description": "Anima\u00e7\u00e3o de 5s da logo Casa E-TEC feita com Remotion",
   "scripts": {
     "dev": "remotion studio",
     "render": "remotion render CasaETecLogo out/casa-etec-logo.mp4",
     "render:gif": "remotion render CasaETecLogo out/casa-etec-logo.gif --codec=gif --every-nth-frame=2",
-    "still": "remotion still CasaETecLogo out/frame-final.png --frame=149"
+    "still": "remotion still CasaETecLogo out/frame-final.png --frame=149",
+    "render:alpha": "remotion render CasaETecLogo out/casa-etec-logo-alpha.mov --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le --image-format=png",
+    "render:webm": "remotion render CasaETecLogo out/casa-etec-logo-alpha.webm --codec=vp9 --pixel-format=yuva420p --image-format=png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
