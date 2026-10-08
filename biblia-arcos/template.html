@@ -1,0 +1,302 @@
+<title>Bíblia Católica em Arcos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna; o gráfico de arcos ocupa a largura toda, texto em medida de leitura abaixo */
+:root {
+  --bg: #f6f6f3;
+  --surface: #fcfcfb;
+  --ink: #17181c;
+  --ink-2: #4e5058;
+  --ink-3: #7c7f88;
+  --rule: #dcdcd6;
+  --bar: #9a9ca3;
+  --s1: #2a78d6;          /* referências OpenBible */
+  --s2: #eb6834;          /* ligações deuterocanônicas */
+  --hl: #17181c;          /* destaque ao passar o mouse */
+  --f-display: "EB Garamond", "Iowan Old Style", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111215; --surface: #1a1a19; --ink: #f2f2ef; --ink-2: #c3c2b7; --ink-3: #8d8c84;
+    --rule: #2e2f33; --bar: #6d6f76; --s1: #3987e5; --s2: #d95926; --hl: #ffffff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111215; --surface: #1a1a19; --ink: #f2f2ef; --ink-2: #c3c2b7; --ink-3: #8d8c84;
+  --rule: #2e2f33; --bar: #6d6f76; --s1: #3987e5; --s2: #d95926; --hl: #ffffff; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 28px; }
+header { display: grid; gap: 10px; max-width: 70ch; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: 27px; line-height: 1.15; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.lede { color: var(--ink-2); font-size: 16px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; color: var(--ink-2); }
+.facts b { font-family: var(--f-mono); font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+.figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; font-size: 13px; color: var(--ink-2); }
+.controls label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.controls input[type=range] { width: 160px; accent-color: var(--s1); }
+.controls input[type=checkbox] { accent-color: var(--s2); width: 16px; height: 16px; }
+.controls output { font-family: var(--f-mono); color: var(--ink); min-width: 2.5ch; display: inline-block; font-variant-numeric: tabular-nums; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13px; color: var(--ink-2); margin-left: auto; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.sw { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+.sw.s1 { background: var(--s1); } .sw.s2 { background: var(--s2); } .sw.bar { background: var(--bar); height: 9px; width: 4px; }
+.sw.dbar { background: var(--s2); height: 9px; width: 4px; }
+
+.chart { position: relative; width: 100%; touch-action: pan-y; }
+.chart canvas { position: absolute; left: 0; top: 0; display: block; }
+.tip { position: absolute; pointer-events: none; z-index: 2; background: var(--surface); color: var(--ink); border: 1px solid var(--rule);
+  border-radius: 6px; padding: 10px 12px; font-size: 12.5px; line-height: 1.45; width: max-content; max-width: 300px;
+  box-shadow: 0 6px 24px rgb(0 0 0 / .14); }
+.tip .t { font-family: var(--f-display); font-size: 17px; font-weight: 600; }
+.tip .m { color: var(--ink-3); font-family: var(--f-mono); font-size: 11.5px; }
+.tip ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.tip li { display: flex; gap: 8px; justify-content: space-between; }
+.tip li .n { font-family: var(--f-mono); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.tip .d { color: var(--ink); border-left: 2px solid var(--s2); padding-left: 7px; margin-top: 6px; }
+.hint { font-size: 12.5px; color: var(--ink-3); }
+
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 28px 48px; }
+.prose { display: grid; gap: 12px; max-width: 68ch; min-width: 0; }
+.prose p, .prose li { color: var(--ink-2); }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.ref { font-family: var(--f-mono); font-size: 13px; color: var(--ink); white-space: nowrap; }
+
+.tablebox { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); max-height: 520px; overflow-y: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { position: sticky; top: 0; background: var(--surface); font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); }
+td.r { font-family: var(--f-mono); font-size: 12.5px; white-space: nowrap; }
+.pill { font-size: 11px; padding: 1px 7px; border-radius: 99px; border: 1px solid var(--rule); color: var(--ink-2); white-space: nowrap; }
+.pill.doc { border-color: var(--s2); color: var(--ink); }
+.foot { font-size: 12.5px; color: var(--ink-3); display: grid; gap: 6px; max-width: 90ch; }
+.foot a, .prose a { color: var(--s1); }
+a:focus-visible, input:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Referências cruzadas · cânon católico de 73 livros</div>
+    <h1>Bíblia Católica em Arcos</h1>
+    <p class="lede">Cada arco liga dois capítulos que se citam ou se ecoam, no estilo do gráfico de Chris Harrison e Christoph Römhild. Os livros seguem a ordem do Catecismo (CIC 120). As barras abaixo da linha mostram quantos versículos tem cada capítulo; em laranja, os capítulos deuterocanônicos.</p>
+    <div class="facts" id="facts"></div>
+  </header>
+
+  <section class="figure" aria-label="Gráfico de arcos">
+    <div class="controls">
+      <label for="votes">Votos mínimos <input id="votes" type="range" min="0" max="60" step="1" value="10"> <output id="votesOut">10</output></label>
+      <label for="showDeut"><input id="showDeut" type="checkbox" checked> Ligações deuterocanônicas</label>
+      <span id="shown" class="hint"></span>
+      <div class="legend">
+        <span><i class="sw s1"></i>OpenBible (66 livros)</span>
+        <span><i class="sw s2"></i>Deuterocanônicos (curadoria)</span>
+        <span><i class="sw bar"></i><i class="sw dbar"></i>Versículos por capítulo</span>
+      </div>
+    </div>
+    <div class="chart" id="chart" role="img" aria-label="Arcos ligando capítulos da Bíblia de Gênesis a Apocalipse">
+      <canvas id="base"></canvas><canvas id="over"></canvas>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <p class="hint">Passe o mouse (ou toque) sobre o gráfico para ver as ligações de um capítulo. O controle de votos filtra pelo voto mais alto entre os versículos de cada par de capítulos.</p>
+  </section>
+
+  <div class="cols">
+    <section class="prose">
+      <h2>Os livros católicos entram, as conexões não</h2>
+      <p>O conjunto do OpenBible vem do <em>Treasury of Scripture Knowledge</em>, obra protestante do século XIX baseada na King James. Ele tem <strong>zero</strong> referências para Tobias, Judite, 1 e 2 Macabeus, Sabedoria, Eclesiástico, Baruc e para Daniel 13–14. Por isso esses capítulos ficam na linha do tempo, mas sem nenhum arco azul.</p>
+      <p>Para não deixá-los mudos, os arcos laranja são <strong>66 ligações escolhidas à mão</strong>: paralelos conhecidos entre os deuterocanônicos e o resto da Bíblia, como Sabedoria 2 e a zombaria na cruz (Mt 27,43), 2 Macabeus 7 e Hebreus 11,35, e 1 Macabeus 4 e a festa da Dedicação em João 10,22. É uma amostra, não uma lista oficial nem completa.</p>
+      <p>Algumas lacunas aparecem nos próprios dados. Hebreus 11,35 aponta para Eliseu e Elias, mas não para os mártires de 2 Macabeus 7, que o texto descreve com mais precisão. João 10,22 não tem nenhuma referência, porque a festa da Dedicação só é narrada em 1 Macabeus.</p>
+    </section>
+    <section class="prose">
+      <h2>Está de acordo com a Igreja?</h2>
+      <p>A Igreja não publica uma lista oficial de referências cruzadas. Elas são uma ferramenta editorial, como as notas de rodapé de uma Bíblia de estudo, e não fazem parte da doutrina. O critério católico está no Catecismo: ler cada texto <strong>dentro da unidade de toda a Escritura</strong>, na Tradição viva da Igreja e segundo a analogia da fé (CIC 112–114; Dei Verbum 12), e ler o Antigo Testamento à luz do Novo (CIC 128–130).</p>
+      <p>Por esse critério, a maior parte das ligações do OpenBible é compatível com a leitura católica, porque são paralelos de palavras e temas. Conferi algumas passagens sensíveis:</p>
+      <ul>
+        <li><span class="ref">Mt 16,19</span> liga às chaves de <span class="ref">Is 22,22</span>, e <span class="ref">Jo 20,23</span> a <span class="ref">Mt 16,19</span> e <span class="ref">18,18</span>, as mesmas ligações que o Catecismo usa para o sacramento da Reconciliação (CIC 553, 1444).</li>
+        <li><span class="ref">Jo 6,53</span> liga à Última Ceia (<span class="ref">Mt 26,26-28</span>), e <span class="ref">Tg 5,14</span> a <span class="ref">Mc 6,13</span>, como no CIC 1511 sobre a Unção dos Enfermos.</li>
+        <li><span class="ref">Gn 3,15</span> liga a <span class="ref">Ap 12,17</span>, a leitura mariana tradicional da mulher e sua descendência.</li>
+        <li>Em <span class="ref">Mt 16,18</span>, as ligações mais votadas destacam Cristo como pedra fundamental (Ef 2,20; 1Cor 3,11); <span class="ref">Jo 1,42</span> (Cefas, Pedro) aparece, mas com menos votos. Uma Bíblia católica daria mais peso a Pedro aqui.</li>
+      </ul>
+      <p>O problema real é a <strong>omissão dos sete livros</strong> do cânon definido em Trento e listado no CIC 120. Os votos vêm da comunidade do site, sem nenhuma revisão eclesial.</p>
+    </section>
+  </div>
+
+  <section class="prose" style="max-width:none">
+    <h2>As 66 ligações deuterocanônicas</h2>
+    <p>Numeração dos versículos como na Bíblia de Jerusalém. Os arcos usam o capítulo de início de cada passagem.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Deuterocanônico</th><th>Liga a</th><th>Tema</th><th>Tipo</th></tr></thead>
+        <tbody id="dtable"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p><strong>Fontes.</strong> Referências cruzadas: OpenBible.info, CC BY (versão de 04/11/2024, 344.799 referências versículo a versículo), obtidas pelo espelho <a href="https://github.com/scrollmapper/bible_databases" target="_blank" rel="noopener">scrollmapper/bible_databases</a>. Contagem de versículos: King James para os 66 livros e Catholic Public Domain Version para os deuterocanônicos. Ligações deuterocanônicas: curadoria própria a partir de paralelos amplamente citados, a conferir numa Bíblia de estudo católica.</p>
+    <p><strong>Limites.</strong> Os Salmos seguem a numeração hebraica, como nos dados de origem; Bíblias que usam a numeração grega (como a Ave-Maria) deslocam a maioria dos salmos em um número. Os acréscimos gregos de Ester não aparecem como capítulos separados. O gráfico original de Harrison tinha 63.779 ligações entre capítulos de outra fonte, que nunca foi publicada.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = __DATA__;
+const DEUT = __DEUT__;
+(function () {
+  const books = DATA.books, ch = DATA.chapters, P = DATA.pairs;
+  const N = ch.length, NP = P.length / 4;
+  const codeIdx = {}; books.forEach((b, i) => codeIdx[b.code] = i);
+  const chIndex = (code, c) => books[codeIdx[code]].start + c - 1;
+  const chName = i => books[ch[i][0]].pt + " " + ch[i][1];
+  const fmt = n => n.toLocaleString("pt-BR");
+
+  // ligações deuterocanônicas -> índices de capítulo
+  const D = DEUT.map(d => ({ a: chIndex(d[0], d[1]), b: chIndex(d[3], d[4]),
+    from: books[codeIdx[d[0]]].ab + " " + d[2], to: d[5], note: d[6], kind: d[7] }));
+
+  const deutCh = ch.filter(c => c[3]).length;
+  document.getElementById("facts").innerHTML =
+    `<span><b>73</b> livros</span><span><b>${fmt(N)}</b> capítulos (${deutCh} deuterocanônicos)</span>` +
+    `<span><b>${fmt(DATA.stats.verseRefs)}</b> referências do OpenBible</span>` +
+    `<span><b>${fmt(DATA.stats.chapterPairs)}</b> pares de capítulos</span><span><b>${D.length}</b> ligações curadas</span>`;
+
+  // tabela
+  const tb = document.getElementById("dtable");
+  const kindLabel = { NT: "Novo Testamento", AT: "Antigo Testamento", Doutrina: "Doutrina (Catecismo)" };
+  tb.innerHTML = D.map(d => `<tr><td class="r">${d.from}</td><td class="r">${d.to}</td><td>${d.note}</td>` +
+    `<td><span class="pill${d.kind === "Doutrina" ? " doc" : ""}">${kindLabel[d.kind]}</span></td></tr>`).join("");
+
+  // adjacência por capítulo
+  const adj = Array.from({ length: N }, () => []);
+  for (let k = 0; k < NP; k++) { adj[P[4 * k]].push(k); adj[P[4 * k + 1]].push(k); }
+  const dAdj = Array.from({ length: N }, () => []);
+  D.forEach((d, k) => { dAdj[d.a].push(k); dAdj[d.b].push(k); });
+
+  const el = document.getElementById("chart"), base = document.getElementById("base"), over = document.getElementById("over"), tip = document.getElementById("tip");
+  const votes = document.getElementById("votes"), votesOut = document.getElementById("votesOut"), showDeut = document.getElementById("showDeut"), shown = document.getElementById("shown");
+  let W = 0, H = 0, baseY = 0, barH = 0, labelH = 0, dpr = 1, x0 = 0, x1 = 0, hover = -1;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const X = i => x0 + (i + 0.5) * (x1 - x0) / N;
+
+  function layout() {
+    W = el.clientWidth; dpr = Math.min(window.devicePixelRatio || 1, 2);
+    x0 = 4; x1 = W - 4;
+    labelH = W >= 700 ? 44 : 22; barH = W >= 700 ? 46 : 30;
+    baseY = Math.round((x1 - x0) / 2) + 6;
+    H = baseY + barH + labelH;
+    el.style.height = H + "px";
+    for (const c of [base, over]) { c.width = W * dpr; c.height = H * dpr; c.style.width = W + "px"; c.style.height = H + "px"; }
+  }
+
+  function arcs(ctx, list, get) {
+    ctx.beginPath();
+    for (const k of list) {
+      const [a, b] = get(k); const xa = X(a), xb = X(b);
+      const cx = (xa + xb) / 2, r = Math.abs(xb - xa) / 2;
+      ctx.moveTo(cx + r, baseY); ctx.arc(cx, baseY, r, 0, Math.PI, true);
+    }
+    ctx.stroke();
+  }
+
+  function drawBase() {
+    const ctx = base.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    const minV = +votes.value;
+    const list = []; for (let k = 0; k < NP; k++) if (P[4 * k + 3] >= minV) list.push(k);
+    shown.textContent = fmt(list.length) + " pares de capítulos visíveis";
+    const s1 = css("--s1"), s2 = css("--s2"), bar = css("--bar"), ink3 = css("--ink-3"), rule = css("--rule");
+    // OpenBible: transparência proporcional à densidade
+    ctx.strokeStyle = s1; ctx.lineWidth = 0.6;
+    ctx.globalAlpha = Math.max(0.06, Math.min(0.6, 2200 / Math.max(list.length, 1)));
+    arcs(ctx, list, k => [P[4 * k], P[4 * k + 1]]);
+    ctx.globalAlpha = 1;
+    if (showDeut.checked) {
+      ctx.strokeStyle = s2; ctx.lineWidth = 1.1; ctx.globalAlpha = 0.8;
+      arcs(ctx, D.map((_, k) => k), k => [D[k].a, D[k].b]); ctx.globalAlpha = 1;
+    }
+    // linha de base + barras de versículos
+    ctx.fillStyle = rule; ctx.fillRect(x0, baseY, x1 - x0, 1);
+    const maxV = 176, bw = Math.max(0.6, (x1 - x0) / N - 0.3);
+    for (let i = 0; i < N; i++) {
+      const h = Math.max(1, ch[i][2] / maxV * (barH - 6));
+      ctx.fillStyle = ch[i][3] ? s2 : bar; ctx.fillRect(X(i) - bw / 2, baseY + 3, bw, h);
+    }
+    // separadores de livro e rótulos
+    ctx.fillStyle = ink3; ctx.font = `${W >= 700 ? 10 : 9}px "IBM Plex Mono", ui-monospace, monospace`;
+    const ntStart = books[codeIdx["Matt"]].start;
+    books.forEach(b => {
+      const xs = x0 + b.start * (x1 - x0) / N;
+      ctx.globalAlpha = 0.35; ctx.fillRect(xs, baseY + 2, 0.75, barH - 2); ctx.globalAlpha = 1;
+      if (W >= 700) {
+        ctx.save(); ctx.translate(x0 + (b.start + b.n / 2) * (x1 - x0) / N + 3, baseY + barH + 4); ctx.rotate(Math.PI / 2);
+        ctx.fillStyle = b.deut ? s2 : ink3; ctx.fillText(b.ab, 0, 0); ctx.restore();
+      }
+    });
+    if (W < 700) {
+      ctx.fillStyle = ink3; ctx.textBaseline = "top";
+      ctx.fillText("Antigo Testamento", x0, baseY + barH + 4);
+      ctx.textAlign = "right"; ctx.fillText("Novo Testamento", x1, baseY + barH + 4); ctx.textAlign = "left";
+    }
+    ctx.fillStyle = css("--ink-2"); ctx.globalAlpha = 0.6; ctx.fillRect(X(ntStart) - 0.5 * (x1 - x0) / N, baseY - 10, 1, 10); ctx.globalAlpha = 1;
+  }
+
+  function drawOver() {
+    const ctx = over.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    if (hover < 0) return;
+    const minV = +votes.value;
+    const list = adj[hover].filter(k => P[4 * k + 3] >= minV);
+    ctx.strokeStyle = css("--hl"); ctx.lineWidth = 1; ctx.globalAlpha = Math.max(0.25, Math.min(0.9, 60 / Math.max(list.length, 1)));
+    arcs(ctx, list, k => [P[4 * k], P[4 * k + 1]]);
+    if (showDeut.checked && dAdj[hover].length) {
+      ctx.strokeStyle = css("--s2"); ctx.lineWidth = 2.4; ctx.globalAlpha = 1;
+      arcs(ctx, dAdj[hover], k => [D[k].a, D[k].b]);
+    }
+    ctx.globalAlpha = 1; ctx.fillStyle = css("--hl"); ctx.fillRect(X(hover) - 1, baseY - 6, 2, barH + 6);
+    return list;
+  }
+
+  function showTip(i, px, py) {
+    const minV = +votes.value;
+    const list = adj[i].filter(k => P[4 * k + 3] >= minV)
+      .sort((a, b) => P[4 * b + 2] - P[4 * a + 2]).slice(0, 5);
+    let html = `<div class="t">${chName(i)}</div><div class="m">${ch[i][2]} versículos · ${fmt(adj[i].filter(k => P[4 * k + 3] >= minV).length)} capítulos ligados${ch[i][3] ? " · deuterocanônico" : ""}</div>`;
+    if (list.length) html += "<ul>" + list.map(k => { const o = P[4 * k] === i ? P[4 * k + 1] : P[4 * k]; return `<li><span>${chName(o)}</span><span class="n">${P[4 * k + 2]} ref.</span></li>`; }).join("") + "</ul>";
+    else if (ch[i][3]) html += `<div class="m" style="margin-top:6px">Nenhuma referência no OpenBible.</div>`;
+    if (showDeut.checked) dAdj[i].slice(0, 4).forEach(k => { const d = D[k]; html += `<div class="d">${d.from} ↔ ${d.to}<br><span class="m">${d.note}</span></div>`; });
+    tip.innerHTML = html; tip.hidden = false;
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = px + 14; if (left + tw > W) left = px - tw - 14; if (left < 0) left = 0;
+    let top = Math.min(py - th / 2, H - th); if (top < 0) top = 0;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+
+  function onMove(e) {
+    const r = el.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top;
+    const i = Math.max(0, Math.min(N - 1, Math.floor((px - x0) / (x1 - x0) * N)));
+    if (i !== hover) { hover = i; drawOver(); }
+    showTip(i, px, py);
+  }
+  el.addEventListener("pointermove", onMove);
+  el.addEventListener("pointerdown", onMove);
+  el.addEventListener("pointerleave", () => { hover = -1; drawOver(); tip.hidden = true; });
+
+  let raf = 0;
+  const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { drawBase(); drawOver(); }); };
+  votes.addEventListener("input", () => { votesOut.textContent = votes.value; redraw(); });
+  showDeut.addEventListener("change", redraw);
+  let lastW = 0;
+  new ResizeObserver(() => { if (el.clientWidth !== lastW) { lastW = el.clientWidth; layout(); redraw(); } }).observe(el);
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  if (document.fonts) document.fonts.ready.then(redraw);
+  layout(); drawBase();
+})();
+</script>
