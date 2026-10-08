@@ -8,3 +8,7 @@ Base para projetos no Claude Code. Abra uma sessão com este repositório e os p
 - Remotion (`/remotion-create` e outras): vídeos com React
 
 Cada projeto novo pode ficar numa pasta própria aqui dentro.
+
+## Projetos
+
+- [Apologética Católica: Onde Está na Bíblia?](apologetica/onde-esta-na-biblia.md) — 57 objeções protestantes e ateias respondidas com versículos.
