@@ -197,18 +197,83 @@ def liga_objecoes(h):
                   lambda m: m.group(1) + re.sub(r"\b(\d{1,3})\b", r'<a href="#n\1">\1</a>', m.group(2)), h)
 
 
-heresias, grupo = [], None
-intro = md_html(HMD.split("\n## Heresias antigas")[0].split("\n", 1)[1])
-for b in re.split(r"^(?=## |### )", HMD, flags=re.M):
-    if b.startswith("## ") and not b.startswith("## O que"):
-        grupo = b.split("\n", 1)[0][3:].strip()
-    elif b.startswith("### "):
-        nome, corpo = b.split("\n", 1)
-        campos = re.findall(r"^- \*\*(.+?):\*\* (.+)$", corpo, re.M)
-        heresias.append({"nome": nome[4:].strip(), "grupo": grupo,
-                         "campos": [{"rot": r, "html": liga_objecoes(inline(t)), "txt": plano(t)} for r, t in campos]})
+def fichas(texto, intro_ate):
+    """Lê fichas '### Nome' com campos '- **Rótulo:** texto' (e subitens '  - …'), agrupadas por '## Grupo'."""
+    lista, grupo = [], None
+    intro = md_html(texto.split("\n" + intro_ate)[0].split("\n", 1)[1])
+    for b in re.split(r"^(?=## |### )", texto, flags=re.M):
+        if b.startswith("## ") and not b.startswith("## O que"):
+            grupo = b.split("\n", 1)[0][3:].strip()
+        elif b.startswith("### "):
+            nome, corpo = b.split("\n", 1)
+            campos = []
+            for m in re.finditer(r"^- \*\*(.+?):\*\* ?(.*)((?:\n  +- .+)*)", corpo, re.M):
+                rot, t, subs = m.group(1), m.group(2), m.group(3)
+                h = inline(t) + (md_html(re.sub(r"^  ", "", subs.strip("\n"), flags=re.M)) if subs else "")
+                campos.append({"rot": rot, "html": liga_objecoes(h), "txt": plano(t + subs)})
+            lista.append({"nome": plano(nome[4:]), "grupo": grupo, "campos": campos})
+    return lista, intro
+
+
+heresias, intro = fichas(HMD, "## Heresias antigas")
 dados["heresias"] = heresias
 dados["heresias_intro"] = intro
+
+# Outras religiões
+religioes, rel_intro = fichas((DIR / "religioes.md").read_text(encoding="utf-8"), "## Religiões abraâmicas")
+dados["religioes"], dados["religioes_intro"] = religioes, rel_intro
+
+# Na Missa: seções com itens ✓ / ✗ / ≈ e subitens "Fonte:" / "Bíblia:"
+MMD = (DIR / "missa.md").read_text(encoding="utf-8")
+missa = []
+for b in re.split(r"^(?=## )", MMD, flags=re.M)[1:]:
+    titulo, corpo = b.split("\n", 1)
+    itens_m = []
+    for m in re.finditer(r"^- (?:([✓✗≈]) )?(.+)((?:\n  +- .+)*)", corpo, re.M):
+        subs = dict(re.findall(r"^\s+- (Fonte|Bíblia): (.+)$", m.group(3), re.M))
+        itens_m.append({"tipo": m.group(1) or "", "html": inline(m.group(2)), "txt": plano(m.group(2)),
+                        "fonte": inline(subs.get("Fonte", "")), "biblia": inline(subs.get("Bíblia", ""))})
+    missa.append({"titulo": titulo[3:].strip(), "itens": itens_m})
+dados["missa"] = missa
+dados["missa_intro"] = md_html(MMD.split("\n## ")[0].split("\n", 1)[1])
+
+# Terço
+TMD = (DIR / "terco.md").read_text(encoding="utf-8")
+secao = lambda nome, txt: re.search(r"^## " + nome + r"\n(.*?)(?=^## |\Z)", txt, re.S | re.M).group(1).strip()
+passos = []
+for m in re.finditer(r"^\d+\. (.+)((?:\n {3,}- .+)*)", secao("Como rezar, passo a passo", TMD), re.M):
+    passos.append({"html": inline(m.group(1)), "sub": [inline(s) for s in re.findall(r"^\s+- (.+)$", m.group(2), re.M)]})
+misterios = []
+for b in re.split(r"^(?=### )", secao("Os mistérios", TMD), flags=re.M)[1:]:
+    cab, corpo = b.split("\n", 1)
+    nome, dias = re.match(r"### (.+?) \((.+)\)", cab).groups()
+    misterios.append({"nome": nome, "dias": dias, "lista": [
+        {"titulo": t, "ref": r} for t, r in re.findall(r"^\d+\. \*\*(.+?)\*\* — (.+)$", corpo, re.M)]})
+oracoes = [{"nome": n, "texto": t.strip()} for n, t in re.findall(r"^### ([^\n]+)\n(.+?)(?=\n### |\Z)", secao("Orações", TMD), re.S | re.M)]
+dados["terco"] = {"intro": md_html(TMD.split("\n## ")[0].split("\n", 1)[1]),
+                  "porque": md_html(secao("Por que rezar o terço", TMD)),
+                  "historia": md_html(secao("Um pouco de história", TMD)),
+                  "passos": passos, "misterios": misterios, "oracoes": oracoes}
+
+# Ano litúrgico
+LMD = (DIR / "liturgia.md").read_text(encoding="utf-8")
+
+
+def lit_fichas(nome):
+    out = []
+    for b in re.split(r"^(?=### )", secao(nome, LMD), flags=re.M)[1:]:
+        cab, corpo = b.split("\n", 1)
+        campos = {r: t for r, t in re.findall(r"^- \*\*(.+?):\*\* (.+)$", corpo, re.M)}
+        out.append({"nome": cab[4:].strip(), **{k: inline(v) for k, v in campos.items()},
+                    **{k + "_txt": plano(v) for k, v in campos.items() if k in ("Regra", "Ícone", "Cor")}})
+    return out
+
+
+dados["liturgia"] = {"intro": md_html(LMD.split("\n## ")[0].split("\n", 1)[1]),
+                     "cores": lit_fichas("Cores litúrgicas"), "tempos": lit_fichas("Tempos litúrgicos"),
+                     "festas": lit_fichas("Festas e datas importantes"),
+                     "meses": md_html(secao("Meses dedicados", LMD))}
+dados["video"] = (DIR / "terco.mp4").exists()
 (DIR / "heresias.json").write_text(json.dumps(
     [{"nome": h["nome"], "grupo": h["grupo"], **{c["rot"]: c["txt"] for c in h["campos"]}} for h in heresias],
     ensure_ascii=False, indent=1), encoding="utf-8")
