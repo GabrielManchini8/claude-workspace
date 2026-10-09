@@ -3,137 +3,200 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: uma coluna; o gráfico de arcos ocupa a largura toda, texto em medida de leitura abaixo */
+/* Layout: página clara/escura segue o tema; o gráfico vive num painel "céu noturno" fixo, com brilho aditivo; abaixo, painel de estudo + mapa de livros */
 :root {
-  --bg: #f6f6f3;
-  --surface: #fcfcfb;
-  --ink: #17181c;
-  --ink-2: #4e5058;
-  --ink-3: #7c7f88;
-  --rule: #dcdcd6;
-  --bar: #9a9ca3;
-  --s1: #2a78d6;          /* referências OpenBible */
-  --s2: #eb6834;          /* ligações deuterocanônicas */
-  --hl: #17181c;          /* destaque ao passar o mouse */
+  --bg: #f4f4f1; --surface: #fcfcfb; --ink: #17181c; --ink-2: #4e5058; --ink-3: #7c7f88; --rule: #dcdcd6;
+  --link: #2a78d6;
+  /* painel noturno: o mesmo nos dois temas, por escolha */
+  --night: #0d0f14; --night-2: #151821; --night-ink: #eceae3; --night-ink-2: #a9a8a0; --night-ink-3: #6f7079; --night-rule: #262a35;
+  --same: #3987e5;   /* ligação dentro do mesmo Testamento */
+  --bridge: #199e70; /* ponte AT ↔ NT */
+  --deut: #d95926;   /* deuterocanônicos (curadoria) */
+  --gold: #d9b45a;   /* seleção */
   --f-display: "EB Garamond", "Iowan Old Style", Georgia, serif;
   --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #111215; --surface: #1a1a19; --ink: #f2f2ef; --ink-2: #c3c2b7; --ink-3: #8d8c84;
-    --rule: #2e2f33; --bar: #6d6f76; --s1: #3987e5; --s2: #d95926; --hl: #ffffff; color-scheme: dark;
-  }
+  :root:not([data-theme="light"]) { --bg: #0a0b0e; --surface: #14161b; --ink: #f2f2ef; --ink-2: #c3c2b7; --ink-3: #8d8c84; --rule: #2a2d35; --link: #6aa7f0; color-scheme: dark; }
 }
-:root[data-theme="dark"] {
-  --bg: #111215; --surface: #1a1a19; --ink: #f2f2ef; --ink-2: #c3c2b7; --ink-3: #8d8c84;
-  --rule: #2e2f33; --bar: #6d6f76; --s1: #3987e5; --s2: #d95926; --hl: #ffffff; color-scheme: dark;
-}
+:root[data-theme="dark"] { --bg: #0a0b0e; --surface: #14161b; --ink: #f2f2ef; --ink-2: #c3c2b7; --ink-3: #8d8c84; --rule: #2a2d35; --link: #6aa7f0; color-scheme: dark; }
+
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
-.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 28px; }
-header { display: grid; gap: 10px; max-width: 70ch; }
-.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
-h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; margin: 0; text-wrap: balance; }
-h2 { font-family: var(--f-display); font-weight: 600; font-size: 27px; line-height: 1.15; margin: 0; text-wrap: balance; }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 72px; display: grid; gap: 36px; }
+header { display: grid; gap: 12px; max-width: 74ch; }
+.eyebrow { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(34px, 6vw, 60px); line-height: 1; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+h1 i { font-weight: 500; color: var(--ink-2); }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: 28px; line-height: 1.15; margin: 0; text-wrap: balance; }
+h3 { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin: 0; font-weight: 600; }
 p { margin: 0; }
-.lede { color: var(--ink-2); font-size: 16px; }
-.facts { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; color: var(--ink-2); }
+.lede { color: var(--ink-2); font-size: 16.5px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 26px; font-size: 13px; color: var(--ink-2); }
 .facts b { font-family: var(--f-mono); font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+a { color: var(--link); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-.figure { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
-.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; font-size: 13px; color: var(--ink-2); }
-.controls label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
-.controls input[type=range] { width: 160px; accent-color: var(--s1); }
-.controls input[type=checkbox] { accent-color: var(--s2); width: 16px; height: 16px; }
-.controls output { font-family: var(--f-mono); color: var(--ink); min-width: 2.5ch; display: inline-block; font-variant-numeric: tabular-nums; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13px; color: var(--ink-2); margin-left: auto; }
-.legend span { display: inline-flex; align-items: center; gap: 7px; }
-.sw { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
-.sw.s1 { background: var(--s1); } .sw.s2 { background: var(--s2); } .sw.bar { background: var(--bar); height: 9px; width: 4px; }
-.sw.dbar { background: var(--s2); height: 9px; width: 4px; }
+/* ---------- painel noturno ---------- */
+.night { background: var(--night); color: var(--night-ink); border-radius: 10px; padding: 18px 18px 14px; display: grid; gap: 14px; min-width: 0;
+  box-shadow: 0 1px 0 rgb(255 255 255 / .04) inset, 0 20px 60px -30px rgb(0 0 0 / .6); color-scheme: dark; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; font-size: 13px; color: var(--night-ink-2); }
+.seg { display: inline-flex; border: 1px solid var(--night-rule); border-radius: 99px; padding: 2px; gap: 2px; flex-wrap: wrap; }
+.seg button { background: none; border: 0; padding: 5px 12px; border-radius: 99px; cursor: pointer; color: var(--night-ink-2); display: inline-flex; align-items: center; gap: 7px; }
+.seg button[aria-pressed="true"] { background: var(--night-2); color: var(--night-ink); box-shadow: 0 0 0 1px var(--night-rule) inset; }
+.seg button:hover { color: var(--night-ink); }
+.k { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.k.same { background: var(--same); } .k.bridge { background: var(--bridge); } .k.deut { background: var(--deut); }
+.search { display: inline-flex; align-items: center; gap: 8px; background: var(--night-2); border: 1px solid var(--night-rule); border-radius: 99px; padding: 4px 6px 4px 12px; }
+.search input { background: none; border: 0; color: var(--night-ink); font: inherit; width: 170px; outline: none; }
+.search input::placeholder { color: var(--night-ink-3); }
+.search button { background: var(--night); border: 1px solid var(--night-rule); border-radius: 99px; padding: 3px 10px; cursor: pointer; color: var(--night-ink-2); }
+.range { display: inline-flex; align-items: center; gap: 8px; }
+.range input { width: 130px; accent-color: var(--gold); }
+.range output { font-family: var(--f-mono); color: var(--night-ink); min-width: 2.5ch; font-variant-numeric: tabular-nums; }
+.count { font-family: var(--f-mono); font-size: 12px; color: var(--night-ink-3); margin-left: auto; font-variant-numeric: tabular-nums; }
 
-.chart { position: relative; width: 100%; touch-action: pan-y; }
+.chart { position: relative; width: 100%; touch-action: pan-y; cursor: crosshair; }
 .chart canvas { position: absolute; left: 0; top: 0; display: block; }
-.tip { position: absolute; pointer-events: none; z-index: 2; background: var(--surface); color: var(--ink); border: 1px solid var(--rule);
-  border-radius: 6px; padding: 10px 12px; font-size: 12.5px; line-height: 1.45; width: max-content; max-width: 300px;
-  box-shadow: 0 6px 24px rgb(0 0 0 / .14); }
-.tip .t { font-family: var(--f-display); font-size: 17px; font-weight: 600; }
-.tip .m { color: var(--ink-3); font-family: var(--f-mono); font-size: 11.5px; }
-.tip ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 2px; }
-.tip li { display: flex; gap: 8px; justify-content: space-between; }
-.tip li .n { font-family: var(--f-mono); color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.tip .d { color: var(--ink); border-left: 2px solid var(--s2); padding-left: 7px; margin-top: 6px; }
-.hint { font-size: 12.5px; color: var(--ink-3); }
+.tip { position: absolute; pointer-events: none; z-index: 3; background: rgb(21 24 33 / .96); color: var(--night-ink); border: 1px solid var(--night-rule);
+  border-radius: 8px; padding: 9px 12px; font-size: 12.5px; line-height: 1.45; width: max-content; max-width: 280px; backdrop-filter: blur(4px); }
+.tip .t { font-family: var(--f-display); font-size: 18px; font-weight: 600; }
+.tip .m { color: var(--night-ink-2); font-family: var(--f-mono); font-size: 11.5px; }
+.tip .h { color: var(--night-ink-3); font-size: 11.5px; margin-top: 4px; }
+.caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; font-size: 12px; color: var(--night-ink-3); }
 
-.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 28px 48px; }
+/* ---------- painel de estudo ---------- */
+.study { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 860px) { .study { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.card h3 { color: var(--ink-3); }
+.sel-title { font-family: var(--f-display); font-size: 34px; font-weight: 600; line-height: 1.05; }
+.sel-meta { font-family: var(--f-mono); font-size: 12px; color: var(--ink-3); }
+.empty { color: var(--ink-2); display: grid; gap: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--rule); background: var(--bg); border-radius: 99px; padding: 4px 11px; font-size: 13px; cursor: pointer; }
+.chip:hover { border-color: var(--ink-3); }
+.links { display: grid; gap: 2px; max-height: 420px; overflow-y: auto; padding-right: 4px; }
+.row { display: grid; grid-template-columns: 9px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 5px 6px; border-radius: 6px; background: none; border: 0; text-align: left; cursor: pointer; width: 100%; }
+.row:hover { background: var(--bg); }
+.row .dot { width: 9px; height: 9px; border-radius: 50%; }
+.row .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .bar { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-mono); font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.row .bar i { display: inline-block; height: 4px; border-radius: 2px; background: var(--ink-3); opacity: .45; }
+.dnote { border-left: 3px solid var(--deut); padding: 4px 0 4px 10px; display: grid; gap: 1px; }
+.dnote b { font-family: var(--f-mono); font-weight: 500; font-size: 13px; }
+.dnote span { color: var(--ink-2); font-size: 13.5px; }
+.legend-s { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--ink-3); }
+.legend-s span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-s i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+.top { display: grid; gap: 18px; }
+.toplist { display: grid; gap: 2px; }
+
+/* ---------- mapa de livros ---------- */
+.matrix-wrap { display: grid; gap: 12px; }
+.matrix { position: relative; width: 100%; max-width: 760px; }
+.matrix canvas { display: block; width: 100%; height: auto; }
+.ramp { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--night-ink-3); font-family: var(--f-mono); }
+.ramp i { width: 140px; height: 8px; border-radius: 2px; background: linear-gradient(90deg, #12161f, #1d3a66, #3987e5, #cfe3ff); display: inline-block; }
+.two { display: grid; grid-template-columns: minmax(0, 760px) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 1000px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.mside { display: grid; gap: 12px; font-size: 14px; color: var(--night-ink-2); max-width: 46ch; }
+.mside b { color: var(--night-ink); font-weight: 600; }
+
+/* ---------- texto ---------- */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 28px 56px; }
 .prose { display: grid; gap: 12px; max-width: 68ch; min-width: 0; }
 .prose p, .prose li { color: var(--ink-2); }
 .prose strong { color: var(--ink); font-weight: 600; }
 .prose ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .ref { font-family: var(--f-mono); font-size: 13px; color: var(--ink); white-space: nowrap; }
-
-.tablebox { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); max-height: 520px; overflow-y: auto; }
+.tablebox { overflow: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); max-height: 520px; }
 table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
 th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-th { position: sticky; top: 0; background: var(--surface); font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); }
+th { position: sticky; top: 0; background: var(--surface); font-weight: 600; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); z-index: 1; }
 td.r { font-family: var(--f-mono); font-size: 12.5px; white-space: nowrap; }
-.pill { font-size: 11px; padding: 1px 7px; border-radius: 99px; border: 1px solid var(--rule); color: var(--ink-2); white-space: nowrap; }
-.pill.doc { border-color: var(--s2); color: var(--ink); }
+td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: var(--link); font: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.pill { font-size: 11px; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--rule); color: var(--ink-2); white-space: nowrap; }
 .foot { font-size: 12.5px; color: var(--ink-3); display: grid; gap: 6px; max-width: 90ch; }
-.foot a, .prose a { color: var(--s1); }
-a:focus-visible, input:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 </style>
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Referências cruzadas · cânon católico de 73 livros</div>
-    <h1>Bíblia Católica em Arcos</h1>
-    <p class="lede">Cada arco liga dois capítulos que se citam ou se ecoam, no estilo do gráfico de Chris Harrison e Christoph Römhild. Os livros seguem a ordem do Catecismo (CIC 120). As barras abaixo da linha mostram quantos versículos tem cada capítulo; em laranja, os capítulos deuterocanônicos.</p>
+    <div class="eyebrow">Referências cruzadas · cânon católico · 73 livros</div>
+    <h1>Bíblia Católica <i>em</i> Arcos</h1>
+    <p class="lede">Cada arco liga dois capítulos que se citam ou se ecoam. Em azul, ligações dentro do mesmo Testamento; em verde, as pontes entre o Antigo e o Novo; em laranja, os livros deuterocanônicos. Clique em qualquer ponto para seguir os fios de um capítulo.</p>
     <div class="facts" id="facts"></div>
   </header>
 
-  <section class="figure" aria-label="Gráfico de arcos">
-    <div class="controls">
-      <label for="votes">Votos mínimos <input id="votes" type="range" min="0" max="60" step="1" value="10"> <output id="votesOut">10</output></label>
-      <label for="showDeut"><input id="showDeut" type="checkbox" checked> Ligações deuterocanônicas</label>
-      <span id="shown" class="hint"></span>
-      <div class="legend">
-        <span><i class="sw s1"></i>OpenBible (66 livros)</span>
-        <span><i class="sw s2"></i>Deuterocanônicos (curadoria)</span>
-        <span><i class="sw bar"></i><i class="sw dbar"></i>Versículos por capítulo</span>
+  <section class="night" aria-label="Gráfico de arcos" id="arcos">
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="Quais ligações mostrar">
+        <button type="button" data-mode="all" aria-pressed="true">Todas</button>
+        <button type="button" data-mode="same" aria-pressed="false"><i class="k same"></i>Mesmo Testamento</button>
+        <button type="button" data-mode="bridge" aria-pressed="false"><i class="k bridge"></i>Pontes AT ↔ NT</button>
+        <button type="button" data-mode="deut" aria-pressed="false"><i class="k deut"></i>Deuterocanônicos</button>
       </div>
+      <form class="search" id="searchForm" role="search">
+        <input id="q" list="books" placeholder="Ex.: Isaías 53, Sb 2, Salmos" autocomplete="off" aria-label="Buscar livro ou capítulo">
+        <button type="submit">Ir</button>
+      </form>
+      <datalist id="books"></datalist>
+      <label class="range" for="votes">Força mínima <input id="votes" type="range" min="0" max="60" step="1" value="10"><output id="votesOut">10</output></label>
+      <span class="count" id="shown"></span>
     </div>
-    <div class="chart" id="chart" role="img" aria-label="Arcos ligando capítulos da Bíblia de Gênesis a Apocalipse">
+    <div class="chart" id="chart" role="img" aria-label="Arcos ligando os 1.328 capítulos da Bíblia, de Gênesis ao Apocalipse">
       <canvas id="base"></canvas><canvas id="over"></canvas>
       <div class="tip" id="tip" hidden></div>
     </div>
-    <p class="hint">Passe o mouse (ou toque) sobre o gráfico para ver as ligações de um capítulo. O controle de votos filtra pelo voto mais alto entre os versículos de cada par de capítulos.</p>
+    <div class="caption">
+      <span>Barras: versículos por capítulo (laranja = deuterocanônico). Faixa inferior: divisões do cânon.</span>
+      <span>Força = maior número de votos no OpenBible entre os versículos do par.</span>
+    </div>
+  </section>
+
+  <section class="study" aria-label="Painel de estudo">
+    <div class="card" id="detail" aria-live="polite"></div>
+    <div class="card top">
+      <h3>Onde a Bíblia mais conversa consigo mesma</h3>
+      <div><p style="color:var(--ink-2);font-size:13.5px;margin-bottom:8px">Capítulos do Antigo Testamento mais ligados ao Novo</p><div class="toplist" id="topOT"></div></div>
+      <div><p style="color:var(--ink-2);font-size:13.5px;margin-bottom:8px">Capítulos do Novo Testamento que mais olham para o Antigo</p><div class="toplist" id="topNT"></div></div>
+    </div>
+  </section>
+
+  <section class="night" aria-label="Mapa de livros">
+    <div class="two">
+      <div class="matrix-wrap">
+        <div class="matrix" id="matrix"><canvas id="mcv"></canvas><div class="tip" id="mtip" hidden></div></div>
+        <div class="ramp"><span>poucas</span><i></i><span>muitas referências (escala log)</span></div>
+      </div>
+      <div class="mside">
+        <h2 style="color:var(--night-ink)">Mapa de livros</h2>
+        <p>O mesmo conjunto visto como uma tabela de 73 × 73 livros. Cada célula soma as referências entre dois livros; quanto mais clara, mais eles dialogam.</p>
+        <p>A diagonal mostra livros que se citam internamente. Os <b>blocos claros</b> fora dela revelam famílias: Reis e Crônicas contam a mesma história, os Evangelhos sinóticos se espelham, Isaías e os Salmos alimentam o Novo Testamento inteiro.</p>
+        <p>As <b>faixas escuras</b> são os deuterocanônicos, que não têm referências no OpenBible. Clique numa célula para abrir o livro no painel de estudo.</p>
+      </div>
+    </div>
   </section>
 
   <div class="cols">
     <section class="prose">
       <h2>Os livros católicos entram, as conexões não</h2>
-      <p>O conjunto do OpenBible vem do <em>Treasury of Scripture Knowledge</em>, obra protestante do século XIX baseada na King James. Ele tem <strong>zero</strong> referências para Tobias, Judite, 1 e 2 Macabeus, Sabedoria, Eclesiástico, Baruc e para Daniel 13–14. Por isso esses capítulos ficam na linha do tempo, mas sem nenhum arco azul.</p>
-      <p>Para não deixá-los mudos, os arcos laranja são <strong>66 ligações escolhidas à mão</strong>: paralelos conhecidos entre os deuterocanônicos e o resto da Bíblia, como Sabedoria 2 e a zombaria na cruz (Mt 27,43), 2 Macabeus 7 e Hebreus 11,35, e 1 Macabeus 4 e a festa da Dedicação em João 10,22. É uma amostra, não uma lista oficial nem completa.</p>
-      <p>Algumas lacunas aparecem nos próprios dados. Hebreus 11,35 aponta para Eliseu e Elias, mas não para os mártires de 2 Macabeus 7, que o texto descreve com mais precisão. João 10,22 não tem nenhuma referência, porque a festa da Dedicação só é narrada em 1 Macabeus.</p>
+      <p>O conjunto do OpenBible vem do <em>Treasury of Scripture Knowledge</em>, obra protestante do século XIX baseada na King James. Ele tem <strong>zero</strong> referências para Tobias, Judite, 1 e 2 Macabeus, Sabedoria, Eclesiástico, Baruc e Daniel 13–14. Esses capítulos ficam na linha, mas sem arcos azuis ou verdes.</p>
+      <p>Os arcos laranja são <strong>66 ligações escolhidas à mão</strong>: paralelos conhecidos, como Sabedoria 2 e a zombaria na cruz (Mt 27,43), 2 Macabeus 7 e Hebreus 11,35, e 1 Macabeus 4 e a festa da Dedicação (Jo 10,22). É uma amostra, não uma lista oficial.</p>
     </section>
     <section class="prose">
       <h2>Está de acordo com a Igreja?</h2>
-      <p>A Igreja não publica uma lista oficial de referências cruzadas. Elas são uma ferramenta editorial, como as notas de rodapé de uma Bíblia de estudo, e não fazem parte da doutrina. O critério católico está no Catecismo: ler cada texto <strong>dentro da unidade de toda a Escritura</strong>, na Tradição viva da Igreja e segundo a analogia da fé (CIC 112–114; Dei Verbum 12), e ler o Antigo Testamento à luz do Novo (CIC 128–130).</p>
-      <p>Por esse critério, a maior parte das ligações do OpenBible é compatível com a leitura católica, porque são paralelos de palavras e temas. Conferi algumas passagens sensíveis:</p>
-      <ul>
-        <li><span class="ref">Mt 16,19</span> liga às chaves de <span class="ref">Is 22,22</span>, e <span class="ref">Jo 20,23</span> a <span class="ref">Mt 16,19</span> e <span class="ref">18,18</span>, as mesmas ligações que o Catecismo usa para o sacramento da Reconciliação (CIC 553, 1444).</li>
-        <li><span class="ref">Jo 6,53</span> liga à Última Ceia (<span class="ref">Mt 26,26-28</span>), e <span class="ref">Tg 5,14</span> a <span class="ref">Mc 6,13</span>, como no CIC 1511 sobre a Unção dos Enfermos.</li>
-        <li><span class="ref">Gn 3,15</span> liga a <span class="ref">Ap 12,17</span>, a leitura mariana tradicional da mulher e sua descendência.</li>
-        <li>Em <span class="ref">Mt 16,18</span>, as ligações mais votadas destacam Cristo como pedra fundamental (Ef 2,20; 1Cor 3,11); <span class="ref">Jo 1,42</span> (Cefas, Pedro) aparece, mas com menos votos. Uma Bíblia católica daria mais peso a Pedro aqui.</li>
-      </ul>
-      <p>O problema real é a <strong>omissão dos sete livros</strong> do cânon definido em Trento e listado no CIC 120. Os votos vêm da comunidade do site, sem nenhuma revisão eclesial.</p>
+      <p>A Igreja não publica uma lista oficial de referências cruzadas; elas são uma ferramenta editorial. O critério católico é ler cada texto <strong>na unidade de toda a Escritura</strong>, na Tradição viva e segundo a analogia da fé (CIC 112–114; Dei Verbum 12), e ler o Antigo Testamento à luz do Novo (CIC 128–130).</p>
+      <p>Por esse critério, a maior parte das ligações é compatível: <span class="ref">Mt 16,19</span> liga a <span class="ref">Is 22,22</span>, <span class="ref">Jo 6,53</span> à Última Ceia, <span class="ref">Tg 5,14</span> a <span class="ref">Mc 6,13</span>, <span class="ref">Gn 3,15</span> a <span class="ref">Ap 12</span>. As ressalvas: a omissão dos sete livros do cânon (CIC 120), o peso menor dado a Pedro em <span class="ref">Mt 16,18</span>, e votos de usuários sem revisão eclesial.</p>
     </section>
   </div>
 
   <section class="prose" style="max-width:none">
     <h2>As 66 ligações deuterocanônicas</h2>
-    <p>Numeração dos versículos como na Bíblia de Jerusalém. Os arcos usam o capítulo de início de cada passagem.</p>
+    <p>Numeração como na Bíblia de Jerusalém. Clique numa referência para vê-la no gráfico.</p>
     <div class="tablebox">
       <table>
         <thead><tr><th>Deuterocanônico</th><th>Liga a</th><th>Tema</th><th>Tipo</th></tr></thead>
@@ -143,8 +206,8 @@ a:focus-visible, input:focus-visible { outline: 2px solid var(--s1); outline-off
   </section>
 
   <footer class="foot">
-    <p><strong>Fontes.</strong> Referências cruzadas: OpenBible.info, CC BY (versão de 04/11/2024, 344.799 referências versículo a versículo), obtidas pelo espelho <a href="https://github.com/scrollmapper/bible_databases" target="_blank" rel="noopener">scrollmapper/bible_databases</a>. Contagem de versículos: King James para os 66 livros e Catholic Public Domain Version para os deuterocanônicos. Ligações deuterocanônicas: curadoria própria a partir de paralelos amplamente citados, a conferir numa Bíblia de estudo católica.</p>
-    <p><strong>Limites.</strong> Os Salmos seguem a numeração hebraica, como nos dados de origem; Bíblias que usam a numeração grega (como a Ave-Maria) deslocam a maioria dos salmos em um número. Os acréscimos gregos de Ester não aparecem como capítulos separados. O gráfico original de Harrison tinha 63.779 ligações entre capítulos de outra fonte, que nunca foi publicada.</p>
+    <p><strong>Fontes.</strong> Referências cruzadas: OpenBible.info, CC BY (versão de 04/11/2024, 344.799 referências versículo a versículo), via <a href="https://github.com/scrollmapper/bible_databases" target="_blank" rel="noopener">scrollmapper/bible_databases</a>. Versículos por capítulo: King James (66 livros) e Catholic Public Domain Version (deuterocanônicos). Ligações deuterocanônicas: curadoria própria, a conferir numa Bíblia de estudo católica. Inspirado em Chris Harrison e Christoph Römhild (2008).</p>
+    <p><strong>Limites.</strong> Salmos na numeração hebraica dos dados de origem (a Ave-Maria usa a grega, em geral um número a menos). Os acréscimos gregos de Ester não aparecem como capítulos separados.</p>
   </footer>
 </div>
 
@@ -153,51 +216,76 @@ const DATA = {"books":[{"code":"Gen","pt":"Gênesis","ab":"Gn","deut":0,"start":
 const DEUT = [["Tob", 4, "4,15", "Matt", 7, "Mt 7,12", "Regra de ouro (Tobias traz a forma negativa)", "NT"], ["Tob", 12, "12,15", "Rev", 8, "Ap 8,2", "Os sete anjos que estão diante de Deus", "NT"], ["Tob", 13, "13,16-17", "Rev", 21, "Ap 21,18-21", "Jerusalém construída com pedras preciosas", "NT"], ["Tob", 3, "3,8", "Matt", 22, "Mt 22,25", "A mulher de sete maridos (pergunta dos saduceus)", "NT"], ["Tob", 12, "12,9", "Prov", 10, "Pr 10,2", "A esmola / justiça livra da morte", "AT"], ["Tob", 1, "1,2", "2Kgs", 15, "2Rs 15,29", "Deportação de Neftali pelos assírios", "AT"], ["Jdt", 16, "16,17", "Mark", 9, "Mc 9,48", "Fogo e vermes como castigo", "NT"], ["Jdt", 9, "9,2", "Gen", 34, "Gn 34", "Simeão, Siquém e Dina", "AT"], ["1Macc", 4, "4,52-59", "John", 10, "Jo 10,22", "Origem da festa da Dedicação", "NT"], ["1Macc", 1, "1,54", "Matt", 24, "Mt 24,15", "A abominação da desolação", "NT"], ["1Macc", 1, "1,54", "Dan", 11, "Dn 11,31", "A abominação da desolação", "AT"], ["1Macc", 2, "2,52", "Jas", 2, "Tg 2,21-23", "Abraão provado e tido por justo", "NT"], ["2Macc", 7, "7,1-42", "Heb", 11, "Hb 11,35", "Mártires que esperam uma ressurreição melhor", "NT"], ["2Macc", 6, "6,18-31", "Heb", 11, "Hb 11,36-37", "O martírio de Eleazar", "NT"], ["2Macc", 7, "7,28", "Heb", 11, "Hb 11,3", "Criação a partir do que não existia", "NT"], ["2Macc", 7, "7,28", "Gen", 1, "Gn 1,1", "Criação a partir do que não existia", "AT"], ["2Macc", 12, "12,43-46", "1Cor", 3, "1Cor 3,15", "Oração pelos mortos e purificação (CIC 1030-1032)", "Doutrina"], ["2Macc", 2, "2,4-8", "Rev", 11, "Ap 11,19", "A arca da aliança escondida e revelada", "NT"], ["Wis", 2, "2,12-20", "Matt", 27, "Mt 27,39-43", "O justo zombado: «se é filho de Deus, que Ele o liberte»", "NT"], ["Wis", 3, "3,5-6", "1Pet", 1, "1Pd 1,6-7", "Provados como ouro no fogo", "NT"], ["Wis", 4, "4,10", "Heb", 11, "Hb 11,5", "Henoc agradou a Deus e foi arrebatado", "NT"], ["Wis", 5, "5,17-20", "Eph", 6, "Ef 6,13-17", "A armadura de Deus", "NT"], ["Wis", 7, "7,26", "Heb", 1, "Hb 1,3", "Reflexo da luz eterna, imagem da glória", "NT"], ["Wis", 7, "7,26", "Col", 1, "Cl 1,15", "Imagem do Deus invisível", "NT"], ["Wis", 9, "9,16", "John", 3, "Jo 3,12", "As coisas da terra e as do céu", "NT"], ["Wis", 11, "11,23", "Rom", 2, "Rm 2,4", "Deus releva os pecados para levar à conversão", "NT"], ["Wis", 12, "12,12", "Rom", 9, "Rm 9,19-20", "Quem resistirá ao teu juízo?", "NT"], ["Wis", 13, "13,1-9", "Rom", 1, "Rm 1,19-23", "Deus conhecido a partir das criaturas", "NT"], ["Wis", 14, "14,22-31", "Rom", 1, "Rm 1,24-32", "Idolatria e a lista de vícios", "NT"], ["Wis", 15, "15,7", "Rom", 9, "Rm 9,21", "O oleiro e os vasos", "NT"], ["Wis", 16, "16,20-21", "John", 6, "Jo 6,31-35", "O maná, pão do céu", "NT"], ["Wis", 18, "18,15-16", "Rev", 19, "Ap 19,13-15", "A Palavra que desce do céu como espada", "NT"], ["Wis", 10, "10,4", "Gen", 7, "Gn 7", "O dilúvio", "AT"], ["Wis", 11, "11,4", "Exod", 17, "Ex 17,6", "Água da rocha", "AT"], ["Wis", 16, "16,20", "Exod", 16, "Ex 16", "O maná", "AT"], ["Wis", 18, "18,5", "Exod", 12, "Ex 12,29", "Morte dos primogênitos do Egito", "AT"], ["Wis", 19, "19,7-8", "Exod", 14, "Ex 14,21-22", "Travessia do mar Vermelho", "AT"], ["Sir", 2, "2,1-5", "Jas", 1, "Tg 1,2-4", "A provação que purifica", "NT"], ["Sir", 5, "5,11", "Jas", 1, "Tg 1,19", "Pronto para ouvir, lento para falar", "NT"], ["Sir", 7, "7,34", "Rom", 12, "Rm 12,15", "Chorar com os que choram", "NT"], ["Sir", 11, "11,19", "Luke", 12, "Lc 12,19-20", "O rico que pensa em descansar", "NT"], ["Sir", 15, "15,11-20", "Jas", 1, "Tg 1,13", "Deus não tenta ninguém", "NT"], ["Sir", 24, "24,8-12", "John", 1, "Jo 1,14", "A Sabedoria arma sua tenda em Israel", "NT"], ["Sir", 24, "24,21", "John", 6, "Jo 6,35", "Fome e sede da Sabedoria / do Pão da vida", "NT"], ["Sir", 27, "27,6", "Matt", 7, "Mt 7,16-20", "A árvore conhecida pelos frutos", "NT"], ["Sir", 28, "28,2", "Matt", 6, "Mt 6,12.14-15", "Perdoa e serás perdoado", "NT"], ["Sir", 29, "29,10-12", "Matt", 6, "Mt 6,19-20", "Tesouro guardado junto de Deus", "NT"], ["Sir", 44, "44,19-21", "Rom", 4, "Rm 4,13", "Abraão, pai de muitos povos e herdeiro", "NT"], ["Sir", 48, "48,10", "Luke", 1, "Lc 1,17", "Elias que converte o coração dos pais", "NT"], ["Sir", 51, "51,23-27", "Matt", 11, "Mt 11,28-30", "Tomai o jugo e encontrai descanso", "NT"], ["Sir", 44, "44,16", "Gen", 5, "Gn 5,24", "Henoc", "AT"], ["Sir", 44, "44,17", "Gen", 6, "Gn 6,9", "Noé, o justo", "AT"], ["Sir", 45, "45,1-5", "Exod", 20, "Ex 20", "Moisés recebe a Lei", "AT"], ["Sir", 47, "47,3-11", "1Sam", 17, "1Sm 17", "Davi e Golias", "AT"], ["Sir", 47, "47,12-22", "1Kgs", 3, "1Rs 3", "Salomão", "AT"], ["Sir", 48, "48,1-11", "1Kgs", 17, "1Rs 17", "Elias", "AT"], ["Sir", 48, "48,9", "2Kgs", 2, "2Rs 2,11", "Elias arrebatado no carro de fogo", "AT"], ["Sir", 49, "49,8", "Ezek", 1, "Ez 1", "A visão da glória de Ezequiel", "AT"], ["Bar", 3, "3,29-30", "Rom", 10, "Rm 10,6-7", "Quem subiu ao céu para buscá-la?", "NT"], ["Bar", 3, "3,38", "John", 1, "Jo 1,14", "Apareceu na terra e conviveu com os homens (leitura dos Padres)", "NT"], ["Bar", 4, "4,7", "1Cor", 10, "1Cor 10,20", "Sacrifícios oferecidos aos demônios", "NT"], ["Bar", 1, "1,15-3,8", "Dan", 9, "Dn 9,4-19", "Oração penitencial paralela", "AT"], ["Bar", 6, "6", "Jer", 10, "Jr 10,1-16", "A vaidade dos ídolos (Carta de Jeremias)", "AT"], ["Dan", 13, "13,61-62", "Deut", 19, "Dt 19,18-19", "Castigo das falsas testemunhas (Susana)", "AT"], ["Dan", 14, "14,1-22", "Isa", 46, "Is 46,1", "Bel, o ídolo da Babilônia", "AT"], ["Dan", 14, "14,33-39", "Hab", 1, "Hab 1,1", "O profeta Habacuc leva comida a Daniel", "AT"]];
 (function () {
   const books = DATA.books, ch = DATA.chapters, P = DATA.pairs;
-  const N = ch.length, NP = P.length / 4;
+  const N = ch.length, NP = P.length / 4, NB = books.length;
   const codeIdx = {}; books.forEach((b, i) => codeIdx[b.code] = i);
   const chIndex = (code, c) => books[codeIdx[code]].start + c - 1;
   const chName = i => books[ch[i][0]].pt + " " + ch[i][1];
+  const chShort = i => books[ch[i][0]].ab + " " + ch[i][1];
   const fmt = n => n.toLocaleString("pt-BR");
+  const NT0 = books[codeIdx["Matt"]].start;
+  const isNT = i => i >= NT0;
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // ligações deuterocanônicas -> índices de capítulo
+  // Divisões do cânon católico
+  const SECTIONS = [
+    ["Pentateuco", "Gen", "Deut"], ["Livros históricos", "Josh", "2Macc"], ["Sapienciais", "Job", "Sir"],
+    ["Proféticos", "Isa", "Mal"], ["Evangelhos", "Matt", "John"], ["At", "Acts", "Acts"],
+    ["Cartas paulinas", "Rom", "Heb"], ["Cartas católicas", "Jas", "Jude"], ["Ap", "Rev", "Rev"]
+  ].map(([name, a, b]) => ({ name, s: books[codeIdx[a]].start, e: books[codeIdx[b]].start + books[codeIdx[b]].n }));
+
   const D = DEUT.map(d => ({ a: chIndex(d[0], d[1]), b: chIndex(d[3], d[4]),
     from: books[codeIdx[d[0]]].ab + " " + d[2], to: d[5], note: d[6], kind: d[7] }));
 
-  const deutCh = ch.filter(c => c[3]).length;
-  document.getElementById("facts").innerHTML =
-    `<span><b>73</b> livros</span><span><b>${fmt(N)}</b> capítulos (${deutCh} deuterocanônicos)</span>` +
-    `<span><b>${fmt(DATA.stats.verseRefs)}</b> referências do OpenBible</span>` +
-    `<span><b>${fmt(DATA.stats.chapterPairs)}</b> pares de capítulos</span><span><b>${D.length}</b> ligações curadas</span>`;
+  // tipo de cada par: 0 = mesmo Testamento, 1 = ponte AT↔NT
+  const ptype = new Uint8Array(NP);
+  for (let k = 0; k < NP; k++) ptype[k] = isNT(P[4 * k]) !== isNT(P[4 * k + 1]) ? 1 : 0;
 
-  // tabela
-  const tb = document.getElementById("dtable");
-  const kindLabel = { NT: "Novo Testamento", AT: "Antigo Testamento", Doutrina: "Doutrina (Catecismo)" };
-  tb.innerHTML = D.map(d => `<tr><td class="r">${d.from}</td><td class="r">${d.to}</td><td>${d.note}</td>` +
-    `<td><span class="pill${d.kind === "Doutrina" ? " doc" : ""}">${kindLabel[d.kind]}</span></td></tr>`).join("");
-
-  // adjacência por capítulo
   const adj = Array.from({ length: N }, () => []);
   for (let k = 0; k < NP; k++) { adj[P[4 * k]].push(k); adj[P[4 * k + 1]].push(k); }
   const dAdj = Array.from({ length: N }, () => []);
   D.forEach((d, k) => { dAdj[d.a].push(k); dAdj[d.b].push(k); });
 
+  const deutCh = ch.filter(c => c[3]).length;
+  document.getElementById("facts").innerHTML =
+    `<span><b>${fmt(N)}</b> capítulos</span><span><b>${deutCh}</b> deuterocanônicos</span>` +
+    `<span><b>${fmt(DATA.stats.verseRefs)}</b> referências</span><span><b>${fmt(DATA.stats.chapterPairs)}</b> pares de capítulos</span>` +
+    `<span><b>${D.length}</b> ligações curadas</span>`;
+
+  // ---------- estado ----------
+  const state = { mode: "all", minV: 10, sel: null, hover: -1 }; // sel: {t:'ch'|'book', i}
   const el = document.getElementById("chart"), base = document.getElementById("base"), over = document.getElementById("over"), tip = document.getElementById("tip");
-  const votes = document.getElementById("votes"), votesOut = document.getElementById("votesOut"), showDeut = document.getElementById("showDeut"), shown = document.getElementById("shown");
-  let W = 0, H = 0, baseY = 0, barH = 0, labelH = 0, dpr = 1, x0 = 0, x1 = 0, hover = -1;
+  const votes = document.getElementById("votes"), votesOut = document.getElementById("votesOut"), shown = document.getElementById("shown");
+  let W = 0, H = 0, baseY = 0, barH = 0, dpr = 1, x0 = 0, x1 = 0, secY = 0, labY = 0, wide = true;
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const X = i => x0 + (i + 0.5) * (x1 - x0) / N;
+  const colOf = t => t === 1 ? css("--bridge") : css("--same");
 
   function layout() {
-    W = el.clientWidth; dpr = Math.min(window.devicePixelRatio || 1, 2);
-    x0 = 4; x1 = W - 4;
-    labelH = W >= 700 ? 44 : 22; barH = W >= 700 ? 46 : 30;
-    baseY = Math.round((x1 - x0) / 2) + 6;
-    H = baseY + barH + labelH;
+    W = el.clientWidth; dpr = Math.min(window.devicePixelRatio || 1, 2); wide = W >= 720;
+    x0 = 2; x1 = W - 2;
+    barH = wide ? 40 : 26;
+    baseY = Math.round((x1 - x0) / 2) + 8;
+    secY = baseY + barH + 6;
+    labY = secY + 22;
+    H = labY + (wide ? 40 : 6);
     el.style.height = H + "px";
     for (const c of [base, over]) { c.width = W * dpr; c.height = H * dpr; c.style.width = W + "px"; c.style.height = H + "px"; }
   }
 
-  function arcs(ctx, list, get) {
+  function visibleList() {
+    const out = [];
+    if (state.mode === "deut") return out;
+    for (let k = 0; k < NP; k++) {
+      if (P[4 * k + 3] < state.minV) continue;
+      if (state.mode === "same" && ptype[k] !== 0) continue;
+      if (state.mode === "bridge" && ptype[k] !== 1) continue;
+      out.push(k);
+    }
+    return out;
+  }
+  const showDeut = () => state.mode === "all" || state.mode === "deut";
+
+  function strokeArcs(ctx, list, get) {
     ctx.beginPath();
     for (const k of list) {
       const [a, b] = get(k); const xa = X(a), xb = X(b);
@@ -207,96 +295,350 @@ const DEUT = [["Tob", 4, "4,15", "Matt", 7, "Mt 7,12", "Regra de ouro (Tobias tr
     ctx.stroke();
   }
 
-  function drawBase() {
-    const ctx = base.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    const minV = +votes.value;
-    const list = []; for (let k = 0; k < NP; k++) if (P[4 * k + 3] >= minV) list.push(k);
-    shown.textContent = fmt(list.length) + " pares de capítulos visíveis";
-    const s1 = css("--s1"), s2 = css("--s2"), bar = css("--bar"), ink3 = css("--ink-3"), rule = css("--rule");
-    // OpenBible: transparência proporcional à densidade
-    ctx.strokeStyle = s1; ctx.lineWidth = 0.6;
-    ctx.globalAlpha = Math.max(0.06, Math.min(0.6, 2200 / Math.max(list.length, 1)));
-    arcs(ctx, list, k => [P[4 * k], P[4 * k + 1]]);
-    ctx.globalAlpha = 1;
-    if (showDeut.checked) {
-      ctx.strokeStyle = s2; ctx.lineWidth = 1.1; ctx.globalAlpha = 0.8;
-      arcs(ctx, D.map((_, k) => k), k => [D[k].a, D[k].b]); ctx.globalAlpha = 1;
-    }
-    // linha de base + barras de versículos
+  function drawAxis(ctx) {
+    const ink3 = css("--night-ink-3"), ink2 = css("--night-ink-2"), deut = css("--deut"), rule = css("--night-rule");
+    ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
     ctx.fillStyle = rule; ctx.fillRect(x0, baseY, x1 - x0, 1);
-    const maxV = 176, bw = Math.max(0.6, (x1 - x0) / N - 0.3);
+    const bw = Math.max(0.6, (x1 - x0) / N - 0.25);
     for (let i = 0; i < N; i++) {
-      const h = Math.max(1, ch[i][2] / maxV * (barH - 6));
-      ctx.fillStyle = ch[i][3] ? s2 : bar; ctx.fillRect(X(i) - bw / 2, baseY + 3, bw, h);
+      const h = Math.max(1, ch[i][2] / 176 * (barH - 6));
+      ctx.fillStyle = ch[i][3] ? deut : "#5d606b"; ctx.fillRect(X(i) - bw / 2, baseY + 4, bw, h);
     }
-    // separadores de livro e rótulos
-    ctx.fillStyle = ink3; ctx.font = `${W >= 700 ? 10 : 9}px "IBM Plex Mono", ui-monospace, monospace`;
-    const ntStart = books[codeIdx["Matt"]].start;
-    books.forEach(b => {
-      const xs = x0 + b.start * (x1 - x0) / N;
-      ctx.globalAlpha = 0.35; ctx.fillRect(xs, baseY + 2, 0.75, barH - 2); ctx.globalAlpha = 1;
-      if (W >= 700) {
-        ctx.save(); ctx.translate(x0 + (b.start + b.n / 2) * (x1 - x0) / N + 3, baseY + barH + 4); ctx.rotate(Math.PI / 2);
-        ctx.fillStyle = b.deut ? s2 : ink3; ctx.fillText(b.ab, 0, 0); ctx.restore();
-      }
+    // faixa das divisões do cânon
+    ctx.font = `${wide ? 11 : 9.5}px "IBM Plex Sans", system-ui, sans-serif`; ctx.textBaseline = "middle";
+    SECTIONS.forEach((s, n) => {
+      const xa = x0 + s.s * (x1 - x0) / N, xb = x0 + s.e * (x1 - x0) / N;
+      ctx.fillStyle = n % 2 ? "#1a1e29" : "#141821"; ctx.fillRect(xa, secY, xb - xa - 1, 16);
+      const label = s.name; const tw = ctx.measureText(label).width;
+      if (tw + 8 < xb - xa) { ctx.fillStyle = ink2; ctx.fillText(label, xa + 5, secY + 8.5); }
     });
-    if (W < 700) {
-      ctx.fillStyle = ink3; ctx.textBaseline = "top";
-      ctx.fillText("Antigo Testamento", x0, baseY + barH + 4);
-      ctx.textAlign = "right"; ctx.fillText("Novo Testamento", x1, baseY + barH + 4); ctx.textAlign = "left";
+    // rótulos dos livros
+    if (wide) {
+      ctx.font = `10px "IBM Plex Mono", ui-monospace, monospace`; ctx.textBaseline = "alphabetic";
+      let lastX = -99;
+      books.forEach(b => {
+        const xs = x0 + b.start * (x1 - x0) / N;
+        const xm = x0 + (b.start + b.n / 2) * (x1 - x0) / N;
+        const fits = xm - lastX >= 11;
+        ctx.fillStyle = rule; ctx.fillRect(xs, baseY + 3, 0.8, barH - 3);
+        if (!fits) return; lastX = xm;
+        ctx.save(); ctx.translate(xm - 3, labY); ctx.rotate(Math.PI / 2);
+        ctx.fillStyle = b.deut ? deut : ink3; ctx.fillText(b.ab, 0, 0); ctx.restore();
+      });
+    } else {
+      ctx.fillStyle = ink3; ctx.font = `10px "IBM Plex Mono", monospace`; ctx.textBaseline = "top";
+      ctx.fillText("Gênesis", x0, labY - 2); ctx.textAlign = "right"; ctx.fillText("Apocalipse", x1, labY - 2); ctx.textAlign = "left";
     }
-    ctx.fillStyle = css("--ink-2"); ctx.globalAlpha = 0.6; ctx.fillRect(X(ntStart) - 0.5 * (x1 - x0) / N, baseY - 10, 1, 10); ctx.globalAlpha = 1;
+    // marcador do início do NT
+    ctx.fillStyle = ink2; ctx.globalAlpha = .7; ctx.fillRect(X(NT0) - (x1 - x0) / N / 2, baseY - 12, 1, 12); ctx.globalAlpha = 1;
+  }
+
+  let anim = 0;
+  function drawBase(animate) {
+    cancelAnimationFrame(anim);
+    const ctx = base.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1; ctx.clearRect(0, 0, W, H);
+    // brilho sutil no horizonte
+    const g = ctx.createRadialGradient(W / 2, baseY, 0, W / 2, baseY, (x1 - x0) / 2);
+    g.addColorStop(0, "rgba(57,135,229,0.07)"); g.addColorStop(1, "rgba(57,135,229,0)");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, baseY);
+    drawAxis(ctx);
+    const list = visibleList();
+    shown.textContent = fmt(list.length + (showDeut() ? D.length : 0)) + " arcos";
+    const scale = Math.pow(Math.min(1, W / 1240), 2.2);
+    const alpha = Math.max(0.006, Math.min(0.5, 950 * scale / Math.max(list.length, 1)));
+    const groups = [[], []]; for (const k of list) groups[ptype[k]].push(k);
+    const len = k => Math.abs(P[4 * k + 1] - P[4 * k]);
+    const sameC = css("--same"), bridgeC = css("--bridge"), deutC = css("--deut");
+    function paint(ctx, g0, g1, withDeut) {
+      ctx.globalCompositeOperation = "lighter"; ctx.lineWidth = wide ? 0.7 : 0.4; ctx.globalAlpha = alpha;
+      ctx.strokeStyle = sameC; strokeArcs(ctx, g0, k => [P[4 * k], P[4 * k + 1]]);
+      ctx.strokeStyle = bridgeC; strokeArcs(ctx, g1, k => [P[4 * k], P[4 * k + 1]]);
+      if (withDeut && showDeut()) {
+        ctx.globalCompositeOperation = "source-over"; ctx.lineWidth = wide ? 1.2 : 0.7; ctx.globalAlpha = .85; ctx.strokeStyle = deutC;
+        strokeArcs(ctx, D.map((_, k) => k), k => [D[k].a, D[k].b]);
+      }
+      ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
+    }
+    if (!animate || reduceMotion) { paint(ctx, groups[0], groups[1], true); drawOver(); return; }
+    // abertura: arcos curtos primeiro, depois os longos
+    groups.forEach(g => g.sort((a, b) => len(a) - len(b)));
+    const steps = 48; let s = 0;
+    const tick = () => {
+      const f0 = s / steps, f1 = (s + 1) / steps;
+      const sl = g => g.slice(Math.floor(g.length * f0), Math.floor(g.length * f1));
+      paint(ctx, sl(groups[0]), sl(groups[1]), s === steps - 1);
+      s++; if (s < steps) anim = requestAnimationFrame(tick); else drawOver();
+    };
+    anim = requestAnimationFrame(tick);
+  }
+
+  function selChapters() {
+    const i = state.hover >= 0 ? state.hover : null;
+    if (i !== null) return { t: "ch", i };
+    return state.sel;
   }
 
   function drawOver() {
     const ctx = over.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (hover < 0) return;
-    const minV = +votes.value;
-    const list = adj[hover].filter(k => P[4 * k + 3] >= minV);
-    ctx.strokeStyle = css("--hl"); ctx.lineWidth = 1; ctx.globalAlpha = Math.max(0.25, Math.min(0.9, 60 / Math.max(list.length, 1)));
-    arcs(ctx, list, k => [P[4 * k], P[4 * k + 1]]);
-    if (showDeut.checked && dAdj[hover].length) {
-      ctx.strokeStyle = css("--s2"); ctx.lineWidth = 2.4; ctx.globalAlpha = 1;
-      arcs(ctx, dAdj[hover], k => [D[k].a, D[k].b]);
+    const s = selChapters(); if (!s) return;
+    // escurece o céu para destacar a seleção
+    ctx.fillStyle = "rgba(13,15,20,0.72)"; ctx.fillRect(0, 0, W, baseY);
+    let list = [], dl = [];
+    if (s.t === "ch") {
+      list = adj[s.i].filter(k => P[4 * k + 3] >= state.minV); dl = dAdj[s.i];
+    } else {
+      const b = books[s.i];
+      for (let c = b.start; c < b.start + b.n; c++) {
+        for (const k of adj[c]) if (P[4 * k + 3] >= state.minV) list.push(k);
+        dl = dl.concat(dAdj[c]);
+      }
     }
-    ctx.globalAlpha = 1; ctx.fillStyle = css("--hl"); ctx.fillRect(X(hover) - 1, baseY - 6, 2, barH + 6);
-    return list;
+    if (state.mode === "same") list = list.filter(k => ptype[k] === 0);
+    if (state.mode === "bridge") list = list.filter(k => ptype[k] === 1);
+    if (state.mode === "deut") list = [];
+    ctx.globalCompositeOperation = "lighter"; ctx.lineWidth = 1;
+    ctx.globalAlpha = Math.max(0.18, Math.min(0.9, 90 / Math.max(list.length, 1)));
+    ctx.strokeStyle = css("--same"); strokeArcs(ctx, list.filter(k => !ptype[k]), k => [P[4 * k], P[4 * k + 1]]);
+    ctx.strokeStyle = css("--bridge"); strokeArcs(ctx, list.filter(k => ptype[k]), k => [P[4 * k], P[4 * k + 1]]);
+    ctx.globalCompositeOperation = "source-over";
+    if (showDeut() && dl.length) { ctx.globalAlpha = 1; ctx.lineWidth = 2.2; ctx.strokeStyle = css("--deut"); strokeArcs(ctx, dl, k => [D[k].a, D[k].b]); }
+    ctx.globalAlpha = 1;
+    const gold = css("--gold");
+    if (s.t === "ch") { ctx.fillStyle = gold; ctx.fillRect(X(s.i) - 1, baseY - 8, 2, barH + 10); }
+    else { const b = books[s.i]; ctx.fillStyle = gold; ctx.globalAlpha = .9; ctx.fillRect(X(b.start) - 1, baseY - 3, X(b.start + b.n - 1) - X(b.start) + 2, 3); ctx.globalAlpha = 1; }
   }
 
-  function showTip(i, px, py) {
-    const minV = +votes.value;
-    const list = adj[i].filter(k => P[4 * k + 3] >= minV)
-      .sort((a, b) => P[4 * b + 2] - P[4 * a + 2]).slice(0, 5);
-    let html = `<div class="t">${chName(i)}</div><div class="m">${ch[i][2]} versículos · ${fmt(adj[i].filter(k => P[4 * k + 3] >= minV).length)} capítulos ligados${ch[i][3] ? " · deuterocanônico" : ""}</div>`;
-    if (list.length) html += "<ul>" + list.map(k => { const o = P[4 * k] === i ? P[4 * k + 1] : P[4 * k]; return `<li><span>${chName(o)}</span><span class="n">${P[4 * k + 2]} ref.</span></li>`; }).join("") + "</ul>";
-    else if (ch[i][3]) html += `<div class="m" style="margin-top:6px">Nenhuma referência no OpenBible.</div>`;
-    if (showDeut.checked) dAdj[i].slice(0, 4).forEach(k => { const d = D[k]; html += `<div class="d">${d.from} ↔ ${d.to}<br><span class="m">${d.note}</span></div>`; });
-    tip.innerHTML = html; tip.hidden = false;
+  function chapterAt(px) { return Math.max(0, Math.min(N - 1, Math.floor((px - x0) / (x1 - x0) * N))); }
+  function tipFor(i, px, py) {
+    const n = adj[i].filter(k => P[4 * k + 3] >= state.minV).length;
+    tip.innerHTML = `<div class="t">${chName(i)}</div><div class="m">${ch[i][2]} vv · ${fmt(n)} ligações${dAdj[i].length ? " · " + dAdj[i].length + " curadas" : ""}</div>` +
+      `<div class="h">${state.sel && state.sel.t === "ch" && state.sel.i === i ? "Selecionado" : "Clique para fixar e estudar"}</div>`;
+    tip.hidden = false;
     const tw = tip.offsetWidth, th = tip.offsetHeight;
     let left = px + 14; if (left + tw > W) left = px - tw - 14; if (left < 0) left = 0;
-    let top = Math.min(py - th / 2, H - th); if (top < 0) top = 0;
+    let top = Math.max(0, Math.min(py - th - 12, H - th));
     tip.style.left = left + "px"; tip.style.top = top + "px";
   }
-
-  function onMove(e) {
+  el.addEventListener("pointermove", e => {
+    if (e.pointerType === "touch") return;
     const r = el.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top;
-    const i = Math.max(0, Math.min(N - 1, Math.floor((px - x0) / (x1 - x0) * N)));
-    if (i !== hover) { hover = i; drawOver(); }
-    showTip(i, px, py);
-  }
-  el.addEventListener("pointermove", onMove);
-  el.addEventListener("pointerdown", onMove);
-  el.addEventListener("pointerleave", () => { hover = -1; drawOver(); tip.hidden = true; });
+    const i = chapterAt(px); if (i !== state.hover) { state.hover = i; drawOver(); }
+    tipFor(i, px, py);
+  });
+  el.addEventListener("pointerleave", () => { state.hover = -1; tip.hidden = true; drawOver(); });
+  el.addEventListener("click", e => {
+    const r = el.getBoundingClientRect(); const i = chapterAt(e.clientX - r.left);
+    select({ t: "ch", i }, false);
+  });
 
+  // ---------- painel de estudo ----------
+  const detail = document.getElementById("detail");
+  function dotColor(k, from) { return ptype[k] ? "var(--bridge)" : "var(--same)"; }
+  function rowBtn(label, n, max, color, go) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "row";
+    b.innerHTML = `<i class="dot" style="background:${color}"></i><span class="nm"></span><span class="bar"><i style="width:${Math.max(3, 60 * n / max)}px"></i>${fmt(n)}</span>`;
+    b.querySelector(".nm").textContent = label; b.addEventListener("click", go); return b;
+  }
+  function renderDetail() {
+    detail.innerHTML = "";
+    const s = state.sel;
+    if (!s) {
+      detail.innerHTML = `<h3>Painel de estudo</h3><div class="empty"><div class="sel-title">Escolha um capítulo</div>
+        <p>Clique no gráfico, busque um capítulo ou comece por um destes fios clássicos:</p></div>`;
+      const chips = document.createElement("div"); chips.className = "chips";
+      [["Isaías 53", "Isa", 53], ["Gênesis 3", "Gen", 3], ["Salmos 22", "Ps", 22], ["Sabedoria 2", "Wis", 2], ["Êxodo 12", "Exod", 12], ["João 6", "John", 6], ["Hebreus 11", "Heb", 11], ["Daniel 7", "Dan", 7]]
+        .forEach(([l, c, n]) => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = l; b.onclick = () => select({ t: "ch", i: chIndex(c, n) }, true); chips.appendChild(b); });
+      detail.querySelector(".empty").appendChild(chips);
+      return;
+    }
+    const head = document.createElement("div"); head.style.display = "grid"; head.style.gap = "6px";
+    const h3 = document.createElement("h3"); h3.textContent = s.t === "ch" ? "Capítulo selecionado" : "Livro selecionado";
+    const t = document.createElement("div"); t.className = "sel-title";
+    const m = document.createElement("div"); m.className = "sel-meta";
+    head.append(h3, t, m); detail.appendChild(head);
+
+    let rows = [];
+    if (s.t === "ch") {
+      t.textContent = chName(s.i);
+      const list = adj[s.i].filter(k => P[4 * k + 3] >= state.minV);
+      const ref = list.reduce((a, k) => a + P[4 * k + 2], 0);
+      const br = list.filter(k => ptype[k]).length;
+      m.textContent = `${ch[s.i][2]} versículos · ${fmt(list.length)} capítulos ligados · ${fmt(ref)} referências · ${br} pontes AT↔NT${ch[s.i][3] ? " · deuterocanônico" : ""}`;
+      rows = list.map(k => ({ o: P[4 * k] === s.i ? P[4 * k + 1] : P[4 * k], n: P[4 * k + 2], k })).sort((a, b) => b.n - a.n);
+      const dl = dAdj[s.i];
+      if (dl.length) {
+        const box = document.createElement("div"); box.style.display = "grid"; box.style.gap = "8px";
+        dl.forEach(k => { const d = D[k]; const x = document.createElement("div"); x.className = "dnote";
+          const b = document.createElement("b"); b.textContent = d.from + " ↔ " + d.to; const sp = document.createElement("span"); sp.textContent = d.note;
+          x.append(b, sp); box.appendChild(x); });
+        detail.appendChild(box);
+      } else if (ch[s.i][3]) {
+        const p = document.createElement("p"); p.style.color = "var(--ink-2)"; p.textContent = "Este capítulo deuterocanônico não tem referências no OpenBible nem ligações curadas.";
+        detail.appendChild(p);
+      }
+      if (rows.length) {
+        const cap = document.createElement("h3"); cap.textContent = "Fios deste capítulo · clique para seguir"; detail.appendChild(cap);
+        const lg = document.createElement("div"); lg.className = "legend-s";
+        lg.innerHTML = `<span><i style="background:var(--same)"></i>Mesmo Testamento</span><span><i style="background:var(--bridge)"></i>Ponte AT↔NT</span><span>Número = referências entre versículos</span>`;
+        detail.appendChild(lg);
+        const box = document.createElement("div"); box.className = "links";
+        const max = rows[0].n;
+        rows.slice(0, 80).forEach(r => box.appendChild(rowBtn(chName(r.o), r.n, max, dotColor(r.k), () => select({ t: "ch", i: r.o }, true))));
+        detail.appendChild(box);
+      }
+    } else {
+      const b = books[s.i]; t.textContent = b.pt;
+      const agg = new Map(); let tot = 0;
+      for (let c = b.start; c < b.start + b.n; c++) for (const k of adj[c]) {
+        if (P[4 * k + 3] < state.minV) continue;
+        const o = P[4 * k] === c ? P[4 * k + 1] : P[4 * k]; const ob = ch[o][0]; if (ob === s.i) continue;
+        agg.set(ob, (agg.get(ob) || 0) + P[4 * k + 2]); tot += P[4 * k + 2];
+      }
+      m.textContent = `${b.n} capítulos · ${fmt(tot)} referências com outros livros${b.deut ? " · deuterocanônico" : ""}`;
+      const list = [...agg.entries()].sort((a, b) => b[1] - a[1]);
+      if (list.length) {
+        const cap = document.createElement("h3"); cap.textContent = "Livros com que mais dialoga"; detail.appendChild(cap);
+        const box = document.createElement("div"); box.className = "links";
+        list.slice(0, 40).forEach(([ob, n]) => box.appendChild(rowBtn(books[ob].pt, n, list[0][1], (ob >= codeIdx["Matt"]) !== (s.i >= codeIdx["Matt"]) ? "var(--bridge)" : "var(--same)", () => select({ t: "book", i: ob }, true))));
+        detail.appendChild(box);
+      } else {
+        const p = document.createElement("p"); p.style.color = "var(--ink-2)"; p.textContent = "Sem referências no OpenBible. Veja as ligações curadas no gráfico (modo Deuterocanônicos) ou na tabela abaixo.";
+        detail.appendChild(p);
+      }
+    }
+    const clear = document.createElement("button"); clear.type = "button"; clear.className = "chip"; clear.textContent = "Limpar seleção"; clear.style.justifySelf = "start";
+    clear.onclick = () => select(null, false); detail.appendChild(clear);
+  }
+
+  function select(s, scroll) {
+    state.sel = s; renderDetail(); drawOver();
+    if (s) { document.getElementById("q").value = s.t === "ch" ? chName(s.i) : books[s.i].pt; }
+    if (scroll) document.getElementById("arcos").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
+
+  // ---------- busca ----------
+  const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+  const dl = document.getElementById("books");
+  books.forEach(b => { const o = document.createElement("option"); o.value = b.pt; dl.appendChild(o); });
+  function resolve(q) {
+    const raw = q.trim(); const m = raw.match(/^(.*?)[\s,.]*(\d+)?$/); if (!m) return null;
+    const name = m[1].trim(), num = m[2] ? +m[2] : null;
+    if (!name) return null;
+    let bi = books.findIndex(b => b.pt.toLowerCase() === name.toLowerCase() || b.ab.toLowerCase() === name.toLowerCase());
+    if (bi < 0) { const n = norm(name); bi = books.findIndex(b => norm(b.pt) === n || norm(b.ab) === n); }
+    if (bi < 0) { const n = norm(name); bi = books.findIndex(b => norm(b.pt).startsWith(n)); }
+    if (bi < 0) return null;
+    if (num && num >= 1 && num <= books[bi].n) return { t: "ch", i: books[bi].start + num - 1 };
+    return { t: "book", i: bi };
+  }
+  document.getElementById("searchForm").addEventListener("submit", e => {
+    e.preventDefault(); const r = resolve(document.getElementById("q").value);
+    if (r) select(r, false); else { document.getElementById("q").select(); }
+  });
+
+  // ---------- modos e filtro ----------
+  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+    state.mode = b.dataset.mode; drawBase(false);
+  }));
   let raf = 0;
-  const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { drawBase(); drawOver(); }); };
-  votes.addEventListener("input", () => { votesOut.textContent = votes.value; redraw(); });
-  showDeut.addEventListener("change", redraw);
-  let lastW = 0;
-  new ResizeObserver(() => { if (el.clientWidth !== lastW) { lastW = el.clientWidth; layout(); redraw(); } }).observe(el);
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
-  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-  if (document.fonts) document.fonts.ready.then(redraw);
-  layout(); drawBase();
+  votes.addEventListener("input", () => {
+    votesOut.textContent = votes.value; state.minV = +votes.value;
+    cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { drawBase(false); renderDetail(); drawMatrix(); });
+  });
+
+  // ---------- ranking AT↔NT ----------
+  function topList(id, testNT) {
+    const tot = new Float64Array(N);
+    for (let k = 0; k < NP; k++) if (ptype[k]) { const a = P[4 * k], b = P[4 * k + 1], c = P[4 * k + 2]; tot[a] += c; tot[b] += c; }
+    const idx = []; for (let i = 0; i < N; i++) if (isNT(i) === testNT) idx.push(i);
+    idx.sort((a, b) => tot[b] - tot[a]);
+    const box = document.getElementById(id); const max = tot[idx[0]];
+    idx.slice(0, 8).forEach(i => box.appendChild(rowBtn(chName(i), tot[i], max, "var(--bridge)", () => select({ t: "ch", i }, true))));
+  }
+  topList("topOT", false); topList("topNT", true);
+
+  // ---------- mapa de livros ----------
+  const mcv = document.getElementById("mcv"), mtip = document.getElementById("mtip"), mwrap = document.getElementById("matrix");
+  let M = null, mGeom = null;
+  function computeMatrix() {
+    M = new Float64Array(NB * NB);
+    for (let k = 0; k < NP; k++) {
+      if (P[4 * k + 3] < state.minV) continue;
+      const a = ch[P[4 * k]][0], b = ch[P[4 * k + 1]][0], c = P[4 * k + 2];
+      M[a * NB + b] += c; if (a !== b) M[b * NB + a] += c;
+    }
+  }
+  function rampColor(t) { // t em 0..1, escuro -> azul -> quase branco
+    const stops = [[18, 22, 31], [29, 58, 102], [57, 135, 229], [207, 227, 255]];
+    const x = t * (stops.length - 1), i = Math.min(stops.length - 2, Math.floor(x)), f = x - i;
+    const c = stops[i].map((v, j) => Math.round(v + (stops[i + 1][j] - v) * f)); return `rgb(${c[0]},${c[1]},${c[2]})`;
+  }
+  function drawMatrix() {
+    computeMatrix();
+    const Wm = mwrap.clientWidth; const pad = Wm >= 600 ? 34 : 18; const cell = (Wm - pad) / NB; const S = pad + cell * NB;
+    const r = Math.min(window.devicePixelRatio || 1, 2);
+    mcv.width = S * r; mcv.height = S * r; mcv.style.height = S + "px";
+    const ctx = mcv.getContext("2d"); ctx.setTransform(r, 0, 0, r, 0, 0); ctx.clearRect(0, 0, S, S);
+    let mx = 0; for (let i = 0; i < M.length; i++) if (M[i] > mx) mx = M[i];
+    const lmx = Math.log1p(mx);
+    for (let a = 0; a < NB; a++) for (let b = 0; b < NB; b++) {
+      const v = M[a * NB + b];
+      ctx.fillStyle = v ? rampColor(Math.log1p(v) / lmx) : (books[a].deut || books[b].deut ? "#0a0b0f" : "#12161f");
+      ctx.fillRect(pad + b * cell, pad + a * cell, Math.max(cell - 0.6, 0.6), Math.max(cell - 0.6, 0.6));
+    }
+    // divisões do cânon
+    ctx.strokeStyle = "rgba(236,234,227,0.35)"; ctx.lineWidth = 1;
+    const secB = SECTIONS.map(s => ch[s.s][0]);
+    secB.forEach(bi => { if (!bi) return; const p = pad + bi * cell - .3;
+      ctx.beginPath(); ctx.moveTo(p, pad); ctx.lineTo(p, S); ctx.moveTo(pad, p); ctx.lineTo(S, p); ctx.stroke(); });
+    ctx.fillStyle = css("--night-ink-3"); ctx.font = `${Wm >= 600 ? 9 : 7}px "IBM Plex Mono", monospace`;
+    if (cell >= 7) {
+      books.forEach((b, i) => { if (i % 2) return;
+        ctx.textAlign = "right"; ctx.textBaseline = "middle"; ctx.fillStyle = b.deut ? css("--deut") : css("--night-ink-3");
+        ctx.fillText(b.ab, pad - 3, pad + (i + .5) * cell);
+        ctx.save(); ctx.translate(pad + (i + .5) * cell, pad - 3); ctx.rotate(-Math.PI / 2); ctx.textAlign = "left"; ctx.fillText(b.ab, 0, 0); ctx.restore();
+      });
+    }
+    mGeom = { pad, cell, S };
+  }
+  function mCell(e) {
+    const rct = mcv.getBoundingClientRect(); const x = e.clientX - rct.left, y = e.clientY - rct.top;
+    const b = Math.floor((x - mGeom.pad) / mGeom.cell), a = Math.floor((y - mGeom.pad) / mGeom.cell);
+    if (a < 0 || b < 0 || a >= NB || b >= NB) return null; return { a, b, x, y };
+  }
+  mcv.addEventListener("pointermove", e => {
+    const c = mCell(e); if (!c) { mtip.hidden = true; return; }
+    const v = M[c.a * NB + c.b];
+    mtip.innerHTML = `<div class="m">${fmt(v)} referências</div><div class="t" style="font-size:16px">${books[c.a].pt} ↔ ${books[c.b].pt}</div>`;
+    mtip.hidden = false; const tw = mtip.offsetWidth;
+    mtip.style.left = Math.max(0, Math.min(c.x + 12, mGeom.S - tw)) + "px"; mtip.style.top = Math.max(0, c.y - mtip.offsetHeight - 10) + "px";
+  });
+  mcv.addEventListener("pointerleave", () => mtip.hidden = true);
+  mcv.addEventListener("click", e => { const c = mCell(e); if (c) select({ t: "book", i: c.a }, true); });
+
+  // ---------- tabela ----------
+  const kindLabel = { NT: "Novo Testamento", AT: "Antigo Testamento", Doutrina: "Doutrina (CIC)" };
+  const tb = document.getElementById("dtable");
+  D.forEach(d => {
+    const tr = document.createElement("tr");
+    const c1 = document.createElement("td"); c1.className = "r"; const b1 = document.createElement("button"); b1.type = "button"; b1.textContent = d.from; b1.onclick = () => { setMode("deut"); select({ t: "ch", i: d.a }, true); }; c1.appendChild(b1);
+    const c2 = document.createElement("td"); c2.className = "r"; const b2 = document.createElement("button"); b2.type = "button"; b2.textContent = d.to; b2.onclick = () => select({ t: "ch", i: d.b }, true); c2.appendChild(b2);
+    const c3 = document.createElement("td"); c3.textContent = d.note;
+    const c4 = document.createElement("td"); const sp = document.createElement("span"); sp.className = "pill"; sp.textContent = kindLabel[d.kind]; c4.appendChild(sp);
+    tr.append(c1, c2, c3, c4); tb.appendChild(tr);
+  });
+  function setMode(m) { document.querySelector(`.seg button[data-mode="${m}"]`).click(); }
+
+  // ---------- início ----------
+  let lastW = 0, first = true, started = false;
+  function start() {
+    if (started) return; started = true;
+    new ResizeObserver(() => { if (el.clientWidth !== lastW) { lastW = el.clientWidth; layout(); drawBase(first); first = false; drawMatrix(); } }).observe(el);
+  }
+  renderDetail();
+  if (document.fonts) document.fonts.ready.then(start);
+  setTimeout(start, 900);
 })();
 </script>
