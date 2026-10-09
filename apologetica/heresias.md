@@ -259,21 +259,6 @@
 - **Na Bíblia:** **At 20,7**; **Ap 1,10**; **Cl 2,16-17**; **Mt 25,46**; **Lc 23,43**; **Fl 1,23**; **Mt 24,36** (ninguém sabe o dia).
 - **Objeções relacionadas:** 42, 46.
 
-### Espiritismo
-- **Origem:** Allan Kardec, *O Livro dos Espíritos* (Paris, 1857). Muito difundido no Brasil.
-- **Crenças-chave:** reencarnação; comunicação com os mortos por médiuns; Jesus seria um espírito muito evoluído, não Deus.
-- **Entenda:** Allan Kardec é o pseudônimo de Hippolyte Rivail, pedagogo francês. Ele sistematizou as respostas obtidas de médiuns na época da moda das "mesas girantes": *O Livro dos Espíritos* (1857), *O Livro dos Médiuns* (1861) e *O Evangelho segundo o Espiritismo* (1864). Ensina que as almas evoluem por sucessivas reencarnações e que a caridade é o caminho da salvação. Nega a Trindade, a divindade de Cristo, o pecado original, o inferno eterno e a ressurreição da carne. O Brasil tem o maior número de espíritas do mundo.
-- **Cristãos?** Não. O Santo Ofício proibiu participar de sessões espíritas (1917); o CIC condena a evocação dos mortos (CIC 2116-2117).
-- **Na Bíblia:** **Hb 9,27** ("está determinado que os homens **morram uma só vez**, e depois vem o juízo"); **Lc 16,26** (o abismo intransponível); **Dt 18,10-12**; **Lv 19,31**; **Is 8,19** ("consultará um povo os mortos em favor dos vivos?").
-- **Objeção relacionada:** 32.
-
-### Nova Era
-- **Origem:** década de 1970 em diante; mistura de esoterismo, religiões orientais e psicologia.
-- **Crenças-chave:** Deus como "energia" impessoal; o homem descobriria que é divino; cristais, energias e reencarnação.
-- **Entenda:** O nome vem da "Era de Aquário", que, segundo a astrologia, substituiria a "Era de Peixes", identificada com o cristianismo. Não tem fundador nem doutrina única: mistura astrologia, gnosticismo, hinduísmo, budismo, psicologia e terapias alternativas. O centro é a autorrealização: cada um descobriria o "divino" dentro de si. Jesus seria só um mestre que despertou a "consciência crística" que todos teriam. Não há pecado nem necessidade de Salvador, apenas "ignorância" a ser superada.
-- **Documento:** Pontifícios Conselhos da Cultura e do Diálogo Inter-religioso, *Jesus Cristo, portador da água viva* (2003).
-- **Na Bíblia:** **Gn 3,5** ("sereis como deuses": a primeira tentação); **Ex 20,3**; **Jo 14,6**.
-
 ### Teologia da Prosperidade
 - **Origem:** movimento "Palavra da Fé" (EUA, século XX); hoje difundida em igrejas neopentecostais.
 - **Crenças-chave:** a fé e as ofertas garantem riqueza e saúde; pobreza e doença seriam falta de fé.
