@@ -163,6 +163,7 @@ sup.fn button:hover { background: var(--accent); color: var(--surface); }
     <div class="row" id="filtros" role="group" aria-label="Filtrar por público"></div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" data-view="lista" aria-selected="true" id="t-lista">Objeções</button>
+      <button class="tab" role="tab" data-view="heresias" aria-selected="false" id="t-heresias">Heresias</button>
       <button class="tab" role="tab" data-view="cola" aria-selected="false" id="t-cola">Cola rápida</button>
       <button class="tab" role="tab" data-view="treino" aria-selected="false" id="t-treino">Treinar</button>
       <button class="tab" role="tab" data-view="como" aria-selected="false" id="t-como">Como usar</button>
@@ -177,6 +178,12 @@ sup.fn button:hover { background: var(--accent); color: var(--surface); }
       <span class="acoes"><button class="btn" id="abrir">Abrir todas</button><button class="btn" id="fechar">Fechar todas</button></span>
     </div>
     <div id="lista"></div>
+  </section>
+  <section id="v-heresias" hidden>
+    <div class="painel"><h2>Heresias</h2><p>32 heresias antigas e movimentos de hoje: o que ensinam, quando foram condenados, os versículos que respondem e as objeções do guia ligadas a cada um.</p>
+      <details class="estudos"><summary>O que é heresia, apostasia e cisma</summary><div id="heresias-intro"></div></details></div>
+    <div class="meta" style="margin-top:12px"><span id="h-contagem"></span></div>
+    <div id="heresias"></div>
   </section>
   <section id="v-cola" hidden>
     <div class="painel"><h2>Cola rápida</h2><div id="cola"></div></div>
@@ -198,7 +205,7 @@ sup.fn button:hover { background: var(--accent); color: var(--surface); }
 <script>
 const D = /*DADOS*/null;
 const PUBLICOS = [
-  ["todos", "Todos"], ["protestantes", "Protestantes"], ["seitas", "TJ e adventistas"],
+  ["todos", "Todos"], ["protestantes", "Protestantes"], ["naotrinitarios", "TJ e unicistas"],
   ["ateus", "Ateus"], ["islam", "Muçulmanos"], ["moral", "Moral"]
 ];
 const ROTULOS = { objecao: "A objeção", resposta: "Resposta católica", biblia: "Na Bíblia",
@@ -207,6 +214,7 @@ const ORDEM = ["objecao", "resposta", "biblia", "replica", "historia", "catecism
 
 let publico = "todos";
 try { publico = localStorage.getItem("oeb-publico") || "todos"; } catch (e) {}
+if (!PUBLICOS.some(([k]) => k === publico)) publico = "todos";
 
 const norm = s => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
   .replace(/(\d)\s*[:.]\s*(\d)/g, "$1,$2").replace(/\s+/g, " ");
@@ -219,7 +227,7 @@ const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&
 
 // Filtros
 $("#filtros").innerHTML = PUBLICOS.map(([k, v]) => {
-  const n = k === "todos" ? D.itens.length : D.itens.filter(i => i.publico === k).length;
+  const n = k === "todos" ? D.itens.length : D.itens.filter(i => i.publico.includes(k)).length;
   return `<button class="chip" data-p="${k}" aria-pressed="${k === publico}">${v} <span aria-hidden="true">· ${n}</span></button>`;
 }).join("");
 $("#filtros").addEventListener("click", e => {
@@ -261,7 +269,7 @@ function ficha(i) {
 
 function filtrar() {
   const termos = norm($("#q").value).split(" ").filter(Boolean);
-  return D.itens.filter(i => (publico === "todos" || i.publico === publico) && termos.every(t => i._busca.includes(t)));
+  return D.itens.filter(i => (publico === "todos" || i.publico.includes(publico)) && termos.every(t => i._busca.includes(t)));
 }
 
 function render() {
@@ -322,21 +330,31 @@ document.addEventListener("click", e => {
 });
 
 let timer;
-$("#q").addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(() => { mostrar("lista"); render(); }, 120); });
+$("#q").addEventListener("input", () => {
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    if (vista === "heresias") return renderHeresias();
+    mostrar("lista"); render();
+  }, 120);
+});
 
 // Abas
+let vista = "lista";
 function mostrar(v) {
+  vista = v;
   document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.view === v));
-  ["lista", "cola", "treino", "como"].forEach(k => $("#v-" + k).hidden = k !== v);
+  ["lista", "heresias", "cola", "treino", "como"].forEach(k => $("#v-" + k).hidden = k !== v);
 }
 document.querySelector(".tabs").addEventListener("click", e => {
   const t = e.target.closest(".tab"); if (!t) return;
   mostrar(t.dataset.view); window.scrollTo({ top: 0 });
+  if (t.dataset.view === "heresias") renderHeresias();
+  if (t.dataset.view === "lista") render();
 });
 
 // Treino
 function novoTreino() {
-  const pool = D.itens.filter(i => publico === "todos" || i.publico === publico);
+  const pool = D.itens.filter(i => publico === "todos" || i.publico.includes(publico));
   const i = pool[Math.floor(Math.random() * pool.length)];
   $("#treino").innerHTML = `<p class="rot" style="color:var(--muted)">Nº ${i.n} · ${esc(i.tema)}</p>
     <p class="q">“${esc((i.objecao_txt || i.titulo).replace(/^"|"$/g, ""))}”</p>
@@ -368,6 +386,29 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") fechaPop(); 
 window.addEventListener("resize", fechaPop);
 
 $("#todas-fontes").innerHTML = Object.entries(D.fn).map(([k, v]) => `<li>${v}</li>`).join("");
+// Heresias
+D.heresias.forEach(h => h._busca = norm([h.nome, h.grupo, ...h.campos.map(c => c.txt)].join(" ")));
+$("#heresias-intro").innerHTML = D.heresias_intro;
+function renderHeresias() {
+  const termos = norm($("#q").value).split(" ").filter(Boolean);
+  const lista = D.heresias.filter(h => termos.every(t => h._busca.includes(t)));
+  $("#h-contagem").textContent = termos.length ? `${lista.length} de ${D.heresias.length} heresias e movimentos` : `${D.heresias.length} heresias e movimentos`;
+  let html = "", grupo = null;
+  lista.forEach(h => {
+    if (h.grupo !== grupo) { if (grupo !== null) html += "</div>"; grupo = h.grupo; html += `<h2 class="parte"><b>${esc(grupo)}</b></h2><div class="list">`; }
+    const resumo = (h.campos.find(c => c.rot === "O que ensinava" || c.rot === "Crenças-chave") || {}).txt || "";
+    const epoca = (h.campos.find(c => c.rot === "Época" || c.rot === "Origem") || {}).txt || "";
+    html += `<details class="ficha"><summary>
+      <span class="num" aria-hidden="true">✠</span><span class="tit">${esc(h.nome)}</span>
+      <svg class="chev" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <span class="sub">${esc(epoca.length > 90 ? epoca.slice(0, 87) + "…" : epoca)}</span></summary>
+      <div class="corpo">${h.campos.map(c => `<div class="bloco ${c.rot === "O que ensinava" || c.rot === "Crenças-chave" ? "b-objecao" : c.rot === "Na Bíblia" ? "b-biblia" : c.rot === "Condenação" || c.rot === "Cristãos?" || c.rot === "Documento" || c.rot === "Situação" ? "b-resposta" : "b-replica"}"><span class="rot">${esc(c.rot)}</span><p>${c.html}</p></div>`).join("")}</div>
+    </details>`;
+  });
+  $("#heresias").innerHTML = lista.length ? html + "</div>" : `<p class="vazio">Nada encontrado. Tente “arianismo”, “Trindade” ou “Maria”.</p>`;
+}
+renderHeresias();
+
 $("#cola").innerHTML = D.cola;
 $("#como").innerHTML = D.como;
 $("#leituras").innerHTML = D.leituras;

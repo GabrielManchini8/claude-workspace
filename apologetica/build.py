@@ -17,7 +17,7 @@ PARTES = {
     "III": ("Sacramentos e culto", "protestantes"),
     "IV": ("Maria, santos e imagens", "protestantes"),
     "V": ("Práticas católicas", "protestantes"),
-    "VI": ("TJ, unicistas, adventistas", "seitas"),
+    "VI": ("Testemunhas de Jeová, unicistas e adventistas", "naotrinitarios"),
     "VII": ("Objeções ateias", "ateus"),
     "VIII": ("Mais objeções protestantes", "protestantes"),
     "IX": ("Questões morais", "moral"),
@@ -167,6 +167,8 @@ for b in blocos:
     novos, notas = numera([item[k] for k in chaves])
     item.update(zip(chaves, novos))
     item["fontes"] = [{"n": n, "id": f, "html": inline(FN[f]), "txt": plano(FN[f])} for n, f in notas]
+    # Adventistas são protestantes: a objeção 46 vale para os dois públicos
+    item["publico"] = [item["publico"]] + (["protestantes"] if num == 46 else [])
     usa = re.search(r"\((?:usam|popularizado)[^)]*\)", item.get("objecao_txt", ""))
     item["usam"] = usa.group(0)[1:-1] if usa else ""
     itens.append(item)
@@ -185,6 +187,31 @@ dados = {"itens": itens, "partes": {k: v[0] for k, v in PARTES.items()},
          "islam": estudos_islam,
          "islam_fontes": [{"n": n, "id": f, "html": inline(FN[f])} for n, f in fn_islam],
          "fn": {k: inline(v) for k, v in FN.items()}}
+
+# Aba de heresias (heresias.md)
+HMD = (DIR / "heresias.md").read_text(encoding="utf-8")
+
+
+def liga_objecoes(h):
+    return re.sub(r"(Objeç(?:ões|ão) relacionadas?:)([^<]*)",
+                  lambda m: m.group(1) + re.sub(r"\b(\d{1,3})\b", r'<a href="#n\1">\1</a>', m.group(2)), h)
+
+
+heresias, grupo = [], None
+intro = md_html(HMD.split("\n## Heresias antigas")[0].split("\n", 1)[1])
+for b in re.split(r"^(?=## |### )", HMD, flags=re.M):
+    if b.startswith("## ") and not b.startswith("## O que"):
+        grupo = b.split("\n", 1)[0][3:].strip()
+    elif b.startswith("### "):
+        nome, corpo = b.split("\n", 1)
+        campos = re.findall(r"^- \*\*(.+?):\*\* (.+)$", corpo, re.M)
+        heresias.append({"nome": nome[4:].strip(), "grupo": grupo,
+                         "campos": [{"rot": r, "html": liga_objecoes(inline(t)), "txt": plano(t)} for r, t in campos]})
+dados["heresias"] = heresias
+dados["heresias_intro"] = intro
+(DIR / "heresias.json").write_text(json.dumps(
+    [{"nome": h["nome"], "grupo": h["grupo"], **{c["rot"]: c["txt"] for c in h["campos"]}} for h in heresias],
+    ensure_ascii=False, indent=1), encoding="utf-8")
 
 # Formato padrão legível por outras ferramentas
 (DIR / "objecoes.json").write_text(json.dumps(

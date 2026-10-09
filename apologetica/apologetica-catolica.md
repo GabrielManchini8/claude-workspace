@@ -90,7 +90,7 @@ O método: responder a protestantes, ateus e muçulmanos **usando a própria Bí
 42. [Guardar o domingo e não o sábado](#42-guardar-o-domingo-e-não-o-sábado)
 43. [O Natal é festa pagã](#43-o-natal-é-festa-pagã)
 
-**Parte VI — Outras objeções (Testemunhas de Jeová, unicistas, adventistas)**
+**Parte VI — Testemunhas de Jeová, unicistas e adventistas**
 44. [A Trindade não está na Bíblia](#44-a-trindade-não-está-na-bíblia)
 45. [Jesus não é Deus](#45-jesus-não-é-deus)
 46. [A alma morre / o inferno não é eterno](#46-a-alma-morre--o-inferno-não-é-eterno)
@@ -1048,7 +1048,7 @@ O método: responder a protestantes, ateus e muçulmanos **usando a própria Bí
 
 ---
 
-# PARTE VI — OUTRAS OBJEÇÕES (TJ, UNICISTAS, ADVENTISTAS)
+# PARTE VI — TESTEMUNHAS DE JEOVÁ, UNICISTAS E ADVENTISTAS
 
 ### 44. A Trindade não está na Bíblia
 

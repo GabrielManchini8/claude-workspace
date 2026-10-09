@@ -15,3 +15,4 @@ Cada projeto novo pode ficar numa pasta própria aqui dentro.
   - Página com busca: https://claude.ai/artifact/NMsFZHLvPtHWCD67snnxvs (gerada por `apologetica/build.py`)
   - Dados no formato padrão: `apologetica/objecoes.json`
   - Fontes extrabíblicas (notas de rodapé): `apologetica/fontes.py`
+  - Heresias antigas e movimentos de hoje: `apologetica/heresias.md`
