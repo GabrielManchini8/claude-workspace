@@ -11,6 +11,8 @@ inspirado no trabalho de Chris Harrison e Christoph Römhild.
   [Theographic Bible Metadata](https://github.com/robertrouse/theographic-bible-metadata) (CC BY-SA 4.0).
   Uso: `python3 prep_atlas.py <clone do theographic> data.json names_pt.json land.json atlas.json`
 - `land.js`: recorta o litoral do Natural Earth (`world-atlas@2.0.2`, `topojson-client@3.1.0`) em `land.json`.
+- `prep_text.py`: gera `texts/<livro>.json` com o texto dos versículos (Bíblia Livre, CC BY 3.0 BR, nos 66 livros;
+  Catholic Public Domain Version, em inglês, nos deuterocanônicos). A página carrega esses arquivos sob demanda.
 - `names_pt.json`: nomes em português das pessoas e lugares mais citados.
 - `template.html`: a página; `__DATA__`, `__DEUT__` e `__ATLAS__` são substituídos pelos JSON.
 - `biblia-catolica-arcos.html`: a página já montada.

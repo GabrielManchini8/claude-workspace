@@ -163,6 +163,20 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
 .lnote { font-size: 12px; color: var(--night-ink-3); }
 .chips.tight .chip { font-size: 12.5px; padding: 3px 10px; }
 .chip .n { font-family: var(--f-mono); font-size: 11px; color: var(--ink-3); margin-left: 4px; }
+.col { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.rbody { display: grid; gap: 14px; max-height: 460px; overflow-y: auto; padding-right: 6px; }
+.rch { display: grid; gap: 6px; }
+.rch h4 { margin: 0; font-family: var(--f-display); font-size: 18px; font-weight: 600; color: var(--night-ink); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.rch h4 button { background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline; text-decoration-color: var(--night-rule); text-underline-offset: 3px; }
+.rch h4 button:hover { text-decoration-color: var(--gold); }
+.rch h4 small { font-family: var(--f-mono); font-size: 11px; color: var(--night-ink-3); font-weight: 400; }
+.rv { color: var(--night-ink-2); font-family: var(--f-display); font-size: 17px; line-height: 1.5; max-width: 68ch; margin: 0; }
+.rv sup { font-family: var(--f-mono); font-size: 10.5px; color: var(--gold); margin-right: 5px; vertical-align: 2px; }
+.rv mark { background: rgba(217,180,90,0.22); color: var(--night-ink); border-radius: 3px; padding: 0 2px; }
+.rv.en { font-style: italic; }
+.rmore { justify-self: start; background: var(--night); border: 1px solid var(--night-rule); color: var(--night-ink-2); border-radius: 99px; padding: 4px 12px; font-size: 12.5px; cursor: pointer; }
+.rmore:hover { color: var(--night-ink); }
+.rempty { color: var(--night-ink-3); font-size: 13.5px; }
 .subh { display: flex; align-items: center; gap: 8px; }
 .subh i { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); display: inline-block; }
 </style>
@@ -207,6 +221,7 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
       <p>O mapa e a árvore seguem a seleção do gráfico: um capítulo acende seus lugares e sua família principal; uma pessoa ou um lugar acende, nos arcos, os capítulos onde aparece.</p>
     </div>
     <div class="atlas">
+      <div class="col">
       <div class="pane">
         <div class="pane-top">
           <h3>Mapa</h3>
@@ -219,6 +234,11 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
         <div class="jchips" id="jchips" role="group" aria-label="Viagens"></div>
         <div class="mapbox" id="mapbox"><canvas id="map"></canvas><div class="tip" id="maptip" hidden></div></div>
         <div class="mapnote"><span><i></i>Lugares da seleção (tamanho = menções)</span><span>Pontos cinza: os 1.235 lugares com coordenadas</span></div>
+      </div>
+      <div class="pane reader" id="reader" aria-live="polite">
+        <div class="pane-top"><h3 id="readerTitle">Versículos</h3><span class="lnote" id="readerNote"></span></div>
+        <div class="rbody" id="readerBody"></div>
+      </div>
       </div>
       <div class="pane">
         <div class="pane-top"><h3>Árvore genealógica</h3><span class="lnote" id="treeWho"></span></div>
@@ -279,7 +299,7 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
   </section>
 
   <footer class="foot">
-    <p><strong>Fontes.</strong> Referências cruzadas: OpenBible.info, CC BY (versão de 04/11/2024, 344.799 referências versículo a versículo), via <a href="https://github.com/scrollmapper/bible_databases" target="_blank" rel="noopener">scrollmapper/bible_databases</a>. Versículos por capítulo: King James (66 livros) e Catholic Public Domain Version (deuterocanônicos). Ligações deuterocanônicas: curadoria própria, a conferir numa Bíblia de estudo católica. Pessoas, famílias, lugares e viagens de Paulo: <a href="https://github.com/robertrouse/theographic-bible-metadata" target="_blank" rel="noopener">Theographic Bible Metadata</a>, CC BY-SA 4.0 (coordenadas do OpenBible.info). Litoral: Natural Earth, domínio público. Viagens de Abraão, Jacó, Êxodo, Davi, Elias, exílio, Tobias, Macabeus e Jesus: curadoria própria; Rages e Modin com coordenadas aproximadas. Inspirado em Chris Harrison e Christoph Römhild (2008).</p>
+    <p><strong>Fontes.</strong> Referências cruzadas: OpenBible.info, CC BY (versão de 04/11/2024, 344.799 referências versículo a versículo), via <a href="https://github.com/scrollmapper/bible_databases" target="_blank" rel="noopener">scrollmapper/bible_databases</a>. Versículos por capítulo: King James (66 livros) e Catholic Public Domain Version (deuterocanônicos). Ligações deuterocanônicas: curadoria própria, a conferir numa Bíblia de estudo católica. Texto dos versículos: <a href="https://sites.google.com/site/biblialivre/" target="_blank" rel="noopener">Bíblia Livre</a> (CC BY 3.0 Brasil) nos 66 livros e Catholic Public Domain Version (em inglês) nos deuterocanônicos, até haver uma tradução católica em português com licença aberta. Pessoas, famílias, lugares e viagens de Paulo: <a href="https://github.com/robertrouse/theographic-bible-metadata" target="_blank" rel="noopener">Theographic Bible Metadata</a>, CC BY-SA 4.0 (coordenadas do OpenBible.info). Litoral: Natural Earth, domínio público. Viagens de Abraão, Jacó, Êxodo, Davi, Elias, exílio, Tobias, Macabeus e Jesus: curadoria própria; Rages e Modin com coordenadas aproximadas. Inspirado em Chris Harrison e Christoph Römhild (2008).</p>
     <p><strong>Limites.</strong> Salmos na numeração hebraica dos dados de origem (a Ave-Maria usa a grega, em geral um número a menos). Os acréscimos gregos de Ester não aparecem como capítulos separados.</p>
   </footer>
 </div>
@@ -856,7 +876,7 @@ const ATLAS = __ATLAS__;
     const r = mcanvas.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top; const l = nearestPlace(px, py);
     if (l < 0) { maptip.hidden = true; mcanvas.style.cursor = "default"; return; }
     mcanvas.style.cursor = "pointer";
-    maptip.innerHTML = `<div class="t" style="font-size:16px"></div><div class="m"></div><div class="h">Clique para ver capítulos e pessoas</div>`;
+    maptip.innerHTML = `<div class="t" style="font-size:16px"></div><div class="m"></div><div class="h">Clique para ler os versículos</div>`;
     maptip.querySelector(".t").textContent = PL[l][0]; maptip.querySelector(".m").textContent = `${TYPE[PL[l][3]] || "Lugar"} · ${fmt(PL[l][4])} versículos`;
     maptip.hidden = false; const tw = maptip.offsetWidth, th = maptip.offsetHeight;
     maptip.style.left = Math.max(0, Math.min(px + 12, mapW - tw)) + "px"; maptip.style.top = Math.max(0, py - th - 10) + "px";
@@ -954,12 +974,88 @@ const ATLAS = __ATLAS__;
     const pick = cand.find(hasFamily); if (pick != null) treeFocus = pick; else if (cand.length) treeFocus = cand[0];
     drawTree();
   }
-  function atlasUpdate() { mapUpdate(); treeUpdate(); }
+  // ---------- leitor de versículos ----------
+  const readerTitle = document.getElementById("readerTitle"), readerNote = document.getElementById("readerNote"), readerBody = document.getElementById("readerBody");
+  const bookCache = {};
+  const loadBook = code => bookCache[code] || (bookCache[code] = fetch(`texts/${code}.json`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).catch(e => { delete bookCache[code]; throw e; }));
+  const isEN = (c) => ch[c][3] === 1;
+  let readerToken = 0;
+  const parseRef = ref => { const m = ref.match(/,(\d+)(?:-(\d+))?/); if (!m) return null; const a = +m[1], b = m[2] ? +m[2] : a; const out = []; for (let v = a; v <= Math.min(b, a + 12); v++) out.push(v); return out; };
+  function highlight(el, text, term) {
+    if (!term) { el.appendChild(document.createTextNode(text)); return; }
+    // remove acentos letra a letra, preservando o comprimento para recortar o texto original
+    const fold = s => Array.from(s).map(c => c.normalize("NFD")[0].toLowerCase()).join("");
+    const plain = fold(text), nterm = fold(term); let i = 0, k;
+    while ((k = plain.indexOf(nterm, i)) >= 0 && nterm.length > 2) {
+      el.appendChild(document.createTextNode(text.slice(i, k)));
+      const mk = document.createElement("mark"); mk.textContent = text.slice(k, k + nterm.length); el.appendChild(mk); i = k + nterm.length;
+    }
+    el.appendChild(document.createTextNode(text.slice(i)));
+  }
+  // groups: [{c: chapterIndex, vs: [verse numbers] | null (capítulo inteiro), label?}]
+  async function showGroups(groups, term, token, limit) {
+    readerBody.innerHTML = "";
+    if (!groups.length) { readerBody.innerHTML = `<p class="rempty">Nenhum versículo registrado para esta seleção.</p>`; return; }
+    let shown = 0; const total = groups.reduce((a, g) => a + (g.vs ? g.vs.length : 1), 0);
+    for (const g of groups) {
+      if (shown >= limit) break;
+      const code = books[ch[g.c][0]].code; let bk;
+      try { bk = await loadBook(code); } catch (e) { readerBody.innerHTML = `<p class="rempty">Não foi possível carregar o texto de ${books[ch[g.c][0]].pt}. Recarregue a página e tente de novo.</p>`; return; }
+      if (token !== readerToken) return;
+      const verses = bk[ch[g.c][1] - 1] || [];
+      const sec = document.createElement("div"); sec.className = "rch";
+      const h = document.createElement("h4"); const hb = document.createElement("button"); hb.type = "button"; hb.textContent = g.label || chName(g.c);
+      hb.title = "Abrir este capítulo"; hb.onclick = () => select({ t: "ch", i: g.c }, false); h.appendChild(hb);
+      if (g.sub) { const sm = document.createElement("small"); sm.textContent = g.sub; h.appendChild(sm); }
+      if (isEN(g.c)) { const sm = document.createElement("small"); sm.textContent = "texto em inglês (CPDV)"; h.appendChild(sm); }
+      sec.appendChild(h);
+      const list = g.vs || verses.map((_, i) => i + 1);
+      const p = document.createElement("p"); p.className = "rv" + (isEN(g.c) ? " en" : "");
+      list.forEach(v => { const tx = verses[v - 1]; if (!tx) return; const sup = document.createElement("sup"); sup.textContent = v; p.appendChild(sup); highlight(p, tx + " ", term); });
+      sec.appendChild(p); readerBody.appendChild(sec);
+      shown += g.vs ? g.vs.length : 1;
+    }
+    if (shown < total) {
+      const b = document.createElement("button"); b.type = "button"; b.className = "rmore"; b.textContent = `Mostrar mais (${fmt(total - shown)} restantes)`;
+      b.onclick = () => showGroups(groups, term, token, limit + 60); readerBody.appendChild(b);
+    }
+  }
+  function groupRefs(refs) {
+    const m = new Map(); refs.forEach(x => { const c = x >> 8, v = x & 255; if (!m.has(c)) m.set(c, []); m.get(c).push(v); });
+    return [...m.entries()].map(([c, vs]) => ({ c, vs }));
+  }
+  function renderReader() {
+    const s = state.sel; const token = ++readerToken; readerNote.textContent = "";
+    if (!s || s.t === "book") {
+      readerTitle.textContent = "Versículos";
+      readerBody.innerHTML = `<p class="rempty">Clique num lugar do mapa, numa pessoa da árvore ou num capítulo do gráfico para ler os versículos aqui.</p>`;
+      return;
+    }
+    if (s.t === "place") {
+      const refs = ATLAS.pv[s.i] || []; readerTitle.textContent = `Versículos que citam ${PL[s.i][0]}`; readerNote.textContent = `${fmt(refs.length)} versículos`;
+      if (!refs.length) { const st = JOURNEYS.flatMap(j => j.stops || []).filter(x => x.l === s.i); return showGroups(st.map(x => ({ c: x.ch, vs: parseRef(x.ref), sub: x.ref })), PL[s.i][0], token, 40); }
+      return showGroups(groupRefs(refs), PL[s.i][0].replace(/ \(.*\)$/, ""), token, 40);
+    }
+    if (s.t === "person") {
+      const refs = ATLAS.hv[s.i] || []; const nm = PE[s.i][0].replace(/ \(.*\)$/, "").replace(/^(.*?),.*$/, "$1");
+      readerTitle.textContent = `Versículos com ${pName(s.i)}`; readerNote.textContent = `${fmt(refs.length)} versículos`;
+      return showGroups(groupRefs(refs), nm.split(" ")[0], token, 40);
+    }
+    if (s.t === "journey") {
+      const j = JOURNEYS[s.i]; readerTitle.textContent = j.name; readerNote.textContent = j.refs;
+      if (j.stops) return showGroups(j.stops.map((x, k) => ({ c: x.ch, vs: parseRef(x.ref), label: `${k + 1}. ${PL[x.l][0]}`, sub: x.ref })), null, token, 60);
+      return showGroups(j.chs.map(c => ({ c, vs: null })), null, token, 2);
+    }
+    readerTitle.textContent = chName(s.i); readerNote.textContent = `${ch[s.i][2]} versículos`;
+    return showGroups([{ c: s.i, vs: null }], null, token, 1);
+  }
+
+  function atlasUpdate() { mapUpdate(); treeUpdate(); renderReader(); }
   let lastMapW = 0;
   new ResizeObserver(() => { if (mapbox.clientWidth !== lastMapW) { lastMapW = mapbox.clientWidth; mapLayout(); drawMap(); drawTree(); } }).observe(mapbox);
 
   // ---------- busca ----------
-  const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+  const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
   const dl = document.getElementById("books");
   books.forEach(b => { const o = document.createElement("option"); o.value = b.pt; dl.appendChild(o); });
   function resolve(q) {

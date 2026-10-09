@@ -144,7 +144,19 @@ line, cur = [], "jesus_905"
 while cur in hidx and len(line) < 100:
     line.append(hidx[cur]); cur = byid[cur]["father"]
 
-out = {"places": places, "people": people_out, "chP": chP, "chL": chL, "co": coOut,
+def vrefs(s):
+    out = []
+    for ref in (s or "").split(","):
+        parts = ref.strip().split(".")
+        if len(parts) != 3 or parts[0] not in code_idx: continue
+        out.append(ch_index(parts[0], int(parts[1])) * 256 + int(parts[2]))
+    return sorted(set(out))
+placeVerses = [[] for _ in places]
+for r in L:
+    if r["placeLookup"] in pidx: placeVerses[pidx[r["placeLookup"]]] = vrefs(r["verses"])
+personVerses = [vrefs(r["verses"]) for r in people]
+
+out = {"places": places, "pv": placeVerses, "hv": personVerses, "people": people_out, "chP": chP, "chL": chL, "co": coOut,
        "journeys": journeys, "paul": paul, "line": line, "land": json.load(open(LAND)),
        "special": {"jesus": hidx["jesus_905"], "joseph": hidx["joseph_1715"], "mary": hidx["mary_1938"]}}
 json.dump(out, open(OUT, "w"), separators=(",", ":"), ensure_ascii=False)
