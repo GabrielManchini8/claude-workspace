@@ -36,8 +36,13 @@ CAMPOS = [
 ]
 
 
+FN = dict(re.findall(r"^\[\^([\w-]+)\]: (.+)$", MD, re.M))
+MD_SEM_FONTES = MD.split("\n## Fontes das citações")[0]
+
+
 def inline(t):
     t = html.escape(t, quote=False)
+    t = re.sub(r"\[\^([\w-]+)\]", r'<sup class="fn" data-fn="\1"></sup>', t)
     t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
     t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<em>\1</em>", t)
     t = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', t)
@@ -103,19 +108,34 @@ def md_html(text):
 
 
 def plano(t):
+    t = re.sub(r"\[\^[\w-]+\]", "", t)
     return re.sub(r"[*_`>|]", "", t).strip()
+
+
+def numera(htmls):
+    """Numera as notas na ordem em que aparecem; devolve (htmls, [(n, id)])."""
+    ordem = []
+
+    def troca(m):
+        fid = m.group(1)
+        if fid not in ordem:
+            ordem.append(fid)
+        n = ordem.index(fid) + 1
+        return f'<sup class="fn"><button type="button" data-fn="{fid}" aria-label="Fonte {n}">{n}</button></sup>'
+    out = [re.sub(r'<sup class="fn" data-fn="([\w-]+)"></sup>', troca, h) for h in htmls]
+    return out, [(i + 1, f) for i, f in enumerate(ordem)]
 
 
 itens, parte = [], None
 estudos_islam = ""
-blocos = re.split(r"^(?=# PARTE |### \d+\. |## Cola rápida|## Existem estudos)", MD, flags=re.M)
+blocos = re.split(r"^(?=# PARTE |### \d+\. |## Cola rápida|## Existem estudos)", MD_SEM_FONTES, flags=re.M)
 for b in blocos:
     if b.startswith("# PARTE "):
         parte = re.match(r"# PARTE ([IVX]+)", b).group(1)
         continue
     if b.startswith("## Existem estudos"):
         corpo = b.split("\n", 1)[1].split("\n---")[0]
-        estudos_islam = md_html(corpo)
+        (estudos_islam,), fn_islam = numera([md_html(corpo)])
         continue
     m = re.match(r"### (\d+)\. (.+)", b)
     if not m:
@@ -143,6 +163,10 @@ for b in blocos:
             texto = texto[rotulo.end():]
         item[nome] = md_html(texto)
         item[nome + "_txt"] = plano(texto)
+    chaves = [k for k in ("objecao", "resposta", "biblia", "replica", "historia", "catecismo") if k in item]
+    novos, notas = numera([item[k] for k in chaves])
+    item.update(zip(chaves, novos))
+    item["fontes"] = [{"n": n, "id": f, "html": inline(FN[f]), "txt": plano(FN[f])} for n, f in notas]
     usa = re.search(r"\((?:usam|popularizado)[^)]*\)", item.get("objecao_txt", ""))
     item["usam"] = usa.group(0)[1:-1] if usa else ""
     itens.append(item)
@@ -153,16 +177,19 @@ cola = re.search(r"## Cola rápida\n(.*?)\n---", MD, re.S).group(1)
 cola_html = md_html(cola)
 como = re.search(r"## Como usar este guia\n(.*?)\n---", MD, re.S).group(1)
 como_html = md_html(como)
-leituras = re.search(r"## Para aprofundar\n(.*?)\n> ", MD, re.S).group(1)
+leituras = re.search(r"## Para aprofundar\n(.*?)\n> ", MD_SEM_FONTES, re.S).group(1)
 leituras_html = md_html(leituras)
 
 dados = {"itens": itens, "partes": {k: v[0] for k, v in PARTES.items()},
          "cola": cola_html, "como": como_html, "leituras": leituras_html,
-         "islam": estudos_islam}
+         "islam": estudos_islam,
+         "islam_fontes": [{"n": n, "id": f, "html": inline(FN[f])} for n, f in fn_islam],
+         "fn": {k: inline(v) for k, v in FN.items()}}
 
 # Formato padrão legível por outras ferramentas
 (DIR / "objecoes.json").write_text(json.dumps(
     [{k: v for k, v in i.items() if k.endswith("_txt") or k in ("n", "titulo", "parte", "tema", "publico", "usam")}
+     | {"fontes": [f["txt"] for f in i["fontes"]]}
      for i in itens], ensure_ascii=False, indent=1), encoding="utf-8")
 
 tpl = (DIR / "app.template.html").read_text(encoding="utf-8")

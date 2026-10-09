@@ -120,6 +120,27 @@ details.estudos > summary { cursor: pointer; font-weight: 700; color: var(--acce
 .vazio { color: var(--muted); padding: 32px 0; text-align: center; }
 mark { background: color-mix(in srgb, var(--gold) 30%, transparent); color: inherit; border-radius: 2px; }
 
+
+sup.fn { line-height: 0; }
+sup.fn button {
+  font: 600 .7rem/1 var(--font-ui); color: var(--accent); background: var(--accent-soft);
+  border: none; border-radius: 4px; padding: 2px 4px; margin-left: 1px; cursor: pointer; vertical-align: super;
+}
+sup.fn button:hover { background: var(--accent); color: var(--surface); }
+.b-fontes { font-family: var(--font-ui); font-size: .86rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+.b-fontes ol, .lista-fontes { margin: 0; padding-left: 1.3rem; }
+.b-fontes li { margin: 3px 0; }
+.b-fontes li.alvo { color: var(--ink); background: var(--accent-soft); border-radius: 4px; }
+.lista-fontes { font-family: var(--font-ui); font-size: .9rem; }
+.lista-fontes li { margin: 6px 0; }
+.lista-fontes code { font-size: .78rem; color: var(--muted); }
+.pop {
+  position: absolute; z-index: 30; max-width: min(360px, calc(100vw - 32px)); background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font: .88rem/1.45 var(--font-ui);
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.pop .rot { color: var(--accent); }
+
 @media (max-width: 560px) {
   header.top { position: static; }
   details.ficha { scroll-margin-top: 12px; }
@@ -170,6 +191,7 @@ mark { background: color-mix(in srgb, var(--gold) 30%, transparent); color: inhe
   <section id="v-como" hidden>
     <div class="painel"><h2>Como usar</h2><div id="como"></div></div>
     <div class="painel" style="margin-top:12px"><h2>Para aprofundar</h2><div id="leituras"></div></div>
+    <div class="painel" style="margin-top:12px"><h2>Fontes das citações</h2><p>Tudo o que o guia cita fora da Bíblia, com autor, obra, capítulo e data.</p><ol class="lista-fontes" id="todas-fontes"></ol></div>
   </section>
 </main>
 
@@ -219,7 +241,9 @@ function corpo(i) {
     const rot = k === "biblia" && i.biblia_rotulo && i.biblia_rotulo !== "Na Bíblia" ? i.biblia_rotulo : ROTULOS[k];
     return `<div class="bloco b-${k}"><span class="rot">${esc(rot)}</span>${i[k]}</div>`;
   }).join("");
-  return `<div class="corpo">${blocos}
+  const fontes = i.fontes && i.fontes.length
+    ? `<div class="bloco b-fontes"><span class="rot">Fontes fora da Bíblia</span><ol>${i.fontes.map(f => `<li data-id="${f.id}">${f.html}</li>`).join("")}</ol></div>` : "";
+  return `<div class="corpo">${blocos}${fontes}
     <div class="acoes"><button class="btn" data-copiar="${i.n}">Copiar resposta</button><button class="btn" data-link="${i.n}">Copiar link</button></div></div>`;
 }
 
@@ -252,7 +276,7 @@ function render() {
       if (parte !== null) html += `</div>`;
       parte = i.parte;
       html += `<h2 class="parte"><b>Parte ${parte}</b> ${esc(D.partes[parte])}</h2><div class="list">`;
-      if (parte === "XI" && D.islam) html += `<details class="estudos"><summary>Estudos clássicos católicos sobre o Islã (São Tomás, São João Damasceno…)</summary><div class="tbl" style="border:none">${D.islam}</div></details>`;
+      if (parte === "XI" && D.islam) html += `<details class="estudos"><summary>Estudos clássicos católicos sobre o Islã (São Tomás, São João Damasceno…)</summary><div class="tbl" style="border:none">${D.islam}</div><div class="b-fontes" style="margin-top:8px"><span class="rot">Fontes</span><ol>${D.islam_fontes.map(f => `<li data-id="${f.id}">${f.html}</li>`).join("")}</ol></div></details>`;
     }
     html += ficha(i);
   });
@@ -276,6 +300,7 @@ function textoPlano(i) {
   if (i.resposta_txt) linhas.push("", "Resposta: " + i.resposta_txt);
   if (i.biblia_txt) linhas.push("", "Na Bíblia:", i.biblia_txt);
   if (i.replica_txt) linhas.push("", "E o versículo deles? " + i.replica_txt);
+  if (i.fontes && i.fontes.length) linhas.push("", "Fontes:", ...i.fontes.map(f => `${f.n}. ${f.txt}`));
   return linhas.join("\n").replace(/\n{3,}/g, "\n\n");
 }
 async function copiar(txt, btn) {
@@ -321,6 +346,28 @@ function novoTreino() {
   $("#outra").onclick = novoTreino;
 }
 
+// Notas de rodapé: o número abre a fonte num balão
+const pop = document.createElement("div"); pop.className = "pop"; pop.hidden = true; pop.setAttribute("role", "dialog");
+document.body.appendChild(pop);
+function fechaPop() { pop.hidden = true; document.querySelectorAll(".b-fontes li.alvo").forEach(l => l.classList.remove("alvo")); }
+document.addEventListener("click", e => {
+  const b = e.target.closest("sup.fn button");
+  if (!b) { if (!e.target.closest(".pop")) fechaPop(); return; }
+  e.preventDefault(); e.stopPropagation();
+  fechaPop();
+  pop.innerHTML = `<span class="rot">Fonte ${b.textContent}</span><div>${D.fn[b.dataset.fn] || ""}</div>`;
+  pop.hidden = false;
+  const r = b.getBoundingClientRect(), w = pop.offsetWidth;
+  pop.style.left = Math.max(16, Math.min(window.scrollX + r.left - 8, window.scrollX + document.documentElement.clientWidth - w - 16)) + "px";
+  pop.style.top = (window.scrollY + r.bottom + 6) + "px";
+  const card = b.closest(".corpo, details.estudos");
+  const li = card && card.querySelector(`.b-fontes li[data-id="${b.dataset.fn}"]`);
+  if (li) li.classList.add("alvo");
+}, true);
+document.addEventListener("keydown", e => { if (e.key === "Escape") fechaPop(); });
+window.addEventListener("resize", fechaPop);
+
+$("#todas-fontes").innerHTML = Object.entries(D.fn).map(([k, v]) => `<li>${v}</li>`).join("");
 $("#cola").innerHTML = D.cola;
 $("#como").innerHTML = D.como;
 $("#leituras").innerHTML = D.leituras;

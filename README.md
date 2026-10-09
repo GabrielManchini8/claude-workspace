@@ -14,3 +14,4 @@ Cada projeto novo pode ficar numa pasta própria aqui dentro.
 - [Apologética Católica: Onde Está na Bíblia?](apologetica/onde-esta-na-biblia.md) — 100 objeções (protestantes, morais, ateias e muçulmanas) respondidas com versículos.
   - Página com busca: https://claude.ai/artifact/NMsFZHLvPtHWCD67snnxvs (gerada por `apologetica/build.py`)
   - Dados no formato padrão: `apologetica/objecoes.json`
+  - Fontes extrabíblicas (notas de rodapé): `apologetica/fontes.py`

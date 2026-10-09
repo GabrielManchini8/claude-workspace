@@ -15,11 +15,23 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 4. **Feche com uma pergunta**: "Onde está na Bíblia que…?" (ex.: "Onde está escrito *somente* a Escritura?").
 5. Para aprofundar, cada tópico traz o número do **Catecismo da Igreja Católica (CIC)**.
 
-**Convenções**
-- Notação católica: `Jo 6,53` = João, capítulo 6, versículo 53. `Jo 6,51-58` = versículos 51 a 58.
-- **Salmos:** numeração hebraica, com a grega/Vulgata entre parênteses. Ex.: Sl 19(18).
-- Livros deuterocanônicos (Tb, Jt, 1-2Mc, Sb, Eclo, Br e partes de Est e Dn) estão nas Bíblias católicas (73 livros). Com protestantes, priorize os versículos dos livros que **eles** aceitam; os deuterocanônicos ficam como reforço.
-- Cada tópico segue o formato: ❌ **Objeção** → ✅ **Resposta** → 📖 **Na Bíblia** → 🔁 **E o versículo deles?**
+**Bíblia de referência: católica (73 livros)**
+- Todas as referências seguem a **Bíblia de Jerusalém** (Paulus), edição católica com os 73 livros. Valem também para a **Ave-Maria**, a **CNBB** e a **Pastoral**, com uma diferença nos Salmos (abaixo).
+- **Salmos:** primeiro vem a numeração hebraica (Jerusalém, CNBB e Pastoral) e, entre parênteses, a grega/Vulgata (**Ave-Maria**). Ex.: Sl 22(21): na Ave-Maria, procure o Salmo 21.
+- Nos poucos livros em que a divisão de versículos muda entre edições, a outra numeração vem entre parênteses. Ex.: Ml 3,20(4,2); Jl 3,1(2,28); Dn 4,24(27); Is 9,5(6).
+- As frases entre aspas são **trechos curtos** dos versículos, às vezes resumidos ("…" marca um corte). Leia sempre o texto completo na sua Bíblia católica.
+- Os livros **deuterocanônicos** (Tb, Jt, 1-2Mc, Sb, Eclo, Br e partes de Est e Dn) estão em toda Bíblia católica. Com protestantes, priorize os versículos dos livros que **eles** aceitam e use os deuterocanônicos como reforço.
+
+**Citações de fora da Bíblia**
+- Tudo o que não é Bíblia (Padres da Igreja, concílios, documentos do Papa, historiadores, Alcorão) tem uma **nota de rodapé** com a fonte completa: autor, obra, capítulo e data. As notas estão reunidas no fim, em **Fontes das citações**.
+
+**Abreviações**
+- **Notação:** `Jo 6,53` = João, capítulo 6, versículo 53. `Jo 6,51-58` = versículos 51 a 58. `Jo 6,51.58` = versículos 51 e 58.
+- **CIC** = *Catecismo da Igreja Católica* (1992), citado pelo número do parágrafo · **DV** = *Dei Verbum[^dv]* · **LG** = *Lumen Gentium[^lg]* · **NA** = *Nostra Aetate[^na]* · **SC** = *Sacrosanctum Concilium[^sc]* · **HV** = *Humanae Vitae*[^hv] · **ST** = *Suma Teológica* · **SCG** = *Suma contra os Gentios*[^aquino-scg] · **Q** = Alcorão (sura,versículo).
+- **c.** = cerca de · **séc.** = século · **cap.** = capítulo · **q.** / **a.** = questão / artigo (São Tomás) · **a.C.** / **d.C.** = antes / depois de Cristo.
+- **Livros da Bíblia:** Gn, Ex, Lv, Nm, Dt, Js, Jz, Rt, 1Sm, 2Sm, 1Rs, 2Rs, 1Cr, 2Cr, Esd, Ne, Tb, Jt, Est, 1Mc, 2Mc, Jó, Sl, Pr, Ecl (Eclesiastes), Ct, Sb (Sabedoria), Eclo (Eclesiástico), Is, Jr, Lm, Br, Ez, Dn, Os, Jl, Am, Ab, Jn (Jonas), Mq, Na, Hab, Sf, Ag, Zc, Ml · Mt, Mc, Lc, Jo (João), At, Rm, 1Cor, 2Cor, Gl, Ef, Fl, Cl, 1Ts, 2Ts, 1Tm, 2Tm, Tt, Fm, Hb, Tg, 1Pd, 2Pd, 1Jo, 2Jo, 3Jo, Jd, Ap.
+
+**Formato de cada objeção:** ❌ **Objeção** → ✅ **Resposta** → 📖 **Na Bíblia** → 🔁 **E o versículo deles?** → 📚 **Catecismo**
 
 ---
 
@@ -174,7 +186,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 🔁 **E o versículo deles?**
 - **2Tm 3,16-17** diz que a Escritura é **útil** ("proveitosa"), não que é **suficiente** ou a única. Quando Paulo escreveu, a "Escritura" era o **Antigo Testamento** — o Novo nem estava completo. Se o versículo provasse a *sola Scriptura*, provaria "só o Antigo Testamento".
-- **Pergunta-chave:** "Qual versículo diz quais livros fazem parte da Bíblia?" Nenhum. A lista dos livros (o cânon) veio da Igreja (Concílios de Hipona 393 e Cartago 397). Quem aceita o Novo Testamento já está confiando na autoridade da Igreja.
+- **Pergunta-chave:** "Qual versículo diz quais livros fazem parte da Bíblia?" Nenhum. A lista dos livros (o cânon) veio da Igreja (Concílios de Hipona[^canon] 393 e Cartago 397). Quem aceita o Novo Testamento já está confiando na autoridade da Igreja.
 - **Ap 22,18-19** ("não acrescentar") se refere ao **livro do Apocalipse**, não à Bíblia inteira, que ainda não existia como coleção.
 
 📚 CIC 74-100
@@ -279,7 +291,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **1Pd 5,13** — Pedro escreve de "**Babilônia**", nome cristão em código para **Roma** (compare **Ap 17,5.9**, a "Babilônia" das **sete colinas**, e **Ap 18,2**). Marcos está com ele, e Marcos está em Roma em **Cl 4,10** e **2Tm 4,11**.
 - **Jo 21,18-19** — Jesus profetiza a morte de Pedro: "estenderás as mãos" (crucificação).
 
-🏛️ **História:** Clemente de Roma (c. 96), Inácio de Antioquia (c. 107), Irineu (c. 180), Tertuliano e Eusébio confirmam o martírio de Pedro em Roma. Escavações sob a Basílica de São Pedro encontraram o túmulo venerado desde o séc. I-II.
+🏛️ **História:** Clemente de Roma[^pedro-roma] (c. 96), Inácio de Antioquia (c. 107), Irineu (c. 180), Tertuliano e Eusébio confirmam o martírio de Pedro em Roma. Escavações[^escavacoes] sob a Basílica de São Pedro encontraram o túmulo venerado desde o séc. I-II.
 
 ---
 
@@ -317,8 +329,8 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 🔁 **Observações:**
 - O próprio NT também não é citado inteiro em lugar nenhum, e livros aceitos por protestantes (Ester, Eclesiastes, Cântico) **nunca** são citados no NT. "Não ser citado" não é critério.
-- A lista dos livros não está na Bíblia. Ela foi definida pela Igreja (Hipona 393, Cartago 397, Florença 1442, Trento 1546).
-- Lutero também quis tirar Tiago, Hebreus, Judas e Apocalipse ("epístola de palha"). O critério dele era doutrinário.
+- A lista dos livros não está na Bíblia. Ela foi definida pela Igreja (Hipona[^canon] 393, Cartago 397, Florença 1442, Trento 1546).
+- Lutero também quis tirar Tiago, Hebreus, Judas e Apocalipse ("epístola de palha"[^lutero-palha]). O critério dele era doutrinário.
 
 📚 CIC 120, 138
 
@@ -348,7 +360,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "A Igreja Católica começou em 313 com Constantino, misturando paganismo."
 
-✅ **Resposta:** Constantino **legalizou** o cristianismo (Édito de Milão, 313). Ele não fundou nada. O nome "**Igreja Católica**" já aparece por volta de **107 d.C.**, em Santo Inácio de Antioquia, discípulo dos apóstolos (*Carta aos Esmirnenses* 8,2).
+✅ **Resposta:** Constantino **legalizou** o cristianismo (Édito de Milão, 313[^edito]). Ele não fundou nada. O nome "**Igreja Católica**" já aparece por volta de **107 d.C.**, em Santo Inácio de Antioquia, discípulo dos apóstolos (*Carta aos Esmirnenses* 8,2[^inacio]).
 
 📖 **Na Bíblia:**
 - **Mt 16,18 + Mt 28,20** — se a Igreja de Cristo tivesse "sumido" até Constantino ou até Lutero, Jesus teria falhado na promessa.
@@ -392,7 +404,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - "O Senhor esteja convosco" → **Rt 2,4; 2Tm 4,22**
 - **Ciclo de leituras:** em 3 anos de missas dominicais, lê-se uma grande parte da Bíblia.
 
-📚 CIC 131-133 ("Ignorar as Escrituras é ignorar Cristo" — São Jerônimo)
+📚 CIC 131-133 ("Ignorar as Escrituras é ignorar Cristo" — São Jerônimo[^jeronimo])
 
 ---
 
@@ -420,7 +432,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 🔁 **E os versículos deles?**
 - **Ef 2,8-9:** leia o **v. 10**: "fomos criados em Cristo Jesus **para as boas obras**". Somos salvos pela graça **para** fazer boas obras. Ninguém "compra" a salvação, mas ninguém se salva rejeitando as obras.
 - **Rm 3,28:** Paulo fala das "**obras da Lei**" de Moisés (circuncisão, regras alimentares; ver **Rm 3,29** e **Gl 2,16**), não das obras de caridade.
-- Lutero acrescentou a palavra "**somente**" (*allein*) em Rm 3,28 na sua tradução alemã. Ela não está no original grego.
+- Lutero acrescentou a palavra "**somente**" (*allein*)[^lutero-allein] em Rm 3,28 na sua tradução alemã. Ela não está no original grego.
 
 📚 CIC 1987-2005 (justificação), 1814-1816
 
@@ -499,7 +511,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "A Igreja vendia o perdão dos pecados."
 
-✅ **Resposta:** A indulgência **não perdoa pecado**: o pecado é perdoado na confissão. Ela remite a **pena temporal**, as consequências que ficam depois do perdão. Abusos de venda existiram, foram condenados pelo Concílio de Trento (1562) e a venda é proibida.
+✅ **Resposta:** A indulgência **não perdoa pecado**: o pecado é perdoado na confissão. Ela remite a **pena temporal**, as consequências que ficam depois do perdão. Abusos de venda existiram, foram condenados pelo Concílio de Trento (1562)[^trento] e a venda é proibida.
 
 📖 **Na Bíblia — perdão ≠ fim de toda consequência:**
 - **2Sm 12,13-14** — Natã a Davi: "O Senhor **perdoou** o teu pecado… **contudo** o filho que te nasceu morrerá". Perdoado, mas com consequência.
@@ -828,7 +840,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Maria é mãe de Jesus homem, não de Deus. Deus não tem mãe."
 
-✅ **Resposta:** Mãe é mãe de uma **pessoa**, não de uma "natureza". Jesus é **uma só pessoa**, divina, com duas naturezas. Se Jesus é Deus e Maria é mãe de Jesus, Maria é **Mãe de Deus** (*Theotokos*, Concílio de Éfeso, 431). O título protege a **divindade de Cristo**.
+✅ **Resposta:** Mãe é mãe de uma **pessoa**, não de uma "natureza". Jesus é **uma só pessoa**, divina, com duas naturezas. Se Jesus é Deus e Maria é mãe de Jesus, Maria é **Mãe de Deus** (*Theotokos*, Concílio de Éfeso, 431[^efeso]). O título protege a **divindade de Cristo**.
 
 📖 **Na Bíblia:**
 - **Lc 1,43** — Isabel, **cheia do Espírito Santo**: "Donde me vem que a **mãe do meu Senhor** venha a mim?" (*Kyrios*, o termo usado para Deus no AT grego).
@@ -860,7 +872,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 🔁 **E os versículos deles?**
 - **"Até que" (Mt 1,25):** em grego, *heōs* afirma o que aconteceu **até** um momento, sem implicar que mudou depois. Exemplos: **2Sm 6,23** — Micol não teve filhos "**até o dia da sua morte**" (não teve depois de morta); **Mt 28,20** — "estarei convosco **até o fim do mundo**" (não deixará de estar depois); **1Cor 15,25** — Cristo reinará "**até que** ponha os inimigos sob os pés" (e continua reinando).
-- **"Primogênito" (Lc 2,7):** era um **título legal** dado ao primeiro filho, tivesse ou não irmãos depois (**Ex 13,2; 34,19-20**: era consagrado a Deus ao nascer). Uma inscrição judaica de Tell el-Yehudieh (5 a.C.) fala de uma mulher que morreu "ao dar à luz o seu **primogênito**".
+- **"Primogênito" (Lc 2,7):** era um **título legal** dado ao primeiro filho, tivesse ou não irmãos depois (**Ex 13,2; 34,19-20**: era consagrado a Deus ao nascer). Uma inscrição judaica de Tell el-Yehudieh (5 a.C.)[^tell] fala de uma mulher que morreu "ao dar à luz o seu **primogênito**".
 
 📚 CIC 499-501
 
@@ -1040,7 +1052,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ### 44. A Trindade não está na Bíblia
 
-❌ **Objeção:** "A palavra Trindade não está na Bíblia. É invenção do Concílio de Niceia."
+❌ **Objeção:** "A palavra Trindade não está na Bíblia. É invenção do Concílio de Niceia[^niceia]."
 
 ✅ **Resposta:** A palavra "Bíblia" também não está na Bíblia. A **realidade** da Trindade (um só Deus em três Pessoas) está em toda parte.
 
@@ -1120,7 +1132,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **Sb 13,1-5** — "pela **grandeza e beleza das criaturas**, por analogia, se contempla o seu Autor".
 - **Sl 19(18),2** — "os céus **proclamam a glória** de Deus". (argumento do desígnio)
 - **Hb 3,4** — "toda casa é construída por alguém; mas **quem construiu tudo é Deus**".
-- **Gn 1,1; Hb 11,3** — o universo **teve um começo** e foi feito do que não era visível. A ciência moderna (Big Bang, proposto por um padre católico, Georges Lemaître) confirma que o universo teve início.
+- **Gn 1,1; Hb 11,3** — o universo **teve um começo** e foi feito do que não era visível. A ciência moderna (Big Bang, proposto por um padre católico, Georges Lemaître[^lemaitre]) confirma que o universo teve início.
 - **At 14,17; 17,24-28** — Deus "não deixou de dar **testemunho de si**"; "nele **vivemos, nos movemos e existimos**".
 - **Rm 2,14-15** — a **lei moral escrita nos corações**. (argumento moral)
 - **Sl 14(13),1** — "Diz o insensato no seu coração: **não há Deus**".
@@ -1174,14 +1186,14 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "A Igreja sempre perseguiu a ciência. Galileu!"
 
-✅ **Resposta:** Fé e razão vêm do mesmo Deus e **não podem se contradizer** (CIC 159). A ciência moderna nasceu nas **universidades criadas pela Igreja**. Exemplos de cientistas católicos: Lemaître (padre, teoria do Big Bang), Mendel (frade, genética), Copérnico (cônego), Pasteur, Steno (bispo, fundador da geologia). O caso Galileu foi um conflito pontual, mais político e de método do que de fé versus ciência, e a Igreja reconheceu publicamente os erros (1992).
+✅ **Resposta:** Fé e razão vêm do mesmo Deus e **não podem se contradizer** (CIC 159). A ciência moderna nasceu nas **universidades criadas pela Igreja**. Exemplos de cientistas católicos: Lemaître[^lemaitre] (padre, teoria do Big Bang), Mendel (frade, genética), Copérnico (cônego), Pasteur, Steno (bispo, fundador da geologia). O caso Galileu foi um conflito pontual, mais político e de método do que de fé versus ciência, e a Igreja reconheceu publicamente os erros (1992)[^galileu].
 
 📖 **Na Bíblia:**
 - **Sb 11,20** — Deus "dispôs tudo com **medida, número e peso**". O universo é ordenado e inteligível, a premissa de toda ciência.
 - **Gn 1,28** — Deus manda o homem **conhecer e dominar** a criação.
 - **Pr 25,2** — "é glória de Deus esconder as coisas, e glória dos reis **investigá-las**".
 - **Sl 111(110),2** — "grandes são as obras do Senhor, **estudadas** por todos os que nelas se comprazem".
-- **Gn 1** não é um manual de ciência: ensina **quem** criou e **por quê**, não o **como** técnico (Dei Verbum 11-12; CIC 283-284, 337).
+- **Gn 1** não é um manual de ciência: ensina **quem** criou e **por quê**, não o **como** técnico (Dei Verbum[^dv] 11-12; CIC 283-284, 337).
 
 📚 CIC 159, 283-284
 
@@ -1191,7 +1203,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Jesus é uma lenda. A ressurreição foi inventada séculos depois."
 
-✅ **Resposta:** Praticamente **nenhum historiador sério**, mesmo ateu (por exemplo, Bart Ehrman), nega a existência de Jesus. Fontes não cristãs o mencionam: **Tácito** (*Anais* 15,44), **Flávio Josefo** (*Antiguidades* 18,3,3 e 20,9,1) e **Plínio, o Jovem** (*Cartas* 10,96). A crença na ressurreição surge **pouquíssimos anos** após a cruz.
+✅ **Resposta:** Praticamente **nenhum historiador sério**, mesmo ateu (por exemplo, Bart Ehrman[^historiadores]), nega a existência de Jesus. Fontes não cristãs o mencionam: **Tácito[^tacito]** (*Anais* 15,44), **Flávio Josefo[^josefo]** (*Antiguidades* 18,3,3 e 20,9,1) e **Plínio, o Jovem[^plinio]** (*Cartas* 10,96). A crença na ressurreição surge **pouquíssimos anos** após a cruz.
 
 📖 **Na Bíblia:**
 - **1Cor 15,3-8** — um **credo primitivo** que Paulo "recebeu" (datado pelos estudiosos de poucos anos após a morte de Jesus): Cristo morreu, foi sepultado, **ressuscitou** e apareceu a Pedro, aos Doze, a **mais de 500 de uma vez** ("a maioria ainda vive", ou seja, podiam ser consultados), a Tiago e a Paulo.
@@ -1212,7 +1224,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Um Evangelho diz um anjo no túmulo, outro diz dois. Judas se enforcou ou caiu? Contradição!"
 
-✅ **Resposta:** São **perspectivas complementares** de testemunhas diferentes, não contradições. A Igreja ensina que a Bíblia é **inspirada** e **sem erro** naquilo que Deus quis ensinar para a nossa salvação. Ela deve ser lida segundo seus **gêneros literários** (Dei Verbum 11-12).
+✅ **Resposta:** São **perspectivas complementares** de testemunhas diferentes, não contradições. A Igreja ensina que a Bíblia é **inspirada** e **sem erro** naquilo que Deus quis ensinar para a nossa salvação. Ela deve ser lida segundo seus **gêneros literários** (Dei Verbum[^dv] 11-12).
 
 📖 **Na Bíblia:**
 - **2Tm 3,16** — toda Escritura é **inspirada** por Deus.
@@ -1232,7 +1244,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "A Bíblia foi copiada e alterada tantas vezes que não sabemos o original."
 
-✅ **Resposta:** O NT é o **documento antigo mais bem atestado** da história: cerca de **5.800 manuscritos gregos**, alguns a poucas décadas dos originais (o Papiro P52, com trechos de João, é de c. 125-150 d.C.). Obras de Platão ou de César têm algumas dezenas de cópias, mil anos depois do original. Os **Manuscritos do Mar Morto** (Qumrã) mostraram que o texto de Isaías se manteve praticamente igual por mais de mil anos.
+✅ **Resposta:** O NT é o **documento antigo mais bem atestado** da história: cerca de **5.800 manuscritos gregos**, alguns a poucas décadas dos originais (o Papiro P52, com trechos de João, é de c. 125-150 d.C.). Obras de Platão ou de César têm algumas dezenas de cópias, mil anos depois do original. Os **Manuscritos do Mar Morto** (Qumrã[^manuscritos]) mostraram que o texto de Isaías se manteve praticamente igual por mais de mil anos.
 
 📖 **Na Bíblia:**
 - **Is 40,8** — "a palavra do nosso Deus **permanece para sempre**".
@@ -1297,7 +1309,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Todas as religiões levam a Deus. Jesus foi só um grande mestre."
 
-✅ **Resposta:** Jesus não deixou a opção de ser "só um bom mestre": Ele afirmou **ser Deus**. Ou mentiu, ou era louco, ou é o Senhor (o trilema de C. S. Lewis). A Igreja reconhece o que há de **verdadeiro e santo** nas outras religiões (Nostra Aetate 2), mas a plenitude da verdade está em Cristo.
+✅ **Resposta:** Jesus não deixou a opção de ser "só um bom mestre": Ele afirmou **ser Deus**. Ou mentiu, ou era louco, ou é o Senhor (o trilema de C. S. Lewis)[^lewis]. A Igreja reconhece o que há de **verdadeiro e santo** nas outras religiões (Nostra Aetate[^na] 2), mas a plenitude da verdade está em Cristo.
 
 📖 **Na Bíblia:**
 - **Jo 14,6** — "Eu sou **o** caminho, **a** verdade e **a** vida. Ninguém vem ao Pai **senão por mim**".
@@ -1315,7 +1327,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Houve papas imorais, e o Papa Honório I foi condenado como herege. Logo, a infalibilidade é falsa."
 
-✅ **Resposta:** Infalibilidade **não** quer dizer que o Papa não peca, e não cobre tudo o que ele diz. Ela vale **só** quando ele **define solenemente** (*ex cathedra*) uma doutrina de fé ou moral para toda a Igreja. Honório (séc. VII) foi condenado pelo III Concílio de Constantinopla (681) por **negligência**: não combateu a heresia monotelita. Suas cartas a Sérgio eram correspondência privada, não uma definição dogmática. Nenhum papa, nem mesmo os de vida escandalosa, **definiu** um erro.
+✅ **Resposta:** Infalibilidade **não** quer dizer que o Papa não peca, e não cobre tudo o que ele diz. Ela vale **só** quando ele **define solenemente** (*ex cathedra*) uma doutrina de fé ou moral para toda a Igreja. Honório (séc. VII) foi condenado pelo III Concílio de Constantinopla (681)[^const3] por **negligência**: não combateu a heresia monotelita. Suas cartas a Sérgio eram correspondência privada, não uma definição dogmática. Nenhum papa, nem mesmo os de vida escandalosa, **definiu** um erro.
 
 📖 **Na Bíblia:**
 - **Jo 11,49-52** — **Caifás**, sumo sacerdote que tramou a morte de Jesus, "**profetizou**", e João explica: "não disse isso por si mesmo, mas, **sendo sumo sacerdote naquele ano**, profetizou". Deus fala pelo **ofício** mesmo quando o homem é mau.
@@ -1323,7 +1335,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **Lc 22,31-32** — Jesus reza para que a **fé** de Pedro **não desfaleça**, e Pedro o nega na mesma noite. A promessa é sobre a fé que ele confirmará, não sobre a conduta.
 - **Mt 16,18** — a promessa é para **a Igreja**, que se apoia na pedra.
 
-📚 CIC 891; Concílio Vaticano I, *Pastor Aeternus* 4
+📚 CIC 891; Concílio Vaticano I, *Pastor Aeternus*[^vat1] 4
 
 ---
 
@@ -1348,7 +1360,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 ✅ **Resposta:**
 - **Acorrentar** era uma proteção contra roubo. Antes da imprensa, uma Bíblia custava o equivalente a uma casa. Bíblias acorrentadas ficavam **expostas ao público** nas igrejas, como hoje se prende a lista telefônica.
 - O que a Igreja proibia eram traduções **sem aprovação** ou com notas heréticas, não a Bíblia em si.
-- Antes da tradução de Lutero (1522), já existiam pelo menos 14 edições impressas da Bíblia em **alemão alto** e outras em baixo-alemão, todas católicas. A primeira grande obra impressa da história foi a Bíblia de Gutenberg, **católica** (c. 1455).
+- Antes da tradução de Lutero (1522), já existiam pelo menos 14 edições impressas da Bíblia em **alemão alto** e outras em baixo-alemão[^alemao], todas católicas. A primeira grande obra impressa da história foi a Bíblia de Gutenberg, **católica** (c. 1455)[^gutenberg].
 - O latim era a língua culta comum da Europa. Quem sabia ler, lia latim.
 
 📖 **Na Bíblia:**
@@ -1397,7 +1409,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "*Batizar* significa mergulhar. Batismo por infusão (derramar água) não vale."
 
-✅ **Resposta:** A Igreja batiza também por imersão, e as duas formas são válidas. A palavra *baptizō* também significa simplesmente **lavar**. A Didaqué (c. 70-100 d.C., um dos primeiros escritos cristãos fora da Bíblia) diz: se não houver água suficiente, "**derrama água três vezes sobre a cabeça**" (Didaqué 7,3).
+✅ **Resposta:** A Igreja batiza também por imersão, e as duas formas são válidas. A palavra *baptizō* também significa simplesmente **lavar**. A Didaqué[^didaque] (c. 70-100 d.C., um dos primeiros escritos cristãos fora da Bíblia) diz: se não houver água suficiente, "**derrama água três vezes sobre a cabeça**" (Didaqué 7,3).
 
 📖 **Na Bíblia:**
 - **Mc 7,4; Lc 11,38** — o fariseu se admira de Jesus não ter "**se batizado**" (*ebaptisthē*) antes da refeição: era só **lavar as mãos**.
@@ -1462,7 +1474,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Chamar Maria de corredentora ou medianeira é colocá-la no lugar de Jesus."
 
-✅ **Resposta:** Cristo é o **único Redentor**. A cooperação de Maria é **totalmente dependente** d'Ele, como a de todo cristão, só que em grau máximo. "Medianeira" é usado num sentido **subordinado** (CIC 969-970). O título "**corredentora**" **não é dogma**: em 2025 o Dicastério para a Doutrina da Fé (nota *Mater Populi Fidelis*) o considerou **inoportuno**, porque pode confundir.
+✅ **Resposta:** Cristo é o **único Redentor**. A cooperação de Maria é **totalmente dependente** d'Ele, como a de todo cristão, só que em grau máximo. "Medianeira" é usado num sentido **subordinado** (CIC 969-970). O título "**corredentora**" **não é dogma**: em 2025 o Dicastério para a Doutrina da Fé (nota *Mater Populi Fidelis*[^mpf]) o considerou **inoportuno**, porque pode confundir.
 
 📖 **Na Bíblia:**
 - **Lc 1,38** — o "faça-se" de Maria: sua cooperação **livre** com a Encarnação.
@@ -1479,7 +1491,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "A Igreja ensinava que bebês sem batismo iam para o limbo. Agora mudou. Que infalibilidade é essa?"
 
-✅ **Resposta:** O limbo **nunca foi dogma**. Era uma **hipótese teológica** comum, nunca definida. O Catecismo diz que confiamos esses bebês à **misericórdia de Deus**, e a Comissão Teológica Internacional (2007) fala de "razões sérias de **esperança**".
+✅ **Resposta:** O limbo **nunca foi dogma**. Era uma **hipótese teológica** comum, nunca definida. O Catecismo diz que confiamos esses bebês à **misericórdia de Deus**, e a Comissão Teológica Internacional (2007)[^cti] fala de "razões sérias de **esperança**".
 
 📖 **Na Bíblia:**
 - **Mt 19,14** — "deixai vir a mim as crianças".
@@ -1503,7 +1515,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **Jo 19,20** — a inscrição da cruz estava em **hebraico, latim e grego**.
 - Jesus rezava os Salmos no Templo e na sinagoga em **hebraico**, língua litúrgica e não falada no dia a dia (o povo falava aramaico).
 
-📚 Sacrosanctum Concilium 36, 54
+📚 Sacrosanctum Concilium[^sc] 36, 54
 
 ---
 
@@ -1528,7 +1540,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Os crentes serão arrebatados secretamente antes da Grande Tribulação, e Cristo reinará mil anos na terra." (usam 1Ts 4,17; Mt 24,40; Ap 20)
 
-✅ **Resposta:** A Bíblia fala de uma **única** vinda gloriosa de Cristo, **visível** e **barulhenta**, ao final, com a ressurreição e o juízo. A ideia de um arrebatamento secreto anterior à tribulação surgiu no séc. XIX (J. N. Darby). O "milênio" de Ap 20 é simbólico: é o tempo da Igreja.
+✅ **Resposta:** A Bíblia fala de uma **única** vinda gloriosa de Cristo, **visível** e **barulhenta**, ao final, com a ressurreição e o juízo. A ideia de um arrebatamento secreto anterior à tribulação surgiu no séc. XIX (J. N. Darby)[^darby]. O "milênio" de Ap 20 é simbólico: é o tempo da Igreja.
 
 📖 **Na Bíblia:**
 - **1Ts 4,16** — o Senhor descerá com **voz de comando, voz de arcanjo e trombeta**. Não tem nada de secreto.
@@ -1656,7 +1668,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **Lc 1,41-44** — João Batista, no ventre, **salta de alegria**. Lucas usa a mesma palavra (*brephos*, bebê) para o nascituro (Lc 1,41) e para Jesus recém-nascido (Lc 2,12).
 - **Lc 1,42** — Jesus, com poucos dias de concebido, já é chamado "**fruto do teu ventre**" e "Senhor" (v. 43).
 - **Ex 20,13** — "**Não matarás**".
-- **Didaqué 2,2** (séc. I): "não matarás a criança por aborto".
+- **Didaqué[^didaque] 2,2** (séc. I): "não matarás a criança por aborto".
 
 📚 CIC 2270-2275
 
@@ -1667,7 +1679,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 ❌ **Objeção:** "Proibir camisinha e pílula é coisa da Idade Média."
 
 ✅ **Resposta:**
-- Até 1930 (Conferência Anglicana de Lambeth), **todas** as igrejas cristãs, inclusive as protestantes, condenavam a contracepção. Lutero e Calvino também a condenavam.
+- Até 1930 (Conferência Anglicana de Lambeth)[^lambeth], **todas** as igrejas cristãs, inclusive as protestantes, condenavam a contracepção. Lutero e Calvino também a condenavam[^reformadores].
 - A Igreja ensina que o ato conjugal tem dois sentidos inseparáveis: **união** e **abertura à vida**.
 - A Igreja **aprova** a paternidade responsável pelos **métodos naturais** (espaçar os filhos respeitando os períodos de fertilidade).
 
@@ -1677,7 +1689,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **Gn 38,8-10** — Onã "derramava o sêmen no chão" para não gerar descendência, "e isso desagradou ao Senhor". (Tradicionalmente lido como condenação do ato contraceptivo; alguns intérpretes o leem só como recusa do dever do levirato.)
 - **1Cor 7,5** — os esposos podem se abster **de comum acordo, por um tempo**, que é a lógica dos métodos naturais.
 
-📚 CIC 2366-2372; *Humanae Vitae* (1968)
+📚 CIC 2366-2372; *Humanae Vitae*[^hv] (1968)
 
 ---
 
@@ -1695,7 +1707,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **Gl 3,28** fala da **igualdade na salvação** (todos são filhos de Deus pelo Batismo), não de funções idênticas.
 - **Jo 20,17-18** — Maria Madalena é enviada aos apóstolos: a "**apóstola dos apóstolos**". As mulheres têm papel enorme na Igreja.
 
-📚 CIC 1577; João Paulo II, *Ordinatio Sacerdotalis* (1994)
+📚 CIC 1577; João Paulo II, *Ordinatio Sacerdotalis*[^os] (1994)
 
 ---
 
@@ -1751,7 +1763,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Antes a Igreja aceitava a pena de morte e em 2018 passou a rejeitá-la. Mudou a doutrina!"
 
-✅ **Resposta:** A Bíblia reconhece que o Estado tem autoridade para punir (Rm 13,4). A Igreja sempre ensinou que a pena de morte só seria aceitável como **último recurso** para proteger a sociedade. Em 2018, o Papa Francisco revisou o CIC 2267 para dizer que **hoje** ela é "**inadmissível**", porque atenta contra a dignidade da pessoa e porque existem meios eficazes de proteger a sociedade. Alguns teólogos debatem como essa revisão se harmoniza com o ensino anterior. O ponto que nunca muda: a **dignidade** de toda pessoa, inclusive do culpado.
+✅ **Resposta:** A Bíblia reconhece que o Estado tem autoridade para punir (Rm 13,4). A Igreja sempre ensinou que a pena de morte só seria aceitável como **último recurso** para proteger a sociedade. Em 2018, o Papa Francisco revisou o CIC 2267[^pena2018] para dizer que **hoje** ela é "**inadmissível**", porque atenta contra a dignidade da pessoa e porque existem meios eficazes de proteger a sociedade. Alguns teólogos debatem como essa revisão se harmoniza com o ensino anterior. O ponto que nunca muda: a **dignidade** de toda pessoa, inclusive do culpado.
 
 📖 **Na Bíblia:**
 - **Gn 9,6; Rm 13,4** — a autoridade pública "não traz a espada em vão".
@@ -1769,7 +1781,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Se o universo precisa de um criador, Deus também precisa."
 
-✅ **Resposta:** O argumento não diz que "**tudo** tem causa", mas que **tudo o que começa a existir** tem causa. Deus **não começou**: é eterno, o próprio Ser. Uma cadeia infinita de causas dependentes não explica nada. É preciso uma **Causa Primeira** não causada. São Tomás de Aquino desenvolve isso nas **Cinco Vias** (*Suma Teológica* I, q. 2, a. 3).
+✅ **Resposta:** O argumento não diz que "**tudo** tem causa", mas que **tudo o que começa a existir** tem causa. Deus **não começou**: é eterno, o próprio Ser. Uma cadeia infinita de causas dependentes não explica nada. É preciso uma **Causa Primeira** não causada. São Tomás de Aquino desenvolve isso nas **Cinco Vias** (*Suma Teológica* I, q. 2, a. 3[^st]).
 
 📖 **Na Bíblia:**
 - **Ex 3,14** — "**EU SOU AQUELE QUE SOU**": Deus é o próprio Ser, que não recebe a existência de ninguém.
@@ -1785,7 +1797,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "As leis da natureza não podem ser quebradas. Milagres não existem."
 
-✅ **Resposta:** Se Deus existe e **criou** as leis da natureza, Ele pode agir nela, como um autor pode intervir no próprio livro. Negar milagres "porque são impossíveis" já supõe que Deus não existe, o que é um argumento circular. A Igreja investiga milagres com **rigor médico**: em Lourdes, o Comitê Médico Internacional examinou milhares de curas e a Igreja reconheceu cerca de 70 como milagrosas.
+✅ **Resposta:** Se Deus existe e **criou** as leis da natureza, Ele pode agir nela, como um autor pode intervir no próprio livro. Negar milagres "porque são impossíveis" já supõe que Deus não existe, o que é um argumento circular. A Igreja investiga milagres com **rigor médico**: em Lourdes, o Comitê Médico Internacional examinou milhares de curas e a Igreja reconheceu cerca de 70 como milagrosas[^lourdes].
 
 📖 **Na Bíblia:**
 - **Jo 10,37-38** — "se não credes em mim, **crede nas obras**".
@@ -1804,7 +1816,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 ✅ **Resposta:**
 - A "servidão" do AT era em geral **servidão por dívida**, temporária e com proteções. É muito diferente da escravidão racial moderna, baseada em **sequestro**, que a Bíblia pune com **morte**.
 - O NT não lançou uma revolução política impossível, mas plantou os princípios que a **destruíram**: todos são **irmãos** e iguais em dignidade.
-- Papas condenaram a escravização dos indígenas e africanos (Paulo III, *Sublimis Deus*, 1537; Gregório XVI, 1839). Cristãos lideraram a abolição. Houve cristãos que falharam nisso, e a Igreja reconhece.
+- Papas condenaram a escravização dos indígenas e africanos (Paulo III, *Sublimis Deus*, 1537[^sublimis]; Gregório XVI, 1839). Cristãos lideraram a abolição. Houve cristãos que falharam nisso, e a Igreja reconhece.
 
 📖 **Na Bíblia:**
 - **Ex 21,16** — "quem **sequestrar** um homem, para vendê-lo ou mantê-lo em seu poder, será **morto**".
@@ -1822,7 +1834,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 ❌ **Objeção:** "A religião é a maior causa de guerras e violência da história."
 
 ✅ **Resposta:**
-- A *Encyclopedia of Wars* (Phillips e Axelrod, 2004) classifica só cerca de **7%** das guerras da história como tendo causa principalmente religiosa.
+- A *Encyclopedia of Wars* (Phillips e Axelrod, 2004)[^wars] classifica só cerca de **7%** das guerras da história como tendo causa principalmente religiosa.
 - Os regimes oficialmente **ateus** do séc. XX (URSS, China de Mao, Camboja de Pol Pot) mataram **dezenas de milhões** de pessoas.
 - Quando cristãos fazem violência injusta, estão **desobedecendo** a Cristo, não seguindo-o.
 
@@ -1840,7 +1852,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Hórus também nasceu de virgem em 25 de dezembro, teve 12 discípulos, morreu e ressuscitou. Jesus é uma cópia." (popularizado pelo filme *Zeitgeist*)
 
-✅ **Resposta:** Essas "semelhanças" são **inventadas ou distorcidas** por autores dos séculos XIX e XX (como Gerald Massey e Kersey Graves), sem fontes antigas. Nos mitos originais, Hórus é concebido por Ísis com o cadáver de Osíris (não virgem), não tem 12 discípulos e não é crucificado. Mitra **nasce de uma rocha**. O culto romano a Mitra, como o conhecemos, floresce **depois** do surgimento do cristianismo. Os Evangelhos estão ligados a **pessoas, lugares e datas históricas reais**. Mitos não fazem isso.
+✅ **Resposta:** Essas "semelhanças" são **inventadas ou distorcidas** por autores dos séculos XIX e XX (como Gerald Massey e Kersey Graves)[^massey], sem fontes antigas. Nos mitos originais, Hórus é concebido por Ísis com o cadáver de Osíris (não virgem), não tem 12 discípulos e não é crucificado. Mitra **nasce de uma rocha**. O culto romano a Mitra, como o conhecemos, floresce **depois** do surgimento do cristianismo. Os Evangelhos estão ligados a **pessoas, lugares e datas históricas reais**. Mitos não fazem isso.
 
 📖 **Na Bíblia:**
 - **2Pd 1,16** — "não seguimos **fábulas engenhosas**, mas fomos **testemunhas oculares**".
@@ -1854,7 +1866,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Darwin provou que não precisamos de Deus. Gênesis está errado."
 
-✅ **Resposta:** A Igreja **não se opõe** à teoria da evolução enquanto ciência (Pio XII, *Humani Generis*, 1950; João Paulo II, 1996). A evolução explica **como** a vida se desenvolve, não **por que existe algo** em vez de nada, nem de onde vêm as leis que a tornam possível. A Igreja ensina que a **alma humana** é criada **diretamente** por Deus e que toda a humanidade descende dos primeiros pais. Gênesis ensina verdades religiosas (Deus criou tudo, o homem é imagem de Deus, o pecado entrou pela liberdade) em linguagem simbólica, não em linguagem de laboratório.
+✅ **Resposta:** A Igreja **não se opõe** à teoria da evolução enquanto ciência (Pio XII, *Humani Generis*, 1950[^humani]; João Paulo II, 1996). A evolução explica **como** a vida se desenvolve, não **por que existe algo** em vez de nada, nem de onde vêm as leis que a tornam possível. A Igreja ensina que a **alma humana** é criada **diretamente** por Deus e que toda a humanidade descende dos primeiros pais. Gênesis ensina verdades religiosas (Deus criou tudo, o homem é imagem de Deus, o pecado entrou pela liberdade) em linguagem simbólica, não em linguagem de laboratório.
 
 📖 **Na Bíblia:**
 - **Gn 2,7** — o homem é formado do "**pó da terra**" (o elemento material) e recebe o "**sopro de vida**" de Deus (a alma).
@@ -1885,27 +1897,27 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 # PARTE XI — OBJEÇÕES MUÇULMANAS (ISLÃ)
 
-> **Postura:** a Igreja olha os muçulmanos "**com estima**", pois "adoram conosco o Deus único, misericordioso" (Nostra Aetate 3; Lumen Gentium 16; CIC 841). Responda com **respeito**, sem ofender o Profeta deles nem o Alcorão. O objetivo é apresentar Cristo.
+> **Postura:** a Igreja olha os muçulmanos "**com estima**", pois "adoram conosco o Deus único, misericordioso" (Nostra Aetate[^na] 3; Lumen Gentium[^lg] 16; CIC 841). Responda com **respeito**, sem ofender o Profeta deles nem o Alcorão. O objetivo é apresentar Cristo.
 >
-> **Notação:** "Q 4,157" = Alcorão, sura 4, versículo 157. Um ponto forte é mostrar que **o próprio Alcorão** manda respeitar a Torá e o Evangelho.
+> **Notação:** "Q 4,157[^alcorao]" = Alcorão, sura 4, versículo 157. Um ponto forte é mostrar que **o próprio Alcorão** manda respeitar a Torá e o Evangelho.
 
 ## Existem estudos clássicos católicos sobre o Islã? Sim, muitos.
 
 | Autor | Época | Obra | O que traz |
 |---|---|---|---|
-| **São João Damasceno** (Doutor da Igreja) | c. 730, Damasco | *Sobre as heresias*, cap. 100 ("a heresia dos ismaelitas") | Primeira análise cristã do Islã, feita por um cristão que trabalhou na corte do califa. Responde à acusação de que os cristãos são "associadores" (politeístas) e de que veneram a cruz. |
-| **Teodoro Abu Qurrah** (bispo de Harã) | c. 800 | Tratados em **árabe** | Primeiro apologista cristão a escrever em árabe. Defende a Trindade, a Encarnação e as imagens. |
-| **Pedro, o Venerável** (abade de Cluny) | 1143-1156 | Mandou fazer a **primeira tradução latina do Alcorão** (Robert de Ketton) e escreveu *Contra a seita dos sarracenos* | Defendia ir aos muçulmanos "**não com armas, mas com palavras; não com força, mas com razão; não com ódio, mas com amor**". |
-| **São Francisco de Assis** | 1219, Damieta (Egito) | Encontro com o sultão **al-Kamil** | Pregou o Evangelho ao sultão em meio à Cruzada. É o modelo de diálogo missionário. |
-| ⭐ **São Tomás de Aquino** | c. 1264 | ***De rationibus fidei*** (*Sobre as razões da fé, contra sarracenos, gregos e armênios*) | Escrito a pedido de um cantor de Antioquia que debatia com muçulmanos. Responde às **objeções muçulmanas**: (1) "Deus não pode ter Filho" (Trindade); (2) zombam da **Cruz** e da Encarnação; (3) da **Eucaristia**; (4) sobre predestinação e livre-arbítrio. Princípio-chave (cap. 2): não tentar **provar** os mistérios da fé pela razão, mas mostrar que **não são impossíveis** nem contrários à razão. |
-| ⭐ **São Tomás de Aquino** | 1259-1265 | ***Suma contra os Gentios*** | Segundo uma tradição antiga, pedida por São Raimundo de Penyafort para os missionários dominicanos na Espanha muçulmana. Como muçulmanos e pagãos não aceitam a Bíblia, Tomás argumenta a partir da **razão natural** (Livro I, cap. 2). Em I, 6 compara a expansão do Islã (pela espada, sem milagres públicos) com a do cristianismo (por milagres, entre perseguições). |
-| **Beato Raimundo Lúlio** (Ramon Llull) | c. 1275-1316 | *Livro do gentio e dos três sábios* | Aprendeu árabe e fundou escolas de línguas para missionários. Diálogo respeitoso entre um judeu, um cristão e um muçulmano. |
-| **Ricoldo da Monte Croce** (dominicano) | c. 1300 | *Contra a lei dos sarracenos* | Estudou o Alcorão em árabe, em Bagdá. A obra foi muito influente (até Lutero a traduziu para o alemão em 1542). |
-| **Nicolau de Cusa** (cardeal) | 1461 | *Cribratio Alkorani* (*Peneirando o Alcorão*) | Procura no próprio Alcorão os traços de verdade que apontam para Cristo. |
-| **Bento XVI** | 2006 | **Discurso de Regensburg** | Sobre fé, razão e violência. Cita o imperador bizantino Manuel II: "não agir segundo a razão é contrário à natureza de Deus". |
-| **Pe. Samir Khalil Samir, SJ** (jesuíta egípcio, islamólogo) | 2008 | *111 Questions on Islam* | Visão católica atual e acessível, feita por um especialista que vive no mundo árabe. |
+| **São João Damasceno** (Doutor da Igreja) | c. 730, Damasco | *Sobre as heresias*, cap. 100[^damasceno] ("a heresia dos ismaelitas") | Primeira análise cristã do Islã, feita por um cristão que trabalhou na corte do califa. Responde à acusação de que os cristãos são "associadores" (politeístas) e de que veneram a cruz. |
+| **Teodoro Abu Qurrah** (bispo de Harã) | c. 800 | Tratados em **árabe**[^abuqurrah] | Primeiro apologista cristão a escrever em árabe. Defende a Trindade, a Encarnação e as imagens. |
+| **Pedro, o Venerável** (abade de Cluny) | 1143-1156 | Mandou fazer a **primeira tradução latina do Alcorão** (Robert de Ketton) e escreveu *Contra a seita dos sarracenos*[^pedrov] | Defendia ir aos muçulmanos "**não com armas, mas com palavras; não com força, mas com razão; não com ódio, mas com amor**". |
+| **São Francisco de Assis** | 1219, Damieta (Egito) | Encontro com o sultão **al-Kamil**[^francisco] | Pregou o Evangelho ao sultão em meio à Cruzada. É o modelo de diálogo missionário. |
+| ⭐ **São Tomás de Aquino** | c. 1264 | ***De rationibus fidei***[^aquino-dr] (*Sobre as razões da fé, contra sarracenos, gregos e armênios*) | Escrito a pedido de um cantor de Antioquia que debatia com muçulmanos. Responde às **objeções muçulmanas**: (1) "Deus não pode ter Filho" (Trindade); (2) zombam da **Cruz** e da Encarnação; (3) da **Eucaristia**; (4) sobre predestinação e livre-arbítrio. Princípio-chave (cap. 2): não tentar **provar** os mistérios da fé pela razão, mas mostrar que **não são impossíveis** nem contrários à razão. |
+| ⭐ **São Tomás de Aquino** | 1259-1265 | ***Suma contra os Gentios***[^aquino-scg] | Segundo uma tradição antiga, pedida por São Raimundo de Penyafort para os missionários dominicanos na Espanha muçulmana. Como muçulmanos e pagãos não aceitam a Bíblia, Tomás argumenta a partir da **razão natural** (Livro I, cap. 2). Em I, 6 compara a expansão do Islã (pela espada, sem milagres públicos) com a do cristianismo (por milagres, entre perseguições). |
+| **Beato Raimundo Lúlio** (Ramon Llull) | c. 1275-1316 | *Livro do gentio e dos três sábios*[^lulio] | Aprendeu árabe e fundou escolas de línguas para missionários. Diálogo respeitoso entre um judeu, um cristão e um muçulmano. |
+| **Ricoldo da Monte Croce** (dominicano) | c. 1300 | *Contra a lei dos sarracenos*[^ricoldo] | Estudou o Alcorão em árabe, em Bagdá. A obra foi muito influente (até Lutero a traduziu para o alemão em 1542). |
+| **Nicolau de Cusa** (cardeal) | 1461 | *Cribratio Alkorani* (*Peneirando o Alcorão*)[^cusa] | Procura no próprio Alcorão os traços de verdade que apontam para Cristo. |
+| **Bento XVI** | 2006 | **Discurso de Regensburg[^regensburg]** | Sobre fé, razão e violência. Cita o imperador bizantino Manuel II: "não agir segundo a razão é contrário à natureza de Deus". |
+| **Pe. Samir Khalil Samir, SJ** (jesuíta egípcio, islamólogo) | 2008 | *111 Questions on Islam*[^samir] | Visão católica atual e acessível, feita por um especialista que vive no mundo árabe. |
 
-*Também úteis, embora não católicos: os apologistas protestantes **David Wood** e **Nabeel Qureshi** (ex-muçulmano; *Seeking Allah, Finding Jesus*).*
+*Também úteis, embora não católicos: os apologistas protestantes **David Wood** e **Nabeel Qureshi** (ex-muçulmano; *Seeking Allah, Finding Jesus*[^qureshi]).*
 
 ---
 
@@ -1914,8 +1926,8 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 ❌ **Objeção:** "Judeus e cristãos alteraram a Torá e o Evangelho. Só o Alcorão é confiável."
 
 ✅ **Resposta:** O próprio Alcorão contradiz essa ideia. É o chamado **"dilema islâmico"**:
-- O Alcorão manda os cristãos do séc. VII **julgarem pelo Evangelho** que tinham em mãos (**Q 5,47**). Manda Maomé, se tiver dúvida, **perguntar aos que leem o Livro** antes dele (**Q 10,94**). E diz que "**ninguém pode alterar as palavras de Deus**" (**Q 6,115; 18,27**).
-- Já existiam manuscritos completos da Bíblia **séculos antes** de Maomé, como o *Codex Sinaiticus* e o *Codex Vaticanus* (séc. IV), e eles coincidem com as Bíblias de hoje.
+- O Alcorão manda os cristãos do séc. VII **julgarem pelo Evangelho** que tinham em mãos (**Q 5,47[^alcorao]**). Manda Maomé, se tiver dúvida, **perguntar aos que leem o Livro** antes dele (**Q 10,94**). E diz que "**ninguém pode alterar as palavras de Deus**" (**Q 6,115; 18,27**).
+- Já existiam manuscritos completos da Bíblia **séculos antes** de Maomé, como o *Codex Sinaiticus[^manuscritos]* e o *Codex Vaticanus* (séc. IV), e eles coincidem com as Bíblias de hoje.
 - Conclusão: se a Bíblia estava correta no tempo de Maomé (pois o Alcorão a confirma), está correta hoje. E se estava corrompida, o Alcorão erra ao mandar julgar por ela.
 
 📖 **Na Bíblia:**
@@ -1927,9 +1939,9 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ### 93. A Trindade é politeísmo: Deus não gera nem é gerado
 
-❌ **Objeção:** "Deus é Um. Ele não gerou nem foi gerado (Q 112). Dizer 'três' é associar parceiros a Deus." (usam também Q 4,171; 5,73)
+❌ **Objeção:** "Deus é Um. Ele não gerou nem foi gerado (Q 112). Dizer 'três' é associar parceiros a Deus." (usam também Q 4,171[^alcorao]; 5,73)
 
-✅ **Resposta:** Os cristãos **não** creem em três deuses: creem em **um só Deus** em três Pessoas. "Gerar", na Trindade, não é biológico nem sexual. É como a **palavra** que procede da mente, ou a **luz** que procede do sol ("Luz da Luz", diz o Credo). Curiosamente, o próprio Alcorão chama Jesus de "**Palavra de Deus**" e "**um espírito vindo d'Ele**" (**Q 4,171; 3,45**). Se a Palavra de Deus é eterna, como a Palavra pode ser criatura? São Tomás responde exatamente a essa objeção no *De rationibus fidei*, cap. 3-4.
+✅ **Resposta:** Os cristãos **não** creem em três deuses: creem em **um só Deus** em três Pessoas. "Gerar", na Trindade, não é biológico nem sexual. É como a **palavra** que procede da mente, ou a **luz** que procede do sol ("Luz da Luz", diz o Credo). Curiosamente, o próprio Alcorão chama Jesus de "**Palavra de Deus**" e "**um espírito vindo d'Ele**" (**Q 4,171; 3,45**). Se a Palavra de Deus é eterna, como a Palavra pode ser criatura? São Tomás responde exatamente a essa objeção no *De rationibus fidei*[^aquino-dr], cap. 3-4.
 
 📖 **Na Bíblia:**
 - **Dt 6,4; Mc 12,29** — "o Senhor é **um só**". Jesus confirma: o cristianismo é monoteísta.
@@ -1943,7 +1955,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ### 94. Os cristãos adoram Maria como deusa
 
-❌ **Objeção:** "O Alcorão diz que Jesus foi questionado: 'Disseste aos homens: tomai a mim e a minha mãe por deuses?'" (Q 5,116)
+❌ **Objeção:** "O Alcorão diz que Jesus foi questionado: 'Disseste aos homens: tomai a mim e a minha mãe por deuses?'" (Q 5,116[^alcorao])
 
 ✅ **Resposta:** Os cristãos **nunca** ensinaram que Maria é Deus nem que ela faz parte da Trindade. A Trindade é **Pai, Filho e Espírito Santo**. Maria é **criatura**, a mais santa de todas, honrada mas **não adorada** (tópicos 30-37). O Alcorão, aliás, honra Maria (*Maryam*) como nenhuma outra mulher: é a única mulher citada por nome, com uma sura inteira, a 19, e é chamada "escolhida acima das mulheres dos mundos" (Q 3,42). Isso abre uma porta de diálogo.
 
@@ -1958,9 +1970,9 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ### 95. Jesus não morreu na cruz
 
-❌ **Objeção:** "Não o mataram nem o crucificaram; apenas pareceu-lhes assim." (Q 4,157)
+❌ **Objeção:** "Não o mataram nem o crucificaram; apenas pareceu-lhes assim." (Q 4,157[^alcorao])
 
-✅ **Resposta:** A crucificação de Jesus é um dos fatos **mais seguros da história antiga**, aceito até por historiadores céticos (J. D. Crossan, Bart Ehrman). Tácito (*Anais* 15,44) diz que Cristo "**sofreu a pena capital sob Pôncio Pilatos**". Também Josefo e o Talmude a mencionam. A ideia de que "pareceu" (alguém posto no lugar dele) só aparece **600 anos depois** e faria de Deus um **enganador** de multidões, inclusive de Maria e dos discípulos. Note ainda que no Alcorão Jesus diz: "a paz esteja comigo no dia em que nasci, **no dia em que morrer** e no dia em que for ressuscitado" (**Q 19,33**).
+✅ **Resposta:** A crucificação de Jesus é um dos fatos **mais seguros da história antiga**, aceito até por historiadores céticos (J. D. Crossan, Bart Ehrman[^historiadores]). Tácito[^tacito] (*Anais* 15,44) diz que Cristo "**sofreu a pena capital sob Pôncio Pilatos**". Também Josefo[^josefo] e o Talmude[^talmude] a mencionam. A ideia de que "pareceu" (alguém posto no lugar dele) só aparece **600 anos depois** e faria de Deus um **enganador** de multidões, inclusive de Maria e dos discípulos. Note ainda que no Alcorão Jesus diz: "a paz esteja comigo no dia em que nasci, **no dia em que morrer** e no dia em que for ressuscitado" (**Q 19,33**).
 
 📖 **Na Bíblia:**
 - **Mc 8,31; 9,31; 10,33-34** — Jesus **anuncia três vezes** que seria morto e ressuscitaria.
@@ -1993,7 +2005,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ### 97. A Bíblia profetiza Maomé
 
-❌ **Objeção:** "Moisés anunciou um profeta 'como ele, dentre os irmãos' (Dt 18,18), ou seja, dos ismaelitas. E Jesus anunciou o Paráclito (Jo 14,16), que é Ahmad/Maomé (Q 61,6)."
+❌ **Objeção:** "Moisés anunciou um profeta 'como ele, dentre os irmãos' (Dt 18,18), ou seja, dos ismaelitas. E Jesus anunciou o Paráclito (Jo 14,16), que é Ahmad/Maomé (Q 61,6[^alcorao])."
 
 ✅ **Resposta:**
 - **Dt 18,15-18:** "dentre **teus irmãos**" significa **dentre os israelitas**. A mesma expressão aparece em **Dt 17,15** para o rei de Israel ("um **dentre teus irmãos**… não um estrangeiro") e em **Dt 18,2** para os levitas "no meio de seus irmãos". O NT aplica a profecia a **Jesus** (**At 3,22-26**). O profeta "como Moisés" falaria com Deus face a face e faria grandes **sinais** (**Dt 34,10-12**).
@@ -2005,7 +2017,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ❌ **Objeção:** "Jesus pregou o monoteísmo puro. Foi Paulo quem inventou a divindade de Cristo e a cruz."
 
-✅ **Resposta:** O Evangelho de Paulo foi **examinado e aprovado** pelos apóstolos que conviveram com Jesus. A divindade de Jesus e Sua morte redentora estão nos **Evangelhos** e em Pedro e João, não só em Paulo. E o próprio Alcorão diz que os **discípulos de Jesus** (*hawariyyun*) eram "auxiliares de Deus" e que Deus os fez **prevalecer** sobre os inimigos (**Q 61,14**). Se a fé dos apóstolos tivesse se corrompido logo no início, essa vitória não faria sentido.
+✅ **Resposta:** O Evangelho de Paulo foi **examinado e aprovado** pelos apóstolos que conviveram com Jesus. A divindade de Jesus e Sua morte redentora estão nos **Evangelhos** e em Pedro e João, não só em Paulo. E o próprio Alcorão diz que os **discípulos de Jesus** (*hawariyyun*) eram "auxiliares de Deus" e que Deus os fez **prevalecer** sobre os inimigos (**Q 61,14[^alcorao]**). Se a fé dos apóstolos tivesse se corrompido logo no início, essa vitória não faria sentido.
 
 📖 **Na Bíblia:**
 - **Gl 1,18; 2,1-10** — Paulo submete seu Evangelho a **Pedro, Tiago e João**, que lhe dão "**a mão direita em sinal de comunhão**".
@@ -2017,9 +2029,9 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ### 99. A cruz é injusta: ninguém paga pelo pecado de outro
 
-❌ **Objeção:** "Ninguém carregará o fardo de outro (Q 6,164). Deus perdoa sem precisar de sacrifício. Pecado original é injusto."
+❌ **Objeção:** "Ninguém carregará o fardo de outro (Q 6,164[^alcorao]). Deus perdoa sem precisar de sacrifício. Pecado original é injusto."
 
-✅ **Resposta:** Jesus **não** é um terceiro inocente **forçado** a pagar: é o **próprio Deus** feito homem que **livremente** toma sobre si o nosso pecado, por amor. Isso não é injustiça, é a **maior misericórdia**. O perdão de Deus não é "fingir que nada aconteceu": a cruz mostra ao mesmo tempo a **gravidade** do pecado e a **grandeza** do amor. São Tomás trata essa objeção muçulmana no *De rationibus fidei* (caps. 5-7).
+✅ **Resposta:** Jesus **não** é um terceiro inocente **forçado** a pagar: é o **próprio Deus** feito homem que **livremente** toma sobre si o nosso pecado, por amor. Isso não é injustiça, é a **maior misericórdia**. O perdão de Deus não é "fingir que nada aconteceu": a cruz mostra ao mesmo tempo a **gravidade** do pecado e a **grandeza** do amor. São Tomás trata essa objeção muçulmana no *De rationibus fidei*[^aquino-dr] (caps. 5-7).
 
 📖 **Na Bíblia:**
 - **Jo 10,17-18** — "Ninguém a tira de mim: **eu a dou livremente**".
@@ -2036,7 +2048,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ### 100. O Alcorão é a revelação final e Maomé, o selo dos profetas
 
-❌ **Objeção:** "Deus enviou muitos profetas, e Maomé é o último (Q 33,40). O Alcorão completa e corrige as revelações anteriores."
+❌ **Objeção:** "Deus enviou muitos profetas, e Maomé é o último (Q 33,40[^alcorao]). O Alcorão completa e corrige as revelações anteriores."
 
 ✅ **Resposta:** Para o cristão, depois de Jesus **não há** nova revelação pública, porque em Cristo **Deus mesmo falou**: Ele não é só mais um profeta, é a **Palavra** em pessoa. Não há o que acrescentar a Deus que se fez homem, morreu e ressuscitou. A Bíblia dá também **critérios** para avaliar uma mensagem que contradiz o Evangelho. Apresente-os com respeito.
 
@@ -2048,7 +2060,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 - **Mt 24,11.24** — Jesus alertou para a vinda de **falsos profetas** depois d'Ele.
 - **Jo 14,6** — "Eu sou **o** caminho, **a** verdade e **a** vida".
 
-📚 CIC 65-67 ("Não se deve esperar nenhuma nova revelação pública antes da manifestação gloriosa de nosso Senhor Jesus Cristo" — Dei Verbum 4)
+📚 CIC 65-67 ("Não se deve esperar nenhuma nova revelação pública antes da manifestação gloriosa de nosso Senhor Jesus Cristo" — Dei Verbum[^dv] 4)
 
 ---
 
@@ -2106,3 +2118,65 @@ As 30 objeções mais comuns, com os 3 versículos (ou argumentos) mais fortes p
 - **Brant Pitre** — *Jesus and the Jewish Roots of the Eucharist* e *Jesus and the Jewish Roots of Mary*.
 
 > "Santificai Cristo como Senhor em vossos corações, estando sempre prontos a responder a todo aquele que vos pedir a razão da vossa esperança. Fazei-o, porém, com mansidão e respeito." — **1Pd 3,15-16**
+
+## Fontes das citações
+
+Fontes de tudo o que é citado fora da Bíblia (os números aparecem como notas no texto).
+
+[^didaque]: *Didaqué* (Doutrina dos Doze Apóstolos), c. 70–100 d.C. Sobre o aborto: 2,2. Sobre o batismo por infusão: 7,1-3.
+[^inacio]: Santo Inácio de Antioquia, *Carta aos Esmirnenses* 8,2 (c. 107 d.C.): "onde está Jesus Cristo, aí está a Igreja católica". Primeiro uso conhecido da expressão.
+[^pedro-roma]: Pedro em Roma: São Clemente de Roma, *1ª Carta aos Coríntios* 5 (c. 96); Santo Inácio, *Carta aos Romanos* 4,3 (c. 107); Santo Irineu, *Contra as Heresias* III,1,1 e III,3,2 (c. 180); Tertuliano, *A Prescrição dos Hereges* 36 (c. 200); Eusébio de Cesareia, *História Eclesiástica* II,25 (c. 325).
+[^escavacoes]: Escavações sob a Basílica de São Pedro (1939–1949), autorizadas por Pio XII. Em 26/06/1968, Paulo VI anunciou a identificação das relíquias de Pedro.
+[^jeronimo]: São Jerônimo, *Comentário a Isaías*, Prólogo (c. 408). Citado em Dei Verbum 25 e CIC 133.
+[^efeso]: Concílio de Éfeso (431), que proclamou Maria *Theotokos* (Mãe de Deus) contra Nestório.
+[^niceia]: Concílio de Niceia (325), que definiu que o Filho é "consubstancial ao Pai" (Credo Niceno).
+[^edito]: Édito de Milão (313), de Constantino e Licínio, que deu liberdade de culto aos cristãos. O cristianismo só virou religião oficial com o Édito de Tessalônica (380), de Teodósio.
+[^canon]: Lista dos livros da Bíblia: Concílio de Roma (382, atribuído ao Papa Dâmaso), Hipona (393), III de Cartago (397), Florença (1442, bula *Cantate Domino*), Trento (1546, sessão IV, decreto *Sacrosancta*).
+[^lutero-allein]: Martinho Lutero, Novo Testamento em alemão (1522), Rm 3,28: "allein durch den Glauben" (somente pela fé). Ele defende o acréscimo na *Carta aberta sobre a tradução* (*Sendbrief vom Dolmetschen*, 1530).
+[^lutero-palha]: Martinho Lutero, Prefácio ao Novo Testamento (1522), que chama Tiago de "epístola de palha" (*eine rechte stroherne Epistel*), e seus prefácios a Hebreus, Tiago, Judas e Apocalipse.
+[^trento]: Concílio de Trento, sessão XXI (1562), decreto de reforma, cap. 9 (abolição dos "coletores de esmolas" ligados às indulgências); sessão XXV (1563), *Decreto sobre as indulgências*.
+[^alemao]: Antes de Lutero havia 14 edições impressas da Bíblia em alto-alemão (a primeira é a Bíblia de Mentelin, Estrasburgo, 1466) e 4 em baixo-alemão.
+[^gutenberg]: Bíblia de Gutenberg (Mogúncia, c. 1455): a Vulgata latina, primeiro grande livro impresso com tipos móveis.
+[^darby]: John Nelson Darby (1800–1882), dos Irmãos de Plymouth. A ideia foi popularizada pela *Bíblia de Referência Scofield* (1909).
+[^lambeth]: Conferência de Lambeth (Comunhão Anglicana), 1930, resolução 15: primeira igreja cristã a admitir a contracepção.
+[^reformadores]: Lutero, *Comentário ao Gênesis* (sobre Gn 38); João Calvino, *Comentário ao Gênesis* (sobre Gn 38,9-10).
+[^dv]: Concílio Vaticano II, Constituição dogmática *Dei Verbum* (DV), sobre a Revelação divina (18/11/1965). Texto integral em vatican.va.
+[^lg]: Concílio Vaticano II, Constituição dogmática *Lumen Gentium* (LG), sobre a Igreja (21/11/1964), n. 16. Texto integral em vatican.va.
+[^na]: Concílio Vaticano II, Declaração *Nostra Aetate* (NA), sobre as religiões não cristãs (28/10/1965), n. 2-3. Texto integral em vatican.va.
+[^sc]: Concílio Vaticano II, Constituição *Sacrosanctum Concilium* (SC), sobre a liturgia (04/12/1963), n. 36 e 54. Texto integral em vatican.va.
+[^vat1]: Concílio Vaticano I, Constituição dogmática *Pastor Aeternus* (18/07/1870), cap. 4: definição da infalibilidade papal.
+[^const3]: III Concílio de Constantinopla (680–681), sessões XIII e XVI. O Papa Leão II, ao confirmá-lo, explicou que Honório foi condenado por não ter combatido a heresia.
+[^hv]: São Paulo VI, encíclica *Humanae Vitae* (HV), sobre a regulação da natalidade (25/07/1968). Texto integral em vatican.va.
+[^os]: São João Paulo II, carta apostólica *Ordinatio Sacerdotalis* (22/05/1994), n. 4. Texto integral em vatican.va.
+[^humani]: Pio XII, encíclica *Humani Generis* (1950), n. 36; São João Paulo II, Mensagem à Pontifícia Academia das Ciências sobre a evolução (22/10/1996).
+[^galileu]: São João Paulo II, discurso à Pontifícia Academia das Ciências sobre o caso Galileu (31/10/1992).
+[^sublimis]: Paulo III, bula *Sublimis Deus* (1537), contra a escravização dos indígenas; Gregório XVI, carta apostólica *In supremo apostolatus* (1839), contra o tráfico de escravos.
+[^cti]: Comissão Teológica Internacional, *A esperança da salvação para as crianças que morrem sem batismo* (19/04/2007).
+[^mpf]: Dicastério para a Doutrina da Fé, nota doutrinal *Mater Populi Fidelis*, sobre títulos marianos ligados à cooperação de Maria na salvação (novembro de 2025).
+[^pena2018]: Papa Francisco, Rescrito de 02/08/2018 (Congregação para a Doutrina da Fé), com a nova redação do CIC 2267.
+[^regensburg]: Bento XVI, discurso *Fé, razão e universidade* (Universidade de Regensburg, 12/09/2006), citando Manuel II Paleólogo, *Diálogos com um persa*, VII (1391). Texto integral em vatican.va.
+[^st]: São Tomás de Aquino, *Suma Teológica* (ST) I, q. 2, a. 3: as Cinco Vias para provar a existência de Deus.
+[^aquino-dr]: São Tomás de Aquino, *De rationibus fidei ad Cantorem Antiochenum* (*Sobre as razões da fé, ao Cantor de Antioquia*), c. 1264, caps. 1-10.
+[^aquino-scg]: São Tomás de Aquino, *Suma contra os Gentios* (SCG), 1259–1265, livro I, caps. 2 e 6. A encomenda de São Raimundo de Penyafort é contada na crônica de Pedro Marsílio (1313).
+[^damasceno]: São João Damasceno, *Sobre as heresias* (*De haeresibus*), cap. 100 (101 em algumas edições), parte da *Fonte do Conhecimento* (c. 730–750).
+[^abuqurrah]: Teodoro Abu Qurrah (c. 750–c. 825), bispo de Harã: tratados em árabe, como o *Tratado sobre a veneração dos ícones*.
+[^pedrov]: Pedro, o Venerável, *Contra sectam Saracenorum* (c. 1155). A tradução latina do Alcorão feita por Roberto de Ketton (1143) integra a chamada *Coleção Toledana*.
+[^francisco]: Encontro de São Francisco com o sultão al-Kamil (Damieta, 1219): São Boaventura, *Legenda Maior* IX,8; testemunho de Jacques de Vitry (carta de 1220).
+[^lulio]: Ramon Llull, *Llibre del gentil e dels tres savis* (*Livro do gentio e dos três sábios*), c. 1274–1276.
+[^ricoldo]: Ricoldo da Monte Croce, *Contra legem Sarracenorum* (c. 1300). Tradução alemã de Lutero: *Verlegung des Alcoran* (1542).
+[^cusa]: Nicolau de Cusa, *Cribratio Alkorani* (1461).
+[^samir]: Samir Khalil Samir, *111 Questions on Islam* (Ignatius Press, 2008).
+[^qureshi]: Nabeel Qureshi, *Seeking Allah, Finding Jesus* (Zondervan, 2014). Autor protestante, ex-muçulmano.
+[^alcorao]: Alcorão, citado como "Q sura,versículo" (numeração do Cairo, 1924). Tradução de referência em português: Helmi Nasr, *Tradução do sentido do Nobre Alcorão* (Complexo do Rei Fahd).
+[^tacito]: Tácito, *Anais* XV,44 (c. 116 d.C.): "Cristo, que no reinado de Tibério foi condenado ao suplício pelo procurador Pôncio Pilatos".
+[^josefo]: Flávio Josefo, *Antiguidades Judaicas* XVIII,3,3 e XX,9,1 (c. 93 d.C.).
+[^plinio]: Plínio, o Jovem, *Cartas* X,96, ao imperador Trajano (c. 112 d.C.).
+[^talmude]: Talmude Babilônico, *Sanhedrin* 43a: "na véspera da Páscoa, suspenderam Yeshu".
+[^historiadores]: Bart D. Ehrman, *Did Jesus Exist?* (2012); John Dominic Crossan, *Jesus: A Revolutionary Biography* (1994). Os dois são críticos do cristianismo tradicional.
+[^manuscritos]: Codex Sinaiticus e Codex Vaticanus (séc. IV); Papiro P52 (John Rylands Library, c. 125–150 d.C., com Jo 18,31-33.37-38); Grande Rolo de Isaías de Qumrã (1QIsaª, c. 125 a.C.). A contagem de cerca de 5.800 manuscritos gregos é do Instituto de Pesquisa do Texto do NT (Münster).
+[^tell]: Inscrição funerária judaica de Arsinoé, Tell el-Yehudieh (Egito), datada de 5 a.C.
+[^lemaitre]: Georges Lemaître, "Un Univers homogène de masse constante et de rayon croissant" (1927) e a hipótese do "átomo primordial" (1931).
+[^lourdes]: Comitê Médico Internacional de Lourdes (CMIL). O 70º milagre reconhecido pela Igreja foi o da Ir. Bernadette Moriau (2018).
+[^wars]: Charles Phillips e Alan Axelrod, *Encyclopedia of Wars* (Facts on File, 2004), 3 vols.: 123 de 1.763 conflitos classificados como principalmente religiosos.
+[^massey]: Gerald Massey, *The Natural Genesis* (1883) e *Ancient Egypt: The Light of the World* (1907); Kersey Graves, *The World's Sixteen Crucified Saviors* (1875); filme *Zeitgeist* (2007).
+[^lewis]: C. S. Lewis, *Cristianismo puro e simples* (*Mere Christianity*, 1952), livro II, cap. 3.
