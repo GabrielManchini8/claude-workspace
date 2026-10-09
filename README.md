@@ -11,9 +11,4 @@ Cada projeto novo pode ficar numa pasta própria aqui dentro.
 
 ## Projetos
 
-- [Apologética Católica](apologetica/apologetica-catolica.md) — app católico de bolso: https://claude.ai/artifact/NMsFZHLvPtHWCD67snnxvs
-  - **Defesa da fé:** 100 objeções com versículos (`apologetica-catolica.md`, `objecoes.json`), heresias (`heresias.md`) e outras religiões (`religioes.md`)
-  - **Ano litúrgico:** cores, tempos e festas, calculados para a data de hoje (`liturgia.md`)
-  - **Na Missa:** o que fazer e o que evitar (`missa.md`)
-  - **Terço:** passo a passo interativo, mistérios e orações (`terco.md`) e vídeo (`terco.mp4`, feito em Remotion em `video-terco/`)
-  - Fontes extrabíblicas (notas de rodapé): `fontes.py`. A página é gerada por `build.py` a partir de `app.template.html`.
+- **Logos** (app católico de bolso: defesa da fé, ano litúrgico, Missa e terço) foi movido para o repositório privado [gabrielmanchini8/Logos](https://github.com/GabrielManchini8/logos). O histórico de como ele foi criado continua neste repositório, no ramo `ccr-e614d41b-2cdw4f`.
