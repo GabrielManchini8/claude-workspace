@@ -121,6 +121,50 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
 .pill { font-size: 11px; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--rule); color: var(--ink-2); white-space: nowrap; }
 .foot { font-size: 12.5px; color: var(--ink-3); display: grid; gap: 6px; max-width: 90ch; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* ---------- atlas e genealogia ---------- */
+.atlas-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
+.atlas-head h2 { color: var(--night-ink); }
+.atlas-head p { color: var(--night-ink-2); font-size: 14px; max-width: 70ch; }
+.atlas { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+@media (max-width: 980px) { .atlas { grid-template-columns: minmax(0, 1fr); } }
+.pane { background: var(--night-2); border: 1px solid var(--night-rule); border-radius: 8px; padding: 12px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.pane h3 { color: var(--night-ink-3); }
+.pane-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.seg.small button { padding: 3px 10px; font-size: 12px; }
+.jchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.jchip { background: var(--night); border: 1px solid var(--night-rule); color: var(--night-ink-2); border-radius: 99px; padding: 3px 10px; font-size: 12px; cursor: pointer; }
+.jchip:hover { color: var(--night-ink); border-color: var(--night-ink-3); }
+.jchip[aria-pressed="true"] { border-color: var(--gold); color: var(--night-ink); }
+.jchip.deut { border-style: dashed; }
+.mapbox { position: relative; width: 100%; border-radius: 6px; overflow: hidden; touch-action: pan-y; }
+.mapbox canvas { display: block; width: 100%; }
+.mapnote { font-size: 12px; color: var(--night-ink-3); display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; }
+.mapnote i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: 6px; vertical-align: middle; }
+.treebox { overflow-x: auto; min-height: 120px; }
+.treebox svg { display: block; }
+.tnode rect { fill: var(--night); stroke: var(--night-rule); }
+.tnode text { fill: var(--night-ink-2); font: 12px var(--f-body); }
+.tnode { cursor: pointer; }
+.tnode:hover rect, .tnode:focus-visible rect { stroke: var(--night-ink-3); }
+.tnode.focus rect { stroke: var(--gold); stroke-width: 1.5; fill: #1f2230; }
+.tnode.focus text { fill: var(--night-ink); font: 600 13.5px var(--f-body); }
+.tnode.sib text { fill: var(--night-ink-3); }
+.tnode:focus { outline: none; }
+.tedge { fill: none; stroke: #3a4050; stroke-width: 1; }
+.tedge.mar { stroke-dasharray: 3 3; }
+.tcap { fill: var(--night-ink-3); font: italic 11.5px var(--f-body); }
+.tempty { color: var(--night-ink-3); font-size: 13px; padding: 20px 4px; }
+.lineage { display: flex; gap: 2px; overflow-x: auto; padding-bottom: 6px; align-items: center; }
+.lineage button { flex: none; background: none; border: 0; color: var(--night-ink-3); font-size: 12px; padding: 3px 5px; border-radius: 5px; cursor: pointer; white-space: nowrap; }
+.lineage button:hover { color: var(--night-ink); background: var(--night); }
+.lineage button.on { color: var(--night); background: var(--gold); }
+.lineage span { color: #3a4050; flex: none; font-size: 11px; }
+.lnote { font-size: 12px; color: var(--night-ink-3); }
+.chips.tight .chip { font-size: 12.5px; padding: 3px 10px; }
+.chip .n { font-family: var(--f-mono); font-size: 11px; color: var(--ink-3); margin-left: 4px; }
+.subh { display: flex; align-items: center; gap: 8px; }
+.subh i { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); display: inline-block; }
 </style>
 
 <div class="wrap">
@@ -154,6 +198,35 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
     <div class="caption">
       <span>Barras: versículos por capítulo (laranja = deuterocanônico). Faixa inferior: divisões do cânon.</span>
       <span>Força = maior número de votos no OpenBible entre os versículos do par.</span>
+    </div>
+  </section>
+
+  <section class="night" aria-label="Atlas e genealogia" id="atlas">
+    <div class="atlas-head">
+      <h2>Atlas e genealogia</h2>
+      <p>O mapa e a árvore seguem a seleção do gráfico: um capítulo acende seus lugares e sua família principal; uma pessoa ou um lugar acende, nos arcos, os capítulos onde aparece.</p>
+    </div>
+    <div class="atlas">
+      <div class="pane">
+        <div class="pane-top">
+          <h3>Mapa</h3>
+          <div class="seg small" role="group" aria-label="Enquadramento do mapa">
+            <button type="button" data-view="auto" aria-pressed="true">Ajustar</button>
+            <button type="button" data-view="world" aria-pressed="false">Mundo bíblico</button>
+            <button type="button" data-view="holy" aria-pressed="false">Terra Santa</button>
+          </div>
+        </div>
+        <div class="jchips" id="jchips" role="group" aria-label="Viagens"></div>
+        <div class="mapbox" id="mapbox"><canvas id="map"></canvas><div class="tip" id="maptip" hidden></div></div>
+        <div class="mapnote"><span><i></i>Lugares da seleção (tamanho = menções)</span><span>Pontos cinza: os 1.235 lugares com coordenadas</span></div>
+      </div>
+      <div class="pane">
+        <div class="pane-top"><h3>Árvore genealógica</h3><span class="lnote" id="treeWho"></span></div>
+        <div class="treebox" id="treebox"></div>
+        <h3 style="margin-top:6px">De Jesus a Adão · 65 gerações</h3>
+        <div class="lineage" id="lineage"></div>
+        <p class="lnote">Pela linha de Mateus 1 até Abraão e de Gênesis 11 e 5 até Adão. Lucas 3 traz outra linha entre Davi e José.</p>
+      </div>
     </div>
   </section>
 
@@ -206,7 +279,7 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
   </section>
 
   <footer class="foot">
-    <p><strong>Fontes.</strong> Referências cruzadas: OpenBible.info, CC BY (versão de 04/11/2024, 344.799 referências versículo a versículo), via <a href="https://github.com/scrollmapper/bible_databases" target="_blank" rel="noopener">scrollmapper/bible_databases</a>. Versículos por capítulo: King James (66 livros) e Catholic Public Domain Version (deuterocanônicos). Ligações deuterocanônicas: curadoria própria, a conferir numa Bíblia de estudo católica. Inspirado em Chris Harrison e Christoph Römhild (2008).</p>
+    <p><strong>Fontes.</strong> Referências cruzadas: OpenBible.info, CC BY (versão de 04/11/2024, 344.799 referências versículo a versículo), via <a href="https://github.com/scrollmapper/bible_databases" target="_blank" rel="noopener">scrollmapper/bible_databases</a>. Versículos por capítulo: King James (66 livros) e Catholic Public Domain Version (deuterocanônicos). Ligações deuterocanônicas: curadoria própria, a conferir numa Bíblia de estudo católica. Pessoas, famílias, lugares e viagens de Paulo: <a href="https://github.com/robertrouse/theographic-bible-metadata" target="_blank" rel="noopener">Theographic Bible Metadata</a>, CC BY-SA 4.0 (coordenadas do OpenBible.info). Litoral: Natural Earth, domínio público. Viagens de Abraão, Jacó, Êxodo, Davi, Elias, exílio, Tobias, Macabeus e Jesus: curadoria própria; Rages e Modin com coordenadas aproximadas. Inspirado em Chris Harrison e Christoph Römhild (2008).</p>
     <p><strong>Limites.</strong> Salmos na numeração hebraica dos dados de origem (a Ave-Maria usa a grega, em geral um número a menos). Os acréscimos gregos de Ester não aparecem como capítulos separados.</p>
   </footer>
 </div>
@@ -214,6 +287,7 @@ td.r button { background: none; border: 0; padding: 0; cursor: pointer; color: v
 <script>
 const DATA = __DATA__;
 const DEUT = __DEUT__;
+const ATLAS = __ATLAS__;
 (function () {
   const books = DATA.books, ch = DATA.chapters, P = DATA.pairs;
   const N = ch.length, NP = P.length / 4, NB = books.length;
@@ -384,6 +458,7 @@ const DEUT = __DEUT__;
     const s = selChapters(); if (!s) return;
     // escurece o céu para destacar a seleção
     ctx.fillStyle = "rgba(13,15,20,0.72)"; ctx.fillRect(0, 0, W, baseY);
+    if (s.t === "person" || s.t === "place" || s.t === "journey") { drawMarks(ctx, marksFor(s)); return; }
     let list = [], dl = [];
     if (s.t === "ch") {
       list = adj[s.i].filter(k => P[4 * k + 3] >= state.minV); dl = dAdj[s.i];
@@ -452,6 +527,7 @@ const DEUT = __DEUT__;
       detail.querySelector(".empty").appendChild(chips);
       return;
     }
+    if (s.t === "person" || s.t === "place" || s.t === "journey") { atlasDetail(s); return; }
     const head = document.createElement("div"); head.style.display = "grid"; head.style.gap = "6px";
     const h3 = document.createElement("h3"); h3.textContent = s.t === "ch" ? "Capítulo selecionado" : "Livro selecionado";
     const t = document.createElement("div"); t.className = "sel-title";
@@ -477,6 +553,7 @@ const DEUT = __DEUT__;
         const p = document.createElement("p"); p.style.color = "var(--ink-2)"; p.textContent = "Este capítulo deuterocanônico não tem referências no OpenBible nem ligações curadas.";
         detail.appendChild(p);
       }
+      chapterChips(s.i);
       if (rows.length) {
         const cap = document.createElement("h3"); cap.textContent = "Fios deste capítulo · clique para seguir"; detail.appendChild(cap);
         const lg = document.createElement("div"); lg.className = "legend-s";
@@ -512,10 +589,374 @@ const DEUT = __DEUT__;
   }
 
   function select(s, scroll) {
-    state.sel = s; renderDetail(); drawOver();
-    if (s) { document.getElementById("q").value = s.t === "ch" ? chName(s.i) : books[s.i].pt; }
+    state.sel = s; renderDetail(); drawOver(); atlasUpdate();
+    if (s) { document.getElementById("q").value = selLabel(s); }
     if (scroll) document.getElementById("arcos").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   }
+
+  // ---------- atlas: pessoas, lugares, viagens ----------
+  const PL = ATLAS.places, PE = ATLAS.people;
+  const NPL = PL.length, NPE = PE.length;
+  const personCh = Array.from({ length: NPE }, () => []), placeCh = Array.from({ length: NPL }, () => []);
+  ATLAS.chP.forEach((a, i) => { for (let j = 0; j < a.length; j += 2) personCh[a[j]].push([i, a[j + 1]]); });
+  ATLAS.chL.forEach((a, i) => { for (let j = 0; j < a.length; j += 2) placeCh[a[j]].push([i, a[j + 1]]); });
+  const coOf = p => { const a = ATLAS.co[p] || []; const out = []; for (let j = 0; j < a.length; j += 2) out.push([a[j], a[j + 1]]); return out; };
+  let placePeople = null;
+  function peopleOfPlace(l) {
+    if (!placePeople) { placePeople = Array.from({ length: NPL }, () => []);
+      for (const p in ATLAS.co) { const a = ATLAS.co[p]; for (let j = 0; j < a.length; j += 2) placePeople[a[j]].push([+p, a[j + 1]]); }
+      placePeople.forEach(x => x.sort((a, b) => b[1] - a[1])); }
+    return placePeople[l];
+  }
+  const JESUS = ATLAS.special.jesus, JOSEPH = ATLAS.special.joseph;
+  const pName = p => p === JOSEPH ? "José, esposo de Maria" : PE[p][0];
+  const TYPE = { C: "Cidade", R: "Região", W: "Água (rio, mar, poço)", M: "Monte", L: "Marco", I: "Ilha", H: "Colina", P: "Lugar", V: "Vale", D: "Deserto" };
+  const children = p => PE[p][4], partners = p => PE[p][5];
+  const fatherOf = p => PE[p][2], motherOf = p => PE[p][3];
+  function siblingsOf(p) {
+    const s = new Set(); [fatherOf(p), motherOf(p)].forEach(x => { if (x >= 0) children(x).forEach(c => { if (c !== p) s.add(c); }); });
+    return [...s];
+  }
+  const hasFamily = p => fatherOf(p) >= 0 || motherOf(p) >= 0 || children(p).length > 0;
+
+  // viagens: curadas (com paradas) e de Paulo (rotas desenhadas)
+  const JOURNEYS = ATLAS.journeys.map(j => ({ name: j.n, refs: j.r, stops: j.s.map(s => ({ l: s[0], ref: s[1], ch: s[2] })), deut: /deutero/.test(j.r) }));
+  ATLAS.paul.forEach(pj => {
+    const first = pj.ch, rng = { 13: [13, 14], 16: [15, 18], 19: [18, 21], 27: [27, 28] }[ch[pj.ch][1]];
+    const chs = []; for (let c = rng[0]; c <= rng[1]; c++) chs.push(books[codeIdx["Acts"]].start + c - 1);
+    const seen = new Map(); chs.forEach(c => { const a = ATLAS.chL[c]; for (let j = 0; j < a.length; j += 2) seen.set(a[j], (seen.get(a[j]) || 0) + a[j + 1]); });
+    JOURNEYS.push({ name: pj.n, refs: pj.r, lines: pj.lines, places: [...seen.entries()], chs, paul: true });
+  });
+  const personByName = n => PE.findIndex(x => x[0] === n);
+  const JOURNEY_OF = new Map([[personByName("Abraão"), 0], [personByName("Jacó (Israel)"), 1], [personByName("Moisés"), 2], [personByName("Davi"), 3], [personByName("Elias"), 4], [JESUS, 8], [personByName("Paulo"), 9]]);
+  const journeysAtCh = Array.from({ length: N }, () => []);
+  JOURNEYS.forEach((j, k) => (j.stops ? j.stops.map(s => s.ch) : j.chs).forEach(c => { if (!journeysAtCh[c].includes(k)) journeysAtCh[c].push(k); }));
+
+  function marksFor(s) {
+    if (s.t === "person") return personCh[s.i];
+    if (s.t === "place") return placeCh[s.i];
+    const j = JOURNEYS[s.i]; return (j.stops ? j.stops.map(x => x.ch) : j.chs).map(c => [c, 4]);
+  }
+  function drawMarks(ctx, marks) {
+    const gold = css("--gold");
+    const sorted = [...marks].sort((a, b) => a[0] - b[0]);
+    // trajetória no texto: arcos dourados entre aparições consecutivas
+    if (sorted.length > 1 && sorted.length < 600) {
+      ctx.strokeStyle = gold; ctx.lineWidth = 1; ctx.globalAlpha = Math.max(0.25, Math.min(0.8, 40 / sorted.length));
+      ctx.beginPath();
+      for (let k = 1; k < sorted.length; k++) { const xa = X(sorted[k - 1][0]), xb = X(sorted[k][0]); const cx = (xa + xb) / 2, r = (xb - xa) / 2; if (r < 0.5) continue; ctx.moveTo(xb, baseY); ctx.arc(cx, baseY, r, 0, Math.PI, true); }
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1; ctx.fillStyle = gold;
+    for (const [c, w] of sorted) { const h = 4 + 5 * Math.log2(1 + w); ctx.fillRect(X(c) - 0.9, baseY - h, 1.8, h); }
+  }
+
+  function selLabel(s) {
+    if (s.t === "ch") return chName(s.i); if (s.t === "book") return books[s.i].pt;
+    if (s.t === "person") return pName(s.i); if (s.t === "place") return PL[s.i][0]; return JOURNEYS[s.i].name;
+  }
+  function findEntity(n) {
+    let best = -1, bv = -1;
+    PE.forEach((x, i) => { const nn = norm(x[0]); if ((nn === n || nn.startsWith(n + " ") || nn.startsWith(n)) && x[6] > bv) { best = i; bv = x[6]; } });
+    let bestL = -1, bl = -1;
+    PL.forEach((x, i) => { const nn = norm(x[0]); if ((nn === n || nn.startsWith(n)) && x[4] > bl) { bestL = i; bl = x[4]; } });
+    if (best < 0 && bestL < 0) return null;
+    if (best >= 0 && (bestL < 0 || bv >= bl)) return { t: "person", i: best };
+    return { t: "place", i: bestL };
+  }
+
+  // ---------- painel: detalhes de pessoa, lugar e viagem ----------
+  function chipRow(title, items, onPick) {
+    if (!items.length) return;
+    const h = document.createElement("h3"); h.textContent = title; detail.appendChild(h);
+    const box = document.createElement("div"); box.className = "chips tight";
+    items.forEach(([label, n, go]) => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = label;
+      if (n != null) { const sp = document.createElement("span"); sp.className = "n"; sp.textContent = n; b.appendChild(sp); }
+      b.onclick = go; box.appendChild(b); });
+    detail.appendChild(box);
+  }
+  function chapterChips(i) {
+    const a = ATLAS.chP[i], b = ATLAS.chL[i];
+    const pp = []; for (let j = 0; j < a.length && pp.length < 14; j += 2) pp.push([pName(a[j]), a[j + 1], () => select({ t: "person", i: a[j] }, false)]);
+    const ll = []; for (let j = 0; j < b.length && ll.length < 14; j += 2) ll.push([PL[b[j]][0], b[j + 1], () => select({ t: "place", i: b[j] }, false)]);
+    chipRow("Pessoas neste capítulo", pp); chipRow("Lugares neste capítulo", ll);
+    const js = journeysAtCh[i]; if (js.length) chipRow("Viagens que passam aqui", js.map(k => [JOURNEYS[k].name, null, () => select({ t: "journey", i: k }, false)]));
+  }
+  function chapterRows(title, list) {
+    if (!list.length) return;
+    const h = document.createElement("h3"); h.textContent = title; detail.appendChild(h);
+    const box = document.createElement("div"); box.className = "links";
+    const rows = [...list].sort((a, b) => b[1] - a[1]); const max = rows[0][1];
+    rows.slice(0, 60).forEach(([c, n]) => box.appendChild(rowBtn(chName(c), n, max, "var(--gold)", () => select({ t: "ch", i: c }, false))));
+    detail.appendChild(box);
+  }
+  function atlasDetail(s) {
+    const head = document.createElement("div"); head.style.display = "grid"; head.style.gap = "6px";
+    const h3 = document.createElement("h3"), t = document.createElement("div"), m = document.createElement("div");
+    t.className = "sel-title"; m.className = "sel-meta"; head.append(h3, t, m); detail.appendChild(head);
+    if (s.t === "person") {
+      const p = s.i, chs = personCh[p];
+      h3.textContent = "Pessoa"; t.textContent = pName(p);
+      const sorted = [...chs].sort((a, b) => a[0] - b[0]);
+      m.textContent = `${fmt(PE[p][6])} versículos · ${chs.length} capítulos` + (sorted.length ? ` · de ${chShort(sorted[0][0])} a ${chShort(sorted[sorted.length - 1][0])}` : "");
+      const fam = [];
+      if (fatherOf(p) >= 0) fam.push([(p === JESUS ? "Pai legal: " : "Pai: ") + pName(fatherOf(p)), null, () => select({ t: "person", i: fatherOf(p) }, false)]);
+      if (motherOf(p) >= 0) fam.push(["Mãe: " + pName(motherOf(p)), null, () => select({ t: "person", i: motherOf(p) }, false)]);
+      partners(p).forEach(x => fam.push(["Cônjuge: " + pName(x), null, () => select({ t: "person", i: x }, false)]));
+      children(p).slice(0, 12).forEach(x => fam.push(["Filho(a): " + pName(x), null, () => select({ t: "person", i: x }, false)]));
+      chipRow("Família", fam);
+      if (p === JESUS) { const n = document.createElement("p"); n.style.cssText = "color:var(--ink-2);font-size:13.5px"; n.textContent = "Os “irmãos” de Jesus citados em Mc 6,3 aparecem na base como irmãos. A Igreja os entende como parentes próximos, pois Maria permaneceu sempre virgem (CIC 499–501)."; detail.appendChild(n); }
+      chipRow("Lugares onde aparece", coOf(p).slice(0, 14).map(([l, n]) => [PL[l][0], n, () => select({ t: "place", i: l }, false)]));
+      if (JOURNEY_OF.has(p)) { const k = JOURNEY_OF.get(p); chipRow("Viagem", [[JOURNEYS[k].name, null, () => select({ t: "journey", i: k }, false)]]); }
+      chapterRows("Capítulos onde aparece · os traços dourados no gráfico", chs);
+    } else if (s.t === "place") {
+      const l = s.i; h3.textContent = "Lugar"; t.textContent = PL[l][0];
+      m.textContent = `${TYPE[PL[l][3]] || "Lugar"} · ${fmt(PL[l][4])} versículos · ${placeCh[l].length} capítulos · ${PL[l][1].toFixed(2)}° N, ${PL[l][2].toFixed(2)}° L`;
+      chipRow("Pessoas ligadas a este lugar", peopleOfPlace(l).slice(0, 14).map(([p, n]) => [pName(p), n, () => select({ t: "person", i: p }, false)]));
+      chapterRows("Capítulos que citam este lugar", placeCh[l]);
+      if (!placeCh[l].length) { const n = document.createElement("p"); n.style.color = "var(--ink-2)"; n.textContent = "Lugar de livro deuterocanônico, fora da base de origem; coordenadas aproximadas."; detail.appendChild(n); }
+    } else {
+      const j = JOURNEYS[s.i]; h3.textContent = "Viagem"; t.textContent = j.name; m.textContent = j.refs;
+      const box = document.createElement("div"); box.className = "links";
+      if (j.stops) j.stops.forEach((st, k) => box.appendChild(rowBtn(`${k + 1}. ${PL[st.l][0]} · ${st.ref}`, k + 1, j.stops.length, "var(--gold)", () => select({ t: "ch", i: st.ch }, false))));
+      else j.chs.forEach(c => box.appendChild(rowBtn(chName(c), 1, 1, "var(--gold)", () => select({ t: "ch", i: c }, false))));
+      const h = document.createElement("h3"); h.textContent = j.stops ? "Paradas · clique para ler o capítulo" : "Capítulos de Atos"; detail.append(h, box);
+      if (j.paul) chipRow("Lugares citados nesses capítulos", j.places.sort((a, b) => b[1] - a[1]).slice(0, 16).map(([l, n]) => [PL[l][0], n, () => select({ t: "place", i: l }, false)]));
+    }
+    const clear = document.createElement("button"); clear.type = "button"; clear.className = "chip"; clear.textContent = "Limpar seleção"; clear.style.justifySelf = "start";
+    clear.onclick = () => select(null, false); detail.appendChild(clear);
+  }
+
+  // ---------- mapa ----------
+  const mapbox = document.getElementById("mapbox"), mcanvas = document.getElementById("map"), maptip = document.getElementById("maptip");
+  const VIEWS = { world: [8, 21, 54, 44], holy: [33.7, 29.2, 37.0, 33.6] };
+  let viewMode = "auto", curBox = VIEWS.world.slice(), mapW = 0, mapH = 0, mapDpr = 1, mapAnim = 0, mapHL = [], mapJourneys = [], mapLabels = [];
+  const RIVERS = [
+    [35.62, 33.25, 35.6, 32.9, 35.58, 32.72, 35.57, 32.4, 35.55, 32.1, 35.53, 31.78],               // Jordão
+    [31.2, 30.1, 31.0, 29.0, 30.9, 28.0, 30.8, 27.2, 31.2, 26.6, 32.6, 26.0, 32.8, 25.5, 32.9, 24.1, 32.9, 22.0], // Nilo
+    [38.5, 39.1, 38.3, 38.0, 38.2, 36.9, 38.6, 36.0, 40.2, 35.3, 40.9, 34.4, 42.4, 33.9, 43.4, 33.4, 44.4, 32.5, 46.1, 31.0, 47.4, 30.6, 47.9, 30.0], // Eufrates
+    [40.2, 37.9, 41.4, 37.4, 42.6, 37.1, 43.13, 36.34, 43.5, 35.0, 44.4, 33.3, 45.8, 32.0, 47.4, 31.0, 47.9, 30.0] // Tigre
+  ];
+  const LAKES = [
+    [35.5, 31.76, 35.58, 31.75, 35.59, 31.5, 35.55, 31.25, 35.45, 31.05, 35.38, 31.2, 35.46, 31.5], // Mar Morto
+    [35.54, 32.88, 35.62, 32.88, 35.65, 32.8, 35.61, 32.71, 35.56, 32.73, 35.52, 32.8]               // Mar da Galileia
+  ];
+  function mapLayout() {
+    mapW = mapbox.clientWidth; mapH = Math.round(Math.min(560, Math.max(300, mapW * 0.74))); mapDpr = Math.min(window.devicePixelRatio || 1, 2);
+    mcanvas.width = mapW * mapDpr; mcanvas.height = mapH * mapDpr; mcanvas.style.height = mapH + "px";
+  }
+  function proj(box) {
+    const k = Math.cos((box[1] + box[3]) / 2 * Math.PI / 180);
+    const s = Math.min(mapW / ((box[2] - box[0]) * k), mapH / (box[3] - box[1]));
+    const cx = (box[0] + box[2]) / 2, cy = (box[1] + box[3]) / 2;
+    return { f: (lon, lat) => [mapW / 2 + (lon - cx) * k * s, mapH / 2 - (lat - cy) * s], s };
+  }
+  function fitBox(pts) {
+    if (!pts.length) return VIEWS.world.slice();
+    let a = 180, b = 90, c = -180, d = -90;
+    pts.forEach(([lo, la]) => { a = Math.min(a, lo); c = Math.max(c, lo); b = Math.min(b, la); d = Math.max(d, la); });
+    const padX = Math.max(0.6, (c - a) * 0.18), padY = Math.max(0.5, (d - b) * 0.18);
+    a -= padX; c += padX; b -= padY; d += padY;
+    const minH = 2.2; if (d - b < minH) { const m = (d + b) / 2; b = m - minH / 2; d = m + minH / 2; }
+    return [Math.max(4, a), Math.max(10, b), Math.min(60, c), Math.min(46, d)];
+  }
+  function drawMap() {
+    const ctx = mcanvas.getContext("2d"); ctx.setTransform(mapDpr, 0, 0, mapDpr, 0, 0);
+    const { f, s } = proj(curBox);
+    ctx.fillStyle = "#0b1119"; ctx.fillRect(0, 0, mapW, mapH);
+    // graticule
+    const step = s > 120 ? 1 : 5; ctx.strokeStyle = "rgba(120,140,170,0.07)"; ctx.lineWidth = 1; ctx.beginPath();
+    for (let lo = Math.ceil(curBox[0] / step) * step; lo <= curBox[2]; lo += step) { const [x] = f(lo, 0); ctx.moveTo(x, 0); ctx.lineTo(x, mapH); }
+    for (let la = Math.ceil(curBox[1] / step) * step; la <= curBox[3]; la += step) { const [, y] = f(0, la); ctx.moveTo(0, y); ctx.lineTo(mapW, y); }
+    ctx.stroke();
+    // terra
+    ctx.beginPath();
+    for (const r of ATLAS.land) { for (let j = 0; j < r.length; j += 2) { const [x, y] = f(r[j], r[j + 1]); j ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath(); }
+    ctx.fillStyle = "#1a202b"; ctx.fill("evenodd"); ctx.strokeStyle = "#2c3546"; ctx.lineWidth = 0.8; ctx.stroke();
+    ctx.fillStyle = "#0b1119";
+    for (const r of LAKES) { ctx.beginPath(); for (let j = 0; j < r.length; j += 2) { const [x, y] = f(r[j], r[j + 1]); j ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath(); ctx.fill(); ctx.stroke(); }
+    ctx.strokeStyle = "rgba(57,135,229,0.45)"; ctx.lineWidth = s > 120 ? 1.6 : 1;
+    for (const r of RIVERS) { ctx.beginPath(); for (let j = 0; j < r.length; j += 2) { const [x, y] = f(r[j], r[j + 1]); j ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); }
+    // todos os lugares
+    ctx.fillStyle = "rgba(169,168,160,0.32)";
+    for (let i = 0; i < NPL; i++) { const [x, y] = f(PL[i][2], PL[i][1]); if (x < -5 || y < -5 || x > mapW + 5 || y > mapH + 5) continue; const r = 0.8 + Math.log10(1 + PL[i][4]) * 0.7; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); }
+    const gold = css("--gold"); mapLabels = [];
+    const boxes = [];
+    const label = (txt, x, y, strong) => {
+      ctx.font = `${strong ? 600 : 500} ${strong ? 12.5 : 11.5}px "IBM Plex Sans", system-ui, sans-serif`;
+      const w = ctx.measureText(txt).width; let bx = x + 7, by = y - 7;
+      if (bx + w > mapW - 4) bx = x - 7 - w;
+      const bb = [bx - 2, by - 11, w + 4, 15];
+      if (boxes.some(o => !(bb[0] > o[0] + o[2] || bb[0] + bb[2] < o[0] || bb[1] > o[1] + o[3] || bb[1] + bb[3] < o[1]))) return;
+      boxes.push(bb); ctx.fillStyle = "rgba(11,17,25,0.75)"; ctx.fillRect(bb[0], bb[1], bb[2], bb[3]);
+      ctx.fillStyle = strong ? "#f3e7c4" : "#cfcabc"; ctx.textBaseline = "alphabetic"; ctx.fillText(txt, bx, by);
+    };
+    // viagens
+    for (const jj of mapJourneys) {
+      const j = JOURNEYS[jj.k], a = jj.alpha;
+      ctx.globalAlpha = a; ctx.strokeStyle = gold; ctx.lineWidth = 2; ctx.setLineDash(jj.dash ? [5, 4] : []);
+      if (j.lines) { for (const ln of j.lines) { ctx.beginPath(); for (let q = 0; q < ln.length; q += 2) { const [x, y] = f(ln[q], ln[q + 1]); q ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); } }
+      else {
+        const pts = j.stops.map(st => f(PL[st.l][2], PL[st.l][1]));
+        ctx.beginPath();
+        for (let q = 1; q < pts.length; q++) {
+          const [xa, ya] = pts[q - 1], [xb, yb] = pts[q]; const mx = (xa + xb) / 2, my = (ya + yb) / 2, dx = xb - xa, dy = yb - ya;
+          const cx = mx - dy * 0.15, cy = my + dx * 0.15; if (q === 1) ctx.moveTo(xa, ya); ctx.quadraticCurveTo(cx, cy, xb, yb);
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+        if (a >= 0.9) pts.forEach(([x, y], q) => {
+          ctx.globalAlpha = 1; ctx.fillStyle = "#0b1119"; ctx.beginPath(); ctx.arc(x, y, 8, 0, 7); ctx.fill(); ctx.strokeStyle = gold; ctx.lineWidth = 1.4; ctx.stroke();
+          ctx.fillStyle = gold; ctx.font = `600 9.5px "IBM Plex Mono", monospace`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(String(q + 1), x, y + 0.5); ctx.textAlign = "left";
+        });
+      }
+      ctx.setLineDash([]); ctx.globalAlpha = 1;
+    }
+    // destaques
+    const hl = [...mapHL].sort((a, b) => b[1] - a[1]); const mx = hl.length ? hl[0][1] : 1;
+    for (const [l, w] of hl) { const [x, y] = f(PL[l][2], PL[l][1]); const r = 3 + 6 * Math.sqrt(w / mx);
+      ctx.globalAlpha = 0.25; ctx.fillStyle = gold; ctx.beginPath(); ctx.arc(x, y, r + 4, 0, 7); ctx.fill();
+      ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); }
+    for (const jj of mapJourneys) if (jj.alpha >= 0.9 && JOURNEYS[jj.k].stops) JOURNEYS[jj.k].stops.forEach(st => { const [x, y] = f(PL[st.l][2], PL[st.l][1]); label(PL[st.l][0], x + 3, y, true); });
+    hl.slice(0, 18).forEach(([l]) => { const [x, y] = f(PL[l][2], PL[l][1]); label(PL[l][0], x, y, true); });
+  }
+  function animateTo(box) {
+    cancelAnimationFrame(mapAnim);
+    const from = curBox.slice(), t0 = performance.now(), dur = reduceMotion ? 0 : 520;
+    const tick = now => { const k = dur ? Math.min(1, (now - t0) / dur) : 1; const e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      curBox = from.map((v, i) => v + (box[i] - v) * e); drawMap(); if (k < 1) mapAnim = requestAnimationFrame(tick); };
+    mapAnim = requestAnimationFrame(tick);
+  }
+  function mapUpdate() {
+    const s = state.sel; mapHL = []; mapJourneys = [];
+    if (s) {
+      if (s.t === "ch") { const a = ATLAS.chL[s.i]; for (let j = 0; j < a.length; j += 2) mapHL.push([a[j], a[j + 1]]); journeysAtCh[s.i].forEach(k => mapJourneys.push({ k, alpha: 0.45, dash: true })); }
+      else if (s.t === "book") { const m = new Map(); const b = books[s.i]; for (let c = b.start; c < b.start + b.n; c++) { const a = ATLAS.chL[c]; for (let j = 0; j < a.length; j += 2) m.set(a[j], (m.get(a[j]) || 0) + a[j + 1]); } mapHL = [...m.entries()].sort((x, y) => y[1] - x[1]).slice(0, 60); }
+      else if (s.t === "person") { mapHL = coOf(s.i); if (JOURNEY_OF.has(s.i)) { const k = JOURNEY_OF.get(s.i); if (k === 9) [9, 10, 11, 12].forEach(q => mapJourneys.push({ k: q, alpha: 0.7 })); else mapJourneys.push({ k, alpha: 1 }); } }
+      else if (s.t === "place") mapHL = [[s.i, 1]];
+      else if (s.t === "journey") { mapJourneys.push({ k: s.i, alpha: 1 }); if (JOURNEYS[s.i].paul) mapHL = JOURNEYS[s.i].places; }
+    }
+    document.querySelectorAll("#jchips .jchip").forEach(b => b.setAttribute("aria-pressed", s && s.t === "journey" && +b.dataset.k === s.i ? "true" : "false"));
+    let box;
+    if (viewMode === "world") box = VIEWS.world; else if (viewMode === "holy") box = VIEWS.holy;
+    else {
+      const pts = mapHL.slice(0, 25).map(([l]) => [PL[l][2], PL[l][1]]);
+      mapJourneys.filter(j => j.alpha >= 0.7).forEach(jj => { const j = JOURNEYS[jj.k]; if (j.stops) j.stops.forEach(st => pts.push([PL[st.l][2], PL[st.l][1]])); else j.lines.forEach(ln => { for (let q = 0; q < ln.length; q += 2) pts.push([ln[q], ln[q + 1]]); }); });
+      box = pts.length ? fitBox(pts) : VIEWS.world;
+    }
+    animateTo(box);
+  }
+  function nearestPlace(px, py) {
+    const { f } = proj(curBox); let best = -1, bd = 14 * 14;
+    const hlSet = new Set(mapHL.map(x => x[0]));
+    for (let i = 0; i < NPL; i++) { const [x, y] = f(PL[i][2], PL[i][1]); const d = (x - px) ** 2 + (y - py) ** 2 - (hlSet.has(i) ? 60 : 0); if (d < bd) { bd = d; best = i; } }
+    return best;
+  }
+  mcanvas.addEventListener("pointermove", e => {
+    if (e.pointerType === "touch") return;
+    const r = mcanvas.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top; const l = nearestPlace(px, py);
+    if (l < 0) { maptip.hidden = true; mcanvas.style.cursor = "default"; return; }
+    mcanvas.style.cursor = "pointer";
+    maptip.innerHTML = `<div class="t" style="font-size:16px"></div><div class="m"></div><div class="h">Clique para ver capítulos e pessoas</div>`;
+    maptip.querySelector(".t").textContent = PL[l][0]; maptip.querySelector(".m").textContent = `${TYPE[PL[l][3]] || "Lugar"} · ${fmt(PL[l][4])} versículos`;
+    maptip.hidden = false; const tw = maptip.offsetWidth, th = maptip.offsetHeight;
+    maptip.style.left = Math.max(0, Math.min(px + 12, mapW - tw)) + "px"; maptip.style.top = Math.max(0, py - th - 10) + "px";
+  });
+  mcanvas.addEventListener("pointerleave", () => { maptip.hidden = true; });
+  mcanvas.addEventListener("click", e => { const r = mcanvas.getBoundingClientRect(); const l = nearestPlace(e.clientX - r.left, e.clientY - r.top); if (l >= 0) select({ t: "place", i: l }, false); });
+  document.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); viewMode = b.dataset.view; mapUpdate();
+  }));
+  const jchips = document.getElementById("jchips");
+  JOURNEYS.forEach((j, k) => { const b = document.createElement("button"); b.type = "button"; b.className = "jchip" + (j.deut ? " deut" : ""); b.dataset.k = k; b.textContent = j.name; b.setAttribute("aria-pressed", "false"); b.title = j.refs; b.onclick = () => select({ t: "journey", i: k }, false); jchips.appendChild(b); });
+
+  // ---------- árvore ----------
+  const treebox = document.getElementById("treebox"), treeWho = document.getElementById("treeWho"), lineage = document.getElementById("lineage");
+  let treeFocus = JESUS;
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const sv = (tag, attrs, parent) => { const e = document.createElementNS(SVGNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  function drawTree() {
+    const p = treeFocus; treebox.innerHTML = "";
+    if (p < 0) { treebox.innerHTML = `<div class="tempty">Escolha uma pessoa para ver sua família.</div>`; return; }
+    const measure = (txt, bold) => Math.min(170, txt.length * (bold ? 7.6 : 6.6) + 22);
+    const short = q => { let n = pName(q); if (q === JOSEPH && p === JESUS) n = "José (pai legal)"; return n.length > 24 ? n.slice(0, 23) + "…" : n; };
+    const F = fatherOf(p), M = motherOf(p);
+    const parents = [F, M].filter(x => x >= 0);
+    const gps = []; parents.forEach(x => [fatherOf(x), motherOf(x)].forEach(g => { if (g >= 0) gps.push({ g, of: x }); }));
+    const sibs = siblingsOf(p).slice(0, 8), parts = partners(p).slice(0, 3), kids = children(p);
+    const shownKids = kids.slice(0, 12);
+    const rowH = 64, nodeH = 26, gap = 10;
+    const W0 = Math.max(treebox.clientWidth, 300);
+    const rowWidth = arr => arr.reduce((a, x) => a + x.w + gap, -gap);
+    const mk = (q, cls) => ({ q, cls, label: short(q), w: measure(short(q), cls === "focus") });
+    const midRow = [...sibs.map(q => mk(q, "sib")), mk(p, "focus"), ...parts.map(q => mk(q, "par"))];
+    const kidRow = shownKids.map(q => mk(q, "kid")); if (kids.length > shownKids.length) kidRow.push({ q: -1, label: `+${kids.length - shownKids.length}`, w: 44, cls: "more" });
+    const parRow = parents.map(q => mk(q, "parent"));
+    const gpRow = gps.map(o => Object.assign(mk(o.g, "gp"), { of: o.of }));
+    const needW = Math.max(rowWidth(midRow), rowWidth(kidRow), rowWidth(gpRow), rowWidth(parRow)) + 24;
+    const Wt = Math.max(W0, needW);
+    const rows = []; if (gpRow.length) rows.push(gpRow); if (parRow.length) rows.push(parRow); rows.push(midRow); if (kidRow.length) rows.push(kidRow);
+    const capH = p === JESUS && sibs.length ? 18 : 0;
+    const Ht = rows.length * rowH + 10 + capH;
+    const svg = sv("svg", { width: Wt, height: Ht, viewBox: `0 0 ${Wt} ${Ht}`, role: "img", "aria-label": "Árvore genealógica de " + pName(p) });
+    // posições: linha do meio centrada no foco
+    let y = 16; const pos = new Map();
+    const place = (arr, cx) => { let x = cx - rowWidth(arr) / 2; x = Math.max(12, Math.min(x, Wt - 12 - rowWidth(arr))); arr.forEach(n => { n.x = x; n.y = y; x += n.w + gap; pos.set(n.q + ":" + n.cls, n); }); };
+    const focusCx = Wt / 2;
+    const rowsY = {};
+    if (gpRow.length) { rowsY.gp = y; y += rowH; }
+    if (parRow.length) { rowsY.par = y; y += rowH; }
+    rowsY.mid = y + capH; y += rowH + capH; if (kidRow.length) rowsY.kid = y;
+    // linha do meio: o foco fica no centro
+    { const iF = sibs.length; let left = midRow.slice(0, iF).reduce((a, n) => a + n.w + gap, 0); let x = focusCx - midRow[iF].w / 2 - left;
+      x = Math.max(12, Math.min(x, Wt - 12 - rowWidth(midRow))); midRow.forEach(n => { n.x = x; n.y = rowsY.mid; x += n.w + gap; }); }
+    const fNode = midRow[sibs.length]; const fc = fNode.x + fNode.w / 2;
+    if (parRow.length) { y = rowsY.par; const tot = rowWidth(parRow); let x = fc - tot / 2; x = Math.max(12, Math.min(x, Wt - 12 - tot)); parRow.forEach(n => { n.x = x; n.y = rowsY.par; x += n.w + gap + 30; }); }
+    if (gpRow.length) { parRow.forEach(pn => { const mine = gpRow.filter(g => g.of === pn.q); const tot = mine.reduce((a, n) => a + n.w + gap, -gap); let x = pn.x + pn.w / 2 - tot / 2; mine.forEach(n => { n.x = x; n.y = rowsY.gp; x += n.w + gap; }); });
+      // evita sobreposição simples
+      gpRow.sort((a, b) => a.x - b.x); for (let i = 1; i < gpRow.length; i++) if (gpRow[i].x < gpRow[i - 1].x + gpRow[i - 1].w + gap) gpRow[i].x = gpRow[i - 1].x + gpRow[i - 1].w + gap; }
+    if (kidRow.length) { const tot = rowWidth(kidRow); let x = fc - tot / 2; x = Math.max(12, Math.min(x, Wt - 12 - tot)); kidRow.forEach(n => { n.x = x; n.y = rowsY.kid; x += n.w + gap; }); }
+    const cx = n => n.x + n.w / 2;
+    const g = sv("g", {}, svg);
+    const elbow = (x1, y1, x2, y2) => { const my = (y1 + y2) / 2; sv("path", { class: "tedge", d: `M${x1},${y1} V${my} H${x2} V${y2}` }, g); };
+    gpRow.forEach(n => { const pn = parRow.find(q => q.q === n.of); if (pn) elbow(cx(n), n.y + nodeH, cx(pn), pn.y); });
+    if (parRow.length) { const px = parRow.length === 2 ? (cx(parRow[0]) + cx(parRow[1])) / 2 : cx(parRow[0]);
+      if (parRow.length === 2) sv("path", { class: "tedge mar", d: `M${parRow[0].x + parRow[0].w},${parRow[0].y + nodeH / 2} H${parRow[1].x}` }, g);
+      const py = parRow.length === 2 ? parRow[0].y + nodeH / 2 : parRow[0].y + nodeH;
+      [...midRow.filter(n => n.cls !== "par")].forEach(n => elbow(px, py, cx(n), n.y)); }
+    midRow.filter(n => n.cls === "par").forEach(n => sv("path", { class: "tedge mar", d: `M${fNode.x + fNode.w},${fNode.y + nodeH / 2} H${n.x}` }, g));
+    kidRow.forEach(n => elbow(fc, fNode.y + nodeH, cx(n), n.y));
+    if (capH) { const s0 = midRow[0], s1 = midRow[sibs.length - 1]; const t = sv("text", { class: "tcap", x: s0.x, y: rowsY.mid - 6 }, svg); t.textContent = "“irmãos” (Mc 6,3): parentes, segundo a Igreja (CIC 500)"; }
+    [...gpRow, ...parRow, ...midRow, ...kidRow].forEach(n => {
+      const gg = sv("g", { class: "tnode " + (n.cls === "focus" ? "focus" : n.cls === "sib" ? "sib" : ""), transform: `translate(${n.x},${n.y})`, tabindex: 0, role: "button" }, svg);
+      sv("rect", { width: n.w, height: nodeH, rx: 13 }, gg);
+      const t = sv("text", { x: n.w / 2, y: nodeH / 2 + 4, "text-anchor": "middle" }, gg); t.textContent = n.label;
+      const ti = sv("title", {}, gg); ti.textContent = n.q >= 0 ? pName(n.q) + (n.cls === "par" ? " (cônjuge)" : "") : "Mais filhos: veja o painel de estudo";
+      const go = () => { if (n.q >= 0) select({ t: "person", i: n.q }, false); else select({ t: "person", i: p }, false); };
+      gg.addEventListener("click", go); gg.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    });
+    treebox.appendChild(svg);
+    treeWho.textContent = hasFamily(p) ? "" : "Sem pais ou filhos registrados";
+    const tf = fNode.x + fNode.w / 2 - treebox.clientWidth / 2; if (Wt > treebox.clientWidth) treebox.scrollLeft = tf;
+    lineage.querySelectorAll("button").forEach(b => b.classList.toggle("on", +b.dataset.p === p));
+    const on = lineage.querySelector("button.on"); if (on) lineage.scrollLeft = on.offsetLeft - lineage.clientWidth / 2 + on.offsetWidth / 2;
+  }
+  ATLAS.line.forEach((q, k) => {
+    if (k) { const s = document.createElement("span"); s.textContent = "←"; lineage.appendChild(s); }
+    const b = document.createElement("button"); b.type = "button"; b.dataset.p = q; b.textContent = q === JOSEPH ? "José" : PE[q][0].replace(/ \(.*\)$/, ""); b.onclick = () => select({ t: "person", i: q }, false); lineage.appendChild(b);
+  });
+  function treeUpdate() {
+    const s = state.sel; if (!s) return drawTree();
+    let cand = [];
+    if (s.t === "person") { treeFocus = s.i; return drawTree(); }
+    if (s.t === "ch") { const a = ATLAS.chP[s.i]; for (let j = 0; j < a.length; j += 2) cand.push(a[j]); }
+    if (s.t === "book") { const m = new Map(); const b = books[s.i]; for (let c = b.start; c < b.start + b.n; c++) { const a = ATLAS.chP[c]; for (let j = 0; j < a.length; j += 2) m.set(a[j], (m.get(a[j]) || 0) + a[j + 1]); } cand = [...m.entries()].sort((x, y) => y[1] - x[1]).map(x => x[0]); }
+    if (s.t === "place") cand = peopleOfPlace(s.i).map(x => x[0]);
+    const pick = cand.find(hasFamily); if (pick != null) treeFocus = pick; else if (cand.length) treeFocus = cand[0];
+    drawTree();
+  }
+  function atlasUpdate() { mapUpdate(); treeUpdate(); }
+  let lastMapW = 0;
+  new ResizeObserver(() => { if (mapbox.clientWidth !== lastMapW) { lastMapW = mapbox.clientWidth; mapLayout(); drawMap(); drawTree(); } }).observe(mapbox);
 
   // ---------- busca ----------
   const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
@@ -528,7 +969,7 @@ const DEUT = __DEUT__;
     let bi = books.findIndex(b => b.pt.toLowerCase() === name.toLowerCase() || b.ab.toLowerCase() === name.toLowerCase());
     if (bi < 0) { const n = norm(name); bi = books.findIndex(b => norm(b.pt) === n || norm(b.ab) === n); }
     if (bi < 0) { const n = norm(name); bi = books.findIndex(b => norm(b.pt).startsWith(n)); }
-    if (bi < 0) return null;
+    if (bi < 0) { const n = norm(name); const hit = findEntity(n); return hit; }
     if (num && num >= 1 && num <= books[bi].n) return { t: "ch", i: books[bi].start + num - 1 };
     return { t: "book", i: bi };
   }
@@ -637,7 +1078,7 @@ const DEUT = __DEUT__;
     if (started) return; started = true;
     new ResizeObserver(() => { if (el.clientWidth !== lastW) { lastW = el.clientWidth; layout(); drawBase(first); first = false; drawMatrix(); } }).observe(el);
   }
-  renderDetail();
+  renderDetail(); atlasUpdate();
   if (document.fonts) document.fonts.ready.then(start);
   setTimeout(start, 900);
 })();
