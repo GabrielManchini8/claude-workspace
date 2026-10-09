@@ -1,4 +1,4 @@
-<title>Apologética Católica</title>
+<title>Logos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,6 +230,48 @@ details.ficha.passada { opacity: .72; }
 .passo-atual .grande { font-family: var(--font-display); font-size: 1.25rem; margin: 2px 0 8px; }
 .oracao-txt { font-family: var(--font-body); font-size: 1.02rem; background: var(--accent-soft); border-radius: 8px; padding: 10px 12px; margin: 6px 0; }
 .misterio-hoje { border-left: 4px solid var(--lit-dourado); padding-left: 12px; }
+/* Slides do terço */
+.slides { background: radial-gradient(ellipse at 50% 20%, color-mix(in srgb, var(--accent) 16%, var(--surface)) 0%, var(--surface) 65%);
+  border: 1px solid var(--line); border-radius: 18px; overflow: hidden; touch-action: pan-y; outline: none; }
+.slide-palco { min-height: min(68vh, 620px); padding: 26px 22px 10px; display: grid; align-content: center; justify-items: center; text-align: center; gap: 14px; }
+.slide-palco .eyebrow { font: 700 .76rem var(--font-ui); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.slide-palco h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 5.5vw, 2.1rem); line-height: 1.2; margin: 0; text-wrap: balance; }
+.slide-palco p { font-family: var(--font-body); font-size: 1.08rem; margin: 0; max-width: 34ch; text-wrap: pretty; }
+.slide-palco .peq { color: var(--muted); font-size: .95rem; }
+.slide-palco svg.terco-sl { width: min(62vw, 240px); height: auto; }
+.slide-nav { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 12px 14px 16px; }
+.pontos { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
+.pontos button { width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0; background: var(--line); cursor: pointer; }
+.pontos button[aria-current="true"] { background: var(--accent); width: 16px; border-radius: 6px; }
+.lista-sl { display: grid; gap: 10px; width: 100%; max-width: 420px; text-align: left; }
+.lista-sl > div { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.lista-sl .ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+.lista-sl .ic svg { width: 24px; height: 24px; }
+.lista-sl b { display: block; font-family: var(--font-ui); }
+.lista-sl span { font-family: var(--font-body); font-size: .95rem; color: var(--muted); }
+.linha-tempo { position: relative; display: grid; gap: 12px; text-align: left; max-width: 420px; width: 100%; padding-left: 26px; }
+.linha-tempo::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 3px; background: var(--lit-dourado); border-radius: 2px; transform-origin: top; animation: cresce 1.6s ease-out both; }
+.linha-tempo > div { position: relative; }
+.linha-tempo > div::before { content: ""; position: absolute; left: -24px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--surface); border: 3px solid var(--lit-dourado); }
+.linha-tempo b { font-family: var(--font-ui); color: var(--accent); }
+/* motion graphics */
+.anim-in { animation: sobe .6s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d, 0s); }
+.desenha { stroke-dasharray: 800; stroke-dashoffset: 800; animation: desenha 2.2s ease-out forwards; }
+.conta-sl { fill: var(--surface); stroke: var(--muted); stroke-width: 1.3; }
+.conta-sl.on { animation: acende .5s ease-out forwards; animation-delay: var(--d, 0s); }
+.conta-sl.pulsa { animation: pulsa 1.6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+.cruz-sl { stroke: var(--muted); }
+.cruz-sl.on { animation: acende-cruz .5s ease-out forwards; animation-delay: var(--d, 0s); }
+@keyframes sobe { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes desenha { to { stroke-dashoffset: 0; } }
+@keyframes cresce { from { scale: 1 0; } to { scale: 1 1; } }
+@keyframes acende { 0% { fill: var(--surface); r: var(--r0); } 50% { fill: var(--lit-dourado); r: calc(var(--r0) * 1.6); } 100% { fill: var(--lit-dourado); stroke: var(--ink); r: var(--r0); } }
+@keyframes acende-cruz { to { stroke: var(--lit-dourado); } }
+@keyframes pulsa { 0%, 100% { fill: var(--surface); } 50% { fill: var(--accent); } }
+@media (prefers-reduced-motion: reduce) {
+  .anim-in, .desenha, .conta-sl.on, .cruz-sl.on, .linha-tempo::before { animation-duration: .01s; animation-delay: 0s; }
+  .conta-sl.pulsa { animation: none; }
+}
 video { width: 100%; max-height: 80vh; border-radius: var(--r); background: #000; }
 
 @media (max-width: 640px) {
@@ -245,7 +287,7 @@ video { width: 100%; max-height: 80vh; border-radius: var(--r); background: #000
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <h1>Apologética Católica <small id="secao-nome">Hoje</small></h1>
+      <h1>Logos <small id="secao-nome">Hoje</small></h1>
       <button class="icon-btn" id="btn-mais" aria-label="Como usar, abreviações e fontes">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
       </button>
@@ -328,6 +370,16 @@ video { width: 100%; max-height: 80vh; border-radius: var(--r); background: #000
         <div class="painel passo-atual" id="t-passo"></div>
       </div>
     </div>
+    <div id="t-aprender" hidden>
+      <div class="slides" id="slides" aria-roledescription="apresentação" tabindex="0">
+        <div class="slide-palco" id="slide-palco" aria-live="polite"></div>
+        <div class="slide-nav">
+          <button class="btn" id="sl-ant" aria-label="Slide anterior">‹ Voltar</button>
+          <div class="pontos" id="sl-pontos"></div>
+          <button class="btn forte" id="sl-prox" aria-label="Próximo slide">Avançar ›</button>
+        </div>
+      </div>
+    </div>
     <div id="t-misterios" hidden><div class="grade" id="t-mist"></div></div>
     <div id="t-oracoes" hidden><div class="list" id="t-ora"></div></div>
     <div id="t-porque" hidden>
@@ -374,7 +426,7 @@ const SECOES = {
   defesa: { nome: "Defesa da fé", subs: [["objecoes", "Objeções"], ["heresias", "Heresias"], ["religioes", "Religiões"], ["cola", "Cola rápida"], ["treino", "Treinar"]] },
   liturgia: { nome: "Ano litúrgico", subs: [["ano", "Hoje no ano"], ["festas", "Festas"], ["cores", "Cores"], ["tempos", "Tempos"], ["meses", "Meses"]] },
   missa: { nome: "Na Missa", subs: [] },
-  terco: { nome: "Santo Terço", subs: [["rezar", "Rezar agora"], ["misterios", "Mistérios"], ["oracoes", "Orações"], ["porque", "Por quê"], ...(D.video ? [["video", "Vídeo"]] : [])] },
+  terco: { nome: "Santo Terço", subs: [["aprender", "Aprender"], ["rezar", "Rezar agora"], ["misterios", "Mistérios"], ["oracoes", "Orações"], ["porque", "Em texto"], ...(D.video ? [["video", "Vídeo"]] : [])] },
   mais: { nome: "Como usar e fontes", subs: [] },
 };
 const PREFIXO = { defesa: "d", liturgia: "l", terco: "t" };
@@ -849,11 +901,100 @@ function terco() {
   $("#t-passos").innerHTML = T.passos.map(p => `<li style="margin:6px 0">${p.html}${p.sub.length ? `<ul>${p.sub.map(s => `<li>${s}</li>`).join("")}</ul>` : ""}</li>`).join("");
 }
 
+/* ---------- Slides: aprender o terço ---------- */
+const ORDEM_C = ["cruz", "p1", "a0", "a1", "a2", "p2", ...Array.from({ length: 54 }, (_, i) => "l" + i), "medalha"];
+function posContas() {
+  const C = 150, R = 118, pos = {}, gap = 14 * Math.PI / 180, a0 = Math.PI / 2 + gap, a1 = Math.PI / 2 + 2 * Math.PI - gap;
+  for (let i = 0; i < 54; i++) { const a = a0 + (a1 - a0) * i / 53; pos["l" + i] = [C + R * Math.cos(a), C + R * Math.sin(a), i % 11 === 10 ? 9 : 6.3]; }
+  pos.medalha = [150, 274, 11]; pos.p2 = [150, 302, 9];
+  [0, 1, 2].forEach(i => pos["a" + i] = [150, 324 + i * 19, 6.3]); pos.p1 = [150, 389, 9];
+  return pos;
+}
+const POS_C = posContas();
+// acende: lista de contas que acendem em sequência (passo em segundos); pulsa: contas que piscam; desenha: animação de traço
+function rosario({ acende = [], passo = .35, inicio = .3, pulsa = [], desenha = false, todas = false } = {}) {
+  const d = k => { const i = acende.indexOf(k); return i < 0 ? "" : `style="--d:${(inicio + i * passo).toFixed(2)}s"`; };
+  let s = `<svg class="terco-sl" viewBox="0 0 300 450" aria-hidden="true">`;
+  s += `<circle cx="150" cy="150" r="118" fill="none" stroke="var(--muted)" stroke-width="1.4" ${desenha ? 'class="desenha" pathLength="800"' : ""}/>`;
+  s += `<path d="M150 262V408" stroke="var(--muted)" stroke-width="1.4" ${desenha ? 'class="desenha" pathLength="800"' : ""}/>`;
+  Object.entries(POS_C).forEach(([k, [x, y, r]]) => {
+    const cls = todas || acende.includes(k) ? "on" : pulsa.includes(k) ? "pulsa" : "";
+    const dd = todas ? `style="--d:${(inicio + ORDEM_C.indexOf(k) * passo).toFixed(2)}s"` : d(k) || (pulsa.includes(k) ? `style="--d:${(pulsa.indexOf(k) * .12).toFixed(2)}s"` : "");
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" class="conta-sl ${cls}" ${dd} style="--r0:${r}px"></circle>`;
+    if (k === "medalha") s += `<text x="150" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">M</text>`;
+  });
+  const cOn = todas || acende.includes("cruz") ? "on" : "";
+  s += `<path d="M150 404v40M138 416h24" class="cruz-sl ${cOn}" stroke-width="6" stroke-linecap="round" ${d("cruz")}/>`;
+  return s + "</svg>";
+}
+// corrige o estilo duplicado: junta --d e --r0 num único atributo style
+const rosarioSL = o => rosario(o).replace(/style="([^"]*)" style="([^"]*)"/g, 'style="$1;$2"');
+const ic = k => icone(k);
+const SLIDES = [
+  () => `<span class="eyebrow anim-in">Logos · Santo Terço</span>${rosarioSL({ desenha: true, acende: ORDEM_C, passo: .025, inicio: 1.2 })}
+    <h2 class="anim-in" style="--d:.3s">Como rezar o Terço</h2><p class="peq anim-in" style="--d:.5s">Avance para entender o que é, por que rezar e como rezar, conta por conta.</p>`,
+  () => `<span class="eyebrow anim-in">O que é</span><h2 class="anim-in" style="--d:.1s">O Evangelho nas suas mãos</h2>
+    <p class="anim-in" style="--d:.25s">O terço é uma oração simples em que repetimos a Ave-Maria enquanto <b>contemplamos cenas da vida de Jesus</b>, os "mistérios".</p>
+    <p class="anim-in peq" style="--d:.4s">São Paulo VI o chamou de "compêndio de todo o Evangelho".</p>
+    ${rosarioSL({ pulsa: ["l0", "l1", "l2", "l3", "l4", "l5", "l6", "l7", "l8", "l9"] })}`,
+  () => `<span class="eyebrow anim-in">Por que rezar</span><h2 class="anim-in" style="--d:.1s">Quatro motivos</h2>
+    <div class="lista-sl">${[["estrela", "É bíblico", "Pai-Nosso (Mt 6,9) e Ave-Maria (Lc 1,28.42)."], ["coracao", "Com os olhos de Maria", "Ela \"guardava tudo no coração\" (Lc 2,19)."], ["coroa", "Pedido de Nossa Senhora", "\"Rezem o terço todos os dias\" (Fátima, 1917)."], ["cruz", "Arma espiritual", "A vitória de Lepanto (1571) foi atribuída ao Rosário."]]
+      .map(([i, t, d], n) => `<div class="anim-in" style="--d:${.25 + n * .2}s"><span class="ic">${ic(i)}</span><span><b>${t}</b><span>${d}</span></span></div>`).join("")}</div>`,
+  () => `<span class="eyebrow anim-in">De onde vem</span><h2 class="anim-in" style="--d:.1s">Uma oração de oito séculos</h2>
+    <div class="linha-tempo">${[["Monges", "rezavam os 150 Salmos; o povo, 150 Ave-Marias: o \"Saltério de Maria\"."], ["Séc. XIII", "a tradição liga sua difusão a São Domingos."], ["1569", "São Pio V fixa a forma com 15 mistérios."], ["2002", "São João Paulo II acrescenta os Mistérios Luminosos."]]
+      .map(([a, t], n) => `<div class="anim-in" style="--d:${.3 + n * .3}s"><b>${a}</b> · ${t}</div>`).join("")}</div>
+    <p class="peq anim-in" style="--d:1.6s">"Terço" = a terça parte do Rosário antigo, com 5 dos 15 mistérios.</p>`,
+  () => `<span class="eyebrow anim-in">O mapa</span><h2 class="anim-in" style="--d:.1s">Conheça as contas</h2>
+    ${rosarioSL({ pulsa: ["p1", "p2", "l10", "l21", "l32", "l43"] })}
+    <div class="lista-sl"><div class="anim-in" style="--d:.3s"><span class="ic">${ic("cruz")}</span><span><b>Cruz</b><span>Sinal da cruz e Creio</span></span></div>
+    <div class="anim-in" style="--d:.45s"><span class="ic" style="font-size:1.6rem">●</span><span><b>Contas grandes (piscando)</b><span>Pai-Nosso</span></span></div>
+    <div class="anim-in" style="--d:.6s"><span class="ic">•</span><span><b>Contas pequenas</b><span>Ave-Maria · 5 grupos de 10 (as "dezenas")</span></span></div></div>`,
+  () => `<span class="eyebrow anim-in">Passo 1</span><h2 class="anim-in" style="--d:.1s">O começo</h2>
+    ${rosarioSL({ acende: ["cruz", "p1", "a0", "a1", "a2", "p2"], passo: .7, inicio: .5 })}
+    <p class="anim-in" style="--d:.3s"><b>Cruz:</b> sinal da cruz e Creio · <b>conta grande:</b> Pai-Nosso · <b>3 contas:</b> Ave-Marias pela fé, esperança e caridade · depois, o <b>Glória ao Pai</b>.</p>`,
+  () => `<span class="eyebrow anim-in">Passo 2</span><h2 class="anim-in" style="--d:.1s">Uma dezena</h2>
+    ${rosarioSL({ acende: ["cruz", "p1", "a0", "a1", "a2", "p2", "l0", "l1", "l2", "l3", "l4", "l5", "l6", "l7", "l8", "l9", "l10"], passo: .35, inicio: .2 })}
+    <p class="anim-in" style="--d:.3s">Anuncie o <b>mistério</b> e reze o <b>Pai-Nosso</b>. Nas 10 contas, <b>10 Ave-Marias</b>, imaginando a cena. Termine com o <b>Glória</b> e o <b>Ó meu Jesus</b>.</p>`,
+  () => `<span class="eyebrow anim-in">Passo 3</span><h2 class="anim-in" style="--d:.1s">Repita cinco vezes</h2>
+    ${rosarioSL({ todas: true, passo: .06, inicio: .2 })}
+    <p class="anim-in" style="--d:.3s">São <b>5 dezenas</b>, uma para cada mistério do dia. Ao chegar à medalha, reze a <b>Salve-Rainha</b> e faça o sinal da cruz.</p>`,
+  () => { const h = misterioDoDia(HOJE); return `<span class="eyebrow anim-in">Passo 4</span><h2 class="anim-in" style="--d:.1s">Os mistérios de cada dia</h2>
+    <div class="lista-sl">${T.misterios.map((m, n) => `<div class="anim-in" style="--d:${.2 + n * .18}s;${m === h ? "border-color:var(--lit-dourado);box-shadow:0 0 0 1px var(--lit-dourado)" : ""}"><span class="ic">${ic(["estrela", "sol", "cruz", "coroa"][n])}</span><span><b>${esc(m.nome)}${m === h ? " · hoje" : ""}</b><span>${esc(m.dias)}</span></span></div>`).join("")}</div>`; },
+  () => `<span class="eyebrow anim-in">Dicas</span><h2 class="anim-in" style="--d:.1s">Para rezar bem</h2>
+    <div class="lista-sl">${[["coracao", "Faça uma intenção", "Ofereça o terço por alguém ou por um pedido."], ["sol", "Imagine a cena", "Mais importante que contar é contemplar."], ["casa", "Reze em família", "\"Família que reza unida permanece unida\" (Pe. Patrick Peyton)."], ["vela", "Sem pressa", "Uns 20 minutos bastam. Pode ser no ônibus ou caminhando."]]
+      .map(([i, t, d], n) => `<div class="anim-in" style="--d:${.25 + n * .18}s"><span class="ic">${ic(i)}</span><span><b>${t}</b><span>${d}</span></span></div>`).join("")}</div>`,
+  () => `${rosarioSL({ todas: true, passo: .015, inicio: 0 })}<h2 class="anim-in" style="--d:.4s">"Rezem o terço todos os dias"</h2>
+    <p class="peq anim-in" style="--d:.6s">Nossa Senhora · Fátima, 1917</p>
+    <button class="btn forte anim-in" style="--d:.8s" data-vai="terco/rezar">Rezar agora, conta por conta</button>`,
+];
+let slAtual = 0;
+function mostraSlide(i) {
+  slAtual = Math.max(0, Math.min(SLIDES.length - 1, i));
+  $("#slide-palco").innerHTML = SLIDES[slAtual]();
+  $("#sl-pontos").innerHTML = SLIDES.map((_, n) => `<button aria-label="Slide ${n + 1}" aria-current="${n === slAtual}" data-sl="${n}"></button>`).join("");
+  $("#sl-ant").disabled = slAtual === 0;
+  $("#sl-prox").textContent = slAtual === SLIDES.length - 1 ? "Recomeçar ↺" : "Avançar ›";
+}
+$("#sl-ant").onclick = () => mostraSlide(slAtual - 1);
+$("#sl-prox").onclick = () => mostraSlide(slAtual === SLIDES.length - 1 ? 0 : slAtual + 1);
+$("#sl-pontos").addEventListener("click", e => { const b = e.target.closest("[data-sl]"); if (b) mostraSlide(+b.dataset.sl); });
+let toqueX = null;
+$("#slides").addEventListener("pointerdown", e => { toqueX = e.clientX; });
+$("#slides").addEventListener("pointerup", e => {
+  if (toqueX === null) return; const dx = e.clientX - toqueX; toqueX = null;
+  if (Math.abs(dx) > 50 && !e.target.closest("button")) mostraSlide(slAtual + (dx < 0 ? 1 : -1));
+});
+document.addEventListener("keydown", e => {
+  if (secao !== "terco" || sub.terco !== "aprender") return;
+  if (e.key === "ArrowRight") mostraSlide(slAtual + 1);
+  if (e.key === "ArrowLeft") mostraSlide(slAtual - 1);
+});
+
 /* ---------- Início ---------- */
 if (D.video) $("#video").src = "terco.mp4";
 $("#todas-fontes").innerHTML = Object.values(D.fn).map(v => `<li>${v}</li>`).join("");
 $("#cola").innerHTML = D.cola; $("#como").innerHTML = D.como; $("#leituras").innerHTML = D.leituras;
-hoje(); liturgia(); missa(); terco(); novoTreino();
+hoje(); liturgia(); missa(); terco(); novoTreino(); mostraSlide(0);
 
 function irPara() {
   const h = location.hash.slice(1);

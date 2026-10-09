@@ -12,7 +12,7 @@ export const Final: React.FC = () => {
         “Rezem o terço<br />todos os dias”
       </div>
       <div style={{ fontSize: 50, color: COR.ouro, ...entra(frame, 30) }}>Nossa Senhora · Fátima, 1917</div>
-      <div style={{ position: "absolute", bottom: 130, fontSize: 40, color: COR.suave, letterSpacing: 2, ...entra(frame, 50) }}>Apologética Católica</div>
+      <div style={{ position: "absolute", bottom: 130, fontSize: 40, color: COR.suave, letterSpacing: 2, ...entra(frame, 50) }}>Logos · Apologética Católica</div>
     </Tela>
   );
 };
