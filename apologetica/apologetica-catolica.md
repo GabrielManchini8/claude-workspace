@@ -1,7 +1,7 @@
-# Apologética Católica: Onde Está na Bíblia?
+# Apologética Católica
 
 Guia prático e rápido com **100 objeções** (protestantes, morais, ateias e muçulmanas): **a objeção → a resposta católica → os versículos.**
-Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madrid (*Where Is That in the Bible?*): responder a protestantes e ateus **usando a própria Bíblia**.
+O método: responder a protestantes, ateus e muçulmanos **usando a própria Bíblia**, com a Tradição e o Magistério como apoio. Veja outros autores em **Para aprofundar**, no fim.
 
 > **Antes de tudo — a regra de ouro:** "Estai sempre prontos a responder a todo aquele que vos pedir razão da vossa esperança, **mas com mansidão e respeito**" (1Pd 3,15-16). O objetivo é ganhar a pessoa, não a discussão.
 
@@ -12,7 +12,7 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 1. **Ouça a objeção** e identifique o versículo que a pessoa está usando.
 2. **Leia o contexto** do versículo dela (quase sempre o contexto já responde).
 3. **Mostre os versículos** listados aqui — leia direto da Bíblia dela, se possível.
-4. **Feche com uma pergunta**: "Onde está na Bíblia que…?" (ex.: "Onde está escrito *somente* a Escritura?").
+4. **Feche com uma pergunta**: "Em que versículo está escrito que…?" (ex.: "Onde está escrito *somente* a Escritura?").
 5. Para aprofundar, cada tópico traz o número do **Catecismo da Igreja Católica (CIC)**.
 
 **Bíblia de referência: católica (73 livros)**

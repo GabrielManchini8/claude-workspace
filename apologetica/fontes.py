@@ -133,7 +133,7 @@ REGRAS = [
 ]
 
 if __name__ == "__main__":
-    p = Path(__file__).parent / "onde-esta-na-biblia.md"
+    p = Path(__file__).parent / "apologetica-catolica.md"
     md = p.read_text(encoding="utf-8")
     md = re.sub(r"\n## Fontes das citações\n.*", "\n", md, flags=re.S).rstrip() + "\n"
     # Só até a cola rápida (a tabela final fica sem notas)

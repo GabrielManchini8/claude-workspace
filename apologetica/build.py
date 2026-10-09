@@ -1,4 +1,4 @@
-"""Gera objecoes.json e app.html a partir de onde-esta-na-biblia.md.
+"""Gera objecoes.json e app.html a partir de apologetica-catolica.md.
 
 Uso: python3 build.py
 """
@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 
 DIR = Path(__file__).parent
-MD = (DIR / "onde-esta-na-biblia.md").read_text(encoding="utf-8")
+MD = (DIR / "apologetica-catolica.md").read_text(encoding="utf-8")
 
 # Público de cada parte (para os filtros da página)
 PARTES = {
