@@ -87,6 +87,8 @@ details.ficha[open] .sub { display: none; }
 .bloco { min-width: 0; }
 .rot { font-family: var(--font-ui); font-size: .74rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; margin-bottom: 4px; display: block; }
 .b-objecao .rot { color: var(--obj); }
+.b-entenda .rot { color: var(--accent); }
+.b-entenda { background: var(--accent-soft); border-radius: 8px; padding: 10px 12px; }
 .b-resposta .rot { color: var(--resp); }
 .b-biblia .rot { color: var(--gold); }
 .b-replica .rot, .b-historia .rot, .b-catecismo .rot { color: var(--muted); }
@@ -402,7 +404,7 @@ function renderHeresias() {
       <span class="num" aria-hidden="true">✠</span><span class="tit">${esc(h.nome)}</span>
       <svg class="chev" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
       <span class="sub">${esc(epoca.length > 90 ? epoca.slice(0, 87) + "…" : epoca)}</span></summary>
-      <div class="corpo">${h.campos.map(c => `<div class="bloco ${c.rot === "O que ensinava" || c.rot === "Crenças-chave" ? "b-objecao" : c.rot === "Na Bíblia" ? "b-biblia" : c.rot === "Condenação" || c.rot === "Cristãos?" || c.rot === "Documento" || c.rot === "Situação" ? "b-resposta" : "b-replica"}"><span class="rot">${esc(c.rot)}</span><p>${c.html}</p></div>`).join("")}</div>
+      <div class="corpo">${h.campos.map(c => `<div class="bloco ${c.rot === "Entenda" ? "b-entenda" : c.rot === "O que ensinava" || c.rot === "Crenças-chave" ? "b-objecao" : c.rot === "Na Bíblia" ? "b-biblia" : c.rot === "Condenação" || c.rot === "Cristãos?" || c.rot === "Documento" || c.rot === "Situação" ? "b-resposta" : "b-replica"}"><span class="rot">${esc(c.rot)}</span><p>${c.html}</p></div>`).join("")}</div>
     </details>`;
   });
   $("#heresias").innerHTML = lista.length ? html + "</div>" : `<p class="vazio">Nada encontrado. Tente “arianismo”, “Trindade” ou “Maria”.</p>`;
