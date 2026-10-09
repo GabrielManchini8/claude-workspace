@@ -1,6 +1,6 @@
 # Apologética Católica: Onde Está na Bíblia?
 
-Guia prático e rápido: **a objeção → a resposta católica → os versículos.**
+Guia prático e rápido com **100 objeções** (protestantes, morais, ateias e muçulmanas): **a objeção → a resposta católica → os versículos.**
 Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madrid (*Where Is That in the Bible?*): responder a protestantes e ateus **usando a própria Bíblia**.
 
 > **Antes de tudo — a regra de ouro:** "Estai sempre prontos a responder a todo aquele que vos pedir razão da vossa esperança, **mas com mansidão e respeito**" (1Pd 3,15-16). O objetivo é ganhar a pessoa, não a discussão.
@@ -96,7 +96,59 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 56. [O Deus do Antigo Testamento é cruel](#56-o-deus-do-antigo-testamento-é-cruel)
 57. [Todas as religiões são iguais](#57-todas-as-religiões-são-iguais)
 
-**[Cola rápida: as 25 objeções mais comuns em uma tabela](#cola-rápida)**
+**Parte VIII — Mais objeções protestantes**
+58. [Houve papas maus e até papa herege (Honório)](#58-houve-papas-maus-e-até-papa-herege-honório)
+59. [Pedro era casado](#59-pedro-era-casado)
+60. [A Igreja proibiu e acorrentou a Bíblia](#60-a-igreja-proibiu-e-acorrentou-a-bíblia)
+61. [Adorar a hóstia é idolatria](#61-adorar-a-hóstia-é-idolatria)
+62. [Comungar só a hóstia é desobedecer a Jesus](#62-comungar-só-a-hóstia-é-desobedecer-a-jesus)
+63. [Batismo válido só por imersão](#63-batismo-válido-só-por-imersão)
+64. [Crucifixo: Jesus já ressuscitou, use a cruz vazia](#64-crucifixo-jesus-já-ressuscitou-use-a-cruz-vazia)
+65. [Canonização: todo cristão é santo](#65-canonização-todo-cristão-é-santo)
+66. [Aparições marianas (Fátima, Lourdes) são enganos do diabo](#66-aparições-marianas-fátima-lourdes-são-enganos-do-diabo)
+67. [Maria "corredentora" e "medianeira" rouba o lugar de Cristo](#67-maria-corredentora-e-medianeira-rouba-o-lugar-de-cristo)
+68. [O limbo: a Igreja mandava os bebês para lá e depois mudou](#68-o-limbo-a-igreja-mandava-os-bebês-para-lá-e-depois-mudou)
+69. [A Missa em latim que ninguém entende](#69-a-missa-em-latim-que-ninguém-entende)
+70. [Católico não tem o Espírito, não fala em línguas](#70-católico-não-tem-o-espírito-não-fala-em-línguas)
+71. [Arrebatamento secreto e milênio na terra](#71-arrebatamento-secreto-e-milênio-na-terra)
+72. [O Vaticano é rico: deveria vender tudo e dar aos pobres](#72-o-vaticano-é-rico-deveria-vender-tudo-e-dar-aos-pobres)
+73. ["Santo Padre", "Vigário de Cristo": títulos blasfemos](#73-santo-padre-vigário-de-cristo-títulos-blasfemos)
+74. [A Igreja diz que só católico se salva](#74-a-igreja-diz-que-só-católico-se-salva)
+75. [A esmola não perdoa pecados (Tobias ensina erro)](#75-a-esmola-não-perdoa-pecados-tobias-ensina-erro)
+76. [Exorcismos e sacramentais são magia](#76-exorcismos-e-sacramentais-são-magia)
+77. [Anjo da guarda é crendice](#77-anjo-da-guarda-é-crendice)
+
+**Parte IX — Questões morais**
+78. [Aborto: "meu corpo, minhas regras"](#78-aborto-meu-corpo-minhas-regras)
+79. [Contracepção: a Igreja é atrasada](#79-contracepção-a-igreja-é-atrasada)
+80. [Por que mulheres não podem ser padres?](#80-por-que-mulheres-não-podem-ser-padres)
+81. [A Igreja é homofóbica](#81-a-igreja-é-homofóbica)
+82. [Eutanásia: direito de morrer com dignidade](#82-eutanásia-direito-de-morrer-com-dignidade)
+83. [Sexo antes do casamento não tem problema](#83-sexo-antes-do-casamento-não-tem-problema)
+84. [Pena de morte: a Igreja mudou de doutrina](#84-pena-de-morte-a-igreja-mudou-de-doutrina)
+
+**Parte X — Mais objeções ateias**
+85. [Se tudo tem causa, quem criou Deus?](#85-se-tudo-tem-causa-quem-criou-deus)
+86. [Milagres são impossíveis](#86-milagres-são-impossíveis)
+87. [A Bíblia aprova a escravidão](#87-a-bíblia-aprova-a-escravidão)
+88. [A religião causa as guerras](#88-a-religião-causa-as-guerras)
+89. [Jesus é uma cópia de Hórus, Mitra e outros deuses](#89-jesus-é-uma-cópia-de-hórus-mitra-e-outros-deuses)
+90. [A evolução refuta a criação](#90-a-evolução-refuta-a-criação)
+91. [Fé é muleta psicológica (Freud)](#91-fé-é-muleta-psicológica-freud)
+
+**Parte XI — Objeções muçulmanas (Islã)**
+- [Estudos clássicos católicos sobre o Islã (São Tomás, São João Damasceno…)](#existem-estudos-clássicos-católicos-sobre-o-islã-sim-muitos)
+92. [A Bíblia foi corrompida (*tahrif*)](#92-a-bíblia-foi-corrompida-tahrif)
+93. [A Trindade é politeísmo: Deus não gera nem é gerado](#93-a-trindade-é-politeísmo-deus-não-gera-nem-é-gerado)
+94. [Os cristãos adoram Maria como deusa](#94-os-cristãos-adoram-maria-como-deusa)
+95. [Jesus não morreu na cruz](#95-jesus-não-morreu-na-cruz)
+96. [Jesus nunca disse "Eu sou Deus, adorai-me"](#96-jesus-nunca-disse-eu-sou-deus-adorai-me)
+97. [A Bíblia profetiza Maomé](#97-a-bíblia-profetiza-maomé)
+98. [Paulo inventou o cristianismo](#98-paulo-inventou-o-cristianismo)
+99. [A cruz é injusta: ninguém paga pelo pecado de outro](#99-a-cruz-é-injusta-ninguém-paga-pelo-pecado-de-outro)
+100. [O Alcorão é a revelação final e Maomé, o selo dos profetas](#100-o-alcorão-é-a-revelação-final-e-maomé-o-selo-dos-profetas)
+
+**[Cola rápida: as 30 objeções mais comuns em uma tabela](#cola-rápida)**
 
 ---
 
@@ -1257,9 +1309,752 @@ Inspirado no método de Ariel Lazari (*Onde Está na Bíblia*) e de Patrick Madr
 
 ---
 
+# PARTE VIII — MAIS OBJEÇÕES PROTESTANTES
+
+### 58. Houve papas maus e até papa herege (Honório)
+
+❌ **Objeção:** "Houve papas imorais, e o Papa Honório I foi condenado como herege. Logo, a infalibilidade é falsa."
+
+✅ **Resposta:** Infalibilidade **não** quer dizer que o Papa não peca, e não cobre tudo o que ele diz. Ela vale **só** quando ele **define solenemente** (*ex cathedra*) uma doutrina de fé ou moral para toda a Igreja. Honório (séc. VII) foi condenado pelo III Concílio de Constantinopla (681) por **negligência**: não combateu a heresia monotelita. Suas cartas a Sérgio eram correspondência privada, não uma definição dogmática. Nenhum papa, nem mesmo os de vida escandalosa, **definiu** um erro.
+
+📖 **Na Bíblia:**
+- **Jo 11,49-52** — **Caifás**, sumo sacerdote que tramou a morte de Jesus, "**profetizou**", e João explica: "não disse isso por si mesmo, mas, **sendo sumo sacerdote naquele ano**, profetizou". Deus fala pelo **ofício** mesmo quando o homem é mau.
+- **Mt 23,2-3** — os fariseus estão na cátedra de Moisés: "fazei o que dizem, não o que fazem".
+- **Lc 22,31-32** — Jesus reza para que a **fé** de Pedro **não desfaleça**, e Pedro o nega na mesma noite. A promessa é sobre a fé que ele confirmará, não sobre a conduta.
+- **Mt 16,18** — a promessa é para **a Igreja**, que se apoia na pedra.
+
+📚 CIC 891; Concílio Vaticano I, *Pastor Aeternus* 4
+
+---
+
+### 59. Pedro era casado
+
+❌ **Objeção:** "Pedro, o 'primeiro papa', tinha sogra. Por que os padres não podem casar?" (usam Mt 8,14; 1Cor 9,5)
+
+✅ **Resposta:** É verdade, e a Igreja nunca negou. O celibato é uma **disciplina** do rito latino, não um dogma. Nas Igrejas Católicas Orientais há padres casados, e ex-pastores protestantes casados podem ser ordenados. Note também que Pedro **deixou tudo** para seguir Jesus.
+
+📖 **Na Bíblia:**
+- **Mt 19,27-29** — Pedro: "**deixamos tudo** e te seguimos". Jesus promete recompensa a quem deixou casa, irmãos… e "**mulher**" (**Lc 18,28-30**).
+- **Mt 19,12; 1Cor 7,32-35** — o celibato é recomendado a quem pode viver assim pelo Reino (veja o tópico 27).
+
+📚 CIC 1579-1580
+
+---
+
+### 60. A Igreja proibiu e acorrentou a Bíblia
+
+❌ **Objeção:** "A Igreja escondia a Bíblia: acorrentava os livros, proibia traduções. Só Lutero deu a Bíblia ao povo."
+
+✅ **Resposta:**
+- **Acorrentar** era uma proteção contra roubo. Antes da imprensa, uma Bíblia custava o equivalente a uma casa. Bíblias acorrentadas ficavam **expostas ao público** nas igrejas, como hoje se prende a lista telefônica.
+- O que a Igreja proibia eram traduções **sem aprovação** ou com notas heréticas, não a Bíblia em si.
+- Antes da tradução de Lutero (1522), já existiam pelo menos 14 edições impressas da Bíblia em **alemão alto** e outras em baixo-alemão, todas católicas. A primeira grande obra impressa da história foi a Bíblia de Gutenberg, **católica** (c. 1455).
+- O latim era a língua culta comum da Europa. Quem sabia ler, lia latim.
+
+📖 **Na Bíblia:**
+- **2Pd 3,16** — os ignorantes **torcem** as Escrituras para a própria perdição. Por isso o cuidado com traduções e notas.
+- **Ne 8,8; At 8,30-31** — a Escritura é lida **com explicação**.
+- **Rm 10,17** — "a fé vem **pelo ouvir**". Por 1.500 anos, a maioria conheceu a Bíblia pelo que ouvia na liturgia, na pregação, nos vitrais e nas pinturas.
+
+📚 CIC 131-133
+
+---
+
+### 61. Adorar a hóstia é idolatria
+
+❌ **Objeção:** "Ajoelhar-se diante de um pedaço de pão é idolatria."
+
+✅ **Resposta:** Se Jesus está **realmente presente** na Eucaristia (tópico 23), adorar a hóstia consagrada é **adorar Jesus**, não pão. Se Ele não estivesse presente, seria idolatria; como está, recusar a adoração seria o erro. Tudo depende de Jo 6.
+
+📖 **Na Bíblia:**
+- **Mt 2,11** — os magos **prostraram-se e adoraram** o Menino, que parecia só um bebê.
+- **Jo 9,38** — o cego curado: "Creio, Senhor!", e **o adorou**.
+- **Mt 28,9.17** — os discípulos **adoram** Jesus ressuscitado.
+- **Ap 5,12-14** — os anciãos **prostram-se e adoram** o **Cordeiro**.
+- **Fl 2,10** — "ao nome de Jesus **todo joelho se dobre**".
+
+📚 CIC 1378-1381
+
+---
+
+### 62. Comungar só a hóstia é desobedecer a Jesus
+
+❌ **Objeção:** "Jesus mandou comer e beber. Por que os católicos recebem só o pão?"
+
+✅ **Resposta:** Cristo está **inteiro** (Corpo, Sangue, Alma e Divindade) em **cada uma** das espécies, porque o Cristo ressuscitado não está dividido. Por isso, quem recebe só a hóstia recebe Cristo inteiro. A comunhão nas duas espécies é permitida e comum em muitas missas hoje.
+
+📖 **Na Bíblia:**
+- **1Cor 11,27** — quem "comer o pão **ou** beber o cálice indignamente" será réu "do corpo **e** do sangue". Uma espécie só já torna réu de ambos.
+- **Jo 6,51.58** — "quem comer **este pão** viverá eternamente".
+- **Lc 24,30-31.35** — em Emaús, Jesus é reconhecido "ao **partir o pão**" (não se fala do cálice).
+- **At 2,42.46; 20,7** — a Eucaristia é chamada simplesmente "**fração do pão**".
+
+📚 CIC 1377, 1390
+
+---
+
+### 63. Batismo válido só por imersão
+
+❌ **Objeção:** "*Batizar* significa mergulhar. Batismo por infusão (derramar água) não vale."
+
+✅ **Resposta:** A Igreja batiza também por imersão, e as duas formas são válidas. A palavra *baptizō* também significa simplesmente **lavar**. A Didaqué (c. 70-100 d.C., um dos primeiros escritos cristãos fora da Bíblia) diz: se não houver água suficiente, "**derrama água três vezes sobre a cabeça**" (Didaqué 7,3).
+
+📖 **Na Bíblia:**
+- **Mc 7,4; Lc 11,38** — o fariseu se admira de Jesus não ter "**se batizado**" (*ebaptisthē*) antes da refeição: era só **lavar as mãos**.
+- **At 2,41** — **3.000** batizados num só dia em Jerusalém, cidade sem rio e com pouca água.
+- **At 16,33** — o carcereiro é batizado **de noite, em casa**, com toda a família.
+- **Ez 36,25** — "**derramarei** (aspergirei) sobre vós água pura". **Hb 10,22** — corações **aspergidos**, corpo lavado.
+
+📚 CIC 1239
+
+---
+
+### 64. Crucifixo: Jesus já ressuscitou, use a cruz vazia
+
+❌ **Objeção:** "Jesus não está mais na cruz. O crucifixo é mórbido."
+
+✅ **Resposta:** Os católicos celebram a ressurreição (todo domingo é Páscoa), mas não escondem o **preço** da salvação. O crucifixo mostra o **amor** de Deus.
+
+📖 **Na Bíblia:**
+- **1Cor 1,23** — "nós pregamos **Cristo crucificado**".
+- **1Cor 2,2** — "decidi não saber outra coisa senão Jesus Cristo, e **Cristo crucificado**".
+- **Gl 3,1** — "diante de cujos olhos Jesus Cristo **foi exposto como crucificado**".
+- **Gl 6,14** — gloriar-se **na cruz**.
+- **Jo 3,14-15; Nm 21,8-9** — olhar para o "erguido" (a serpente de bronze) dava a vida.
+- **Ap 5,6** — no céu, Jesus aparece como "Cordeiro **como imolado**", ainda com as marcas da paixão (**Jo 20,27**).
+
+---
+
+### 65. Canonização: todo cristão é santo
+
+❌ **Objeção:** "Na Bíblia todos os crentes são chamados santos. A Igreja não tem que 'fazer' santos."
+
+✅ **Resposta:** Certo: todos os batizados são **chamados** à santidade. A canonização não **faz** ninguém santo, só Deus faz. Ela **declara** com certeza que alguém está no céu e o propõe como **modelo** e intercessor.
+
+📖 **Na Bíblia:**
+- **Hb 13,7** — "lembrai-vos dos vossos guias… considerai o fim da vida deles e **imitai a sua fé**".
+- **Hb 11** — uma "galeria" de heróis da fé, propostos como exemplo.
+- **1Cor 11,1** — "sede **meus imitadores**, como eu sou de Cristo".
+- **Mt 16,19; 18,18** — a autoridade de ligar e desligar.
+
+📚 CIC 828
+
+---
+
+### 66. Aparições marianas (Fátima, Lourdes) são enganos do diabo
+
+❌ **Objeção:** "A revelação acabou. Aparições são engano demoníaco." (usam 2Cor 11,14)
+
+✅ **Resposta:** A Igreja concorda que a **Revelação pública** terminou com os apóstolos. Aparições aprovadas são **revelações privadas**: nenhum católico é obrigado a crer nelas, e elas não acrescentam doutrina. A Igreja as **examina com rigor** e rejeita a maioria.
+
+📖 **Na Bíblia:**
+- **1Ts 5,19-21** — "não apagueis o Espírito, **não desprezeis as profecias; examinai tudo** e ficai com o que é bom". É o que a Igreja faz.
+- **1Jo 4,1** — "**provai** os espíritos".
+- **Mt 17,3; Mt 27,52-53** — santos falecidos **aparecem** em Jerusalém.
+- **At 2,17 (Jl 3,1)** — nos últimos tempos haverá **visões** e sonhos.
+- **Mt 7,16** — "pelos **frutos** os conhecereis". Fátima e Lourdes produzem conversões, oração e confissões, frutos que o diabo não promove (**Mt 12,25-26**).
+
+📚 CIC 66-67
+
+---
+
+### 67. Maria "corredentora" e "medianeira" rouba o lugar de Cristo
+
+❌ **Objeção:** "Chamar Maria de corredentora ou medianeira é colocá-la no lugar de Jesus."
+
+✅ **Resposta:** Cristo é o **único Redentor**. A cooperação de Maria é **totalmente dependente** d'Ele, como a de todo cristão, só que em grau máximo. "Medianeira" é usado num sentido **subordinado** (CIC 969-970). O título "**corredentora**" **não é dogma**: em 2025 o Dicastério para a Doutrina da Fé (nota *Mater Populi Fidelis*) o considerou **inoportuno**, porque pode confundir.
+
+📖 **Na Bíblia:**
+- **Lc 1,38** — o "faça-se" de Maria: sua cooperação **livre** com a Encarnação.
+- **Lc 2,35** — "uma **espada** traspassará a tua alma".
+- **Jo 19,25-27** — Maria **de pé** junto à cruz.
+- **Jo 2,3-5** — em Caná, ela leva a necessidade ao Filho.
+- **1Cor 3,9** — somos todos "**cooperadores** de Deus". **Cl 1,24** — Paulo "completa" nas suas dores o que falta às tribulações de Cristo.
+
+📚 CIC 964, 968-970
+
+---
+
+### 68. O limbo: a Igreja mandava os bebês para lá e depois mudou
+
+❌ **Objeção:** "A Igreja ensinava que bebês sem batismo iam para o limbo. Agora mudou. Que infalibilidade é essa?"
+
+✅ **Resposta:** O limbo **nunca foi dogma**. Era uma **hipótese teológica** comum, nunca definida. O Catecismo diz que confiamos esses bebês à **misericórdia de Deus**, e a Comissão Teológica Internacional (2007) fala de "razões sérias de **esperança**".
+
+📖 **Na Bíblia:**
+- **Mt 19,14** — "deixai vir a mim as crianças".
+- **1Tm 2,4** — Deus quer que **todos** se salvem.
+- **2Sm 12,23** — Davi sobre o filho bebê que morreu: "**eu irei a ele**".
+
+📚 CIC 1261, 1257 ("Deus vinculou a salvação ao sacramento do Batismo, mas Ele mesmo não está vinculado aos seus sacramentos")
+
+---
+
+### 69. A Missa em latim que ninguém entende
+
+❌ **Objeção:** "Paulo disse que é melhor falar cinco palavras compreensíveis do que dez mil numa língua estranha." (usam 1Cor 14,19)
+
+✅ **Resposta:**
+- Desde o Concílio Vaticano II (anos 1960), a Missa é celebrada na **língua do povo**. O latim continua sendo a língua oficial da Igreja e é usado em algumas celebrações.
+- 1Cor 14 fala do **dom de línguas** sem intérprete, não de liturgia numa língua conhecida e traduzida nos missais.
+- O latim não é "magia": é uma língua sagrada e **universal**, que une católicos de todos os países.
+
+📖 **Na Bíblia:**
+- **Jo 19,20** — a inscrição da cruz estava em **hebraico, latim e grego**.
+- Jesus rezava os Salmos no Templo e na sinagoga em **hebraico**, língua litúrgica e não falada no dia a dia (o povo falava aramaico).
+
+📚 Sacrosanctum Concilium 36, 54
+
+---
+
+### 70. Católico não tem o Espírito, não fala em línguas
+
+❌ **Objeção:** "Quem não fala em línguas não foi batizado no Espírito Santo."
+
+✅ **Resposta:** O católico **recebe o Espírito Santo** no Batismo e na Crisma. Os **carismas** (línguas, profecia, cura) são distribuídos como o Espírito quer, e não a todos. A Renovação Carismática Católica vive esses dons dentro da Igreja.
+
+📖 **Na Bíblia:**
+- **1Cor 12,7-11** — o Espírito distribui os dons "**a cada um como quer**".
+- **1Cor 12,29-30** — "**Todos** falam em línguas?" A resposta esperada é **não**.
+- **1Cor 13,1.8** — sem caridade, as línguas são "bronze que soa", e elas **cessarão**.
+- **Gl 5,22-23** — o sinal do Espírito é o **fruto**: amor, alegria, paz, paciência…
+- **At 8,14-17** — o Espírito é dado pela **imposição das mãos** dos apóstolos (Crisma).
+
+📚 CIC 799-801, 1302-1303
+
+---
+
+### 71. Arrebatamento secreto e milênio na terra
+
+❌ **Objeção:** "Os crentes serão arrebatados secretamente antes da Grande Tribulação, e Cristo reinará mil anos na terra." (usam 1Ts 4,17; Mt 24,40; Ap 20)
+
+✅ **Resposta:** A Bíblia fala de uma **única** vinda gloriosa de Cristo, **visível** e **barulhenta**, ao final, com a ressurreição e o juízo. A ideia de um arrebatamento secreto anterior à tribulação surgiu no séc. XIX (J. N. Darby). O "milênio" de Ap 20 é simbólico: é o tempo da Igreja.
+
+📖 **Na Bíblia:**
+- **1Ts 4,16** — o Senhor descerá com **voz de comando, voz de arcanjo e trombeta**. Não tem nada de secreto.
+- **Mt 24,29-31** — a reunião dos eleitos acontece "**logo depois da tribulação**".
+- **Mt 24,37-40** — "um será **tomado**": como no dilúvio, em que os **tomados** foram os que pereceram (v. 39).
+- **Mt 13,30** — na colheita, o **joio** é recolhido **primeiro**.
+- **Jo 5,28-29; Mt 25,31-46** — **uma** vinda, **uma** ressurreição de bons e maus, **um** juízo.
+
+📚 CIC 668-679 (676 rejeita o milenarismo)
+
+---
+
+### 72. O Vaticano é rico: deveria vender tudo e dar aos pobres
+
+❌ **Objeção:** "Com o ouro do Vaticano, dava para acabar com a fome do mundo."
+
+✅ **Resposta:**
+- As obras de arte e os templos são **patrimônio da humanidade**, abertos a todos, e não estão à venda. Vendidos, iriam para coleções privadas de ricos.
+- A Igreja Católica mantém a **maior rede de caridade do mundo**: hospitais, escolas, orfanatos, leprosários e a Cáritas.
+- O orçamento anual da Santa Sé é menor que o de muitas universidades.
+
+📖 **Na Bíblia:**
+- **Jo 12,3-8** — quem reclamou do perfume caro derramado em Jesus, dizendo "podia ser vendido e dado aos pobres", foi **Judas**. Jesus defende o gesto: "**pobres sempre tereis**".
+- **Ex 25–31; 1Rs 6,20-22** — Deus mandou fazer o Tabernáculo e o Templo com **ouro**, pedras preciosas e arte, para a Sua glória.
+- **Mt 25,35-40** — a caridade com os pobres é obrigatória, e a Igreja a pratica.
+
+---
+
+### 73. "Santo Padre", "Vigário de Cristo": títulos blasfemos
+
+❌ **Objeção:** "Só Deus é Santo Padre. Ninguém pode ser 'vigário' de Cristo."
+
+✅ **Resposta:** "Vigário" significa **representante**, aquele que age em nome de outro. "Santo" é um título dado pela Bíblia a todos os fiéis, e "padre" (pai), aos guias espirituais (tópico 26).
+
+📖 **Na Bíblia:**
+- **2Cor 5,20** — "somos **embaixadores** em nome de Cristo".
+- **Lc 10,16** — "quem vos ouve, **a mim** ouve".
+- **Jo 21,15-17** — Jesus confia **as suas** ovelhas a Pedro.
+- **Rm 1,7; 1Cor 1,2** — os fiéis são "chamados **santos**".
+- **1Cor 4,15** — Paulo é **pai** espiritual.
+
+---
+
+### 74. A Igreja diz que só católico se salva
+
+❌ **Objeção:** "Fora da Igreja não há salvação, então todo protestante vai para o inferno?"
+
+✅ **Resposta:** O ensinamento é que **toda** salvação vem de Cristo **por meio** da Igreja, que é Seu Corpo. Mas quem, **sem culpa própria**, não conhece a verdade e busca Deus com sinceridade pode se salvar pela graça de Cristo. Os protestantes validamente batizados são **irmãos** em Cristo, em comunhão real, ainda que imperfeita, com a Igreja.
+
+📖 **Na Bíblia:**
+- **Jo 3,5; Mc 16,16; At 4,12** — a salvação passa por Cristo e pelo Batismo.
+- **Jo 9,41** — "se fôsseis **cegos**, não teríeis pecado".
+- **Lc 12,47-48** — quem **não conhecia** a vontade do senhor recebe menos castigo.
+- **Rm 2,14-16** — os que não têm a Lei serão julgados pela **consciência**.
+- **At 10,34-35** — "Deus não faz acepção de pessoas, mas em qualquer nação quem o teme e pratica a justiça **lhe é agradável**".
+
+📚 CIC 817-819, 846-848
+
+---
+
+### 75. A esmola não perdoa pecados (Tobias ensina erro)
+
+❌ **Objeção:** "Tobias 12,9 diz que a esmola livra da morte e apaga o pecado. Isso é salvação por obras, prova de que o livro é falso."
+
+✅ **Resposta:** O ensinamento de Tobias está em **toda a Bíblia**, inclusive nos livros que os protestantes aceitam. A caridade, feita **na graça de Deus**, purifica do pecado.
+
+📖 **Na Bíblia:**
+- **Pr 10,2; 11,4** — "a **justiça** (esmola) **livra da morte**".
+- **Pr 16,6** — "pela **misericórdia** e fidelidade **se expia a iniquidade**".
+- **Dn 4,24(27)** — "**redime os teus pecados com esmolas**".
+- **Lc 11,41** — "dai **esmola**… e tudo vos será puro".
+- **1Pd 4,8** — "a caridade **cobre uma multidão de pecados**". **Tg 5,20** — quem converte um pecador "cobre uma multidão de pecados".
+
+📚 CIC 1434, 2447
+
+---
+
+### 76. Exorcismos e sacramentais são magia
+
+❌ **Objeção:** "Água benta, medalhas e exorcismos são superstição e magia."
+
+✅ **Resposta:** A magia tenta **manipular** forças ocultas por fórmulas. Os sacramentais são **orações da Igreja** e sinais que dispõem a pessoa para a graça: o poder vem de **Deus** e depende da **fé**, não do objeto. O exorcismo é ordem de Cristo.
+
+📖 **Na Bíblia:**
+- **Mc 16,17** — "em meu nome **expulsarão demônios**".
+- **Lc 10,17-20** — os discípulos voltam: "até os demônios se submetem a nós **em teu nome**".
+- **At 19,13-16** — os filhos de Ceva usam o nome de Jesus como **fórmula mágica**, sem fé, e são atacados. Isso mostra que não é magia.
+- **At 8,18-24** — Simão Mago tenta **comprar** o poder e é repreendido.
+- **2Rs 5,10-14** — Naamã é curado ao se lavar no Jordão por **obediência** à palavra do profeta.
+- **At 19,11-12** — lenços de Paulo usados por Deus para curar.
+
+📚 CIC 1667-1673, 2117
+
+---
+
+### 77. Anjo da guarda é crendice
+
+❌ **Objeção:** "Isso de anjo da guarda não está na Bíblia."
+
+📖 **Na Bíblia:**
+- **Mt 18,10** — "os **anjos deles** (das crianças) nos céus veem continuamente a face do meu Pai".
+- **At 12,15** — quando Pedro bate à porta, dizem: "é **o anjo dele**".
+- **Sl 91(90),11** — "ele dará ordens **a seus anjos** para te **guardarem** em todos os teus caminhos".
+- **Hb 1,14** — os anjos são "espíritos servidores, **enviados para servir** os que hão de herdar a salvação".
+- **Ex 23,20** — "envio **um anjo diante de ti para te guardar** no caminho".
+- **Tb 5–12** — o arcanjo **Rafael** acompanha e protege Tobias.
+
+📚 CIC 328-336
+
+---
+
+# PARTE IX — QUESTÕES MORAIS
+
+> **Dica:** nestes temas, comece pela **dignidade da pessoa** e pelo que a Igreja **defende**, não só pelo que proíbe. E sempre com caridade: "a verdade **na caridade**" (**Ef 4,15**).
+
+### 78. Aborto: "meu corpo, minhas regras"
+
+❌ **Objeção:** "O feto é só um amontoado de células, parte do corpo da mulher."
+
+✅ **Resposta:** A biologia mostra que, desde a concepção, existe um **novo ser humano**, com DNA próprio, distinto do da mãe. A Bíblia trata o nascituro como **pessoa**. Matar um inocente é sempre grave. A Igreja também acolhe e perdoa as mulheres que abortaram e apoia mães em dificuldade.
+
+📖 **Na Bíblia:**
+- **Jr 1,5** — "**antes de te formar no ventre**, eu te conhecia".
+- **Sl 139(138),13-16** — "tu me **teceste no seio** de minha mãe… teus olhos viram o meu **embrião**".
+- **Lc 1,41-44** — João Batista, no ventre, **salta de alegria**. Lucas usa a mesma palavra (*brephos*, bebê) para o nascituro (Lc 1,41) e para Jesus recém-nascido (Lc 2,12).
+- **Lc 1,42** — Jesus, com poucos dias de concebido, já é chamado "**fruto do teu ventre**" e "Senhor" (v. 43).
+- **Ex 20,13** — "**Não matarás**".
+- **Didaqué 2,2** (séc. I): "não matarás a criança por aborto".
+
+📚 CIC 2270-2275
+
+---
+
+### 79. Contracepção: a Igreja é atrasada
+
+❌ **Objeção:** "Proibir camisinha e pílula é coisa da Idade Média."
+
+✅ **Resposta:**
+- Até 1930 (Conferência Anglicana de Lambeth), **todas** as igrejas cristãs, inclusive as protestantes, condenavam a contracepção. Lutero e Calvino também a condenavam.
+- A Igreja ensina que o ato conjugal tem dois sentidos inseparáveis: **união** e **abertura à vida**.
+- A Igreja **aprova** a paternidade responsável pelos **métodos naturais** (espaçar os filhos respeitando os períodos de fertilidade).
+
+📖 **Na Bíblia:**
+- **Gn 1,28** — "Sede **fecundos**, multiplicai-vos".
+- **Sl 127(126),3-5** — "os filhos são **herança** do Senhor".
+- **Gn 38,8-10** — Onã "derramava o sêmen no chão" para não gerar descendência, "e isso desagradou ao Senhor". (Tradicionalmente lido como condenação do ato contraceptivo; alguns intérpretes o leem só como recusa do dever do levirato.)
+- **1Cor 7,5** — os esposos podem se abster **de comum acordo, por um tempo**, que é a lógica dos métodos naturais.
+
+📚 CIC 2366-2372; *Humanae Vitae* (1968)
+
+---
+
+### 80. Por que mulheres não podem ser padres?
+
+❌ **Objeção:** "Isso é machismo. Gl 3,28 diz que não há homem nem mulher."
+
+✅ **Resposta:** Não é questão de dignidade nem de capacidade. A Igreja **não tem autoridade** para mudar o que Cristo instituiu. Jesus rompeu muitos costumes da época sobre mulheres e, mesmo assim, escolheu **só homens** como apóstolos. O sacerdote age *in persona Christi*, como **Esposo** da Igreja. Maria, a maior de todas as criaturas, não foi apóstola.
+
+📖 **Na Bíblia:**
+- **Mc 3,13-19** — Jesus chama "**os que Ele quis**", e eram doze homens.
+- **Lc 8,1-3; Jo 4,27** — Jesus tinha **discípulas** e falava com mulheres em público, o que escandalizava. Ele não era "preso à cultura".
+- **At 1,21-26** — para substituir Judas: "é preciso que **um destes homens** (*andrōn*)…".
+- **Ef 5,25-32** — Cristo é o **Esposo**, e a Igreja, a **Esposa**.
+- **Gl 3,28** fala da **igualdade na salvação** (todos são filhos de Deus pelo Batismo), não de funções idênticas.
+- **Jo 20,17-18** — Maria Madalena é enviada aos apóstolos: a "**apóstola dos apóstolos**". As mulheres têm papel enorme na Igreja.
+
+📚 CIC 1577; João Paulo II, *Ordinatio Sacerdotalis* (1994)
+
+---
+
+### 81. A Igreja é homofóbica
+
+❌ **Objeção:** "A Igreja odeia os homossexuais."
+
+✅ **Resposta:** A Igreja ensina que as pessoas com tendência homossexual devem ser acolhidas "com **respeito, compaixão e delicadeza**", evitando toda discriminação injusta (CIC 2358). Ela distingue a **pessoa** (sempre amada por Deus) dos **atos**. Os atos sexuais fora do matrimônio entre homem e mulher, hétero ou homo, não estão de acordo com o plano de Deus. **Todos** os solteiros são chamados à castidade, não só os homossexuais.
+
+📖 **Na Bíblia:**
+- **Gn 1,27; 2,24; Mt 19,4-6** — o plano original: "**homem e mulher** os criou… os dois serão uma só carne". Jesus repete isso.
+- **Rm 1,26-27; 1Cor 6,9-10** — os atos homossexuais aparecem entre outros pecados (avareza, embriaguez, adultério). Ninguém está numa categoria "pior".
+- **1Cor 6,11** — "**e isso fostes alguns de vós**; mas fostes **lavados, santificados, justificados**". Uma mensagem de esperança para todos.
+- **Jo 8,11** — "Nem eu te condeno. Vai, e **não peques mais**": misericórdia e verdade juntas.
+
+📚 CIC 2357-2359
+
+---
+
+### 82. Eutanásia: direito de morrer com dignidade
+
+❌ **Objeção:** "Se a pessoa sofre e quer morrer, por que não ajudar?"
+
+✅ **Resposta:** Ninguém tem direito de tirar uma vida inocente, nem a própria. A Igreja **não** exige prolongar a vida a qualquer custo: é lícito **recusar tratamentos desproporcionais** (obstinação terapêutica) e usar **cuidados paliativos** contra a dor, mesmo que encurtem a vida como efeito não buscado. O que não se pode é **matar**.
+
+📖 **Na Bíblia:**
+- **Ex 20,13** — "Não matarás".
+- **Dt 32,39** — "Eu faço morrer e faço viver"; **Jó 1,21** — "o Senhor deu, o Senhor tirou".
+- **1Cor 6,19-20** — "**não pertenceis a vós mesmos**".
+- **2Sm 1,6-16** — o amalecita diz ter matado Saul **a pedido do próprio Saul**, ferido e sofrendo, e Davi o condena à morte.
+- **Rm 8,18; Cl 1,24** — o sofrimento pode ter sentido unido a Cristo.
+
+📚 CIC 2276-2283
+
+---
+
+### 83. Sexo antes do casamento não tem problema
+
+❌ **Objeção:** "Se há amor, qual o problema? A Bíblia nem fala disso."
+
+📖 **Na Bíblia:**
+- **1Cor 6,18-20** — "**fugi da fornicação** (*porneia*)… glorificai a Deus no vosso corpo".
+- **1Cor 7,2** — "por causa da fornicação, cada homem tenha **sua mulher**".
+- **Hb 13,4** — "seja honrado o matrimônio… Deus julgará os **fornicadores** e adúlteros".
+- **1Ts 4,3-5** — "a vontade de Deus é a vossa **santificação**: que vos abstenhais da fornicação".
+- **Mt 15,19; Gl 5,19** — a *porneia* aparece nas listas de pecados graves.
+
+📚 CIC 2337-2350, 2353, 2390-2391
+
+---
+
+### 84. Pena de morte: a Igreja mudou de doutrina
+
+❌ **Objeção:** "Antes a Igreja aceitava a pena de morte e em 2018 passou a rejeitá-la. Mudou a doutrina!"
+
+✅ **Resposta:** A Bíblia reconhece que o Estado tem autoridade para punir (Rm 13,4). A Igreja sempre ensinou que a pena de morte só seria aceitável como **último recurso** para proteger a sociedade. Em 2018, o Papa Francisco revisou o CIC 2267 para dizer que **hoje** ela é "**inadmissível**", porque atenta contra a dignidade da pessoa e porque existem meios eficazes de proteger a sociedade. Alguns teólogos debatem como essa revisão se harmoniza com o ensino anterior. O ponto que nunca muda: a **dignidade** de toda pessoa, inclusive do culpado.
+
+📖 **Na Bíblia:**
+- **Gn 9,6; Rm 13,4** — a autoridade pública "não traz a espada em vão".
+- **Gn 4,15** — Deus **protege** o assassino Caim.
+- **Jo 8,3-11** — Jesus impede o apedrejamento da adúltera.
+- **Ez 33,11** — "não quero a morte do ímpio, mas que **se converta e viva**".
+
+📚 CIC 2265-2267
+
+---
+
+# PARTE X — MAIS OBJEÇÕES ATEIAS
+
+### 85. Se tudo tem causa, quem criou Deus?
+
+❌ **Objeção:** "Se o universo precisa de um criador, Deus também precisa."
+
+✅ **Resposta:** O argumento não diz que "**tudo** tem causa", mas que **tudo o que começa a existir** tem causa. Deus **não começou**: é eterno, o próprio Ser. Uma cadeia infinita de causas dependentes não explica nada. É preciso uma **Causa Primeira** não causada. São Tomás de Aquino desenvolve isso nas **Cinco Vias** (*Suma Teológica* I, q. 2, a. 3).
+
+📖 **Na Bíblia:**
+- **Ex 3,14** — "**EU SOU AQUELE QUE SOU**": Deus é o próprio Ser, que não recebe a existência de ninguém.
+- **Sl 90(89),2** — "antes que os montes nascessem… **de eternidade a eternidade** tu és Deus".
+- **Ap 1,8; Is 44,6** — "Eu sou o **Alfa e o Ômega**", o Primeiro e o Último.
+- **Jo 1,1-3** — "**No princípio já era** o Verbo… tudo foi feito por meio d'Ele".
+
+📚 CIC 31-34, 213
+
+---
+
+### 86. Milagres são impossíveis
+
+❌ **Objeção:** "As leis da natureza não podem ser quebradas. Milagres não existem."
+
+✅ **Resposta:** Se Deus existe e **criou** as leis da natureza, Ele pode agir nela, como um autor pode intervir no próprio livro. Negar milagres "porque são impossíveis" já supõe que Deus não existe, o que é um argumento circular. A Igreja investiga milagres com **rigor médico**: em Lourdes, o Comitê Médico Internacional examinou milhares de curas e a Igreja reconheceu cerca de 70 como milagrosas.
+
+📖 **Na Bíblia:**
+- **Jo 10,37-38** — "se não credes em mim, **crede nas obras**".
+- **Mc 2,10-12** — Jesus cura o paralítico "**para que saibais**" que tem poder de perdoar.
+- **Hb 2,3-4** — Deus confirmou a pregação com **sinais, prodígios e milagres**.
+- **Jo 20,30-31** — os sinais foram escritos "para que creiais".
+
+📚 CIC 547-548, 156
+
+---
+
+### 87. A Bíblia aprova a escravidão
+
+❌ **Objeção:** "A Bíblia manda os escravos obedecerem aos senhores. Ela apoia a escravidão." (usam Ef 6,5; Lv 25,44)
+
+✅ **Resposta:**
+- A "servidão" do AT era em geral **servidão por dívida**, temporária e com proteções. É muito diferente da escravidão racial moderna, baseada em **sequestro**, que a Bíblia pune com **morte**.
+- O NT não lançou uma revolução política impossível, mas plantou os princípios que a **destruíram**: todos são **irmãos** e iguais em dignidade.
+- Papas condenaram a escravização dos indígenas e africanos (Paulo III, *Sublimis Deus*, 1537; Gregório XVI, 1839). Cristãos lideraram a abolição. Houve cristãos que falharam nisso, e a Igreja reconhece.
+
+📖 **Na Bíblia:**
+- **Ex 21,16** — "quem **sequestrar** um homem, para vendê-lo ou mantê-lo em seu poder, será **morto**".
+- **1Tm 1,10** — os "**sequestradores de homens**" (*andrapodistai*, traficantes de escravos) estão entre os ímpios.
+- **Dt 23,16-17(15-16)** — **não devolver** o escravo fugitivo ao senhor.
+- **Lv 25,39-43; Dt 15,12-15** — libertação no 7º ano e proibição de tratamento duro.
+- **Fm 15-16** — Paulo a Filêmon: receba Onésimo "**não mais como escravo**, mas como **irmão amado**".
+- **1Cor 7,21** — "se puderes **tornar-te livre**, aproveita".
+- **Gl 3,28** — "não há escravo nem livre… todos sois **um** em Cristo".
+
+---
+
+### 88. A religião causa as guerras
+
+❌ **Objeção:** "A religião é a maior causa de guerras e violência da história."
+
+✅ **Resposta:**
+- A *Encyclopedia of Wars* (Phillips e Axelrod, 2004) classifica só cerca de **7%** das guerras da história como tendo causa principalmente religiosa.
+- Os regimes oficialmente **ateus** do séc. XX (URSS, China de Mao, Camboja de Pol Pot) mataram **dezenas de milhões** de pessoas.
+- Quando cristãos fazem violência injusta, estão **desobedecendo** a Cristo, não seguindo-o.
+
+📖 **Na Bíblia:**
+- **Tg 4,1-2** — "de onde vêm as guerras? **Das vossas paixões**".
+- **Mt 5,9.44** — "bem-aventurados os que promovem a **paz**"; "**amai os vossos inimigos**".
+- **Mt 26,52** — "guarda a tua espada".
+- **Rm 12,18** — "vivei em paz **com todos**".
+
+📚 CIC 2302-2317
+
+---
+
+### 89. Jesus é uma cópia de Hórus, Mitra e outros deuses
+
+❌ **Objeção:** "Hórus também nasceu de virgem em 25 de dezembro, teve 12 discípulos, morreu e ressuscitou. Jesus é uma cópia." (popularizado pelo filme *Zeitgeist*)
+
+✅ **Resposta:** Essas "semelhanças" são **inventadas ou distorcidas** por autores dos séculos XIX e XX (como Gerald Massey e Kersey Graves), sem fontes antigas. Nos mitos originais, Hórus é concebido por Ísis com o cadáver de Osíris (não virgem), não tem 12 discípulos e não é crucificado. Mitra **nasce de uma rocha**. O culto romano a Mitra, como o conhecemos, floresce **depois** do surgimento do cristianismo. Os Evangelhos estão ligados a **pessoas, lugares e datas históricas reais**. Mitos não fazem isso.
+
+📖 **Na Bíblia:**
+- **2Pd 1,16** — "não seguimos **fábulas engenhosas**, mas fomos **testemunhas oculares**".
+- **Lc 3,1-2** — os fatos são datados pelo reinado de **Tibério** e pelo governo de **Pôncio Pilatos**, Herodes, Anás e Caifás, todos personagens históricos.
+- **1Tm 4,7; 2Tm 4,4** — Paulo rejeita "**fábulas**" e mitos.
+- **1Cor 15,6** — testemunhas **vivas**, que podiam ser consultadas.
+
+---
+
+### 90. A evolução refuta a criação
+
+❌ **Objeção:** "Darwin provou que não precisamos de Deus. Gênesis está errado."
+
+✅ **Resposta:** A Igreja **não se opõe** à teoria da evolução enquanto ciência (Pio XII, *Humani Generis*, 1950; João Paulo II, 1996). A evolução explica **como** a vida se desenvolve, não **por que existe algo** em vez de nada, nem de onde vêm as leis que a tornam possível. A Igreja ensina que a **alma humana** é criada **diretamente** por Deus e que toda a humanidade descende dos primeiros pais. Gênesis ensina verdades religiosas (Deus criou tudo, o homem é imagem de Deus, o pecado entrou pela liberdade) em linguagem simbólica, não em linguagem de laboratório.
+
+📖 **Na Bíblia:**
+- **Gn 2,7** — o homem é formado do "**pó da terra**" (o elemento material) e recebe o "**sopro de vida**" de Deus (a alma).
+- **Gn 1,11.20.24** — "**Produza a terra**…": Deus age **por meio** da natureza.
+- **Sb 11,20** — tudo com medida, número e peso.
+- **Sl 104(103),30** — "envias o teu Espírito e eles são criados".
+
+📚 CIC 282-289, 337, 362-366
+
+---
+
+### 91. Fé é muleta psicológica (Freud)
+
+❌ **Objeção:** "Religião é desejo infantil de um pai protetor. Você crê porque tem medo da morte."
+
+✅ **Resposta:**
+- Explicar **por que** alguém crê não prova que a crença é **falsa** (é a *falácia genética*).
+- O argumento pode ser virado do avesso: o ateu pode descrer porque **deseja** que não haja Juiz nem prestação de contas.
+- O cristianismo **não** é a religião que alguém inventaria para se consolar: ele exige cruz, perdão aos inimigos, castidade e renúncia, e fala em inferno.
+
+📖 **Na Bíblia:**
+- **Lc 9,23** — "quem quiser me seguir, **renuncie a si mesmo, tome a sua cruz** cada dia".
+- **Mt 7,13-14** — a porta é **estreita** e o caminho, **apertado**.
+- **Jo 6,60.66** — "esta palavra é **dura**", e muitos foram embora.
+- **1Cor 1,23** — Cristo crucificado é "**escândalo** e **loucura**". Ninguém inventaria um Messias crucificado para se consolar.
+
+---
+
+# PARTE XI — OBJEÇÕES MUÇULMANAS (ISLÃ)
+
+> **Postura:** a Igreja olha os muçulmanos "**com estima**", pois "adoram conosco o Deus único, misericordioso" (Nostra Aetate 3; Lumen Gentium 16; CIC 841). Responda com **respeito**, sem ofender o Profeta deles nem o Alcorão. O objetivo é apresentar Cristo.
+>
+> **Notação:** "Q 4,157" = Alcorão, sura 4, versículo 157. Um ponto forte é mostrar que **o próprio Alcorão** manda respeitar a Torá e o Evangelho.
+
+## Existem estudos clássicos católicos sobre o Islã? Sim, muitos.
+
+| Autor | Época | Obra | O que traz |
+|---|---|---|---|
+| **São João Damasceno** (Doutor da Igreja) | c. 730, Damasco | *Sobre as heresias*, cap. 100 ("a heresia dos ismaelitas") | Primeira análise cristã do Islã, feita por um cristão que trabalhou na corte do califa. Responde à acusação de que os cristãos são "associadores" (politeístas) e de que veneram a cruz. |
+| **Teodoro Abu Qurrah** (bispo de Harã) | c. 800 | Tratados em **árabe** | Primeiro apologista cristão a escrever em árabe. Defende a Trindade, a Encarnação e as imagens. |
+| **Pedro, o Venerável** (abade de Cluny) | 1143-1156 | Mandou fazer a **primeira tradução latina do Alcorão** (Robert de Ketton) e escreveu *Contra a seita dos sarracenos* | Defendia ir aos muçulmanos "**não com armas, mas com palavras; não com força, mas com razão; não com ódio, mas com amor**". |
+| **São Francisco de Assis** | 1219, Damieta (Egito) | Encontro com o sultão **al-Kamil** | Pregou o Evangelho ao sultão em meio à Cruzada. É o modelo de diálogo missionário. |
+| ⭐ **São Tomás de Aquino** | c. 1264 | ***De rationibus fidei*** (*Sobre as razões da fé, contra sarracenos, gregos e armênios*) | Escrito a pedido de um cantor de Antioquia que debatia com muçulmanos. Responde às **objeções muçulmanas**: (1) "Deus não pode ter Filho" (Trindade); (2) zombam da **Cruz** e da Encarnação; (3) da **Eucaristia**; (4) sobre predestinação e livre-arbítrio. Princípio-chave (cap. 2): não tentar **provar** os mistérios da fé pela razão, mas mostrar que **não são impossíveis** nem contrários à razão. |
+| ⭐ **São Tomás de Aquino** | 1259-1265 | ***Suma contra os Gentios*** | Segundo uma tradição antiga, pedida por São Raimundo de Penyafort para os missionários dominicanos na Espanha muçulmana. Como muçulmanos e pagãos não aceitam a Bíblia, Tomás argumenta a partir da **razão natural** (Livro I, cap. 2). Em I, 6 compara a expansão do Islã (pela espada, sem milagres públicos) com a do cristianismo (por milagres, entre perseguições). |
+| **Beato Raimundo Lúlio** (Ramon Llull) | c. 1275-1316 | *Livro do gentio e dos três sábios* | Aprendeu árabe e fundou escolas de línguas para missionários. Diálogo respeitoso entre um judeu, um cristão e um muçulmano. |
+| **Ricoldo da Monte Croce** (dominicano) | c. 1300 | *Contra a lei dos sarracenos* | Estudou o Alcorão em árabe, em Bagdá. A obra foi muito influente (até Lutero a traduziu para o alemão em 1542). |
+| **Nicolau de Cusa** (cardeal) | 1461 | *Cribratio Alkorani* (*Peneirando o Alcorão*) | Procura no próprio Alcorão os traços de verdade que apontam para Cristo. |
+| **Bento XVI** | 2006 | **Discurso de Regensburg** | Sobre fé, razão e violência. Cita o imperador bizantino Manuel II: "não agir segundo a razão é contrário à natureza de Deus". |
+| **Pe. Samir Khalil Samir, SJ** (jesuíta egípcio, islamólogo) | 2008 | *111 Questions on Islam* | Visão católica atual e acessível, feita por um especialista que vive no mundo árabe. |
+
+*Também úteis, embora não católicos: os apologistas protestantes **David Wood** e **Nabeel Qureshi** (ex-muçulmano; *Seeking Allah, Finding Jesus*).*
+
+---
+
+### 92. A Bíblia foi corrompida (*tahrif*)
+
+❌ **Objeção:** "Judeus e cristãos alteraram a Torá e o Evangelho. Só o Alcorão é confiável."
+
+✅ **Resposta:** O próprio Alcorão contradiz essa ideia. É o chamado **"dilema islâmico"**:
+- O Alcorão manda os cristãos do séc. VII **julgarem pelo Evangelho** que tinham em mãos (**Q 5,47**). Manda Maomé, se tiver dúvida, **perguntar aos que leem o Livro** antes dele (**Q 10,94**). E diz que "**ninguém pode alterar as palavras de Deus**" (**Q 6,115; 18,27**).
+- Já existiam manuscritos completos da Bíblia **séculos antes** de Maomé, como o *Codex Sinaiticus* e o *Codex Vaticanus* (séc. IV), e eles coincidem com as Bíblias de hoje.
+- Conclusão: se a Bíblia estava correta no tempo de Maomé (pois o Alcorão a confirma), está correta hoje. E se estava corrompida, o Alcorão erra ao mandar julgar por ela.
+
+📖 **Na Bíblia:**
+- **Is 40,8** — "a palavra do nosso Deus **permanece para sempre**".
+- **Mt 24,35** — "**minhas palavras não passarão**".
+- **1Pd 1,24-25** — "a palavra do Senhor permanece eternamente".
+
+---
+
+### 93. A Trindade é politeísmo: Deus não gera nem é gerado
+
+❌ **Objeção:** "Deus é Um. Ele não gerou nem foi gerado (Q 112). Dizer 'três' é associar parceiros a Deus." (usam também Q 4,171; 5,73)
+
+✅ **Resposta:** Os cristãos **não** creem em três deuses: creem em **um só Deus** em três Pessoas. "Gerar", na Trindade, não é biológico nem sexual. É como a **palavra** que procede da mente, ou a **luz** que procede do sol ("Luz da Luz", diz o Credo). Curiosamente, o próprio Alcorão chama Jesus de "**Palavra de Deus**" e "**um espírito vindo d'Ele**" (**Q 4,171; 3,45**). Se a Palavra de Deus é eterna, como a Palavra pode ser criatura? São Tomás responde exatamente a essa objeção no *De rationibus fidei*, cap. 3-4.
+
+📖 **Na Bíblia:**
+- **Dt 6,4; Mc 12,29** — "o Senhor é **um só**". Jesus confirma: o cristianismo é monoteísta.
+- **Jo 1,1.14** — "No princípio era o **Verbo** (a Palavra)… e o Verbo **era Deus**… e se fez carne".
+- **Hb 1,3** — o Filho é o "**resplendor** da glória" do Pai, como a luz do sol.
+- **Mt 28,19** — "em **nome** (singular) do Pai, do Filho e do Espírito Santo".
+
+📚 CIC 232-260
+
+---
+
+### 94. Os cristãos adoram Maria como deusa
+
+❌ **Objeção:** "O Alcorão diz que Jesus foi questionado: 'Disseste aos homens: tomai a mim e a minha mãe por deuses?'" (Q 5,116)
+
+✅ **Resposta:** Os cristãos **nunca** ensinaram que Maria é Deus nem que ela faz parte da Trindade. A Trindade é **Pai, Filho e Espírito Santo**. Maria é **criatura**, a mais santa de todas, honrada mas **não adorada** (tópicos 30-37). O Alcorão, aliás, honra Maria (*Maryam*) como nenhuma outra mulher: é a única mulher citada por nome, com uma sura inteira, a 19, e é chamada "escolhida acima das mulheres dos mundos" (Q 3,42). Isso abre uma porta de diálogo.
+
+📖 **Na Bíblia:**
+- **Mt 28,19** — a Trindade **não inclui** Maria.
+- **Lc 1,38** — ela se chama "**a serva do Senhor**".
+- **Lc 1,46-47** — "minha alma **engrandece o Senhor**"; ela aponta sempre para Deus.
+
+📚 CIC 971 (a veneração a Maria "difere essencialmente do culto de adoração")
+
+---
+
+### 95. Jesus não morreu na cruz
+
+❌ **Objeção:** "Não o mataram nem o crucificaram; apenas pareceu-lhes assim." (Q 4,157)
+
+✅ **Resposta:** A crucificação de Jesus é um dos fatos **mais seguros da história antiga**, aceito até por historiadores céticos (J. D. Crossan, Bart Ehrman). Tácito (*Anais* 15,44) diz que Cristo "**sofreu a pena capital sob Pôncio Pilatos**". Também Josefo e o Talmude a mencionam. A ideia de que "pareceu" (alguém posto no lugar dele) só aparece **600 anos depois** e faria de Deus um **enganador** de multidões, inclusive de Maria e dos discípulos. Note ainda que no Alcorão Jesus diz: "a paz esteja comigo no dia em que nasci, **no dia em que morrer** e no dia em que for ressuscitado" (**Q 19,33**).
+
+📖 **Na Bíblia:**
+- **Mc 8,31; 9,31; 10,33-34** — Jesus **anuncia três vezes** que seria morto e ressuscitaria.
+- **Is 53,5-12** — 700 anos antes: o Servo "**ferido por nossas transgressões**… levado como cordeiro ao matadouro".
+- **Sl 22(21),17-19** — "**traspassaram minhas mãos e meus pés**… repartem entre si minhas vestes".
+- **Jo 19,33-35** — a lança, o sangue e a água, com o **testemunho ocular**: "quem viu dá testemunho".
+- **1Cor 15,3-4** — "Cristo **morreu** por nossos pecados… foi **sepultado**… ressuscitou".
+- **Lc 24,25-27.46** — "não era necessário que o Cristo **sofresse** isso?"
+
+📚 CIC 595-618
+
+---
+
+### 96. Jesus nunca disse "Eu sou Deus, adorai-me"
+
+❌ **Objeção:** "Mostre um versículo onde Jesus diga exatamente: 'Eu sou Deus, adorai-me'."
+
+✅ **Resposta:** Jesus revelou quem era **do jeito judeu**: atribuindo a si o **nome**, as **obras** e as **prerrogativas** exclusivas de Deus. E os ouvintes entenderam muito bem, tanto que quiseram apedrejá-lo por blasfêmia. Veja também o tópico 45.
+
+📖 **Na Bíblia:**
+- **Mc 2,5-10** — Ele **perdoa pecados**: "Quem pode perdoar pecados senão **só Deus**?"
+- **Mc 14,61-64** — diante do sumo sacerdote: "**Eu sou**, e vereis o Filho do Homem sentado à direita do Poder e **vindo sobre as nuvens do céu**" (Dn 7,13). O sumo sacerdote rasga as vestes: "**blasfêmia!**"
+- **Jo 8,58** — "antes que Abraão existisse, **EU SOU**".
+- **Jo 5,18** — queriam matá-lo porque "se fazia **igual a Deus**".
+- **Jo 14,9** — "Quem me vê, **vê o Pai**".
+- **Jo 20,28-29** — Tomé: "**Meu Senhor e meu Deus!**", e Jesus aprova.
+- **Mt 14,33; 28,9** — Jesus **aceita adoração**.
+
+---
+
+### 97. A Bíblia profetiza Maomé
+
+❌ **Objeção:** "Moisés anunciou um profeta 'como ele, dentre os irmãos' (Dt 18,18), ou seja, dos ismaelitas. E Jesus anunciou o Paráclito (Jo 14,16), que é Ahmad/Maomé (Q 61,6)."
+
+✅ **Resposta:**
+- **Dt 18,15-18:** "dentre **teus irmãos**" significa **dentre os israelitas**. A mesma expressão aparece em **Dt 17,15** para o rei de Israel ("um **dentre teus irmãos**… não um estrangeiro") e em **Dt 18,2** para os levitas "no meio de seus irmãos". O NT aplica a profecia a **Jesus** (**At 3,22-26**). O profeta "como Moisés" falaria com Deus face a face e faria grandes **sinais** (**Dt 34,10-12**).
+- **Jo 14–16 (o Paráclito):** o texto explica quem ele é. É o "**Espírito da verdade**", que "**o mundo não pode ver**", que "**permanece convosco e estará em vós**" (Jo 14,17), "**o Espírito Santo, que o Pai enviará em meu nome**" (Jo 14,26), que os apóstolos receberiam "**dentro de poucos dias**" (At 1,5). Isso se cumpre em Pentecostes (**At 2**). Um homem nascido 600 anos depois não poderia "**estar dentro**" dos apóstolos. E nenhum manuscrito grego traz *periklytos* ("o louvado") no lugar de *paraklētos*.
+
+---
+
+### 98. Paulo inventou o cristianismo
+
+❌ **Objeção:** "Jesus pregou o monoteísmo puro. Foi Paulo quem inventou a divindade de Cristo e a cruz."
+
+✅ **Resposta:** O Evangelho de Paulo foi **examinado e aprovado** pelos apóstolos que conviveram com Jesus. A divindade de Jesus e Sua morte redentora estão nos **Evangelhos** e em Pedro e João, não só em Paulo. E o próprio Alcorão diz que os **discípulos de Jesus** (*hawariyyun*) eram "auxiliares de Deus" e que Deus os fez **prevalecer** sobre os inimigos (**Q 61,14**). Se a fé dos apóstolos tivesse se corrompido logo no início, essa vitória não faria sentido.
+
+📖 **Na Bíblia:**
+- **Gl 1,18; 2,1-10** — Paulo submete seu Evangelho a **Pedro, Tiago e João**, que lhe dão "**a mão direita em sinal de comunhão**".
+- **1Cor 15,3-11** — "seja eu, sejam eles, **assim pregamos**". A mesma mensagem.
+- **2Pd 3,15-16** — Pedro chama Paulo de "**nosso amado irmão**" e coloca suas cartas entre as "**Escrituras**".
+- **Mc 2,5-10; 14,61-64; Jo 1,1; 20,28** — a divindade de Jesus fora das cartas de Paulo.
+
+---
+
+### 99. A cruz é injusta: ninguém paga pelo pecado de outro
+
+❌ **Objeção:** "Ninguém carregará o fardo de outro (Q 6,164). Deus perdoa sem precisar de sacrifício. Pecado original é injusto."
+
+✅ **Resposta:** Jesus **não** é um terceiro inocente **forçado** a pagar: é o **próprio Deus** feito homem que **livremente** toma sobre si o nosso pecado, por amor. Isso não é injustiça, é a **maior misericórdia**. O perdão de Deus não é "fingir que nada aconteceu": a cruz mostra ao mesmo tempo a **gravidade** do pecado e a **grandeza** do amor. São Tomás trata essa objeção muçulmana no *De rationibus fidei* (caps. 5-7).
+
+📖 **Na Bíblia:**
+- **Jo 10,17-18** — "Ninguém a tira de mim: **eu a dou livremente**".
+- **Jo 15,13** — "Não há **maior amor** do que dar a vida pelos amigos".
+- **Is 53,4-6.10-12** — o Servo "**carregou as nossas dores**… o Senhor fez cair sobre ele a iniquidade de todos nós".
+- **Rm 5,8** — "Deus prova seu amor: Cristo morreu por nós **quando ainda éramos pecadores**".
+- **1Pd 2,24** — "**carregou os nossos pecados** em seu corpo sobre o madeiro".
+- **2Cor 5,19** — "**Deus estava em Cristo** reconciliando o mundo consigo".
+- **Rm 5,12-19** — por um homem entrou o pecado; por **um homem**, Cristo, veio a justiça para todos.
+
+📚 CIC 599-623
+
+---
+
+### 100. O Alcorão é a revelação final e Maomé, o selo dos profetas
+
+❌ **Objeção:** "Deus enviou muitos profetas, e Maomé é o último (Q 33,40). O Alcorão completa e corrige as revelações anteriores."
+
+✅ **Resposta:** Para o cristão, depois de Jesus **não há** nova revelação pública, porque em Cristo **Deus mesmo falou**: Ele não é só mais um profeta, é a **Palavra** em pessoa. Não há o que acrescentar a Deus que se fez homem, morreu e ressuscitou. A Bíblia dá também **critérios** para avaliar uma mensagem que contradiz o Evangelho. Apresente-os com respeito.
+
+📖 **Na Bíblia:**
+- **Hb 1,1-2** — "muitas vezes e de muitos modos Deus falou pelos profetas; **nestes últimos dias falou-nos pelo Filho**".
+- **Jd 3** — a fé "transmitida **uma vez por todas**".
+- **Gl 1,8** — "ainda que nós ou **um anjo do céu** vos anuncie um evangelho diferente do que anunciamos, seja anátema". (Segundo a tradição islâmica, o Alcorão foi trazido pelo anjo Gabriel.)
+- **1Jo 4,2-3; 2,22-23** — o critério de João: reconhecer que Jesus Cristo **veio na carne** e é **o Filho**.
+- **Mt 24,11.24** — Jesus alertou para a vinda de **falsos profetas** depois d'Ele.
+- **Jo 14,6** — "Eu sou **o** caminho, **a** verdade e **a** vida".
+
+📚 CIC 65-67 ("Não se deve esperar nenhuma nova revelação pública antes da manifestação gloriosa de nosso Senhor Jesus Cristo" — Dei Verbum 4)
+
+---
+
 ## Cola rápida
 
-As 25 objeções mais comuns, com os 3 versículos mais fortes para cada uma:
+As 30 objeções mais comuns, com os 3 versículos (ou argumentos) mais fortes para cada uma:
 
 | # | Objeção | Versículo que usam | Responda com |
 |---|---|---|---|
@@ -1288,6 +2083,11 @@ As 25 objeções mais comuns, com os 3 versículos mais fortes para cada uma:
 | 23 | Terço é repetição | Mt 6,7 | **Mt 26,44** · **Ap 4,8** · **Sl 136(135)** |
 | 24 | Domingo é invenção | Ex 20,8 | **At 20,7** · **Ap 1,10** · **Cl 2,16-17** |
 | 25 | Deus não existe | — | **Rm 1,20** · **Sl 19(18),2** · **Hb 3,4** |
+| 26 | Bíblia corrompida (Islã) | Q 5,47 | **Q 5,47 + Q 10,94** · **Is 40,8** · Codex Sinaiticus (séc. IV) |
+| 27 | Trindade = 3 deuses | Q 112 | **Dt 6,4** · **Jo 1,1.14** · Q 4,171 ("Palavra de Deus") |
+| 28 | Jesus não morreu | Q 4,157 | **Mc 8,31** · **Is 53,5** · Tácito, *Anais* 15,44 |
+| 29 | Bíblia anuncia Maomé | Dt 18,18; Jo 14,16 | **Dt 17,15** · **At 3,22** · **Jo 14,17.26** |
+| 30 | Quem criou Deus? | — | **Ex 3,14** · **Sl 90(89),2** · **Ap 1,8** |
 
 ---
 
@@ -1299,6 +2099,9 @@ As 25 objeções mais comuns, com os 3 versículos mais fortes para cada uma:
 - **Patrick Madrid** — *Where Is That in the Bible?* e *A Pocket Guide to Catholic Apologetics*.
 - **Scott Hahn** — *Rome Sweet Home* (história da conversão de um pastor presbiteriano) e *O Banquete do Cordeiro*.
 - **Karl Keating** — *Catholicism and Fundamentalism*.
+- **Karlo Broussard** — *Meeting the Protestant Challenge* (50 objeções bíblicas).
+- **Trent Horn** — *The Case for Catholicism*.
+- **São Tomás de Aquino** — *De rationibus fidei* e *Suma contra os Gentios* (Islã e não cristãos).
 - **Frank Sheed** — *Teologia e Sanidade*.
 - **Brant Pitre** — *Jesus and the Jewish Roots of the Eucharist* e *Jesus and the Jewish Roots of Mary*.
 

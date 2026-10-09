@@ -11,4 +11,4 @@ Cada projeto novo pode ficar numa pasta própria aqui dentro.
 
 ## Projetos
 
-- [Apologética Católica: Onde Está na Bíblia?](apologetica/onde-esta-na-biblia.md) — 57 objeções protestantes e ateias respondidas com versículos.
+- [Apologética Católica: Onde Está na Bíblia?](apologetica/onde-esta-na-biblia.md) — 100 objeções (protestantes, morais, ateias e muçulmanas) respondidas com versículos.
