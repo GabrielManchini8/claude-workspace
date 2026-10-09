@@ -1,0 +1,338 @@
+<title>Onde Está na Bíblia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: breviário de bolso — barra de busca fixa, lista de fichas por parte, cada ficha abre no padrão objeção → resposta → versículos */
+:root {
+  --bg: #F3F4F7;
+  --surface: #FFFFFF;
+  --ink: #18202E;
+  --muted: #586174;
+  --line: #DCE0E8;
+  --accent: #1D4B8C;      /* azul mariano */
+  --accent-soft: #E3EAF5;
+  --gold: #866518;        /* referências bíblicas */
+  --obj: #A3293A;         /* objeção */
+  --resp: #2A6A4B;        /* resposta */
+  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-ui: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F131A; --surface: #161B24; --ink: #E6E9EF; --muted: #9AA3B4; --line: #283041;
+    --accent: #86ACE6; --accent-soft: #1D2A40; --gold: #D6B566; --obj: #E58591; --resp: #82C7A3;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F131A; --surface: #161B24; --ink: #E6E9EF; --muted: #9AA3B4; --line: #283041;
+  --accent: #86ACE6; --accent-soft: #1D2A40; --gold: #D6B566; --obj: #E58591; --resp: #82C7A3;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-inline: 16px; }
+
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  padding-block: 14px 10px;
+}
+.brand { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand h1 { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; letter-spacing: .04em; margin: 0; text-wrap: balance; }
+.brand small { color: var(--muted); font-size: .85rem; }
+.search { margin-top: 10px; position: relative; }
+.search input {
+  width: 100%; font: inherit; font-size: 1rem; padding: 11px 14px 11px 40px;
+  border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink);
+}
+.search input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; stroke: var(--muted); fill: none; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+.chip, .tab, .btn {
+  font: inherit; font-size: .88rem; border-radius: 999px; padding: 5px 12px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.tabs { display: flex; gap: 2px; margin-top: 12px; overflow-x: auto; }
+.tab { border-radius: 8px 8px 0 0; border: none; background: none; color: var(--muted); font-weight: 600; padding: 6px 12px; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+main { padding-block: 16px 64px; }
+.meta { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: .9rem; margin-bottom: 8px; }
+.meta .btn { font-size: .82rem; padding: 3px 10px; }
+.parte { font-family: var(--font-display); font-size: .95rem; letter-spacing: .08em; color: var(--muted); margin: 28px 0 8px; display: flex; gap: 10px; align-items: baseline; }
+.parte b { color: var(--accent); font-weight: 600; }
+.list { display: flex; flex-direction: column; gap: 8px; }
+
+details.ficha { scroll-margin-top: 230px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+details.ficha[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+details.ficha > summary { list-style: none; cursor: pointer; padding: 12px 14px; display: grid; grid-template-columns: 2.6rem 1fr auto; gap: 4px 10px; align-items: start; }
+details.ficha > summary::-webkit-details-marker { display: none; }
+.num { font-family: var(--font-display); font-weight: 600; color: var(--accent); font-size: 1.05rem; font-variant-numeric: tabular-nums; padding-top: 1px; }
+.tit { font-weight: 700; font-size: 1.02rem; min-width: 0; text-wrap: balance; }
+.sub { grid-column: 2 / 4; color: var(--muted); font-size: .9rem; min-width: 0; }
+.sub .usam { color: var(--gold); font-weight: 600; }
+.chev { width: 18px; height: 18px; stroke: var(--muted); fill: none; transition: transform .15s; margin-top: 3px; }
+details[open] .chev { transform: rotate(90deg); }
+details.ficha[open] .sub { display: none; }
+
+.corpo { padding: 2px 16px 16px calc(2.6rem + 24px); font-family: var(--font-body); font-size: 1.02rem; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.bloco { min-width: 0; }
+.rot { font-family: var(--font-ui); font-size: .74rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; margin-bottom: 4px; display: block; }
+.b-objecao .rot { color: var(--obj); }
+.b-resposta .rot { color: var(--resp); }
+.b-biblia .rot { color: var(--gold); }
+.b-replica .rot, .b-historia .rot, .b-catecismo .rot { color: var(--muted); }
+.b-objecao { border-left: 3px solid var(--obj); padding-left: 12px; }
+.b-resposta { border-left: 3px solid var(--resp); padding-left: 12px; }
+.corpo p { margin: 0 0 6px; }
+.corpo ul { margin: 0; padding-left: 1.1rem; }
+.corpo li { margin: 3px 0; }
+.b-biblia li > strong:first-child { color: var(--gold); font-family: var(--font-ui); white-space: nowrap; }
+.b-catecismo { font-family: var(--font-ui); font-size: .9rem; color: var(--muted); }
+.acoes { display: flex; gap: 8px; flex-wrap: wrap; font-family: var(--font-ui); }
+.acoes .btn { font-size: .82rem; padding: 4px 11px; }
+
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+td:first-child { font-variant-numeric: tabular-nums; color: var(--muted); }
+td strong { color: var(--gold); }
+tr:last-child td { border-bottom: none; }
+
+.painel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; font-family: var(--font-body); }
+.painel h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: .04em; margin: 0 0 10px; }
+.painel h2 + p { color: var(--muted); }
+.painel ol, .painel ul { padding-left: 1.2rem; }
+.painel blockquote, .corpo blockquote { margin: 8px 0; padding: 8px 12px; background: var(--accent-soft); border-radius: 8px; }
+details.estudos { margin-bottom: 8px; }
+details.estudos > summary { cursor: pointer; font-weight: 700; color: var(--accent); padding: 10px 0; }
+
+.treino .q { font-family: var(--font-body); font-size: 1.25rem; line-height: 1.45; margin: 8px 0 16px; text-wrap: balance; }
+.vazio { color: var(--muted); padding: 32px 0; text-align: center; }
+mark { background: color-mix(in srgb, var(--gold) 30%, transparent); color: inherit; border-radius: 2px; }
+
+@media (max-width: 560px) {
+  header.top { position: static; }
+  details.ficha { scroll-margin-top: 12px; }
+  .corpo { padding: 2px 14px 14px 14px; }
+  details.ficha > summary { grid-template-columns: 2.2rem 1fr auto; }
+}
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Onde Está na Bíblia</h1>
+      <small id="total">100 objeções · resposta católica com versículos</small>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" autocomplete="off" placeholder="Busque um tema, palavra ou versículo (ex.: purgatório, Mt 16,18, Maria)" aria-label="Buscar objeção">
+    </div>
+    <div class="row" id="filtros" role="group" aria-label="Filtrar por público"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-view="lista" aria-selected="true" id="t-lista">Objeções</button>
+      <button class="tab" role="tab" data-view="cola" aria-selected="false" id="t-cola">Cola rápida</button>
+      <button class="tab" role="tab" data-view="treino" aria-selected="false" id="t-treino">Treinar</button>
+      <button class="tab" role="tab" data-view="como" aria-selected="false" id="t-como">Como usar</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="v-lista">
+    <div class="meta">
+      <span id="contagem"></span>
+      <span class="acoes"><button class="btn" id="abrir">Abrir todas</button><button class="btn" id="fechar">Fechar todas</button></span>
+    </div>
+    <div id="lista"></div>
+  </section>
+  <section id="v-cola" hidden>
+    <div class="painel"><h2>Cola rápida</h2><div id="cola"></div></div>
+  </section>
+  <section id="v-treino" hidden>
+    <div class="painel treino">
+      <h2>Treinar</h2>
+      <p>Leia a objeção e pense na resposta antes de abrir. Segue o filtro de público escolhido acima.</p>
+      <div id="treino"></div>
+    </div>
+  </section>
+  <section id="v-como" hidden>
+    <div class="painel"><h2>Como usar</h2><div id="como"></div></div>
+    <div class="painel" style="margin-top:12px"><h2>Para aprofundar</h2><div id="leituras"></div></div>
+  </section>
+</main>
+
+<script>
+const D = /*DADOS*/null;
+const PUBLICOS = [
+  ["todos", "Todos"], ["protestantes", "Protestantes"], ["seitas", "TJ e adventistas"],
+  ["ateus", "Ateus"], ["islam", "Muçulmanos"], ["moral", "Moral"]
+];
+const ROTULOS = { objecao: "A objeção", resposta: "Resposta católica", biblia: "Onde está na Bíblia",
+  replica: "E o versículo deles?", historia: "História", catecismo: "Catecismo" };
+const ORDEM = ["objecao", "resposta", "biblia", "replica", "historia", "catecismo"];
+
+let publico = "todos";
+try { publico = localStorage.getItem("oeb-publico") || "todos"; } catch (e) {}
+
+const norm = s => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
+  .replace(/(\d)\s*[:.]\s*(\d)/g, "$1,$2").replace(/\s+/g, " ");
+D.itens.forEach(i => {
+  i._busca = norm([i.n, i.titulo, i.tema, i.usam, ...ORDEM.map(k => i[k + "_txt"])].join(" "));
+});
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+// Filtros
+$("#filtros").innerHTML = PUBLICOS.map(([k, v]) => {
+  const n = k === "todos" ? D.itens.length : D.itens.filter(i => i.publico === k).length;
+  return `<button class="chip" data-p="${k}" aria-pressed="${k === publico}">${v} <span aria-hidden="true">· ${n}</span></button>`;
+}).join("");
+$("#filtros").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  publico = b.dataset.p;
+  try { localStorage.setItem("oeb-publico", publico); } catch (e) {}
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+  render(); novoTreino();
+});
+
+function resumo(i) {
+  const t = i.objecao_txt || "";
+  const sem = t.replace(/\((usam|popularizado)[^)]*\)/, "").trim();
+  return sem.length > 150 ? sem.slice(0, 147).trim() + "…" : sem;
+}
+
+function corpo(i) {
+  const blocos = ORDEM.filter(k => i[k]).map(k => {
+    const rot = k === "biblia" && i.biblia_rotulo && i.biblia_rotulo !== "Na Bíblia" ? i.biblia_rotulo : ROTULOS[k];
+    return `<div class="bloco b-${k}"><span class="rot">${esc(rot)}</span>${i[k]}</div>`;
+  }).join("");
+  return `<div class="corpo">${blocos}
+    <div class="acoes"><button class="btn" data-copiar="${i.n}">Copiar resposta</button><button class="btn" data-link="${i.n}">Copiar link</button></div></div>`;
+}
+
+function ficha(i) {
+  return `<details class="ficha" id="n${i.n}" data-n="${i.n}">
+    <summary>
+      <span class="num">${i.n}</span>
+      <span class="tit">${esc(i.titulo)}</span>
+      <svg class="chev" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <span class="sub">${esc(resumo(i))}${i.usam ? ` <span class="usam">${esc(i.usam)}</span>` : ""}</span>
+    </summary>
+    <div class="slot"></div>
+  </details>`;
+}
+
+function filtrar() {
+  const termos = norm($("#q").value).split(" ").filter(Boolean);
+  return D.itens.filter(i => (publico === "todos" || i.publico === publico) && termos.every(t => i._busca.includes(t)));
+}
+
+function render() {
+  const itens = filtrar();
+  const q = $("#q").value.trim();
+  $("#contagem").textContent = q || publico !== "todos"
+    ? `${itens.length} de ${D.itens.length} objeções` : `${D.itens.length} objeções em 11 partes`;
+  if (!itens.length) { $("#lista").innerHTML = `<p class="vazio">Nada encontrado para “${esc(q)}”. Tente outra palavra ou um versículo, como “Jo 6” ou “imagens”.</p>`; return; }
+  let html = "", parte = null;
+  itens.forEach(i => {
+    if (i.parte !== parte) {
+      if (parte !== null) html += `</div>`;
+      parte = i.parte;
+      html += `<h2 class="parte"><b>Parte ${parte}</b> ${esc(D.partes[parte])}</h2><div class="list">`;
+      if (parte === "XI" && D.islam) html += `<details class="estudos"><summary>Estudos clássicos católicos sobre o Islã (São Tomás, São João Damasceno…)</summary><div class="tbl" style="border:none">${D.islam}</div></details>`;
+    }
+    html += ficha(i);
+  });
+  $("#lista").innerHTML = html + "</div>";
+  if (q && itens.length <= 3) document.querySelectorAll("details.ficha").forEach(abrir);
+}
+
+function abrir(d) {
+  const slot = d.querySelector(".slot");
+  if (slot && !slot.dataset.ok) { slot.innerHTML = corpo(D.itens.find(i => i.n == d.dataset.n)); slot.dataset.ok = 1; }
+  d.open = true;
+}
+$("#lista").addEventListener("toggle", e => {
+  const d = e.target; if (d.classList && d.classList.contains("ficha") && d.open) abrir(d);
+}, true);
+$("#abrir").onclick = () => document.querySelectorAll("details.ficha").forEach(abrir);
+$("#fechar").onclick = () => document.querySelectorAll("details.ficha").forEach(d => d.open = false);
+
+function textoPlano(i) {
+  const linhas = [`${i.n}. ${i.titulo}`, "", "Objeção: " + (i.objecao_txt || "")];
+  if (i.resposta_txt) linhas.push("", "Resposta: " + i.resposta_txt);
+  if (i.biblia_txt) linhas.push("", "Na Bíblia:", i.biblia_txt);
+  if (i.replica_txt) linhas.push("", "E o versículo deles? " + i.replica_txt);
+  return linhas.join("\n").replace(/\n{3,}/g, "\n\n");
+}
+async function copiar(txt, btn) {
+  const orig = btn.textContent;
+  try { await navigator.clipboard.writeText(txt); btn.textContent = "Copiado"; }
+  catch (e) {
+    const ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); btn.textContent = "Copiado"; } catch (e2) { btn.textContent = "Selecione e copie"; }
+    ta.remove();
+  }
+  setTimeout(() => btn.textContent = orig, 1600);
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("[data-copiar]");
+  if (c) copiar(textoPlano(D.itens.find(i => i.n == c.dataset.copiar)), c);
+  const l = e.target.closest("[data-link]");
+  if (l) copiar(location.href.split("#")[0] + "#n" + l.dataset.link, l);
+});
+
+let timer;
+$("#q").addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(() => { mostrar("lista"); render(); }, 120); });
+
+// Abas
+function mostrar(v) {
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.view === v));
+  ["lista", "cola", "treino", "como"].forEach(k => $("#v-" + k).hidden = k !== v);
+}
+document.querySelector(".tabs").addEventListener("click", e => {
+  const t = e.target.closest(".tab"); if (!t) return;
+  mostrar(t.dataset.view); window.scrollTo({ top: 0 });
+});
+
+// Treino
+function novoTreino() {
+  const pool = D.itens.filter(i => publico === "todos" || i.publico === publico);
+  const i = pool[Math.floor(Math.random() * pool.length)];
+  $("#treino").innerHTML = `<p class="rot" style="color:var(--muted)">Nº ${i.n} · ${esc(i.tema)}</p>
+    <p class="q">“${esc((i.objecao_txt || i.titulo).replace(/^"|"$/g, ""))}”</p>
+    <div class="acoes"><button class="btn" id="ver">Mostrar resposta</button><button class="btn" id="outra">Outra objeção</button></div>
+    <div id="resp" hidden style="margin-top:12px">${corpo(i)}</div>`;
+  $("#ver").onclick = () => { $("#resp").hidden = false; $("#ver").hidden = true; };
+  $("#outra").onclick = novoTreino;
+}
+
+$("#cola").innerHTML = D.cola;
+$("#como").innerHTML = D.como;
+$("#leituras").innerHTML = D.leituras;
+render(); novoTreino();
+
+function irPara() {
+  const m = location.hash.match(/^#n(\d+)$/); if (!m) return;
+  $("#q").value = ""; publico = "todos";
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.p === "todos"));
+  mostrar("lista"); render();
+  const d = document.getElementById("n" + m[1]);
+  if (d) { abrir(d); d.scrollIntoView({ block: "start" }); }
+}
+window.addEventListener("hashchange", irPara); irPara();
+</script>
