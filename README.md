@@ -3,6 +3,7 @@
 Base para projetos no Claude Code. Abra uma sessão com este repositório e os plugins e skills carregam sozinhos:
 
 - Watch (`/watch`): assistir vídeos
+- watch-video (`/watch-video`): assistir vídeos e gerar notas em markdown
 - Ponytail: código mais simples (sempre ligado; `/ponytail off` desliga)
 - Impeccable (`/impeccable`): design de interface
 - Remotion (`/remotion-create` e outras): vídeos com React
