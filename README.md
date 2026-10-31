@@ -9,3 +9,13 @@ Base para projetos no Claude Code. Abra uma sessão com este repositório e os p
 - Remotion (`/remotion-create` e outras): vídeos com React
 
 Cada projeto novo pode ficar numa pasta própria aqui dentro.
+
+## Árvore de Habilidades (sob demanda)
+
+Ficam disponíveis, mas só rodam quando você chamar com `/nome`:
+
+- Programação: `/superpowers`, `/matt-pocock-skills`, `/icc-integration`, `/carpetthy-skills`, `/agent-skills` (Ponytail já está acima)
+- Pesquisa: `/graphify`, `/agent-reach`, `/understand-anything`, `/last-30-days`, `/career-ops`, `/rea`
+- Gestão e tokens: `/dstack`, `/caveman`, `/cloudmem`, `/headroom`, `/gsd`, `/bmad-method`
+- Design: `/uiux-pro-max`, `/taste`, `/arcafy`, `/ppt-master`, `/diagram-design` (Impeccable já está acima)
+- Escrita e vídeo: `/anthropic-style-writing`, `/open-montage`, `/hyperframes-storyboard`, `/humanizer`, `/i-have-adhd`, `/marketing-skills`
