@@ -3,33 +3,20 @@ import { MindNodeShape, isMind } from './MindNodeShape'
 
 /**
  * Estado da ligação de cada tópico com o pai (guardado no tópico filho, meta.link):
- *  - (nenhum)  → linha normal
- *  - 'dead'    → morta: linha apagada, pontilhada, sem luz
+ *  - 'dead'    → morta (padrão): linha comum, sem luz
  *  - 'passive' → viva/passiva: um feixe de luz sai do bloco anterior e corre até o próximo
  *  - 'active'  → viva/ativa: o feixe vai e volta, como energia num cabo
  * Animação 100% CSS (GPU), só nas ligações visíveis na tela → leve até em celular antigo.
  */
-export type LinkState = 'normal' | 'dead' | 'passive' | 'active'
-export const LINK_LABEL: Record<LinkState, string> = { normal: '— Normal', dead: '✝ Morta', passive: '✦ Viva · passiva', active: '⚡ Viva · ativa' }
+export type LinkState = 'dead' | 'passive' | 'active'
+export const LINK_LABEL: Record<LinkState, string> = { dead: '— Morta', passive: '✦ Viva · passiva', active: '⚡ Viva · ativa' }
 
-export const getLink = (s: MindNodeShape): LinkState => ((s.meta as any)?.link as LinkState) || 'normal'
+export const getLink = (s: MindNodeShape): LinkState => ((s.meta as any)?.link as LinkState) || 'dead'
 
 export function setLink(editor: Editor, nodeId: TLShapeId, state: LinkState) {
   const node = editor.getShape(nodeId) as MindNodeShape
-  const arrow = editor.getCurrentPageShapes().find((a) => a.type === 'arrow' && (a.meta as any)?.mindEdge === nodeId)
-  editor.run(() => {
-    editor.updateShape({ id: nodeId, type: 'mind-node', meta: { ...node.meta, link: state } })
-    if (!arrow) return
-    const m = arrow.meta as any
-    if (state === 'dead') {
-      // guarda o estilo original para poder "ressuscitar"
-      editor.updateShape({ id: arrow.id, type: 'arrow', opacity: 0.35,
-        meta: { ...m, before: m.before ?? { dash: (arrow.props as any).dash, color: (arrow.props as any).color } },
-        props: { dash: 'dotted', color: 'grey' } })
-    } else if (m.before) {
-      editor.updateShape({ id: arrow.id, type: 'arrow', opacity: 1, meta: { ...m, before: undefined }, props: m.before })
-    }
-  })
+  // a linha não muda de aparência; só liga/desliga o feixe de luz
+  editor.updateShape({ id: nodeId, type: 'mind-node', meta: { ...node.meta, link: state } })
 }
 
 export function ConnectorLights() {
