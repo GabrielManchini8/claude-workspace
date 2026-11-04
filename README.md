@@ -9,3 +9,12 @@ Base para projetos no Claude Code. Abra uma sessão com este repositório e os p
 - Remotion (`/remotion-create` e outras): vídeos com React
 
 Cada projeto novo pode ficar numa pasta própria aqui dentro.
+
+## MindVault (app/)
+```bash
+cd app && npm install && cp .env.example .env   # Supabase opcional
+npm run dev
+```
+Mapa mental: **Tab** = filho, **Enter** = irmão, **Espaço** = expandir/recolher, **Delete** = apaga ramo.
+Caneta: ao tocar com a caneta o app entra em modo caneta (dedo navega, caneta desenha).
+Veja `docs/ROADMAP.md` e `supabase/migrations/`.
