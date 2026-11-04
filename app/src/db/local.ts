@@ -12,7 +12,7 @@ class LocalDB extends Dexie {
   docs!: Table<DocMeta, string>
   links!: Table<Link, [string, string]>
   constructor() {
-    super('mindvault')
+    super('rabisco')
     this.version(1).stores({ docs: 'documentId, updatedAt, *tags', links: '[from+to], to' })
   }
 }

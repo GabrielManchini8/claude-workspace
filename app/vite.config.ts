@@ -8,7 +8,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       workbox: { maximumFileSizeToCacheInBytes: 8 * 1024 * 1024 },
-      manifest: { name: 'MindVault', short_name: 'MindVault', display: 'standalone', theme_color: '#111' },
+      manifest: { name: 'Rabisco', short_name: 'Rabisco', display: 'standalone', theme_color: '#111' },
     }),
   ],
   // Tauri/Capacitor carregam arquivos locais: caminhos relativos

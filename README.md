@@ -10,7 +10,7 @@ Base para projetos no Claude Code. Abra uma sessão com este repositório e os p
 
 Cada projeto novo pode ficar numa pasta própria aqui dentro.
 
-## MindVault (app/)
+## Rabisco (app/)
 ```bash
 cd app && npm install && cp .env.example .env   # Supabase opcional
 npm run dev

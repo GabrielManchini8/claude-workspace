@@ -1,4 +1,4 @@
-# MindVault — Arquitetura e próximos passos
+# Rabisco — Arquitetura e próximos passos
 
 ## Decisões
 | Tema | Escolha | Por quê |
