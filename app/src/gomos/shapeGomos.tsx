@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   DefaultColorStyle, DefaultDashStyle, DefaultFillStyle, Editor, GeoShapeGeoStyle, TLShapeId,
   createShapeId, useEditor, useValue,
@@ -137,5 +137,38 @@ export function GomoButton() {
         border: 'none', background: '#ff922b', color: '#fff', fontSize: 16, cursor: 'pointer', pointerEvents: 'all',
         boxShadow: '0 2px 8px rgba(0,0,0,.25)',
       }}>🍊</button>
+  )
+}
+
+/**
+ * Quadrinho "cor atual / cor anterior" ao lado do 🍊.
+ * Toque troca as duas — bom para alternar, p.ex., azul ↔ vermelho ao anotar.
+ */
+const HEX: Record<string, string> = Object.fromEntries(COLORS)
+export function ColorSwap() {
+  const editor = useEditor()
+  const current = useValue('next-color', () => editor.getStyleForNextShape(DefaultColorStyle), [editor])
+  const [prev, setPrev] = useState<string>(() => { try { return localStorage.getItem('rabisco:prevColor') || 'red' } catch { return 'red' } })
+  const last = useRef(current)
+  useEffect(() => {
+    if (current !== last.current) {
+      setPrev(last.current)
+      try { localStorage.setItem('rabisco:prevColor', last.current) } catch {}
+      last.current = current
+    }
+  }, [current])
+  const swap = () => {
+    editor.setStyleForNextShapes(DefaultColorStyle, prev as any)
+    // se houver seleção, pinta também (como nos apps de desenho)
+    if (editor.getSelectedShapeIds().length) editor.setStyleForSelectedShapes(DefaultColorStyle, prev as any)
+  }
+  const sq = (c: string): React.CSSProperties => ({ position: 'absolute', width: 24, height: 24, borderRadius: 6, background: HEX[c] ?? c, border: '2px solid var(--color-panel)', boxShadow: '0 1px 4px rgba(0,0,0,.35)' })
+  return (
+    <button title="Trocar entre a cor atual e a anterior" onPointerDown={(e) => e.stopPropagation()} onClick={swap}
+      style={{ position: 'fixed', left: 74, bottom: 70, width: 40, height: 40, zIndex: 300, border: 'none', background: 'transparent', cursor: 'pointer', pointerEvents: 'all', padding: 0 }}>
+      <span style={{ ...sq(prev), right: 0, bottom: 0 }} />
+      <span style={{ ...sq(current), left: 0, top: 0 }} />
+      <span style={{ position: 'absolute', right: -6, top: -6, fontSize: 11 }}>⇄</span>
+    </button>
   )
 }

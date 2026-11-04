@@ -4,7 +4,7 @@ import { useYjsStore } from '../sync/useYjsStore'
 import { ZoomControls, cameraOptions } from './zoom'
 import { pickFiles, registerFileImporters } from '../import/importFiles'
 import { RadialMenu, openRadial } from '../convert/RadialMenu'
-import { ColorBar, GomoButton } from '../gomos/shapeGomos'
+import { ColorBar, ColorSwap, GomoButton } from '../gomos/shapeGomos'
 import { ToolGomoButton } from '../gomos/toolGomos'
 import { VoicePanel } from '../voice/VoicePanel'
 import { actionsForFiles, actionsForSelection } from '../convert/converters'
@@ -59,7 +59,7 @@ function Toolbar() {
 }
 
 function Overlays() {
-  return <><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorBar /><RadialMenu /><VoicePanel /></>
+  return <><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorSwap /><ColorBar /><RadialMenu /><VoicePanel /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {
