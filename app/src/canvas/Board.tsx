@@ -6,6 +6,7 @@ import { pickFiles, registerFileImporters } from '../import/importFiles'
 import { RadialMenu, openRadial } from '../convert/RadialMenu'
 import { ColorBar, GomoButton } from '../gomos/shapeGomos'
 import { ToolGomoButton } from '../gomos/toolGomos'
+import { VoicePanel } from '../voice/VoicePanel'
 import { actionsForFiles, actionsForSelection } from '../convert/converters'
 import { MindNodeUtil, createMindMap, getShapeVisibility } from '../mindmap/MindNodeShape'
 import { MindNodeToolbar, registerMindMapKeys } from '../mindmap/MindMapUI'
@@ -58,7 +59,7 @@ function Toolbar() {
 }
 
 function Overlays() {
-  return <><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorBar /><RadialMenu /></>
+  return <><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorBar /><RadialMenu /><VoicePanel /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {

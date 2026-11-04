@@ -1,5 +1,6 @@
 import { Editor, VecLike, createShapeId, toRichText } from 'tldraw'
 import { importPdfToCanvas } from '../pdf/importPdf'
+import { openVoice } from '../voice/VoicePanel'
 
 /**
  * Importador "canivete suíço". Funciona por arrastar-e-soltar, colar (Ctrl+V)
@@ -11,7 +12,7 @@ import { importPdfToCanvas } from '../pdf/importPdf'
  *  - outros                   → cartão de anexo com o nome do arquivo
  */
 export const ACCEPT = [
-  'application/pdf', 'image/*', 'video/*',
+  'application/pdf', 'image/*', 'video/*', 'audio/*',
   '.md', '.markdown', '.txt', '.csv', '.json', '.html', '.js', '.ts', '.py', '.docx',
 ].join(',')
 
@@ -26,6 +27,7 @@ export function registerFileImporters(editor: Editor) {
     for (const f of files) {
       if (f.type === 'application/pdf' || /\.pdf$/i.test(f.name)) await importPdfToCanvas(editor, f, p)
       else if (f.type.startsWith('image/') || f.type.startsWith('video/')) native.push(f)
+      else if (f.type.startsWith('audio/')) openVoice({ mode: 'file', file: f, at: p }) // áudio solto → vira nota transcrita
       else if (/\.docx$/i.test(f.name)) addTextNote(editor, f.name, await docxToText(f), p)
       else if (f.type.startsWith('text/') || TEXT_EXT.test(f.name)) addTextNote(editor, f.name, await f.text(), p)
       else addTextNote(editor, f.name, `📎 ${f.name} (${Math.round(f.size / 1024)} KB) — formato ainda sem visualização`, p)

@@ -5,6 +5,7 @@ import { openRadial } from '../convert/RadialMenu'
 import { createMindMap } from '../mindmap/MindNodeShape'
 import { pickFiles } from '../import/importFiles'
 import { openColorBar } from './shapeGomos'
+import { openVoice } from '../voice/VoicePanel'
 
 type Pt = { x: number; y: number }
 
@@ -43,6 +44,7 @@ function insertGomos(editor: Editor, at: Pt): Action[] {
     { id: 'note', icon: '🗒', label: 'Post-it', run: make(() => {
       const id = createShapeId(); editor.createShape({ id, type: 'note', x: p.x - 100, y: p.y - 100 }); editor.select(id); editor.setEditingShape(id)
     }) },
+    { id: 'voice', icon: '🎙', label: 'Ditado', run: async () => openVoice({ mode: 'record' }) },
     { id: 'text', icon: '🔤', label: 'Texto', run: make(() => {
       const id = createShapeId(); editor.createShape({ id, type: 'text', x: p.x, y: p.y, props: { richText: toRichText('') } }); editor.select(id); editor.setEditingShape(id)
     }) },

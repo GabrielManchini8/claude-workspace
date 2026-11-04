@@ -1,6 +1,7 @@
 import { Editor, TLShape, TLShapeId, toRichText } from 'tldraw'
 import * as pdfjs from 'pdfjs-dist'
 import { importPdfToCanvas } from '../pdf/importPdf'
+import { openVoice } from '../voice/VoicePanel'
 
 /**
  * Conversor local (nada sai do aparelho). Inspirado no fluxo
@@ -121,6 +122,11 @@ export function actionsForFiles(editor: Editor, files: File[], at: { x: number; 
     { id: 'jpg', label: 'Páginas JPG', icon: '📷', run: () => pdfToImages(f, n, 'image/jpeg') },
     { id: 'txt', label: 'Texto (.txt)', icon: '📝', run: async () => download(new Blob([await pdfToText(f)], { type: 'text/plain' }), n + '.txt') },
     { id: 'note', label: 'Texto → nota', icon: '🗒', run: async () => { editor.createShape({ type: 'text', x: at.x, y: at.y, props: { richText: toRichText(await pdfToText(f)), autoSize: false, w: 560, size: 's', font: 'sans', textAlign: 'start' } }) } },
+  ]
+  if (f.type.startsWith('audio/') || f.type.startsWith('video/') || /\.(mp3|m4a|wav|ogg|opus|flac|mp4|mov|webm)$/i.test(f.name)) return [
+    ...(f.type.startsWith('video/') ? [insert] : []),
+    { id: 'tr-note', label: 'Transcrever → nota', icon: '🎙', run: async () => openVoice({ mode: 'file', file: f, at }) },
+    { id: 'tr', label: 'Transcrever (TXT/SRT)', icon: '💬', run: async () => openVoice({ mode: 'file', file: f }) },
   ]
   if (isText(f)) return [insert,
     { id: 'html', label: 'HTML', icon: '🌐', run: async () => download(new Blob([mdToHtml(await f.text())], { type: 'text/html' }), n + '.html') },
