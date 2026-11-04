@@ -3,6 +3,8 @@ import 'tldraw/tldraw.css'
 import { useYjsStore } from '../sync/useYjsStore'
 import { ZoomControls, cameraOptions } from './zoom'
 import { pickFiles, registerFileImporters } from '../import/importFiles'
+import { RadialMenu, openRadial } from '../convert/RadialMenu'
+import { actionsForFiles, actionsForSelection } from '../convert/converters'
 import { MindNodeUtil, createMindMap, getShapeVisibility } from '../mindmap/MindNodeShape'
 import { MindNodeToolbar, registerMindMapKeys } from '../mindmap/MindMapUI'
 
@@ -38,6 +40,15 @@ function Toolbar() {
           const files = await pickFiles()
           if (files.length) await editor.putExternalContent({ type: 'files', files, point: editor.getViewportPageBounds().center })
         }} />
+      <TldrawUiMenuItem id="convert" label="Converter / exportar" icon="share-1"
+        onSelect={async () => {
+          const ids = editor.getSelectedShapeIds()
+          const vp = editor.getViewportScreenBounds()
+          const pos = { x: vp.midX, y: vp.midY }
+          if (ids.length) return openRadial({ ...pos, actions: actionsForSelection(editor, ids) })
+          const files = await pickFiles()
+          if (files.length) openRadial({ ...pos, actions: actionsForFiles(editor, files, editor.getViewportPageBounds().center) })
+        }} />
       {/* Imagens (png/jpg/svg) já são suportadas por arrastar/colar ou pela ferramenta de mídia */}
       <TldrawUiMenuItem {...tools['asset']} />
     </DefaultToolbar>
@@ -45,7 +56,7 @@ function Toolbar() {
 }
 
 function Overlays() {
-  return <><MindNodeToolbar /><ZoomControls /></>
+  return <><MindNodeToolbar /><ZoomControls /><RadialMenu /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {
