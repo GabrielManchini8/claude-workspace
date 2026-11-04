@@ -7,7 +7,10 @@ import { RadialMenu, openRadial } from '../convert/RadialMenu'
 import { ColorBar, ColorSwap, GomoButton } from '../gomos/shapeGomos'
 import { ToolGomoButton } from '../gomos/toolGomos'
 import { VoicePanel } from '../voice/VoicePanel'
-import { SearchButton, SearchPanel } from '../search/SearchPanel'
+import { SearchPanel } from '../search/SearchPanel'
+import { SideRuler } from '../ruler/SideRuler'
+import { ConnectorLights } from '../mindmap/ConnectorLights'
+import { SyncButton } from '../sync/SyncButton'
 import { ExplainBar, replayVisibility } from '../explain/explain'
 import { InfoLabels, InfoPanel, registerAutoNames } from '../info/ShapeInfo'
 import { actionsForFiles, actionsForSelection } from '../convert/converters'
@@ -62,7 +65,7 @@ function Toolbar() {
 }
 
 function Overlays() {
-  return <><InfoLabels /><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorSwap /><ColorBar /><RadialMenu /><VoicePanel /><InfoPanel /><SearchPanel /><SearchButton /><ExplainBar /></>
+  return <><ConnectorLights /><InfoLabels /><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorSwap /><ColorBar /><RadialMenu /><VoicePanel /><InfoPanel /><SearchPanel /><SideRuler /><SyncButton /><ExplainBar /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {

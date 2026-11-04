@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Editor, TLShapeId, useEditor, useValue } from 'tldraw'
+import { LINK_LABEL, LinkState, getLink, setLink } from './ConnectorLights'
 import { CONNECTOR_STYLES, ConnectorStyle, addChild, deleteSubtree, isMind, setConnectorStyle } from './MindNodeShape'
 
 /** Atalhos estilo XMind: Tab = filho, Enter = irmão, Espaço = expandir/recolher, Delete = sub-árvore */
@@ -26,7 +27,7 @@ export function MindNodeToolbar() {
     const s = editor.getOnlySelectedShape()
     if (!isMind(s) || editor.getEditingShapeId() || editor.isShapeHidden(s)) return null
     const b = editor.getSelectionRotatedScreenBounds()
-    return b ? { id: s.id, x: b.midX, y: b.minY } : null
+    return b ? { id: s.id, x: b.midX, y: b.minY, root: !s.props.parent, link: getLink(s) } : null
   }, [editor])
   if (!sel) return null
 
@@ -42,6 +43,11 @@ export function MindNodeToolbar() {
       <select value={style} onChange={(e) => setStyle(e.target.value as ConnectorStyle)} style={{ ...btn, background: 'transparent' }} title="Estilo da conexão">
         {Object.keys(CONNECTOR_STYLES).map((k) => <option key={k} value={k}>〰 {k}</option>)}
       </select>
+      {!sel.root && (
+        <select value={sel.link} title="Ligação com o tópico anterior" onChange={(e) => setLink(editor, sel.id, e.target.value as LinkState)} style={{ ...btn, background: 'transparent' }}>
+          {Object.entries(LINK_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+        </select>
+      )}
       <button style={btn} onClick={() => deleteSubtree(editor, sel.id)}>🗑</button>
     </div>
   )
