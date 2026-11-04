@@ -1,4 +1,4 @@
-import { AssetRecordType, Editor, createShapeId } from 'tldraw'
+import { AssetRecordType, Editor, VecLike, createShapeId } from 'tldraw'
 import * as pdfjs from 'pdfjs-dist'
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 
@@ -15,9 +15,9 @@ const PAGE_GAP = 32
  * Melhoria futura: renderização lazy (só páginas visíveis) e armazenar o
  * PDF original no Supabase Storage em vez de dataURLs no documento.
  */
-export async function importPdfToCanvas(editor: Editor, file: File) {
+export async function importPdfToCanvas(editor: Editor, file: File, at?: VecLike) {
   const pdf = await pdfjs.getDocument({ data: await file.arrayBuffer() }).promise
-  const origin = editor.getViewportPageBounds().center
+  const origin = at ?? editor.getViewportPageBounds().center
   let y = origin.y
   const shapeIds = []
 

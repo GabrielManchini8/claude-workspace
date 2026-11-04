@@ -1,7 +1,8 @@
 import { Tldraw, Editor, DefaultToolbar, DefaultToolbarContent, TldrawUiMenuItem, useEditor, useTools } from 'tldraw'
 import 'tldraw/tldraw.css'
 import { useYjsStore } from '../sync/useYjsStore'
-import { importPdfToCanvas } from '../pdf/importPdf'
+import { ZoomControls, cameraOptions } from './zoom'
+import { pickFiles, registerFileImporters } from '../import/importFiles'
 import { MindNodeUtil, createMindMap, getShapeVisibility } from '../mindmap/MindNodeShape'
 import { MindNodeToolbar, registerMindMapKeys } from '../mindmap/MindMapUI'
 
@@ -25,16 +26,6 @@ function enablePenFriendlyDefaults(editor: Editor) {
   return () => window.removeEventListener('pointerdown', onPointer, { capture: true })
 }
 
-function pickFile(accept: string): Promise<File | null> {
-  return new Promise((resolve) => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = accept
-    input.onchange = () => resolve(input.files?.[0] ?? null)
-    input.click()
-  })
-}
-
 function Toolbar() {
   const editor = useEditor()
   const tools = useTools()
@@ -42,19 +33,19 @@ function Toolbar() {
     <DefaultToolbar>
       <DefaultToolbarContent />
       <TldrawUiMenuItem id="mindmap" label="Mapa mental" icon="mind-map" onSelect={() => { createMindMap(editor) }} />
-      <TldrawUiMenuItem
-        id="import-pdf"
-        label="Importar PDF"
-        icon="file"
+      <TldrawUiMenuItem id="import" label="Importar arquivo (PDF, imagem, vídeo, texto, Word…)" icon="file"
         onSelect={async () => {
-          const file = await pickFile('application/pdf')
-          if (file) await importPdfToCanvas(editor, file)
-        }}
-      />
+          const files = await pickFiles()
+          if (files.length) await editor.putExternalContent({ type: 'files', files, point: editor.getViewportPageBounds().center })
+        }} />
       {/* Imagens (png/jpg/svg) já são suportadas por arrastar/colar ou pela ferramenta de mídia */}
       <TldrawUiMenuItem {...tools['asset']} />
     </DefaultToolbar>
   )
+}
+
+function Overlays() {
+  return <><MindNodeToolbar /><ZoomControls /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {
@@ -64,11 +55,13 @@ export function Board({ documentId }: { documentId: string }) {
       store={store}
       shapeUtils={shapeUtils}
       getShapeVisibility={getShapeVisibility}
-      components={{ Toolbar, InFrontOfTheCanvas: MindNodeToolbar }}
+      cameraOptions={cameraOptions}
+      components={{ Toolbar, InFrontOfTheCanvas: Overlays, ZoomMenu: null }}
       onMount={(editor) => {
         if (import.meta.env.DEV) (window as any).editor = editor
         const a = enablePenFriendlyDefaults(editor)
         const b = registerMindMapKeys(editor)
+        registerFileImporters(editor)
         return () => { a(); b() }
       }}
     />
