@@ -156,6 +156,11 @@ export function actionsForSelection(editor: Editor, ids: TLShapeId[]): Action[] 
 }
 
 function shapeText(s: TLShape): string {
+  const m = s.meta as any, head = m?.name ? `## ${m.name}\n` : '', obs = m?.obs ? `\n> ${m.obs.replace(/\n/g, '\n> ')}\n` : ''
+  const body = shapeBody(s)
+  return head || obs || body ? `${head}${body}${obs}` : ''
+}
+function shapeBody(s: TLShape): string {
   const p = s.props as any
   if (s.type === 'mind-node') return `- ${p.text}`
   if (p.richText) return richToText(p.richText)

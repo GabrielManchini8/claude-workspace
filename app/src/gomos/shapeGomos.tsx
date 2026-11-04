@@ -6,6 +6,7 @@ import {
 import { Action, actionsForSelection } from '../convert/converters'
 import { openRadial } from '../convert/RadialMenu'
 import { isMind } from '../mindmap/MindNodeShape'
+import { openInfo } from '../info/ShapeInfo'
 
 /**
  * "Gomos": o mesmo anel do conversor, reaproveitado para qualquer menu.
@@ -104,6 +105,7 @@ export function mainGomos(editor: Editor, at: { x: number; y: number }): Action[
   const ids = editor.getSelectedShapeIds()
   const sub = (actions: Action[]) => openRadial({ ...at, actions: [back(editor, at), ...actions] })
   return [
+    { id: 'info', icon: '✎', label: 'Nome / Obs', run: async () => openInfo(ids[0]) },
     { id: 'forma', icon: '⬟', label: 'Forma ▸', run: async () => sub(shapeGomos(editor)) },
     { id: 'cor', icon: '🎨', label: 'Cor', run: async () => openColorBar({ x: at.x, y: at.y + 130 }) },
     { id: 'estilo', icon: '▨', label: 'Estilo ▸', run: async () => sub(styleGomos(editor)) },
@@ -126,7 +128,9 @@ export function GomoButton() {
     if (!editor.isIn('select.idle')) return null // some enquanto arrasta/redimensiona
     const b = editor.getSelectionRotatedScreenBounds()
     const vp = editor.getViewportScreenBounds()
-    return b ? { x: b.maxX + vp.x + 18, y: b.minY + vp.y - 18 } : null
+    if (!b) return null
+    // mantém o botão sempre visível, mesmo com a figura na borda ou maior que a tela
+    return { x: Math.min(Math.max(b.maxX + vp.x + 18, vp.x + 24), vp.x + vp.w - 24), y: Math.min(Math.max(b.minY + vp.y - 18, vp.y + 60), vp.y + vp.h - 24) }
   }, [editor])
   if (!pos) return null
   return (

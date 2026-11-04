@@ -7,6 +7,7 @@ import { RadialMenu, openRadial } from '../convert/RadialMenu'
 import { ColorBar, ColorSwap, GomoButton } from '../gomos/shapeGomos'
 import { ToolGomoButton } from '../gomos/toolGomos'
 import { VoicePanel } from '../voice/VoicePanel'
+import { InfoLabels, InfoPanel, registerAutoNames } from '../info/ShapeInfo'
 import { actionsForFiles, actionsForSelection } from '../convert/converters'
 import { MindNodeUtil, createMindMap, getShapeVisibility } from '../mindmap/MindNodeShape'
 import { MindNodeToolbar, registerMindMapKeys } from '../mindmap/MindMapUI'
@@ -59,7 +60,7 @@ function Toolbar() {
 }
 
 function Overlays() {
-  return <><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorSwap /><ColorBar /><RadialMenu /><VoicePanel /></>
+  return <><InfoLabels /><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorSwap /><ColorBar /><RadialMenu /><VoicePanel /><InfoPanel /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {
@@ -76,7 +77,8 @@ export function Board({ documentId }: { documentId: string }) {
         const a = enablePenFriendlyDefaults(editor)
         const b = registerMindMapKeys(editor)
         registerFileImporters(editor)
-        return () => { a(); b() }
+        const c = registerAutoNames(editor)
+        return () => { a(); b(); c() }
       }}
     />
   )
