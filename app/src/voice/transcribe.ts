@@ -32,7 +32,12 @@ export async function decodeTo16k(blob: Blob): Promise<Float32Array> {
   return (await off.startRendering()).getChannelData(0)
 }
 
-export async function transcribe(blob: Blob, onProgress: Progress = () => {}, language: string | null = 'portuguese') {
+export const LANGS = { portuguese: 'Português', english: 'Inglês', spanish: 'Espanhol', auto: 'Detectar sozinho' } as const
+export type LangKey = keyof typeof LANGS
+export const getLang = (): LangKey => { try { return (localStorage.getItem('rabisco:lang') as LangKey) || 'portuguese' } catch { return 'portuguese' } }
+
+export async function transcribe(blob: Blob, onProgress: Progress = () => {}, lang: LangKey = getLang(), words = false) {
+  const language = lang === 'auto' ? null : lang
   onProgress('Lendo áudio…')
   const audio = await decodeTo16k(blob)
   const w = getWorker()
@@ -44,7 +49,8 @@ export async function transcribe(blob: Blob, onProgress: Progress = () => {}, la
       else if (m.type === 'done') resolve(m)
       else if (m.type === 'error') reject(new Error(m.text))
     }
-    w.postMessage({ audio, model: MODELS[getModel()], language }, [audio.buffer])
+    // tempo por palavra exige a variante "_timestamped" do modelo (expõe a atenção cruzada)
+    w.postMessage({ audio, model: MODELS[getModel()] + (words ? '_timestamped' : ''), language, words }, [audio.buffer])
   })
 }
 

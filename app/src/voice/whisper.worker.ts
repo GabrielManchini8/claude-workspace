@@ -15,7 +15,7 @@ let asr: any = null
 let loadedModel = ''
 
 self.onmessage = async (e: MessageEvent) => {
-  const { audio, model, language } = e.data as { audio: Float32Array; model: string; language: string | null }
+  const { audio, model, language, words } = e.data as { audio: Float32Array; model: string; language: string | null; words?: boolean }
   try {
     if (!asr || loadedModel !== model) {
       const device = (await (navigator as any).gpu?.requestAdapter?.()) ? 'webgpu' : 'wasm'
@@ -27,7 +27,7 @@ self.onmessage = async (e: MessageEvent) => {
     }
     self.postMessage({ type: 'status', text: 'Transcrevendo…' })
     const out = await asr(audio, {
-      language, task: 'transcribe', return_timestamps: true, chunk_length_s: 30, stride_length_s: 5,
+      language, task: 'transcribe', return_timestamps: words ? 'word' : true, chunk_length_s: 30, stride_length_s: 5,
     })
     self.postMessage({ type: 'done', text: out.text.trim(), chunks: out.chunks ?? [] })
   } catch (err) {

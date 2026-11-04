@@ -6,6 +6,8 @@ import { createMindMap } from '../mindmap/MindNodeShape'
 import { pickFiles } from '../import/importFiles'
 import { openColorBar } from './shapeGomos'
 import { openVoice } from '../voice/VoicePanel'
+import { startExplain } from '../explain/explain'
+import { openSearch } from '../search/SearchPanel'
 
 type Pt = { x: number; y: number }
 
@@ -44,6 +46,7 @@ function insertGomos(editor: Editor, at: Pt): Action[] {
     { id: 'note', icon: '🗒', label: 'Post-it', run: make(() => {
       const id = createShapeId(); editor.createShape({ id, type: 'note', x: p.x - 100, y: p.y - 100 }); editor.select(id); editor.setEditingShape(id)
     }) },
+    { id: 'explain', icon: '🎬', label: 'Explicar (voz + desenho)', run: async () => { await startExplain(editor); editor.setCurrentTool('draw') } },
     { id: 'voice', icon: '🎙', label: 'Ditado', run: async () => openVoice({ mode: 'record' }) },
     { id: 'text', icon: '🔤', label: 'Texto', run: make(() => {
       const id = createShapeId(); editor.createShape({ id, type: 'text', x: p.x, y: p.y, props: { richText: toRichText('') } }); editor.select(id); editor.setEditingShape(id)
@@ -75,6 +78,7 @@ export function rootGomos(editor: Editor, at: Pt): Action[] {
   return [
     { id: 'pen', icon: '✏️', label: 'Caneta ▸', run: async () => openRadial({ ...at, actions: penGomos(editor, at) }) },
     { id: 'ins', icon: '➕', label: 'Inserir ▸', run: async () => openRadial({ ...at, actions: insertGomos(editor, at) }) },
+    { id: 'search', icon: '🔍', label: 'Buscar', run: async () => openSearch() },
     { id: 'undo', icon: '↶', label: 'Desfazer', run: async () => { editor.undo() } },
     { id: 'redo', icon: '↷', label: 'Refazer', run: async () => { editor.redo() } },
     { id: 'fit', icon: '⤢', label: 'Ver tudo', run: async () => { editor.zoomToFit({ animation: { duration: 250 } }) } },

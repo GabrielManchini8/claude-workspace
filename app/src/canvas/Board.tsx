@@ -7,6 +7,8 @@ import { RadialMenu, openRadial } from '../convert/RadialMenu'
 import { ColorBar, ColorSwap, GomoButton } from '../gomos/shapeGomos'
 import { ToolGomoButton } from '../gomos/toolGomos'
 import { VoicePanel } from '../voice/VoicePanel'
+import { SearchButton, SearchPanel } from '../search/SearchPanel'
+import { ExplainBar, replayVisibility } from '../explain/explain'
 import { InfoLabels, InfoPanel, registerAutoNames } from '../info/ShapeInfo'
 import { actionsForFiles, actionsForSelection } from '../convert/converters'
 import { MindNodeUtil, createMindMap, getShapeVisibility } from '../mindmap/MindNodeShape'
@@ -60,7 +62,7 @@ function Toolbar() {
 }
 
 function Overlays() {
-  return <><InfoLabels /><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorSwap /><ColorBar /><RadialMenu /><VoicePanel /><InfoPanel /></>
+  return <><InfoLabels /><MindNodeToolbar /><ZoomControls /><GomoButton /><ToolGomoButton /><ColorSwap /><ColorBar /><RadialMenu /><VoicePanel /><InfoPanel /><SearchPanel /><SearchButton /><ExplainBar /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {
@@ -69,7 +71,7 @@ export function Board({ documentId }: { documentId: string }) {
     <Tldraw
       store={store}
       shapeUtils={shapeUtils}
-      getShapeVisibility={getShapeVisibility}
+      getShapeVisibility={(s, e) => replayVisibility(s, e) ?? getShapeVisibility(s, e)}
       cameraOptions={cameraOptions}
       components={{ Toolbar, InFrontOfTheCanvas: Overlays, ZoomMenu: null }}
       onMount={(editor) => {

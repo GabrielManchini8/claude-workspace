@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Editor, createShapeId, toRichText, useEditor } from 'tldraw'
-import { MODELS, ModelKey, getModel, startRecording, toSrt, toTimedText, toVtt, transcribe } from './transcribe'
+import { LANGS, LangKey, getLang, MODELS, ModelKey, getModel, startRecording, toSrt, toTimedText, toVtt, transcribe } from './transcribe'
 import { download } from '../convert/converters'
 
 /** Painel de ditado / transcrição (abre pelos gomos ou pelo conversor) */
@@ -22,6 +22,7 @@ export function VoicePanel() {
   const [secs, setSecs] = useState(0)
   const [result, setResult] = useState<{ text: string; chunks: any[]; name: string } | null>(null)
   const [model, setModel] = useState<ModelKey>(getModel())
+  const [lang, setLang] = useState<LangKey>(getLang())
   const rec = useRef<Awaited<ReturnType<typeof startRecording>> | null>(null)
   openPanel = (j) => { setJob(j); setResult(null); setStatus(''); setSecs(0) }
 
@@ -87,7 +88,9 @@ export function VoicePanel() {
       <label style={{ display: 'block', marginTop: 12, fontSize: 12, opacity: 0.75 }}>
         Qualidade: <select value={model} onChange={(e) => { const k = e.target.value as ModelKey; setModel(k); try { localStorage.setItem('rabisco:whisper', k) } catch {} }}>
           {Object.keys(MODELS).map((k) => <option key={k} value={k}>{k}</option>)}
-        </select> · roda no aparelho, nada vai para a nuvem
+        </select> · Idioma: <select value={lang} onChange={(e) => { const k = e.target.value as LangKey; setLang(k); try { localStorage.setItem('rabisco:lang', k) } catch {} }}>
+          {Object.entries(LANGS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+        </select><br />Roda no aparelho, nada vai para a nuvem
       </label>
     </div>
   )
