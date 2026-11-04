@@ -4,6 +4,7 @@ import { useYjsStore } from '../sync/useYjsStore'
 import { ZoomControls, cameraOptions } from './zoom'
 import { pickFiles, registerFileImporters } from '../import/importFiles'
 import { RadialMenu, openRadial } from '../convert/RadialMenu'
+import { ColorBar, GomoButton } from '../gomos/shapeGomos'
 import { actionsForFiles, actionsForSelection } from '../convert/converters'
 import { MindNodeUtil, createMindMap, getShapeVisibility } from '../mindmap/MindNodeShape'
 import { MindNodeToolbar, registerMindMapKeys } from '../mindmap/MindMapUI'
@@ -56,7 +57,7 @@ function Toolbar() {
 }
 
 function Overlays() {
-  return <><MindNodeToolbar /><ZoomControls /><RadialMenu /></>
+  return <><MindNodeToolbar /><ZoomControls /><GomoButton /><ColorBar /><RadialMenu /></>
 }
 
 export function Board({ documentId }: { documentId: string }) {

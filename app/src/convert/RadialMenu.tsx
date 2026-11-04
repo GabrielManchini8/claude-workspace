@@ -10,13 +10,14 @@ import { Action, actionsForFiles, actionsForSelection } from './converters'
  */
 type State = { x: number; y: number; actions: Action[] } | null
 let open: (s: State) => void = () => {}
+let current: State = null
 export const openRadial = (s: State) => open(s)
 
 export function RadialMenu() {
   const editor = useEditor()
   const [state, setState] = useState<State>(null)
   const [busy, setBusy] = useState<string | null>(null)
-  open = setState
+  open = (s) => { current = s; setState(s) }
 
   useEffect(() => installTriggers(editor), [editor])
   useEffect(() => {
@@ -25,17 +26,17 @@ export function RadialMenu() {
   }, [])
   if (!state) return null
 
-  const R = 96, n = state.actions.length
+  const n = state.actions.length, R = Math.max(96, n * 12)
   return (
     <div onPointerDown={(e) => { e.stopPropagation(); if (e.target === e.currentTarget) setState(null) }}
       style={{ position: 'fixed', inset: 0, zIndex: 500, pointerEvents: 'all', background: 'rgba(0,0,0,.08)' }}>
-      <div style={{ position: 'absolute', left: state.x, top: state.y }}>
+      <div style={{ position: 'absolute', left: Math.min(Math.max(state.x, R + 40), window.innerWidth - R - 40), top: Math.min(Math.max(state.y, R + 30), window.innerHeight - R - 30) }}>
         <div style={{ position: 'absolute', left: -22, top: -22, width: 44, height: 44, borderRadius: 22, background: '#ff922b', boxShadow: '0 2px 10px rgba(0,0,0,.25)', display: 'grid', placeItems: 'center', color: '#fff', fontSize: 18 }}>{busy ? '⏳' : '✕'}</div>
         {state.actions.map((a, i) => {
           const ang = (i / n) * Math.PI * 2 - Math.PI / 2
           return (
             <button key={a.id} disabled={!!busy}
-              onClick={async () => { setBusy(a.id); try { await a.run() } catch (e) { alert('Falhou: ' + (e as Error).message) } setBusy(null); setState(null) }}
+              onClick={async () => { const before = current; setBusy(a.id); try { await a.run() } catch (e) { alert('Falhou: ' + (e as Error).message) } setBusy(null); if (current === before) setState(null) }}
               style={{
                 position: 'absolute', left: Math.cos(ang) * R - 38, top: Math.sin(ang) * R - 26, width: 76, minHeight: 52,
                 borderRadius: 16, border: 'none', background: 'var(--color-panel)', color: 'var(--color-text)',
