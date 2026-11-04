@@ -31,7 +31,7 @@ export function registerFileImporters(editor: Editor) {
       else addTextNote(editor, f.name, `📎 ${f.name} (${Math.round(f.size / 1024)} KB) — formato ainda sem visualização`, p)
       p = { x: p.x + 700, y: p.y } // lado a lado, sem sobrepor
     }
-    if (native.length) await defaultFiles?.({ type: 'files', point, files: native })
+    if (native.length) await defaultFiles?.({ type: 'files', point: p, files: native })
   })
 }
 
