@@ -13,14 +13,23 @@ import { isMind } from '../mindmap/MindNodeShape'
  */
 
 // ---------- barra de cores (linear, não é anel) ----------
-let openColorBar: (pos: { x: number; y: number } | null) => void = () => {}
+type BarTarget = 'selection' | 'next'
+let setBar: (s: { x: number; y: number; target: BarTarget } | null) => void = () => {}
+/** target 'next' = cor da próxima pincelada (gomos de caneta) */
+export const openColorBar = (pos: { x: number; y: number } | null, target: BarTarget = 'selection') =>
+  setBar(pos && { ...pos, target })
 const COLORS = [
   ['black', '#1d1d1d'], ['grey', '#9fa8b2'], ['white', '#ffffff'], ['red', '#e03131'], ['light-red', '#ff8787'],
   ['orange', '#f76707'], ['yellow', '#f59f00'], ['green', '#099268'], ['light-green', '#40c057'],
   ['blue', '#4465e9'], ['light-blue', '#4ba1f1'], ['violet', '#ae3ec9'], ['light-violet', '#e599f7'],
 ] as const
 
-function applyColor(editor: Editor, name: string, hex: string) {
+function applyColor(editor: Editor, name: string, hex: string, target: BarTarget) {
+  if (target === 'next') {
+    editor.setStyleForNextShapes(DefaultColorStyle, name as any)
+    if (!['draw', 'highlight', 'geo', 'arrow', 'line', 'text', 'note'].includes(editor.getCurrentToolId())) editor.setCurrentTool('draw')
+    return
+  }
   editor.run(() => {
     editor.setStyleForSelectedShapes(DefaultColorStyle, name as any)
     // nós do mapa mental usam hex próprio
@@ -31,10 +40,10 @@ function applyColor(editor: Editor, name: string, hex: string) {
 
 export function ColorBar() {
   const editor = useEditor()
-  const [pos, setPos] = useState<{ x: number; y: number } | null>(null)
-  openColorBar = setPos
+  const [pos, setPos] = useState<{ x: number; y: number; target: BarTarget } | null>(null)
+  setBar = setPos
   const hasSel = useValue('sel', () => editor.getSelectedShapeIds().length > 0, [editor])
-  useEffect(() => { if (!hasSel) setPos(null) }, [hasSel])
+  useEffect(() => { if (!hasSel && pos?.target === 'selection') setPos(null) }, [hasSel])
   if (!pos) return null
   return (
     <div onPointerDown={(e) => e.stopPropagation()} style={{
@@ -43,7 +52,7 @@ export function ColorBar() {
       boxShadow: '0 4px 16px rgba(0,0,0,.2)', pointerEvents: 'all', maxWidth: 'calc(100vw - 16px)', overflowX: 'auto',
     }}>
       {COLORS.map(([name, hex]) => (
-        <button key={name} title={name} onClick={() => applyColor(editor, name, hex)} style={{
+        <button key={name} title={name} onClick={() => { applyColor(editor, name, hex, pos.target); if (pos.target === 'next') setPos(null) }} style={{
           width: 28, height: 28, flex: '0 0 28px', borderRadius: 14, background: hex, cursor: 'pointer',
           border: '2px solid rgba(0,0,0,.15)',
         }} />

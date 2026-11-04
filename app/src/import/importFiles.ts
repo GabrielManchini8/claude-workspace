@@ -52,10 +52,11 @@ async function docxToText(f: File) {
   return value
 }
 
-export function pickFiles(accept = ACCEPT): Promise<File[]> {
+export function pickFiles(accept = ACCEPT, capture = false): Promise<File[]> {
   return new Promise((resolve) => {
     const input = document.createElement('input')
-    input.type = 'file'; input.accept = accept; input.multiple = true
+    input.type = 'file'; input.accept = accept; input.multiple = !capture
+    if (capture) input.setAttribute('capture', 'environment') // celular: abre a câmera
     input.onchange = () => resolve([...(input.files ?? [])])
     input.click()
   })
