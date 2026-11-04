@@ -65,8 +65,8 @@ function fillBoard(editor: Editor, ids: TLShapeId[], times: Map<TLShapeId, numbe
     const frameId = createShapeId()
     const pad = 60
     editor.createShape({ id: frameId, type: 'frame', x: bounds.x - pad, y: bounds.y - pad,
-      props: { w: bounds.w + pad * 2 + 300, h: bounds.h + pad * 2, name: `🎬 Explicação ${when}` },
-      meta: { name: `Explicação ${when}`, obs: full, explain: { audioId, chunks } } })
+      props: { w: bounds.w + pad * 2 + 300, h: bounds.h + pad * 2, name: `🎬 Desenho guiado ${when}` },
+      meta: { name: `Desenho guiado ${when}`, obs: full, explain: { audioId, chunks } } })
     editor.sendToBack([frameId])
     if (ids.length) editor.reparentShapes(ids, frameId)
 
@@ -79,6 +79,7 @@ function fillBoard(editor: Editor, ids: TLShapeId[], times: Map<TLShapeId, numbe
       const lastT = last ? times.get(last.ids.at(-1)!)! : -Infinity
       if (last && t - lastT < 1.5) last.ids.push(id); else groups.push({ start: t, ids: [id] })
     }
+    const anchors: TLShapeId[] = []
     const LEAD = 0.8 // a gente costuma começar a falar um pouco antes de riscar
     groups.forEach((g, i) => {
       const from = i === 0 ? -Infinity : g.start - LEAD
@@ -89,12 +90,46 @@ function fillBoard(editor: Editor, ids: TLShapeId[], times: Map<TLShapeId, numbe
         const sh = editor.getShape(id)!; const prev = getInfo(sh).obs
         editor.updateShape({ id, type: sh.type, meta: { ...sh.meta, obs: (prev ? prev + '\n' : '') + said, explainT: times.get(id), explainFrame: frameId } })
       }
-      const gb = Box.Common(g.ids.map((id) => editor.getShapePageBounds(id)!))
-      editor.createShape({ type: 'text', parentId: frameId,
-        ...pageToFrame(editor, frameId, gb.maxX + 16, gb.y),
-        props: { richText: toRichText(`${'①②③④⑤⑥⑦⑧⑨⑩'[i] ?? i + 1 + '.'} ${said}`), autoSize: false, w: 260, size: 's', font: 'sans', color: 'grey' },
-        meta: { explainT: g.start, explainFrame: frameId } })
+      // Forma "recipiente": algo fechado que você desenhou (círculo/caixa à mão) ou uma forma pronta.
+      const container = g.ids.map((id) => editor.getShape(id)!).filter((sh) => isContainer(editor, sh))
+        .sort((a, b) => area(editor, b.id) - area(editor, a.id))[0]
+      const num = '①②③④⑤⑥⑦⑧⑨⑩'[i] ?? `${i + 1}.`
+      if (container) {
+        // texto DENTRO da forma desenhada, centralizado
+        let cb = editor.getShapePageBounds(container.id)!
+        // área útil dentro de uma elipse/caixa à mão ≈ 70% da largura e 65% da altura
+        let w = Math.max(80, cb.w * 0.7)
+        const tid = createShapeId()
+        editor.createShape({ id: tid, type: 'text', parentId: frameId, ...pageToFrame(editor, frameId, cb.midX - w / 2, cb.midY - 12),
+          props: { richText: toRichText(said), autoSize: false, w, size: 'm', font: 'sans', textAlign: 'middle' },
+          meta: { explainT: g.start, explainFrame: frameId, step: i + 1 } })
+        // não coube? 1º diminui a fonte; 2º aumenta a forma desenhada (proporcional, a partir do centro)
+        if (editor.getShapePageBounds(tid)!.h > cb.h * 0.65) editor.updateShape({ id: tid, type: 'text', props: { size: 's' } })
+        const need = editor.getShapePageBounds(tid)!.h / (cb.h * 0.65)
+        if (need > 1) {
+          const k = Math.min(Math.sqrt(need) * 1.05, 3)
+          editor.resizeShape(container.id, { x: k, y: k }, { scaleOrigin: cb.center, isAspectRatioLocked: true })
+          cb = editor.getShapePageBounds(container.id)!
+          w = Math.max(80, cb.w * 0.7)
+          editor.updateShape({ id: tid, type: 'text', props: { w } })
+        }
+        // centraliza na vertical depois de medir a altura real
+        const tb = editor.getShapePageBounds(tid)!
+        editor.updateShape({ id: tid, type: 'text', ...pageToFrame(editor, frameId, cb.midX - w / 2, cb.midY - tb.h / 2) })
+        anchors.push(container.id)
+      } else {
+        // traço aberto (seta, sublinhado, rabisco) → legenda numerada ao lado
+        const gb = Box.Common(g.ids.map((id) => editor.getShapePageBounds(id)!))
+        editor.createShape({ type: 'text', parentId: frameId, ...pageToFrame(editor, frameId, gb.maxX + 16, gb.y),
+          props: { richText: toRichText(`${num} ${said}`), autoSize: false, w: 260, size: 's', font: 'sans', color: 'grey' },
+          meta: { explainT: g.start, explainFrame: frameId, step: i + 1 } })
+        anchors.push(g.ids[0])
+      }
     })
+    // Fluxo: conecta as formas na ordem em que você falou (só entre recipientes,
+    // para não ligar rabiscos soltos; não liga se você já desenhou uma seta entre eles)
+    const boxes = anchors.filter((id) => isContainer(editor, editor.getShape(id)!))
+    for (let k = 0; k + 1 < boxes.length; k++) connectFlow(editor, frameId, boxes[k], boxes[k + 1], ids)
     // marca o tempo de quem não caiu em nenhum trecho (para o replay)
     ids.forEach((id) => { const sh = editor.getShape(id)!; if ((sh.meta as any).explainT === undefined)
       editor.updateShape({ id, type: sh.type, meta: { ...sh.meta, explainT: times.get(id), explainFrame: frameId } }) })
@@ -152,7 +187,7 @@ export function ExplainBar() {
   if (state === 'recording') return (
     <div style={{ ...bar, top: 12 }} onPointerDown={(e) => e.stopPropagation()}>
       <span style={{ width: 10, height: 10, borderRadius: 5, background: '#e03131', animation: 'rabisco-blink 1s infinite' }} />
-      🎬 Gravando explicação — desenhe à vontade
+      🎬 Desenho guiado — fale e desenhe
       <span style={{ fontVariantNumeric: 'tabular-nums' }}>{Math.floor(secs / 60)}:{String(secs % 60).padStart(2, '0')}</span>
       <button style={b} onClick={() => stopExplain(editor)}>■ Concluir</button>
       <style>{'@keyframes rabisco-blink{50%{opacity:.2}}'}</style>
@@ -167,8 +202,42 @@ export function ExplainBar() {
   )
   if (selFrame) return (
     <div style={{ ...bar, top: 12 }} onPointerDown={(e) => e.stopPropagation()}>
-      <button style={b} onClick={() => playExplain(editor, selFrame)}>▶ Reproduzir explicação</button>
+      <button style={b} onClick={() => playExplain(editor, selFrame)}>▶ Reproduzir desenho guiado</button>
     </div>
   )
   return null
+}
+
+// ---------- desenho guiado: utilitários ----------
+const area = (editor: Editor, id: TLShapeId) => { const b = editor.getShapePageBounds(id); return b ? b.w * b.h : 0 }
+
+/** Fechado = geo pronta, desenho que o tldraw fechou, ou traço cujo fim volta perto do início */
+function isContainer(editor: Editor, sh: TLShape) {
+  const b = editor.getShapePageBounds(sh.id)
+  if (!b || b.w < 40 || b.h < 30) return false
+  if (sh.type === 'geo' || sh.type === 'note' || sh.type === 'frame') return true
+  if (sh.type !== 'draw') return false
+  if ((sh.props as any).isClosed) return true
+  const pts = editor.getShapeGeometry(sh.id).vertices
+  if (pts.length < 8) return false
+  // círculo/caixa à mão: o fim do traço volta para perto de algum ponto do começo
+  const z = pts[pts.length - 1], tol = Math.max(b.w, b.h) * 0.3
+  return pts.slice(0, Math.ceil(pts.length * 0.4)).some((a) => Math.hypot(a.x - z.x, a.y - z.y) < tol)
+}
+
+function connectFlow(editor: Editor, frameId: TLShapeId, from: TLShapeId, to: TLShapeId, drawn: TLShapeId[]) {
+  // se já existe um traço seu ligando as duas, respeita o seu desenho
+  const fb = editor.getShapePageBounds(from)!, tb = editor.getShapePageBounds(to)!
+  const hasManual = drawn.some((id) => {
+    if (id === from || id === to) return false
+    const b = editor.getShapePageBounds(id)!
+    return b.collides(fb.clone().expandBy(30)) && b.collides(tb.clone().expandBy(30))
+  })
+  if (hasManual) return
+  const arrowId = createShapeId()
+  editor.createShape({ id: arrowId, type: 'arrow', parentId: frameId, meta: { explainFlow: true },
+    props: { color: 'orange', dash: 'dashed', size: 's', arrowheadEnd: 'arrow', bend: 0 } })
+  for (const [terminal, target] of [['start', from], ['end', to]] as const)
+    editor.createBinding({ type: 'arrow', fromId: arrowId, toId: target,
+      props: { terminal, normalizedAnchor: { x: 0.5, y: 0.5 }, isExact: false, isPrecise: false } })
 }

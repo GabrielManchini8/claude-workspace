@@ -46,7 +46,7 @@ function insertGomos(editor: Editor, at: Pt): Action[] {
     { id: 'note', icon: '🗒', label: 'Post-it', run: make(() => {
       const id = createShapeId(); editor.createShape({ id, type: 'note', x: p.x - 100, y: p.y - 100 }); editor.select(id); editor.setEditingShape(id)
     }) },
-    { id: 'explain', icon: '🎬', label: 'Explicar (voz + desenho)', run: async () => { await startExplain(editor); editor.setCurrentTool('draw') } },
+    { id: 'explain', icon: '🎬', label: 'Desenho guiado', run: async () => { await startExplain(editor); editor.setCurrentTool('draw') } },
     { id: 'voice', icon: '🎙', label: 'Ditado', run: async () => openVoice({ mode: 'record' }) },
     { id: 'text', icon: '🔤', label: 'Texto', run: make(() => {
       const id = createShapeId(); editor.createShape({ id, type: 'text', x: p.x, y: p.y, props: { richText: toRichText('') } }); editor.select(id); editor.setEditingShape(id)
