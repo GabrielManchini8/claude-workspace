@@ -54,7 +54,7 @@ def title_block(msp,x,y,cod,nome,origem,escala="1:1",obs="",k=1.0):
     for yy in (10,22): msp.add_line((x,y+yy*k),(x+w,y+yy*k),dxfattribs={"layer":"CARIMBO"})
     msp.add_line((x+40*k,y),(x+40*k,y+22*k),dxfattribs={"layer":"CARIMBO"})
     def t(s,px,py,hgt): msp.add_text(s,height=hgt*k,dxfattribs={"layer":"CARIMBO"}).set_placement((x+px*k,y+py*k))
-    t("AGEL BRASIL",3,25.5,4.5); t("Tubos e Conexoes",60,26,3)
+    t("AGEL BRASIL",3,25.5,4.5); t("Tubos e Conexões",60,26,3)
     t(cod,3,14,4); t(nome,43,14,3.2)
     t("Escala "+escala,3,3.5,2.6); t("Ref.: "+origem,43,3.5,2.3)
     if obs: msp.add_text(obs,height=2.4*k,dxfattribs={"layer":"CARIMBO"}).set_placement((x,y-5*k))

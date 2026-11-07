@@ -15,8 +15,8 @@ def grooves(x0,length,P,r_crest,r_root,wr):
 # Ponta: lista de (comprimento, tipo) do degrau até a ponta: liso|can|ros|fim
 # cotas: (x1,x2,texto,linha) em coordenadas da bolsa (bot) ou ponta (top, relativas ao degrau)
 TUBOS={
-"AG-005":dict(nome="Tubo Revestimento Nervurado DN150 Reforcado x 4 m",L=4075,ltol="+/- 40",
-  origem="Tubo Revestimento NERVURADO_ITEC folha 5/11 (14/07/2016) - PVC rigido",
+"AG-005":dict(nome="Tubo Revestimento Nervurado DN150 Reforçado x 4 m",L=4075,ltol="+/- 40",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 5/11 (14/07/2016) - PVC rígido",
   De=174.0,Detol="+0,4/-0,0",Di=151.0,Ditol="+1,6/-0,4",parede="11,5 +1,0/-0,0",
   P=7,h_ponta=2.6,wr=2.6,rosca_txt="Rosca P7 - 30 graus - prof. 2,6 +0,2/-0,0 - fundo 2,6",
   crista=169.5,ct="+0,0/-0,2",canal=163.9,cnt="+0,0/-0,2",
@@ -26,11 +26,11 @@ TUBOS={
   bolsa=[(8,"ent"),(65,"ros"),(6,"can"),(8,"liso")],
   cot_bolsa=[(0,8,"8,0 +0,5/-0,0",1),(8,73,"65",0),(73,79,"6 +2/-0",2),(79,87,"8,0 +0,5/-0,0",3)],
   l_reto=118,De_bolsa=186.0,De_bolsa_conf=False,x_fim_cone=161,
-  estimados=["Diametro externo da bolsa (186)","Fim do cone de transicao bolsa/tubo (x=161)",
-             "Diametros das faixas lisas e do canal internos da bolsa (adotados = 171,1 / 165,3)",
-             "Rosca desenhada como aneis (perfil 30 graus do detalhe L), sem helice"]),
+  estimados=["Diâmetro externo da bolsa (186)","Fim do cone de transição bolsa/tubo (x=161)",
+             "Diâmetros das faixas lisas e do canal internos da bolsa (adotados = 171,1 / 165,3)",
+             "Rosca desenhada como anéis (perfil 30 graus do detalhe L), sem hélice"]),
 "AG-002":dict(nome="Tubo Revestimento Nervurado DN115 STD x 4 m",L=4075,ltol="+/- 40",
-  origem="Tubo Revestimento NERVURADO_ITEC folha 2/11 (14/07/2016) - PVC rigido",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 2/11 (14/07/2016) - PVC rígido",
   De=129.0,Detol="+0,3/-0,0",Di=115.0,Ditol="+1,6/-0,4",parede="7,0 +0,7/-0,0",
   P=6,h_ponta=1.6,wr=2.2,rosca_txt="Rosca P6 - 30 graus - prof. 1,6 +0,2/-0,0 - fundo 2,2",
   crista=125.5,ct="+0,0/-0,2",canal=122.1,cnt="+0,0/-0,2",
@@ -40,15 +40,15 @@ TUBOS={
   bolsa=[(6,"ent"),(44,"ros"),(6,"can"),(8,"liso")],
   cot_bolsa=[(0,6,"6,0 +0,5/-0,0",1),(0,50,"50",0),(50,56,"6,0 +0,5/-0,0",2),(56,64,"8 +2/-0",3)],
   l_reto=97,De_bolsa=136.30,De_bolsa_conf=True,x_fim_cone=118,
-  estimados=["Fim do cone de transicao bolsa/tubo (x=118)",
-             "Diametros das faixas lisas e do canal internos da bolsa (adotados = 125,9 / 122,3)",
+  estimados=["Fim do cone de transição bolsa/tubo (x=118)",
+             "Diâmetros das faixas lisas e do canal internos da bolsa (adotados = 125,9 / 122,3)",
              "Cota 50 da bolsa lida como medida a partir da face (inclui a entrada de 6,0) - confirmar",
-             "Rosca desenhada como aneis (perfil 30 graus do detalhe R), sem helice"]),
+             "Rosca desenhada como anéis (perfil 30 graus do detalhe R), sem hélice"]),
 }
 
 TUBOS.update({
 "AG-004":dict(nome="Tubo Revestimento Nervurado DN150 STD x 4 m",L=4075,ltol="+/- 40",
-  origem="Tubo Revestimento NERVURADO_ITEC folha 4/11 (14/07/2016) - PVC rigido",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 4/11 (14/07/2016) - PVC rígido",
   De=174.0,Detol="+0,4/-0,0",Di=155.0,Ditol="+0/-2",parede="9,5 +1,0/-0,0",
   P=6,h_ponta=2.6,wr=2.2,rosca_txt="Rosca P6 - 30 graus - prof. 2,6 +0,2/-0,0 - fundo 2,2",
   crista=169.5,ct="+0,0/-0,2",canal=164.1,cnt="+0,0/-0,2",
@@ -58,12 +58,12 @@ TUBOS.update({
   bolsa=[(6,"ent"),(59,"ros"),(6,"can"),(8,"liso")],
   cot_bolsa=[(0,6,"6,0 +0,5/-0,0",1),(0,65,"65",0),(65,71,"6,0 +0,5/-0,0",2),(71,79,"8,0 +2,0/-0,0",3)],
   l_reto=118,De_bolsa=186.0,De_bolsa_conf=False,x_fim_cone=135,
-  estimados=["Diametro externo da bolsa (186)","Fim do cone de transicao bolsa/tubo (x=135)",
-             "Diametros das faixas lisas e do canal internos da bolsa (adotados = 171,7 / 165,3)",
-             "Cotas 65 lidas a partir da face (bolsa) e ate a ponta (inclui as faixas de 6,0) - confirmar",
-             "Rosca desenhada como aneis (perfil 30 graus do detalhe J), sem helice"]),
+  estimados=["Diâmetro externo da bolsa (186)","Fim do cone de transição bolsa/tubo (x=135)",
+             "Diâmetros das faixas lisas e do canal internos da bolsa (adotados = 171,7 / 165,3)",
+             "Cotas 65 lidas a partir da face (bolsa) e até a ponta (inclui as faixas de 6,0) - confirmar",
+             "Rosca desenhada como anéis (perfil 30 graus do detalhe J), sem hélice"]),
 "AG-003":dict(nome="Tubo Revestimento Nervurado DN150 Leve x 4 m",L=4075,ltol="+/- 40",
-  origem="Tubo Revestimento NERVURADO_ITEC folha 3/11 (14/07/2016) - PVC rigido",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 3/11 (14/07/2016) - PVC rígido",
   De=174.0,Detol="+0,4/-0,0",Di=159.8,Ditol="+0,4/-0,8",parede="7,1 +0,4/-0,0",
   P=5,h_ponta=1.8,wr=1.85,rosca_txt="Rosca P5 - 30 graus - prof. 1,8 +0,1/-0,0 - fundo 1,85",
   crista=169.5,ct="+0,0/-0,2",canal=165.7,cnt="+0,0/-0,2",
@@ -73,12 +73,12 @@ TUBOS.update({
   bolsa=[(8,"ent"),(52,"ros"),(6,"can"),(8,"liso")],
   cot_bolsa=[(0,8,"8 +0,5/-0,0",1),(0,60,"60 +0,5/-0,0",0),(60,66,"6 +0,5/-0,0",2),(66,74,"8 +2/-0",3)],
   l_reto=117,l_reto_t="+3/-0",De_bolsa=181.10,De_bolsa_conf=True,x_fim_cone=133,
-  estimados=["Fim do cone de transicao bolsa/tubo (x=133)",
-             "Diametros das faixas lisas e do canal internos da bolsa (adotados = 170,9 / 166,9)",
-             "Cotas 60 lidas a partir da face (bolsa) e ate a ponta (inclui as faixas de 8 e 6) - confirmar",
-             "Rosca desenhada como aneis (perfil 30 graus do detalhe F), sem helice"]),
+  estimados=["Fim do cone de transição bolsa/tubo (x=133)",
+             "Diâmetros das faixas lisas e do canal internos da bolsa (adotados = 170,9 / 166,9)",
+             "Cotas 60 lidas a partir da face (bolsa) e até a ponta (inclui as faixas de 8 e 6) - confirmar",
+             "Rosca desenhada como anéis (perfil 30 graus do detalhe F), sem hélice"]),
 "AG-001":dict(nome="Tubo Revestimento Nervurado DN100 STD x 4 m",L=4075,ltol="+/- 40",
-  origem="Tubo Revestimento NERVURADO_ITEC folha 1/11 (14/07/2016) - PVC rigido",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 1/11 (14/07/2016) - PVC rígido",
   De=117.0,Detol="+0,7/-0",Di=103.0,Ditol="+0,3/-1,4",parede="7,0 +0,2/-0 (cota A)",
   P=6,h_ponta=1.8,wr=2.2,rosca_txt="Rosca P6 - 30 graus - prof. 1,8 +0,1/-0,0 - fundo 2,2",
   crista=112.5,ct="+0,0/-0,2",canal=108.7,cnt="+0,0/-0,2",
@@ -88,11 +88,11 @@ TUBOS.update({
   bolsa=[(50,"ros"),(6,"can"),(8,"liso")],
   cot_bolsa=[(0,50,"50",0),(50,56,"6 +0,5/-0,0",1),(56,64,"8 +2/-0",2)],
   l_reto=95,l_reto_t="+2/-2",De_bolsa=126.5,De_bolsa_conf=False,x_fim_cone=114,
-  notas=["Versao NERVURADO desenhada: Cota A (parede) = 7,0 -0/+0,2 ; DIAM. EXT = 117,0 -0/+0,7",
-         "Versao LISO (mesmo desenho original): Cota A = 5,0 -0/+0,2 ; DIAM. EXT = 113,0 -0/+0,7"],
-  estimados=["Diametro externo da bolsa (126,5)","Fim do cone de transicao bolsa/tubo (x=114)",
-             "Diametros do canal e da faixa lisa internos da bolsa (adotados = 112,9 / 109,0)",
-             "Rosca desenhada como aneis (perfil 30 graus do detalhe C), sem helice"]),
+  notas=["Versão NERVURADO desenhada: Cota A (parede) = 7,0 -0/+0,2 ; DIAM. EXT = 117,0 -0/+0,7",
+         "Versão LISO (mesmo desenho original): Cota A = 5,0 -0/+0,2 ; DIAM. EXT = 113,0 -0/+0,7"],
+  estimados=["Diâmetro externo da bolsa (126,5)","Fim do cone de transição bolsa/tubo (x=114)",
+             "Diâmetros do canal e da faixa lisa internos da bolsa (adotados = 112,9 / 109,0)",
+             "Rosca desenhada como anéis (perfil 30 graus do detalhe C), sem hélice"]),
 })
 import sys
 sel=sys.argv[1:] or list(TUBOS)
@@ -166,7 +166,7 @@ for cod in sel:
     dim_h(msp,(cx-R,cy),(cx+R,cy),cy-R-2.5*g,txt="\u00d8%s %s (externo)"%(fmt(p["De"]),p["Detol"]))
     title_block(msp,XL-180*k,Y0-p["De_bolsa"]/2-22*g,cod,p["nome"],p["origem"],escala="1:2",k=k)
     yy=Y0-p["De_bolsa"]/2-10*g
-    msp.add_text("(*) Em vermelho: NAO cotado no desenho original - estimado pela escala, confirmar:",height=0.8*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy))
+    msp.add_text("(*) Em vermelho: NÃO cotado no desenho original - estimado pela escala, confirmar:",height=0.8*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy))
     for n,e in enumerate(p["estimados"]):
         msp.add_text("- "+e,height=0.7*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy-1.5*g*(n+1)))
     for n,e in enumerate(p.get("notas",[])):

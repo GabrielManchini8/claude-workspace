@@ -72,9 +72,9 @@ def build(dn):
     for c in cols: msp.add_line((cx-R+c,ty),(cx-R+c,ty-len(rows)*rh),dxfattribs={"layer":"CARIMBO"})
     vol,_=solid.val().Volume(),0
     yn=ty-len(rows)*rh-2*g
-    for i,t in enumerate(["Comprimento da rosca modelado no valor medio da faixa (%s)."%fmt(lr),
-              "Conferencia: massa do modelo em PVC (1,40 g/cm3) = %.2f kg; tabela = %s kg."%(vol*1.4e-6,peso),
-              "Anotacoes a mao no original: \"1.1/2\" Reforcado\" e \"35\" (abaixo de L rosca do DN60)."]):
+    for i,t in enumerate(["Comprimento da rosca modelado no valor médio da faixa (%s)."%fmt(lr),
+              "Conferência: massa do modelo em PVC (1,40 g/cm3) = %.2f kg; tabela = %s kg."%(vol*1.4e-6,peso),
+              "Anotações a mão no original: \"1.1/2\" Reforçado\" e \"35\" (abaixo de L rosca do DN60)."]):
         msp.add_text(t,height=0.7*g,dxfattribs={"layer":"COTAS"}).set_placement((cx-R,yn-1.4*g*i))
     title_block(msp,XL-180*0.75*k,yn-1.4*g*3-28*k,"AG-010 "+dn,"Tubo edutor RWG %s - %s x 4 m"%(dn,pol),"Tubo Revestimento NERVURADO folha 13/13 (14/07/2016)",escala="1:1",k=0.75*k)
     cod="AG-010-"+dn

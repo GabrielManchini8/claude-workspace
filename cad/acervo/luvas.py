@@ -1,19 +1,19 @@
 from lib import *
 OUT="/home/claude/claude-workspace/cad/acervo/saida"
-# segmentos do furo, da esquerda p/ direita: (comprimento, diametro, tipo, confirmado)
+# segmentos do furo, da esquerda p/ direita: (comprimento, diâmetro, tipo, confirmado)
 LUVAS={
 "AG-006":dict(nome="Luva roscada 1.1/4\" BSP paralela 11 FPP",De=52,L=80,origem="Tubo Revestimento NERVURADO_ITEC folha 8/11 (14/07/2016)",
   rosca="Rosca 1.1/4\" BSP paralela 11FPP - Passo 2,309 - h 1,48 - r 0,32", tolmin="+0,00/-0,10",
   seg=[(10,42.2,"rebaixo",1),(22,39.0,"rosca",1),(3,42.2,"alivio",1),(10,33.1,"centro",1),(3,42.2,"alivio",0),(22,39.0,"rosca",0),(10,42.2,"rebaixo",0)],
-  nota="Lado direito nao cotado no original: adotado simetrico ao esquerdo (fecha exatamente 80)."),
+  nota="Lado direito não cotado no original: adotado simétrico ao esquerdo (fecha exatamente 80)."),
 "AG-007":dict(nome="Luva roscada 1.1/2\" BSP STD paralela 11 FPP",De=59.70,L=80,origem="Tubo Revestimento NERVURADO_ITEC folha 9/11 (14/07/2016)",
   rosca="Rosca 1.1/2\" BSP STD paralela 11FPP - Passo 2,309 - h 1,48 - r 0,32 - Di 45 - Df 44,5", tolmin="+0,00/-0,10",
   seg=[(10,48.1,"rebaixo",1),(22,45.0,"rosca",1),(3,48.1,"alivio",1),(10,36.0,"centro",1),(3,48.1,"alivio",0),(22,45.0,"rosca",0),(10,48.1,"rebaixo",0)],
-  nota="Lado direito nao cotado no original: adotado simetrico ao esquerdo (fecha exatamente 80). Cota Df 44,5 mostrada como nota."),
+  nota="Lado direito não cotado no original: adotado simétrico ao esquerdo (fecha exatamente 80). Cota Df 44,5 mostrada como nota."),
 "AG-008":dict(nome="Luva roscada 1.1/2\" BSP REF paralela 11 FPP",De=60,L=120,origem="Tubo Revestimento NERVURADO_ITEC folha 10/11 (14/07/2016)",
   rosca="Rosca 1.1/2\" BSP REF paralela 11FPP - Passo 2,309 - h 1,48 - r 0,32 - Di 45 - Df 44,4", tolmin="+0,00/-0,10",
   seg=[(11,47.8,"rebaixo",1),(34,45.0,"rosca",1),(3,47.8,"alivio",1),(25,33.8,"centro",1),(36,45.0,"rosca",0),(11,47.8,"rebaixo",0)],
-  nota="Lado direito NAO cotado no original e nao e simetrico: 36 + 11 = 47 medidos pela escala da foto. CONFIRMAR."),
+  nota="Lado direito NÃO cotado no original e não é simétrico: 36 + 11 = 47 medidos pela escala da foto. CONFIRMAR."),
 }
 for cod,p in LUVAS.items():
     L,R=p["L"],p["De"]/2
@@ -67,6 +67,6 @@ for cod,p in LUVAS.items():
         dim_v(msp,(X0+xx+2,Y0-d/2),(X0+xx+2,Y0+d/2),X0+L+12+i*12,txt)
     msp.add_text(p["rosca"],height=3,dxfattribs={"layer":"COTAS"}).set_placement((X0,Y0+R+14))
     msp.add_text("CORTE LONGITUDINAL 1:1",height=3.5,dxfattribs={"layer":"COTAS"}).set_placement((X0,Y0+R+22))
-    title_block(msp,X0+L-60 if L>100 else X0+L-100,20,cod,p["nome"],p["origem"],obs="(*) "+p["nota"]+"  Rosca representada de forma convencional (diametro menor).")
+    title_block(msp,X0+L-60 if L>100 else X0+L-100,20,cod,p["nome"],p["origem"],obs="(*) "+p["nota"]+"  Rosca representada de forma convencional (diâmetro menor).")
     vol,bb=save_all(doc,solid,OUT+"/"+cod,cod)
     print(cod,"vol %.0f mm3"%vol,"bbox",["%.1f"%b for b in bb])

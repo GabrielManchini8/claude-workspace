@@ -33,31 +33,46 @@ def dentes(x0,x1,rc0,rc1,P,H,crista,fundo,trunc=()):
     return pts
 
 PECAS={
-"AG-009":dict(nome="Disco dentado aco SAE 1045 - furo conico (2 pecas)",
-  origem="Tubo Revestimento NERVURADO_ITEC folha 12/12 (14/07/2016) - Aco SAE 1045",
+"AG-009":dict(nome="Disco dentado aço SAE 1045 - furo cônico (2 peças)",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 12/12 (14/07/2016) - Aço SAE 1045",
   Lh=28.0, d_cubo=30, bore=(16.5,19.0), cham_cubo=1.0, cham_conf=False,
   aro=(3.0,23.0), aro_conf=False, d_aro_int=70, d_crista=(80,80),
   alma=(8.0,17.0), alma_conf=(True,False),
   furos=(8,15,50), dente=dict(P=2.309,H=1.52,crista=0.36,fundo=0.367,trunc=()),
   dente_txt="Dentes 55 graus (Whitworth) - passo 2,309 - prof. 1,52 - R0,25 crista / R0,35 fundo",
-  bore_txt="Furo conico: furar Ø16,5 (menor) e abrir cone 5,1 graus ate Ø19. Chanfro nas duas arestas.",
+  bore_txt="Furo cônico: furar Ø16,5 (menor) e abrir cone 5,1 graus até Ø19. Chanfro nas duas arestas.",
   estimados=["Comprimento do cubo 28 = calculado do cone Ø16,5 -> Ø19 a 5,1 graus (28,07); pela escala da foto ~29",
              "Espessura da alma 9 = 28 - 8 - 11",
-             "Posicao do aro: cubo sobressai 3 a esquerda (medido pela escala)",
+             "Posição do aro: cubo sobressai 3 a esquerda (medido pela escala)",
              "Chanfro do cubo 1 x 45 graus (original pede chanfro, sem medida)",
              "Raios R0,25/R0,35 dos dentes representados como planos (crista 0,36 / fundo 0,37)",
-             "Posicao axial do 1o dente nao cotada"]),
+             "Posição axial do 1º dente não cotada"]),
 "AG-015":dict(nome="Fresa diamantada D50 - 11,5 FPP NPT",
-  origem="Maquina rosqueadeira automatica - des. 32563 folha 70/70 (02/05/2015)",
+  origem="Máquina rosqueadeira automática - des. 32563 folha 70/70 (02/05/2015)",
   Lh=25.0, d_cubo=30, bore=(16.5,18.73), cham_cubo=2.0, cham_conf=True,
   aro=(0.0,25.0), aro_conf=True, d_aro_int=50, d_crista=(58.5,60),
   alma=(4.5,14.5), alma_conf=(False,True),
   furos=(8,10,40), dente=dict(P=2.308,H=1.59,crista=0.28,fundo=0.19,trunc=[(0.69,1.23),(1.1,0.76),(1.5,0.30)]),
   dente_txt="Dentes 60 graus - 11,5 FPP (passo 2,308) - altura 1,59 - crista 0,28 - fundo 0,19 - cone NPT 3,56 graus (Ø58,5 -> Ø60)",
-  bore_txt="1- Usinar furo Ø menor 16,5   2- Usinar cone 5,1 graus ate Ø maior 18,73   3- Chanfro nos dois lados 2 x 45 graus",
-  estimados=["Posicao da alma: rebaixo esquerdo 4,5 (medido pela escala); espessura 10 e cotada",
+  bore_txt="1- Usinar furo Ø menor 16,5   2- Usinar cone 5,1 graus até Ø maior 18,73   3- Chanfro nos dois lados 2 x 45 graus",
+  estimados=["Posição da alma: rebaixo esquerdo 4,5 (medido pela escala); espessura 10 é cotada",
              "Primeiros 3 dentes truncados (alturas 0,69 / 1,1 / 1,5 e cristas 1,23 / 0,76 / 0,30 conforme detalhe EM)",
-             "Posicao axial do 1o dente nao cotada"]),
+             "Posição axial do 1º dente não cotada"]),
+"AG-014":dict(nome="Fresa diamantada DN 60 mm - 11 FPP",
+  origem="Global Mont. e Manut. de Máquinas - des. 13015.0001 rev. 00 (01/07/2013)",
+  Lh=28.4, d_cubo=30, bore=(18.4,16.0), cham_cubo=0.0, cham_conf=True,
+  aro=(3.0,28.4), aro_conf=True, d_aro_int=50, d_crista=(60,60),
+  alma=(13.4,23.4), alma_conf=(False,True), cota_dir=True, pcd_conf=False, rebaixo_furo=(23,3),
+  furos=(6,10,40), dente=dict(P=2.309,H=1.47,crista=0.39,fundo=0.39,trunc=()),
+  dente_txt="Dentes 55° (Whitworth) - 11 FPP - passo 2,309 - prof. 1,47 - R0,32 na crista e no fundo",
+  cone_txt="cone 3° (indicado)",
+  bore_txt="Furo cônico Ø18,4 → Ø16 com rebaixo Ø23 x 3 na face oposta. Tolerância geral ±0,10 mm. R2 e R3 indicados nos rebaixos.",
+  estimados=["Diâmetro do círculo dos 6 furos Ø10 = 40: não cotado no original (furos cabem exatamente entre Ø30 e Ø50)",
+             "Cone do furo: Ø18,4 → Ø16 em 25,4 dá 2,7° por lado; o original indica 3°",
+             "Profundidade do rebaixo superior 10,4 = 25,4 - 10 - 5 (cotas 10 e 5 lidas como alma e rebaixo inferior)",
+             "Raios R2 e R3 dos rebaixos não modelados no 3D (posição exata a confirmar)",
+             "Raios R0,32 dos dentes representados como planos (crista e fundo 0,39)",
+             "Posição axial do 1º dente não cotada"]),
 }
 
 def build(cod,p):
@@ -67,7 +82,10 @@ def build(cod,p):
     d=p["dente"]
     teeth=dentes(xa0,xa1,p["d_crista"][0]/2,p["d_crista"][1]/2,d["P"],d["H"],d["crista"],d["fundo"],d["trunc"])
     # contorno superior (sentido horário a partir do furo na face esquerda)
-    prof=[(0,rb0),(0,rh-c),(c,rh),(xw0,rh),(xw0,ra),(xa0,ra)]+teeth+[(xa1,ra),(xw1,ra),(xw1,rh),(Lh-c,rh),(Lh,rh-c),(Lh,rb1)]
+    prof=[(0,rb0),(0,rh-c),(c,rh),(xw0,rh),(xw0,ra),(xa0,ra)]+teeth+[(xa1,ra),(xw1,ra),(xw1,rh),(Lh-c,rh),(Lh,rh-c)]
+    if "rebaixo_furo" in p:
+        dcb,pcb=p["rebaixo_furo"]; prof+=[(Lh,dcb/2),(Lh-pcb,dcb/2),(Lh-pcb,rb1)]
+    else: prof+=[(Lh,rb1)]
     solid=revolve(prof)
     n,df,pcd=p["furos"]
     for i in range(n):
@@ -93,21 +111,26 @@ def build(cod,p):
     top=Y0+R
     dim_h(msp,(X0+xa0,top),(X0+xa1,top),top+2*g)
     if abs(Lh-(xa1-xa0))>1e-6 or xa0!=0:
-        dim_h(msp,(X0,Y0-rh),(X0+Lh,Y0-rh),Y0-R-6*g,conf=False)
+        dim_h(msp,(X0,Y0-rh),(X0+Lh,Y0-rh),Y0-R-6*g,conf=cod!="AG-009")
         dim_h(msp,(X0,Y0-rh),(X0+xa0,Y0-rh),Y0-R-2*g,conf=p["aro_conf"])
     dim_h(msp,(X0,Y0-rh1),(X0+xw0,Y0-rh1),Y0-R-4*g,conf=p["alma_conf"][0])
-    if cod=="AG-009": dim_h(msp,(X0+xw1,Y0-rh1),(X0+Lh,Y0-rh1),Y0-R-4*g)
+    if p.get("cota_dir") or cod=="AG-009": dim_h(msp,(X0+xw1,Y0-rh1),(X0+Lh,Y0-rh1),Y0-R-4*g)
     dim_h(msp,(X0+xw0,Y0+pcd/2),(X0+xw1,Y0+pcd/2),Y0+pcd/2,conf=p["alma_conf"][1])
     # diâmetros: externos à direita/esquerda, fora da peça; furo dentro
     dim_v(msp,(X0+xa1,Y0-p["d_crista"][1]/2),(X0+xa1,Y0+p["d_crista"][1]/2),xR+12*g,"%%c<>")
     if p["d_crista"][0]!=p["d_crista"][1]:
         dim_v(msp,(X0+xa0,Y0-p["d_crista"][0]/2),(X0+xa0,Y0+p["d_crista"][0]/2),xL-6*g,"%%c<>")
     dim_v(msp,(xL,Y0-ra),(xL,Y0+ra),xL-3*g,"%%c<>")
-    dim_v(msp,(X0+Lh,Y0-pcd/2),(X0+Lh,Y0+pcd/2),xR+9*g,"%%c<> (furos)")
+    dim_v(msp,(X0+Lh,Y0-pcd/2),(X0+Lh,Y0+pcd/2),xR+9*g,"%%c<> (furos)",conf=p.get("pcd_conf",True))
     dim_v(msp,(X0+Lh,Y0-rh),(X0+Lh,Y0+rh),xR+6*g,"%%c<>")
-    dim_v(msp,(X0+Lh,Y0-rb1),(X0+Lh,Y0+rb1),xR+3*g,"%%c<>")
+    if "rebaixo_furo" in p:
+        dcb,pcb=p["rebaixo_furo"]
+        dim_v(msp,(X0+Lh,Y0-dcb/2),(X0+Lh,Y0+dcb/2),xR+3*g,"%%c<>")
+        dim_v(msp,(X0+Lh-pcb,Y0-rb1),(X0+Lh-pcb,Y0+rb1),X0+Lh-pcb-2*g,"%%c<>")
+        dim_h(msp,(X0+Lh-pcb,Y0+dcb/2),(X0+Lh,Y0+dcb/2),Y0+rh+1.2*g)
+    else: dim_v(msp,(X0+Lh,Y0-rb1),(X0+Lh,Y0+rb1),xR+3*g,"%%c<>")
     dim_v(msp,(X0,Y0-rb0),(X0,Y0+rb0),X0+Lh*0.3,"%%c<>")
-    msp.add_text("5,1° (cone)",height=0.8*g,dxfattribs={"layer":"COTAS"}).set_placement((X0+Lh*0.42,Y0-1.6*g))
+    msp.add_text(p.get("cone_txt","5,1° (cone)"),height=0.8*g,dxfattribs={"layer":"COTAS"}).set_placement((X0+Lh*0.42,Y0-2.4*g))
     msp.add_text("CORTE LONGITUDINAL (pelos furos)",height=g,dxfattribs={"layer":"COTAS"}).set_placement((X0-5*g,top+6*g))
     msp.add_text(p["dente_txt"],height=0.7*g,dxfattribs={"layer":"COTAS"}).set_placement((X0-40*k,top+4.6*g))
     # vista frontal
@@ -127,12 +150,12 @@ def build(cod,p):
     # notas
     yy=Y0-R-10*g
     msp.add_text(p["bore_txt"],height=0.75*g,dxfattribs={"layer":"COTAS"}).set_placement((cx-R,yy))
-    msp.add_text("(*) Em vermelho: NAO cotado no original - estimado, confirmar:",height=0.75*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy-2*g))
+    msp.add_text("(*) Em vermelho: NÃO cotado no original - estimado, confirmar:",height=0.75*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy-2*g))
     for i,e in enumerate(p["estimados"]):
         msp.add_text("- "+e,height=0.65*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy-2*g-1.3*g*(i+1)))
     title_block(msp,xR+20*g-180*0.7*k,yy-2*g-1.3*g*(len(p["estimados"])+1)-30*0.7*k,cod,p["nome"],p["origem"],k=0.7*k)
     vol,bb=save_all(doc,solid,OUT+"/"+cod,cod)
-    print(cod,"vol %.1f cm3"%(vol/1000),"massa aco %.0f g"%(vol*7.85e-3),"bbox",["%.2f"%b for b in bb])
+    print(cod,"vol %.1f cm3"%(vol/1000),"massa aço %.0f g"%(vol*7.85e-3),"bbox",["%.2f"%b for b in bb])
 
 for cod in (sys.argv[1:] or PECAS):
     build(cod,PECAS[cod])

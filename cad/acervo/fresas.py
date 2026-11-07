@@ -1,6 +1,6 @@
 """AG-013 e AG-016 - fresas de pastilha (10 dentes) para rosca da bolsa.
-Opcao aprovada pelo usuario: modelo 3D = ENVOLTORIA DE CORTE (solido de revolucao que a
-fresa descreve girando) + furo com rasgo de chaveta. Dentes/pastilhas: esquema no 2D (nao cotados).
+Opcao aprovada pelo usuario: modelo 3D = ENVOLTÓRIA DE CORTE (solido de revolucao que a
+fresa descreve girando) + furo com rasgo de chaveta. Dentes/pastilhas: esquema no 2D (não cotados).
 Uso: python3 fresas.py [AG-013 AG-016]"""
 import sys, math
 import cadquery as cq
@@ -13,21 +13,21 @@ F={
   furo=25, furo_t="+0,10/+0,05", rasgo=6, rasgo_t="+0,05/-0,03", c_rasgo=27.8, c_t="+0,1/+0,0", z=10,
   perfil="Detalhe A (original): 30 graus, 38 graus, base 3,971 (1,732 + 2,238), altura 1,8, R0,25 (2x), 0,64, 0,5, 2,12, 2,5",
   estimados=["Largura do topo do filete 2,12: o detalhe A traz 2,12 e 2,5 sem deixar claro qual e o topo",
-             "Filete desenhado simetrico; no original o topo e deslocado (1,732 / 2,238) e tem chanfro 0,64 x 0,5 a 38 graus"]),
-"AG-016":dict(nome="Fresa de rosca P6 h2,6 - para Ø231 x 12,0 (2 pecas)",
-  origem="Desenho chines 160519#-250-TS (carimbo nao traduzido)",
+             "Filete desenhado simétrico; no original o topo é deslocado (1,732 / 2,238) e tem chanfro 0,64 x 0,5 a 38 graus"]),
+"AG-016":dict(nome="Fresa de rosca P6 h2,6 - para Ø231 x 12,0 (2 peças)",
+  origem="Desenho chinês 160519#-250-TS (carimbo não traduzido)",
   D=59, Dc=53.8, B=29, lado=12.31, base=4.38, topo=2.5, topo_conf=True, h=2.6,
   furo=25, furo_t="+0,10/+0,05 (leitura fraca)", rasgo=6, rasgo_t="+0,05/+0,03 (leitura fraca)", c_rasgo=27.8, c_t="+0,1/0", z=10,
   perfil="Detalhe A (original): 30 graus, 38 graus, base 4,38, topo 2,5, altura 2,6, R0,5, R0,25, 0,64, 0,5",
-  estimados=["Filete desenhado simetrico; no original um lado tem chanfro 0,64 x 0,5 a 38 graus",
-             "Tolerancias do furo e do rasgo com leitura fraca na fotocopia"]),
+  estimados=["Filete desenhado simétrico; no original um lado tem chanfro 0,64 x 0,5 a 38 graus",
+             "Tolerâncias do furo e do rasgo com leitura fraca na fotocópia"]),
 }
 def build(cod,p):
     R,Rc,B=p["D"]/2,p["Dc"]/2,p["B"]; rb=p["furo"]/2
     x0=p["lado"]; a=(p["base"]-p["topo"])/2
     prof=[(0,rb),(0,Rc),(x0,Rc),(x0+a,R),(x0+a+p["topo"],R),(x0+p["base"],Rc),(B,Rc),(B,rb)]
     solid=revolve(prof)
-    # rasgo de chaveta: largura 6, ate 27,8 medido do fundo do furo oposto
+    # rasgo de chaveta: largura 6, até 27,8 medido do fundo do furo oposto
     top=p["c_rasgo"]-rb
     key=cq.Workplane("YZ").workplane(offset=-1).center(0,(top+rb*0.5)/2).rect(p["rasgo"],top-rb*0.5).extrude(B+2)
     solid=solid.cut(key)
@@ -50,7 +50,7 @@ def build(cod,p):
     dim_v(msp,(X0+B,Y0-rb),(X0+B,Y0+top),X0+B+4*g,"<> "+p["c_t"]+" (rasgo)")
     dim_v(msp,(X0,Y0-rb),(X0,Y0+rb),X0+B*0.35,"%%c<>")
     dim_v(msp,(X0+x0+p["base"]/2,Y0+Rc),(X0+x0+p["base"]/2,Y0+R),X0-4*g,"<>")
-    msp.add_text("ENVOLTORIA DE CORTE (corte longitudinal)",height=g,dxfattribs={"layer":"COTAS"}).set_placement((X0-30,Y0+R+10*g))
+    msp.add_text("ENVOLTÓRIA DE CORTE (corte longitudinal)",height=g,dxfattribs={"layer":"COTAS"}).set_placement((X0-30,Y0+R+10*g))
     msp.add_text(p["perfil"],height=0.7*g,dxfattribs={"layer":"COTAS"}).set_placement((X0-110,Y0+R+8.3*g))
     # vista frontal esquemática
     cx,cy=X0-75,Y0
@@ -68,8 +68,8 @@ def build(cod,p):
     dim_h(msp,(cx-w,cy+top),(cx+w,cy+top),cy+R+2*g,txt="<> "+p["rasgo_t"])
     dim_h(msp,(cx-R,cy),(cx+R,cy),cy-R-3*g,txt="Ø<> (externo, ponta dos dentes)")
     yy=Y0-R-11*g
-    for i,t in enumerate(["%d dentes com pastilha de metal duro soldada. Forma do corpo, dos dentes e das pastilhas NAO cotada no original: desenho esquematico."%n,
-                          "O 3D e a envoltoria de corte (o que a fresa gera ao girar), com furo e rasgo de chaveta.","Furo Ø%s %s"%(fmt(p["furo"]),p["furo_t"])]):
+    for i,t in enumerate(["%d dentes com pastilha de metal duro soldada. Forma do corpo, dos dentes e das pastilhas NÃO cotada no original: desenho esquemático."%n,
+                          "O 3D é a envoltória de corte (o que a fresa gera ao girar), com furo e rasgo de chaveta.","Furo Ø%s %s"%(fmt(p["furo"]),p["furo_t"])]):
         msp.add_text(t,height=0.7*g,dxfattribs={"layer":"COTAS"}).set_placement((cx-R,yy-1.3*g*i))
     msp.add_text("(*) Em vermelho: confirmar:",height=0.75*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy-4.5*g))
     for i,e in enumerate(p["estimados"]):
