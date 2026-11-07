@@ -1,0 +1,385 @@
+---
+name: draftwright
+description: Gerar desenho técnico (vistas, cotas, corte, legenda ISO 7200) automaticamente a partir de um sólido build123d ou arquivo STEP, exportando PDF/SVG/DXF.
+---
+
+<!-- Copiado de https://github.com/pzfreo/draftwright (skills/SKILL.md), licença AGPL-3.0. -->
+
+# Automated Engineering Drawing with draftwright
+
+Use this skill when asked to create an engineering drawing automatically from a
+build123d solid or STEP file. It requires the **draftwright** package (AGPL-3.0)
+to be installed in the execution environment.
+
+> **License notice**: draftwright is AGPL-3.0. If you deploy code that uses it
+> as part of a network service you must make your application source available.
+> For Apache 2.0 annotation primitives only (`Dimension`, `Leader`, `TitleBlock`,
+> etc.), use `build123d-drafting-helpers` instead without this obligation.
+
+**There are two paths — start with the automatic one.**
+
+1. **Automatic (`make_drawing`)** — one call turns a part (or STEP file) into a
+   multi-view SVG + DXF with dimensions, centrelines, and an ISO 7200 title
+   block.
+2. **Builder (`build_drawing`)** — the same pipeline, but it hands back a live
+   `Drawing` you can edit before export.
+
+Requires `draftwright >= 0.4.0`; the current package requires
+`build123d-drafting-helpers >= 0.15.5`.
+Install: `pip install draftwright`.
+
+(The old floor said 0.1.9, which cannot run this guide: none of the feature-backed
+verbs existed then, and the dotted parameter ids in Step 2 are new in 0.4.0.)
+
+**Design model (worth knowing before you edit):** the engine is *deterministic*
+— no AI inside it — and you refine a drawing by **stating domain intent**
+(dimension this feature, section through here) and letting the engine **place
+everything automatically** (placement is constraint-based; you never compute page
+coordinates). When the first pass isn't perfect, you drive a **build → critique
+→ fix** loop (Step "Lint → critique → fix" below), not a hand-layout edit. The
+rationale lives in the five current records in `docs/adr/`: ADR 1 (compiler pipeline),
+ADR 2 (layout and view planning), ADR 3 (recognition), ADR 4 (declared intent), and
+ADR 5 (trust and honest failure). Edit through the domain API; treat `Placeable`/page mechanics as
+internals.
+
+---
+
+## Step 0 — Understand the part first
+
+```
+mcp__build123d-mcp__execute  — build the part in the session
+mcp__build123d-mcp__measure  — confirm volume, bbox, face count
+mcp__build123d-mcp__render_view (save_to='/tmp/preview.png') — visual sanity check
+```
+
+Register the part under a stable name with `show(part, "part")`.
+
+---
+
+## Step 1 — Generate the drawing automatically (start here)
+
+```python
+from draftwright import make_drawing
+
+svg, dxf = make_drawing(
+    part,                       # an in-session build123d object, OR a "path/to/part.step"
+    out="drawings/bracket",     # output stem; ".svg"/".dxf" are appended
+    title="BRACKET",            # ISO 7200 document title
+    number="DWG-042",           # ISO 7200 document identifier
+    tolerance="ISO 2768-f",     # general tolerance
+    drawn_by="Your Name",
+)
+```
+
+`make_drawing` chooses the scale, ISO page size, and views required by the part,
+then annotates, lints, and writes both SVG and DXF.
+
+Automatic annotation covers **prismatic parts in full**: every recognised hole
+gets a grouped callout ("4× ø10 THRU", counterbore/depth symbols), bolt circles
+get "EQ SP ON øD BC" callouts with a pitch-circle centreline, linear arrays get
+pitch dims, every hole gets a centre mark and baseline X/Y location dims from the
+min-X/Y datum corner, and blind/counterbored holes trigger an automatic SECTION
+A–A with ISO 128-44 solid filled arrows and ISO 128-50 45° hatching. Turned
+parts get OD/length dims, centrelines, bore leaders, and — for parts turned
+about a horizontal (X) axis — their external stepped diameters as ø
+leader-callouts.
+
+Then verify (Step 3). For most parts you are done here.
+
+---
+
+## Step 2 — Customise with the Drawing builder
+
+`build_drawing(...)` returns a live `Drawing`. **Edit it in *domain* vocabulary —
+name a detected *feature* and the measurement you want; the engine decides the
+offset, stacking, and strip slot.** You give *what*, never *where on the page*:
+placement is automatic and constraint-based.
+
+Use the feature-backed verbs (`dimension` / `locate` / `callout` / `note` /
+`drop`) for edits. `Drawing.place_dim` remains a deprecated raw-coordinate
+escape hatch; `Drawing.add`, `Drawing.add_view`, and the public view-coordinate
+plumbing were removed in 0.5.0. See `docs/deprecations.md`.
+
+```python
+from draftwright import build_drawing
+
+dwg = build_drawing(part, out="drawings/bracket", title="BRACKET",
+                    number="DWG-042", tolerance="ISO 2768-f", drawn_by="Your Name")
+```
+
+**Inspect what the engine found and placed (read APIs):**
+
+```python
+dwg.features("plan")        # detected features in a view → [FeatureInfo(...)]
+                            #   each: .type .diameter .through .depth .count .page_pos
+dwg.annotations()           # {name: type} of every named annotation already on the sheet
+dwg.get_annotation(name)    # the named annotation object, or None
+dwg.view_bounds("front")    # (x_min, y_min, x_max, y_max) page bbox of a view, or None
+dwg.items                   # the ordered, mutable list of annotation objects
+dwg.views                   # selected view names → (visible, hidden) compounds
+dwg.draft / dwg.scale / dwg.page_w / dwg.page_h
+```
+
+**Add a dimension by naming a feature and a measurement** — the engine derives the
+value from the geometry and owns the placement:
+
+```python
+# side ∈ {"above","below","left","right"}; view ∈ {"front","plan","side"}.
+env  = next(f for f in dwg.model().features if f.kind == "envelope")
+hole = next(f for f in dwg.model().features if f.kind == "hole")
+
+dwg.dimension(env, "length", role="width", side="above", view="front")
+dwg.locate(hole)                         # locating dimensions for the feature
+dwg.callout(hole)                        # a ⌀ callout the auto-pass missed
+
+dwg.drop(hole)                           # stop dimensioning this feature
+
+name = next(iter(dwg.annotations()))     # names come from annotations(); they are
+dwg.remove(name)                         # engine-assigned, so don't guess one
+```
+
+**Mind the two spellings.** On `Drawing.dimension` the second argument is the
+parameter *kind* (`"length"`, `"diameter"`) and `role=` discriminates between
+same-kind parameters — an envelope has three `length` params with roles `width` /
+`height` / `depth`, so `dimension(env, "length")` alone is ambiguous and raises,
+naming them. `feature.parameters()` returns `DimParameter` objects carrying
+`.kind` and `.role`, so `[(p.kind, p.role) for p in feature.parameters()]` is how
+to see what a feature accepts.
+
+On the `Sheet` facade the same measurement is one dotted **parameter id** —
+`"width.length"` — and `dimension_ids()` on a handle lists them. Use the id there
+rather than the bare family role (`"width"`): the bare spelling is deprecated,
+because it is what let a single call silently declare two dimensions.
+
+`place_dim(p1, p2, side, view, …)` still exists for raw page coordinates, but it is
+the **escape hatch of last resort** (ADR 4) and is deprecated: it bypasses the
+layout solve, so nothing re-flows around it.
+
+**Add a callout on a hole the auto-pass missed** — inspect its semantic requirement
+finding first. Equal diameters can belong to different axes, blind depths, threads
+or fits; a diameter-total warning never authorises increasing a callout count.
+
+```python
+for issue in dwg.lint():
+    if issue.code.startswith("hole_requirement_"):
+        print(issue.message)
+        if issue.suggestion:
+            print(issue.suggestion)
+```
+
+For a verified missing bore on an automatic model, the suggestion targets the exact
+feature with `dwg.callout(...)` through the shared solve. It applies to that Drawing;
+re-run lint after rebuilding. Authored omissions, unverified ownership and conflicting
+counts require inspection of the declared operation rather than an automatic count edit.
+
+**Free text** at a chosen point is `note()` — a domain verb, not an escape hatch:
+
+```python
+dwg.note("ø4 BORE", dwg.at("front", 10, 0, 5), view="front")
+```
+
+Then re-lint and export:
+
+```python
+issues = dwg.lint()                       # list of LintIssue; [] when clean
+paths = dwg.export("drawings/bracket", formats=("svg", "dxf", "pdf"))
+svg, dxf = paths["svg"], paths["dxf"]
+```
+
+Pass `formats=` and read the `{format: path}` dict. `Drawing.export()` without
+`formats`, with `formats=None`, or with the old `svg=`/`dxf=` booleans was removed
+in 0.5.0. See `docs/deprecations.md`.
+
+`make_drawing(...)` is unaffected and does not warn: it still returns
+`(svg_path, dxf_path)`, and passes `formats=` internally to get them.
+
+`make_drawing(...)` calls `build_drawing(...).export(formats=("svg", "dxf"))`
+and returns the two paths as a tuple.
+
+**Authored section views** use `section_view()` alongside an explicit dimension and
+view set. This complete example declares the bore diameter and overall extents;
+it deliberately leaves the bore's location dimensions unrequested:
+
+<!-- example: authored-section -->
+```python
+from build123d import Box, Cylinder, Pos
+from draftwright import Sheet
+
+bore_tool = Pos(12, 0, 0) * Cylinder(3, 12)
+part = Box(60, 40, 12) - bore_tool
+sheet = Sheet(part, page="A3", scale=1, projection="third")
+sheet.authored_dimensions().authored_views()
+
+envelope = sheet.envelope(part)
+for parameter_id in envelope.dimension_ids():
+    sheet.dimension(envelope, parameter_id)
+bore = sheet.hole(bore_tool)
+print(bore.dimension_ids())  # discover this handle's Sheet measurement IDs
+sheet.dimension(bore, "bore.diameter")
+
+for name in ("front", "plan", "side"):
+    sheet.view(name)
+sheet.section_view("A", through=bore)  # or at=0 for an explicit model-space Y plane
+
+drawing = sheet.build()
+issues = drawing.lint()
+for issue in issues:
+    print(issue.severity, issue.code, issue.message)
+# drawing.export("build/section", formats=("pdf", "svg"))
+```
+
+`dimension_ids()` lists the Sheet handle's dotted IDs: use `"bore.diameter"` here.
+Drawing.dimension instead takes a kind and optional role, such as `"length"` with
+`role="width"` for an envelope. Hole diameter/depth use Drawing.callout, not
+Drawing.dimension. Inspect `issues`: authored omissions
+remain visible, so a successfully built section does not prove a complete drawing.
+
+`view()` and `section_view()` define complete authored principal and derived sets.
+To augment automatic views instead, start a new Sheet, explicitly select
+`auto_views()`, and use `add_section_view("A", through=...)` or `at=...`.
+That mode remains supported; `auto_views()` emits a soft-deprecation notice with
+no removal date. Do not switch an already-authored view set to `auto_views()`.
+See the runnable augmentation example in `docs/reference/sheet.md`.
+
+`Sheet.section()` is deprecated with removal targeted at 0.6.0. Migrate it to the
+method for your view source above. `Drawing.section()` remains the automatic
+post-build section operation: it may return no section when the geometry does not
+warrant one. It does not replace an explicit authored section request.
+
+Arbitrary **auxiliary** views have no public `Drawing` verb, so a custom viewing
+direction is not currently part of the supported surface.
+
+`Drawing.add_view()` and its public view-coordinate plumbing were removed in
+0.5.0 (#2113). `Sheet.add_view()` is a separate supported verb for augmenting an
+automatic view set; view projection itself remains engine plumbing.
+
+---
+
+## Step 3 — Verify
+
+```
+mcp__build123d-mcp__render_drawing(svg_path='drawings/part_name.svg', save_to='/tmp/dwg.png')
+mcp__build123d-mcp__save_drawing_annotations(svg_path='drawings/part_name.svg')
+mcp__build123d-mcp__inspect_drawing(svg_path='drawings/part_name.svg')
+```
+
+---
+
+## Step 4 — Save a standalone regeneration script (default)
+
+**A — Drawing from a STEP file**:
+
+```python
+from draftwright.sheet_emit import generate_sheet_script
+
+generate_sheet_script(
+    "path/to/part.step",
+    out="scripts/drawings/bracket",
+    title="BRACKET", number="DWG-042",
+    tolerance="ISO 2768-f", drawn_by="Your Name",
+)
+```
+
+This writes a declarative `Sheet` script: one named line per detected feature, then the
+dimension set it draws. Comment a feature line out to drop that feature; edit a value
+freely; re-run the file. (`generate_script`, the older imperative flavour, was retired in
+#940 and deleted in 0.4.0 — importing it now fails; use `generate_sheet_script` above.) The
+CLI equivalent is `draftwright part.step
+--script --out scripts/drawings/bracket`.
+
+**B — Drawing an in-session object** (hand-write the script):
+
+```python
+#!/usr/bin/env python3
+"""BRACKET — regenerates drawings/bracket.svg + .dxf in one run."""
+from draftwright import make_drawing
+from myproject.bracket import build_bracket
+
+part = build_bracket()
+make_drawing(part, out="drawings/bracket", title="BRACKET",
+             number="DWG-042", tolerance="ISO 2768-f", drawn_by="Your Name")
+```
+
+---
+
+## Scale and page control
+
+```python
+from draftwright import choose_scale
+
+SCALE, PAGE_W, PAGE_H, TB_W = choose_scale(x_size, y_size, z_size)
+make_drawing(part, out="drawing", scale=2.0, page="A2")
+```
+
+---
+
+## Lint → critique → fix (the loop to drive as an AI)
+
+draftwright is built to be *iterated*: build, read a machine-readable critique,
+apply a domain-level fix, re-build. This is the supported refinement model —
+prefer it over eyeballing the SVG and hand-placing annotations.
+
+```python
+dwg = build_drawing(part)
+
+# 1. Critique — the machine channel. JSON-friendly aggregate of lint().
+crit = dwg.lint_summary()
+#   {"passed": bool, "score": 0..1, "diagnostic_score": 0..1,
+#    "errors": n, "warnings": n, "infos": n, "by_code": {code: n},
+#    "issues": [{code, severity, message, suggestion?}, ...],
+#    "quality": {"completeness": …, "restraint": …, "legibility": …, "fidelity": …,
+#                "unscored": {"available": True, "score": None, "issues": n,
+#                             "by_code": {…}, "unclassified": [...], "reason": …}}}
+# Gate on the severity/code COUNTS, not the scalar score.
+#
+# The four `quality` components answer four different questions and none substitutes for
+# another: did required content land, is there too much of it, can a reader make it out,
+# and — `fidelity` — is what it says TRUE. Completeness, restraint and fidelity report
+# `available: False` with a `reason` rather than a flattering number when they have no
+# evidence, so read `available` first. (Legibility is always available: an empty sheet
+# genuinely IS legible, which is not the same kind of 1.0 as an empty sheet being truthful.)
+# `quality["unscored"]` lists the findings none of the four priced; a non-empty
+# `unclassified` there means a lint code reached no component and nobody decided it should.
+
+# 2. Each issue names the problem in DOMAIN terms and (when computable) carries a
+#    ready-to-apply suggestion — a domain-API call you paste in, not page maths.
+for i in dwg.lint():
+    print(i.severity, i.code, i.message)
+    if getattr(i, "suggestion", None):
+        print("  fix:", i.suggestion)   # e.g. dwg.callout(...) / dwg.dimension(...)
+
+# 3. Self-repair — auto-applies the mechanically-fixable issues (overlapping
+#    labels pushed apart, wrong-side dims flipped). Runs by default inside
+#    build_drawing; call again after manual edits. It never makes a sheet worse.
+dwg.repair()
+
+# Pin a deliberate placement so repair won't move it (the constraint solver will
+# honour it too as it lands — ADR 2):
+dwg.pin(name)             # name from dwg.annotations(); dwg.unpin(name) to release
+```
+
+Codes are domain-meaningful (`feature_not_dimensioned`, `feature_count_mismatch`,
+`callout_dropped`, `location_ref_dropped`, `step_dim_dropped`, …), so a fix is
+always expressible through the domain API (`dimension`, `locate`, `callout`,
+`features`), never the page-layout internals. Loop until `passed` (or the score
+plateaus).
+
+Coverage-only check, standalone:
+
+```python
+from draftwright import build_drawing, lint_feature_coverage
+issues = build_drawing(part).lint()   # geometry lint + feature-coverage check
+```
+
+---
+
+## Using this skill with build123d-mcp
+
+This skill requires `draftwright` to be in the server's import allowlist.
+The build123d-mcp server allows it by default from v0.3.51 onwards. If you see
+`ImportError: draftwright is not in the import allowlist`, pass
+`--allow-imports draftwright` to the server CLI or set
+`BUILD123D_ALLOW_IMPORTS=draftwright` in the environment.
+
+For annotation primitives (`Dimension`, `Leader`, `TitleBlock`, `lint_drawing`,
+`ViewCoordinates`, etc.) continue to import from `build123d_drafting`.

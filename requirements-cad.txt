@@ -1,0 +1,4 @@
+# Bibliotecas Python de CAD (testadas em Python 3.13, Linux, nov/2026)
+cadquery==2.8.0
+build123d==0.11.1
+draftwright==0.4.22
