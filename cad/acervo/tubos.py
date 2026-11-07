@@ -45,6 +45,55 @@ TUBOS={
              "Cota 50 da bolsa lida como medida a partir da face (inclui a entrada de 6,0) - confirmar",
              "Rosca desenhada como aneis (perfil 30 graus do detalhe R), sem helice"]),
 }
+
+TUBOS.update({
+"AG-004":dict(nome="Tubo Revestimento Nervurado DN150 STD x 4 m",L=4075,ltol="+/- 40",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 4/11 (14/07/2016) - PVC rigido",
+  De=174.0,Detol="+0,4/-0,0",Di=155.0,Ditol="+0/-2",parede="9,5 +1,0/-0,0",
+  P=6,h_ponta=2.6,wr=2.2,rosca_txt="Rosca P6 - 30 graus - prof. 2,6 +0,2/-0,0 - fundo 2,2",
+  crista=169.5,ct="+0,0/-0,2",canal=164.1,cnt="+0,0/-0,2",
+  ponta=[(8,"liso"),(6,"can"),(59,"ros"),(6,"fim")],
+  cot_ponta=[(0,8,"8 +2/-0",3),(8,14,"6,0 +0,5/-0,0",2),(14,79,"65",0),(73,79,"6,0 +0,5/-0,0",1)],
+  dM=171.7,dMt="+0,3/-0,0",dm=165.3,dmt="+0,2/-0,0",
+  bolsa=[(6,"ent"),(59,"ros"),(6,"can"),(8,"liso")],
+  cot_bolsa=[(0,6,"6,0 +0,5/-0,0",1),(0,65,"65",0),(65,71,"6,0 +0,5/-0,0",2),(71,79,"8,0 +2,0/-0,0",3)],
+  l_reto=118,De_bolsa=186.0,De_bolsa_conf=False,x_fim_cone=135,
+  estimados=["Diametro externo da bolsa (186)","Fim do cone de transicao bolsa/tubo (x=135)",
+             "Diametros das faixas lisas e do canal internos da bolsa (adotados = 171,7 / 165,3)",
+             "Cotas 65 lidas a partir da face (bolsa) e ate a ponta (inclui as faixas de 6,0) - confirmar",
+             "Rosca desenhada como aneis (perfil 30 graus do detalhe J), sem helice"]),
+"AG-003":dict(nome="Tubo Revestimento Nervurado DN150 Leve x 4 m",L=4075,ltol="+/- 40",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 3/11 (14/07/2016) - PVC rigido",
+  De=174.0,Detol="+0,4/-0,0",Di=159.8,Ditol="+0,4/-0,8",parede="7,1 +0,4/-0,0",
+  P=5,h_ponta=1.8,wr=1.85,rosca_txt="Rosca P5 - 30 graus - prof. 1,8 +0,1/-0,0 - fundo 1,85",
+  crista=169.5,ct="+0,0/-0,2",canal=165.7,cnt="+0,0/-0,2",
+  ponta=[(8,"liso"),(6,"can"),(54,"ros"),(6,"fim")],
+  cot_ponta=[(0,8,"8 +2/-0",3),(8,14,"6 +0,5/-0,5",2),(14,74,"60 +2/-0",0),(68,74,"6 +0,5/-0,5",1)],
+  dM=170.9,dMt="+0,2/-0,0",dm=166.9,dmt="+0,2/-0,0",
+  bolsa=[(8,"ent"),(52,"ros"),(6,"can"),(8,"liso")],
+  cot_bolsa=[(0,8,"8 +0,5/-0,0",1),(0,60,"60 +0,5/-0,0",0),(60,66,"6 +0,5/-0,0",2),(66,74,"8 +2/-0",3)],
+  l_reto=117,l_reto_t="+3/-0",De_bolsa=181.10,De_bolsa_conf=True,x_fim_cone=133,
+  estimados=["Fim do cone de transicao bolsa/tubo (x=133)",
+             "Diametros das faixas lisas e do canal internos da bolsa (adotados = 170,9 / 166,9)",
+             "Cotas 60 lidas a partir da face (bolsa) e ate a ponta (inclui as faixas de 8 e 6) - confirmar",
+             "Rosca desenhada como aneis (perfil 30 graus do detalhe F), sem helice"]),
+"AG-001":dict(nome="Tubo Revestimento Nervurado DN100 STD x 4 m",L=4075,ltol="+/- 40",
+  origem="Tubo Revestimento NERVURADO_ITEC folha 1/11 (14/07/2016) - PVC rigido",
+  De=117.0,Detol="+0,7/-0",Di=103.0,Ditol="+0,3/-1,4",parede="7,0 +0,2/-0 (cota A)",
+  P=6,h_ponta=1.8,wr=2.2,rosca_txt="Rosca P6 - 30 graus - prof. 1,8 +0,1/-0,0 - fundo 2,2",
+  crista=112.5,ct="+0,0/-0,2",canal=108.7,cnt="+0,0/-0,2",
+  ponta=[(8,"liso"),(6,"can"),(50,"ros")],
+  cot_ponta=[(0,8,"8 +2/-0",2),(8,14,"6 +0,5/-0,5",1),(14,64,"50",0)],
+  dM=112.9,dMt="+0,2/-0,0",dm=109.0,dmt="+0,2/-0,0",
+  bolsa=[(50,"ros"),(6,"can"),(8,"liso")],
+  cot_bolsa=[(0,50,"50",0),(50,56,"6 +0,5/-0,0",1),(56,64,"8 +2/-0",2)],
+  l_reto=95,l_reto_t="+2/-2",De_bolsa=126.5,De_bolsa_conf=False,x_fim_cone=114,
+  notas=["Versao NERVURADO desenhada: Cota A (parede) = 7,0 -0/+0,2 ; DIAM. EXT = 117,0 -0/+0,7",
+         "Versao LISO (mesmo desenho original): Cota A = 5,0 -0/+0,2 ; DIAM. EXT = 113,0 -0/+0,7"],
+  estimados=["Diametro externo da bolsa (126,5)","Fim do cone de transicao bolsa/tubo (x=114)",
+             "Diametros do canal e da faixa lisa internos da bolsa (adotados = 112,9 / 109,0)",
+             "Rosca desenhada como aneis (perfil 30 graus do detalhe C), sem helice"]),
+})
 import sys
 sel=sys.argv[1:] or list(TUBOS)
 for cod in sel:
@@ -91,7 +140,7 @@ for cod in sel:
     msp.add_line((X0-10,Y0),(X0+mapx(L)+10,Y0),dxfattribs={"layer":"CENTRO"})
     XL=X0+mapx(L); top=Y0+p["De_bolsa"]/2; g=6*k
     dim_h(msp,(X0,top),(XL,top),top+8*g,txt="%d %s (vista interrompida)"%(L,p["ltol"]))
-    dim_h(msp,(X0,top),(X0+p["l_reto"],top),top+2.5*g)
+    dim_h(msp,(X0,top),(X0+p["l_reto"],top),top+2.5*g,txt="<> "+p.get("l_reto_t",""))
     yb=Y0-p["De_bolsa"]/2-2.5*g
     for x1,x2,t,row in p["cot_bolsa"]:
         dim_h(msp,(X0+x1,Y0-rm),(X0+x2,Y0-rm),yb-row*1.6*g,txt=t)
@@ -106,8 +155,8 @@ for cod in sel:
     dim_v(msp,(XL,Y0-rc),(XL,Y0+rc),XL+2.5*g,"Ø<> "+p["ct"])
     xc=X0+mapx(xs+[l for l,t in p["ponta"]][0]+1)
     dim_v(msp,(xc,Y0-p["canal"]/2),(xc,Y0+p["canal"]/2),XL+5*g,"Ø<> "+p["cnt"])
-    msp.add_text("CORTE LONGITUDINAL (1:2)",height=g,dxfattribs={"layer":"COTAS"}).set_placement((X0+40,top+10*g))
-    msp.add_text(p["rosca_txt"],height=0.8*g,dxfattribs={"layer":"COTAS"}).set_placement((XL-28*g,Y0-R-3*g))
+    msp.add_text("CORTE LONGITUDINAL (1:2)",height=g,dxfattribs={"layer":"COTAS"}).set_placement((X0+40,top+12*g))
+    msp.add_text(p["rosca_txt"],height=0.8*g,dxfattribs={"layer":"COTAS"}).set_placement((X0+40,top+10.3*g))
     cx,cy=X0-1.15*p["De_bolsa"]-8*g,Y0
     msp.add_text("VISTA FRONTAL - TUBO",height=g,dxfattribs={"layer":"COTAS"}).set_placement((cx-R,cy+R+4*g))
     for rr in (R,ri): msp.add_circle((cx,cy),rr,dxfattribs={"layer":"CONTORNO","lineweight":50})
@@ -120,5 +169,7 @@ for cod in sel:
     msp.add_text("(*) Em vermelho: NAO cotado no desenho original - estimado pela escala, confirmar:",height=0.8*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy))
     for n,e in enumerate(p["estimados"]):
         msp.add_text("- "+e,height=0.7*g,dxfattribs={"layer":"CONFIRMAR"}).set_placement((cx-R,yy-1.5*g*(n+1)))
+    for n,e in enumerate(p.get("notas",[])):
+        msp.add_text(e,height=0.8*g,dxfattribs={"layer":"COTAS"}).set_placement((X0,Y0-p["De_bolsa"]/2-7*g-1.3*g*n))
     vol,bb=save_all(doc,solid,OUT+"/"+cod,cod)
     print(cod,"vol %.0f cm3"%(vol/1000),"bbox",["%.1f"%b for b in bb])
