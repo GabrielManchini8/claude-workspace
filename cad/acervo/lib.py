@@ -8,7 +8,11 @@ from ezdxf.addons.drawing import matplotlib as dxfplt
 AZUL=5; VERM=1
 def revolve(profile):
     """profile: lista de (x, r) fechada no plano XZ (x = eixo). Retorna sólido."""
-    wp=cq.Workplane("XY").polyline([(x,r) for x,r in profile]).close()
+    pts=[]
+    for x,r in profile:
+        if not pts or abs(pts[-1][0]-x)>1e-6 or abs(pts[-1][1]-r)>1e-6: pts.append((x,r))
+    if abs(pts[0][0]-pts[-1][0])<1e-6 and abs(pts[0][1]-pts[-1][1])<1e-6: pts.pop()
+    wp=cq.Workplane("XY").polyline(pts).close()
     return wp.revolve(360,(0,0,0),(1,0,0))
 
 def setup_doc(k=1.0):
