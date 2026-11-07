@@ -25,7 +25,7 @@ def setup_doc(k=1.0):
     return doc
 
 def fmt(v):
-    s=("%.2f"%v).rstrip("0").rstrip("."); return s.replace(".",",")
+    s=("%.3f"%v).rstrip("0").rstrip("."); return s.replace(".",",")
 def dim_h(msp,p1,p2,y,txt=None,conf=True):
     txt=(txt or "<>").replace("<>",fmt(abs(p2[0]-p1[0])))
     d=msp.add_linear_dim(base=(p1[0],y),p1=p1,p2=p2,dimstyle="EZDXF",text=txt+("" if conf else " (*)"),
